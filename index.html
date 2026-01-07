@@ -20,35 +20,37 @@
             <span style="font-weight: 800; font-size: 1.2rem;">TECH & ART</span>
         </div>
         <nav>
-            <a href="#home">首頁</a>
-            <a href="#software">軟體販售</a>
-            <a href="#tutorials">教學區</a>
+            <a href="#home" data-i18n="nav_home">首頁</a>
+            <a href="#software" data-i18n="nav_software">軟體販售</a>
+            <a href="#tutorials" data-i18n="nav_tutorials">教學區</a>
+            <button id="lang-toggle" class="btn-small" onclick="toggleLanguage()" data-i18n="lang_toggle"
+                style="margin-left: 1rem; padding: 0.3rem 0.8rem; font-size: 0.8rem;">English</button>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <h1>我做的不是藝術是技術</h1>
-            <p>融合尖端科技與舞台美學，為燈光設計與影音同步提供最精確的解決方案。</p>
-            <a href="#software" class="btn" style="font-size: 1.2rem; padding: 1rem 2rem;">探索軟體</a>
+            <h1 data-i18n="hero_title">我做的不是藝術是技術</h1>
+            <p data-i18n="hero_subtitle">融合尖端科技與舞台美學，為燈光設計與影音同步提供最精確的解決方案。</p>
+            <a href="#software" class="btn" style="font-size: 1.2rem; padding: 1rem 2rem;" data-i18n="hero_btn">探索軟體</a>
         </section>
 
         <section id="software">
-            <h2>軟體販售區</h2>
+            <h2 data-i18n="section_software">軟體販售區</h2>
             <div id="software-container" class="software-grid">
                 <!-- Data injected by main.js -->
             </div>
         </section>
 
         <section id="free-tools" style="background: rgba(255,255,255,0.02)">
-            <h2>免費好用區</h2>
+            <h2 data-i18n="section_free">免費好用區</h2>
             <div id="free-tools-container" class="software-grid">
                 <!-- Data injected by main.js -->
             </div>
         </section>
 
         <section id="tutorials" style="background: rgba(255,255,255,0.02)">
-            <h2>教學資源區</h2>
+            <h2 data-i18n="section_tutorials">教學資源區</h2>
             <div id="category-filters" style="text-align: center; margin-bottom: 2rem;">
                 <!-- Filter buttons will be injected by main.js -->
             </div>
@@ -79,10 +81,11 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 onedoller. All rights reserved. | 我做的不是藝術是技術</p>
+        <p data-i18n="footer_rights">&copy; 2026 onedoller. All rights reserved. | 我做的不是藝術是技術</p>
     </footer>
 
     <script src="data.js"></script>
+    <script src="i18n.js"></script>
     <script src="main.js"></script>
 </body>
 

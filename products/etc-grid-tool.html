@@ -350,28 +350,31 @@
         <div style="font-family: 'Orbitron'; font-weight: bold; font-size: 1.5rem; color: #fff;">
             TECH & ART
         </div>
-        <div>
-            <a href="../index.html"
-                style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">HOME</a>
+        <div style="display: flex; align-items: center;">
+            <a href="../index.html" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;"
+                data-i18n="nav_home">HOME</a>
             <a href="osc-tool.html"
                 style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">OSC TOOL</a>
-            <a href="#" style="color: var(--neon-blue); text-decoration: none; font-weight: bold;">GRID TOOL</a>
+            <a href="#" style="color: var(--neon-blue); text-decoration: none; font-weight: bold; margin-right: 20px;"
+                data-i18n="nav_products">GRID TOOL</a>
+            <button id="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_toggle"
+                style="background: rgba(255,255,255,0.1); border: 1px solid var(--neon-blue); color: #fff; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-family: 'Orbitron'; font-size: 0.8rem;">English</button>
         </div>
     </nav>
 
     <section class="hero-section">
         <h1 class="hero-title">ETC EOS<br>GRID TOOL</h1>
-        <p class="hero-subtitle">Visual Matrix Control for Lighting Pros</p>
+        <p class="hero-subtitle" data-i18n="grid_hero_subtitle">Visual Matrix Control for Lighting Pros</p>
         <div class="hero-image-container">
             <img src="../assets/products/etc-grid-tool/ui_full.png" alt="ETC Grid Tool Interface" class="hero-ui-img">
         </div>
 
         <div class="btn-group">
             <a href="mailto:5664762@gmail.com" class="cta-btn btn-email">
-                <i class="fa-solid fa-envelope"></i>欲購買請聯絡 5664762@gmail.com
+                <i class="fa-solid fa-envelope"></i><span data-i18n="osc_buy_email">欲購買請聯絡 5664762@gmail.com</span>
             </a>
             <a href="https://line.me/ti/p/~5664762" target="_blank" class="cta-btn btn-line">
-                <i class="fa-brands fa-line"></i>LINE 聯繫 ID: 5664762
+                <i class="fa-brands fa-line"></i><span data-i18n="osc_buy_line">LINE 聯繫 ID: 5664762</span>
             </a>
         </div>
     </section>
@@ -379,7 +382,8 @@
     <!-- Video Showcase Section -->
     <section class="video-showcase"
         style="max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; text-align: center;">
-        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 40px;">PRODUCT
+        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 40px;"
+            data-i18n="osc_demo">PRODUCT
             DEMO</h2>
         <div
             style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; border: 2px solid rgba(0, 243, 255, 0.3); box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);">
@@ -399,13 +403,12 @@
                 <img src="../assets/products/etc-grid-tool/feature_grid.png" alt="MA3-Style Grid Matrix">
             </div>
             <div class="feature-content">
-                <h3 class="feature-title">MA3-STYLE GRID MATRIX</h3>
-                <p class="feature-desc">
+                <h3 class="feature-title" data-i18n="grid_f1_title">MA3-STYLE GRID MATRIX</h3>
+                <p class="feature-desc" data-i18n="grid_f1_desc">
                     革命性的分組與網格介面。參考 MA3 的邏輯，使用色彩視覺化區分燈具群組，並以座標化形式呈現佈局，支援多選與自由拖放，完全不需要手動計算位址。
                 </p>
-                <div class="feature-highlight">
-                    <span style="font-size: 1.5em; vertical-align: middle;">🔳</span>
-                    <strong>智慧排位與分組：</strong> 透過色彩直觀表達分組關係，結合螺旋搜尋演算法自動避開衝突功能，讓編排完畢後可一鍵同步傳回 ETC 控台，大幅提升編程準確度。
+                <div class="feature-highlight" data-i18n="grid_f1_hl">
+                    智慧排位與分組： 透過色彩直觀表達分組關係，結合螺旋搜尋演算法自動避開衝突功能，讓編排完畢後可一鍵同步傳回 ETC 控台，大幅提升編程準確度。
                 </div>
             </div>
         </div>
@@ -419,13 +422,12 @@
                 </video>
             </div>
             <div class="feature-content">
-                <h3 class="feature-title">SYNC & ARRANGEMENT</h3>
-                <p class="feature-desc">
+                <h3 class="feature-title" data-i18n="grid_f2_title">SYNC & ARRANGEMENT</h3>
+                <p class="feature-desc" data-i18n="grid_f2_desc">
                     深度雙向 OSC 整合與智慧佈局。不只是發送指令，更能即時接收 ETC Eos 控台回傳的燈具選擇狀態，並支援從 Augment3d 自動同步位置，極速建立工作介面。
                 </p>
-                <div class="feature-highlight">
-                    <span style="font-size: 1.5em; vertical-align: middle;">🔄</span>
-                    <strong>雙向聯動與快速排列：</strong> 系統可自動獲取控台 CH 資料與 3D 座標，同步生成網格位置，省去繁瑣的手動對位時間，達成「所見即所得」的編程體驗。
+                <div class="feature-highlight" data-i18n="grid_f2_hl">
+                    雙向聯動與快速排列： 系統可自動獲取控台 CH 資料與 3D 座標，同步生成網格位置，省去繁瑣的手動對位時間，達成「所見即所得」的編程體驗。
                 </div>
             </div>
         </div>
@@ -436,13 +438,12 @@
                 <img src="../assets/products/etc-grid-tool/feature_color.png" alt="Open Fade Control">
             </div>
             <div class="feature-content">
-                <h3 class="feature-title">OPEN FADE</h3>
-                <p class="feature-desc">
+                <h3 class="feature-title" data-i18n="grid_f3_title">OPEN FADE</h3>
+                <p class="feature-desc" data-i18n="grid_f3_desc">
                     強大的色彩與漸變控制。快速將您製作的 GROUP 進行 FAN (扇形) 設定，大幅簡化複雜的燈具排列調整流程。
                 </p>
-                <div class="feature-highlight">
-                    <span style="font-size: 1.5em; vertical-align: middle;">🌈</span>
-                    <strong>補足功能特效：</strong> 內建快速彩虹顏色功能，有效填補 ETC 控台原生的不足，讓您能一鍵渲染出流暢且精準的動態色彩效果。
+                <div class="feature-highlight" data-i18n="grid_f3_hl">
+                    補足功能特效： 內建快速彩虹顏色功能，有效填補 ETC 控台原生的不足，讓您能一鍵渲染出流暢且精準的動態色彩效果。
                 </div>
             </div>
         </div>
@@ -459,7 +460,7 @@
     </div>
 
     <section class="specs-section">
-        <h2 class="specs-title">TECHNICAL SPECS</h2>
+        <h2 class="specs-title" data-i18n="grid_tech_specs">TECHNICAL SPECS</h2>
         <ul class="specs-list">
             <li><strong>OS:</strong> Windows 10 / 11 (Desktop Environment)</li>
             <li><strong>Communication:</strong> Bi-directional OSC over UDP</li>
@@ -477,6 +478,7 @@
         <p>&copy; 2026 onedoller. Tech & Art Studio.</p>
     </footer>
 
+    <script src="../i18n.js"></script>
 </body>
 
 </html>

@@ -196,6 +196,23 @@ h2 {
   background: #00b8e6;
 }
 
+.btn-small {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-small:hover {
+  background: var(--primary);
+  color: #000;
+}
+
 footer {
   text-align: center;
   padding: 3rem;
