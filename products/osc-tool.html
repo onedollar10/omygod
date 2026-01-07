@@ -184,9 +184,28 @@
             transition: transform 0.3s ease;
         }
 
-        /* Small Image for Playlist */
+        /* Horizontal layout for Small Image (Playlist) */
+        .img-small {
+            flex-direction: row !important;
+            text-align: left !important;
+            align-items: center;
+            justify-content: center;
+        }
+
         .img-small .feature-img-wrapper {
+            flex: 0 0 400px;
+            /* Fixed smaller width */
+            max-width: 400px;
+        }
+
+        .img-small .feature-content {
+            margin-top: 0 !important;
             max-width: 600px;
+        }
+
+        .img-small .feature-title::after {
+            left: 0;
+            transform: none;
         }
 
         .feature-row:hover .feature-img-wrapper img {
@@ -353,6 +372,22 @@
 
             .hero-title {
                 font-size: 3rem;
+            }
+
+            /* Responsive fix for horizontal small image */
+            .img-small {
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+
+            .img-small .feature-img-wrapper {
+                max-width: 100%;
+                flex: none;
+            }
+
+            .img-small .feature-title::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     </style>
