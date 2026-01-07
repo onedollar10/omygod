@@ -1,0 +1,23 @@
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Workspace
+.agent/
+.gemini/
+
+# Word files (optional, but maybe user wants to keep them? User said "個人網頁", usually contains source files. I'll include them for now but ignore venv)
+# .docx
+
+# Secrets / sensitive
+.env
+
+# Large files
+*.mp4
+*.zip
+*.docx
+*.json

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技術 x 藝術 | 個人網頁</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <header>
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Logo">
+            <span style="font-weight: 800; font-size: 1.2rem;">TECH & ART</span>
+        </div>
+        <nav>
+            <a href="#home">首頁</a>
+            <a href="#software">軟體販售</a>
+            <a href="#tutorials">教學區</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>我做的不是藝術是技術</h1>
+            <p>融合尖端科技與舞台美學，為燈光設計與影音同步提供最精確的解決方案。</p>
+            <a href="#software" class="btn" style="font-size: 1.2rem; padding: 1rem 2rem;">探索軟體</a>
+        </section>
+
+        <section id="software">
+            <h2>軟體販售區</h2>
+            <div id="software-container" class="software-grid">
+                <!-- Data injected by main.js -->
+            </div>
+        </section>
+
+        <section id="tutorials" style="background: rgba(255,255,255,0.02)">
+            <h2>教學資源區</h2>
+            <div id="category-filters" style="text-align: center; margin-bottom: 2rem;">
+                <!-- Filter buttons will be injected by main.js -->
+            </div>
+            <div id="tutorial-list" style="max-width: 900px; margin: 0 auto;">
+                <!-- Data injected by main.js -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Reader Modal -->
+    <div id="reader-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="reader-body">
+                <h2 id="modal-title"></h2>
+                <div id="modal-content"></div>
+                <div id="modal-footer"
+                    style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                    <a id="modal-download" href="#" class="btn" style="margin:0">下載原始文件</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 onedoller. All rights reserved. | 我做的不是藝術是技術</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

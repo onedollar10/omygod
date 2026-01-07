@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF 數量計算工具 | 技術 x 藝術</title>
+    <link rel="stylesheet" href="../tutorial-style.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-btn">← 返回首頁</a>
+        <div style="font-weight: 800;">TECH & ART</div>
+    </header>
+
+    <section class="hero" style="background-image: url('../assets/tutorials/tools.png');">
+        <div class="hero-content">
+            <span class="category-tag">實務工具</span>
+            <h1>PDF 數量計算工具</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <article>
+<p>在做功課的當下計算燈具的數量是每個ME都會遇到的事情，算著算著突然覺得為什麼cad沒有辦法計算我使用的燈具列表出來的基本功能，於是乎靠著AI就製作了這個小程式，其實這個也改過了幾個技術方案測試了3,4個不同AI寫出來的程式碼來判定，最終還算ok的版本就是現在這個了</p>
+<h2>稍微介紹一下這個軟體能夠做到的事情</h2>
+<p>主要是他能夠在你框選的內容中掃描這張PDF相同的東西並框選起來標註計算數量，這是主要功能</p>
+<h2>接下來就是判斷如何能夠準確</h2>
+<ul>
+<li>所框選的KEY盡量不要太多除了要判定的物品以外的空白最好能夠只有燈</li>
+<li>所框選的Key比例大小要一模一樣</li>
+<li>Key旋轉會很難判定最好就是同個方向</li>
+<li>燈具線條太過於簡單例如我們常用的leko，par就幾條線圖形的基本上很難判定，可以加上文字這樣子判定會更好，例如par W的就是在你個key有個W字</li>
+<li>上面有個閾值能夠放寬判定真的不行可以讓它減少他判定就會寬一點</li>
+</ul>
+<p>基本上就是這個軟體目前的版本，等我哪天想要製作一個超精準的圖像辨識的時候我才會在繼續更新(其實是免費的流量到了等待刷新中)</p>
+<p>因為程式碼版本打包變成超級大，但是厲害的AI做了網頁的版本不到1M，但是判定少了幾個選項但不影響使用，只要注意上面那幾個事項判定還是準準的</p>
+<p>這邊放上連結https://drive.google.com/file/d/1X6ueVyaXs92RxZh7t6VHbaIocCU14PRm/view?usp=sharing
+給大家下載玩玩</p>
+<p class="hashtags" style="color: var(--primary); font-weight: bold;">#我做的不是藝術是技術</p>
+<p class="hashtags" style="color: var(--primary); font-weight: bold;">#靠AI果然能夠跨行業</p>
+<p class="hashtags" style="color: var(--primary); font-weight: bold;">#其實我已經做了圖像辨識自動追蹤發送訊號給控台的軟體只是沒認真校正</p>
+<p class="hashtags" style="color: var(--primary); font-weight: bold;">#個人網頁AI製作中</p>
+</article>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 onedoller. 我做的不是藝術是技術</p>
+    </footer>
+</body>
+</html>
