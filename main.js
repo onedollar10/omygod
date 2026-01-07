@@ -19,7 +19,7 @@ function renderSoftware() {
             <ul>
                 ${item.features.map(f => `<li>${f}</li>`).join('')}
             </ul>
-            ${item.id === 'osc_timecode' ? `<a href="products/osc-tool.html" class="btn" style="margin-left:10px">詳細介紹</a>` : ''}
+            ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px">詳細介紹</a>` : ''}
         </div>
     `).join('');
 }

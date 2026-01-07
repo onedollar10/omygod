@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETC Eos Grid Tool | 專業燈光視覺化選擇工具</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --dark-bg: #050505;
+            --glass-bg: rgba(20, 20, 30, 0.6);
+            --border-glow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            /* Using the same background strategy or a relevant one */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/products/etc-grid-tool/ui_full.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Rajdhani', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+            background: radial-gradient(circle at center, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+            margin-bottom: 20px;
+            animation: glow 3s infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--neon-purple);
+            letter-spacing: 5px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 80%;
+            max-width: 1200px;
+            perspective: 1000px;
+            margin-bottom: 50px;
+        }
+
+        .hero-ui-img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: rotateX(10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-ui-img:hover {
+            transform: rotateX(0deg) scale(1.02);
+            box-shadow: 0 0 80px rgba(188, 19, 254, 0.4);
+        }
+
+        .cta-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(188, 19, 254, 0.8);
+        }
+
+        /* Contact Button Group */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-email {
+            background: linear-gradient(45deg, #ea4335, #fbbc05);
+            box-shadow: 0 0 20px rgba(234, 67, 53, 0.4);
+        }
+
+        .btn-line {
+            background: linear-gradient(45deg, #00b900, #00e000);
+            box-shadow: 0 0 20px rgba(0, 185, 0, 0.4);
+        }
+
+        .btn-line:hover {
+            box-shadow: 0 0 40px rgba(0, 185, 0, 0.8);
+        }
+
+        .cta-btn i {
+            margin-right: 10px;
+        }
+
+        /* Features Section */
+        .features-container {
+            max-width: 1400px;
+            margin: 100px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .feature-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 30px;
+            padding: 60px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s ease;
+            text-align: center;
+        }
+
+        .feature-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-img-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .feature-img-wrapper img {
+            width: 100%;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-content {
+            width: 100%;
+            max-width: 900px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            backdrop-filter: blur(5px);
+            margin-top: -20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            color: var(--neon-blue);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .feature-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--neon-purple);
+        }
+
+        .feature-desc {
+            font-size: 1.3rem;
+            color: #fff;
+            line-height: 1.8;
+            margin-bottom: 0px;
+        }
+
+        .feature-highlight {
+            background: rgba(188, 19, 254, 0.1);
+            border-top: 4px solid var(--neon-purple);
+            padding: 20px;
+            margin-top: 30px;
+            color: #fff;
+            font-weight: 500;
+            border-radius: 0 0 15px 15px;
+        }
+
+        /* Integration Banner */
+        .integration-banner {
+            max-width: 1200px;
+            margin: 100px auto;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.9), rgba(0, 0, 0, 0.8));
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            text-align: center;
+            padding: 60px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .integration-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-blue));
+            animation: slideBg 3s linear infinite;
+            background-size: 200% 100%;
+        }
+
+        @keyframes slideBg {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 0%;
+            }
+        }
+
+        /* Specs Section */
+        .specs-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 100px 20px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .specs-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+        }
+
+        .specs-list {
+            display: inline-block;
+            text-align: left;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        .specs-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            border-left: 3px solid var(--neon-purple);
+            list-style: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: #000;
+            color: #666;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            }
+
+            to {
+                text-shadow: 0 0 40px rgba(0, 243, 255, 1), 0 0 10px white;
+            }
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Mobile Response */
+        @media (max-width: 900px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .feature-title {
+                font-size: 2rem;
+            }
+
+            .specs-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div style="font-family: 'Orbitron'; font-weight: bold; font-size: 1.5rem; color: #fff;">
+            TECH & ART
+        </div>
+        <div>
+            <a href="../index.html"
+                style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">HOME</a>
+            <a href="osc-tool.html"
+                style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">OSC TOOL</a>
+            <a href="#" style="color: var(--neon-blue); text-decoration: none; font-weight: bold;">GRID TOOL</a>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h1 class="hero-title">ETC EOS<br>GRID TOOL</h1>
+        <p class="hero-subtitle">Visual Matrix Control for Lighting Pros</p>
+        <div class="hero-image-container">
+            <img src="../assets/products/etc-grid-tool/ui_full.png" alt="ETC Grid Tool Interface" class="hero-ui-img">
+        </div>
+
+        <div class="btn-group">
+            <a href="mailto:5664762@gmail.com" class="cta-btn btn-email">
+                <i class="fa-solid fa-envelope"></i>欲購買請聯絡 5664762@gmail.com
+            </a>
+            <a href="https://line.me/ti/p/~5664762" target="_blank" class="cta-btn btn-line">
+                <i class="fa-brands fa-line"></i>LINE 聯繫 ID: 5664762
+            </a>
+        </div>
+    </section>
+
+    <div class="features-container">
+
+        <!-- Feature 1: Visual Matrix -->
+        <div class="feature-row">
+            <div class="feature-img-wrapper">
+                <img src="../assets/products/etc-grid-tool/feature_grid.png" alt="Grid Matrix Layout">
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">VISUAL MATRIX</h3>
+                <p class="feature-desc">
+                    直觀的網格介面。以座標化形式呈現燈具佈局，支援多選、框選與自由拖放，讓舞台配置在螢幕上一目了然。
+                </p>
+                <div class="feature-highlight">
+                    <span style="font-size: 1.5em; vertical-align: middle;">🔳</span>
+                    <strong>智慧排位：</strong> 內建螺旋搜尋演算法，拖放時自動避開衝突並尋找最近空位，極速完成複雜的網格排列。
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 2: High Reactivity -->
+        <div class="feature-row">
+            <div class="feature-img-wrapper">
+                <img src="../assets/products/etc-grid-tool/ui_full.png" alt="OSC Sync">
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">FULL SYNC</h3>
+                <p class="feature-desc">
+                    深度雙向 OSC 整合。不只是發送指令，更能即時接收 ETC Eos 控台回傳的燈具選擇狀態。
+                </p>
+                <div class="feature-highlight">
+                    <span style="font-size: 1.5em; vertical-align: middle;">🔄</span>
+                    <strong>雙向聯動：</strong> 同步顯示控台當前活動通道，並支援讀取 Augment3d 座標資訊，自動生成對應網格位置。
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 3: Intelligent Arrangement -->
+        <div class="feature-row">
+            <div class="feature-img-wrapper">
+                <img src="../assets/products/etc-grid-tool/ui_full.png" alt="Intelligent Arrangement">
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">SMART ARRANGEMENT</h3>
+                <p class="feature-desc">
+                    極速建立佈局。支援從 Augment3d 自動同步位置，或透過手動輸入 Channel 號碼進行自定義排列，讓您能以最直觀的方式建立工作介面。
+                </p>
+                <div class="feature-highlight">
+                    <span style="font-size: 1.5em; vertical-align: middle;">⚡</span>
+                    <strong>快速排列：</strong> 系統可自動獲取控台 CH 資料與 3D 座標，省去繁瑣的手動對位時間，達成「所見即所得」的編程體驗。
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 4: CIE Color Control -->
+        <div class="feature-row">
+            <div class="feature-img-wrapper">
+                <img src="../assets/products/etc-grid-tool/feature_color.png" alt="CIE Color Picker">
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">CIE COLOR PICKER</h3>
+                <p class="feature-desc">
+                    精準的色彩控制。內建標準 CIE 1931 色度圖選擇器，讓您可以透過視覺化的方式精確調度燈具色調。
+                </p>
+                <div class="feature-highlight">
+                    <span style="font-size: 1.5em; vertical-align: middle;">🎨</span>
+                    <strong>即時發送：</strong> 點選色彩後即時轉換為 OSC 指令發送至控台，為舞台渲染最完美的氛圍感。
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Integration Banner -->
+    <div class="integration-banner">
+        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 20px;">EOS ECOSYSTEM ENGINE</h2>
+        <p style="font-size: 1.3rem; color: #ddd; max-width: 800px; margin: 0 auto;">
+            專為 <strong>ETC Eos Family</strong> 打造，透過標準 UDP/OSC 協議達成無縫通聯。<br>
+            支援 Layouts 存取功能，隨時切換不同場景的燈具配置。
+        </p>
+    </div>
+
+    <section class="specs-section">
+        <h2 class="specs-title">TECHNICAL SPECS</h2>
+        <ul class="specs-list">
+            <li><strong>OS:</strong> Windows 10 / 11 (Desktop Environment)</li>
+            <li><strong>Communication:</strong> Bi-directional OSC over UDP</li>
+            <li><strong>Ports:</strong> Out Port 8000 / In Port 8001 (Configurable)</li>
+            <li><strong>Data Format:</strong> JSON Layout Management</li>
+            <li><strong>Compatibility:</strong> ETC Eos v3.1+, Augment3d Support</li>
+        </ul>
+        <br><br>
+        <a href="../docx/etc grid技術文檔.md" class="cta-btn"
+            style="background: transparent; border: 2px solid var(--neon-blue); box-shadow: none;">View
+            Technical Documentation</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 onedoller. Tech & Art Studio.</p>
+    </footer>
+
+</body>
+
+</html>

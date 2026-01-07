@@ -85,6 +85,7 @@ const software = [
         name: "OSC Timecode Tool 4.0",
         tagline: "專業音訊播放與時間碼同步工具",
         description: "專為燈光設計師與舞台技術人員打造，支援 MP3/WAV/OGG，並透過 OSC 協定與 ETC/EOS 燈控台深度同步。",
+        url: "products/osc-tool.html",
         features: [
             "支援 OSC 指令發送至 ETC 燈控台",
             "實體 LTC 時間碼輸出 (24/25/30 FPS)",
@@ -95,15 +96,16 @@ const software = [
     },
     {
         id: "etc_grid",
-        name: "ETC Grid 3.3",
-        tagline: "燈具座標系統與對位輔助工具",
-        description: "針對 ETC 燈控台開發的格狀對位系統，簡化複雜的燈具定位程序。",
+        name: "ETC Eos Grid Tool",
+        tagline: "視覺化燈具矩陣控制系統",
+        description: "專為 ETC Eos 燈控台設計的視覺化輔助工具，提供直觀的網格介面進行燈具排列與控制。",
+        url: "products/etc-grid-tool.html",
         features: [
-            "直覺的格狀操作介面",
-            "支援與 ETC 燈控台雙向通訊",
-            "快速對位與座標轉換",
-            "提高現場編程效率"
-        ],
-        file: "etc grid 3.3"
+            "視覺化網格佈局與智慧拖放排位",
+            "與 ETC Eos 雙向 OSC 通訊反饋",
+            "自動獲取 Augment3d 位置進行快速排列",
+            "支援控台輸入 CH 號碼自動獲取與手動排列",
+            "整合標準 CIE 1931 色度圖與佈局管理"
+        ]
     }
 ];
