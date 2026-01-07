@@ -109,3 +109,15 @@ const software = [
         ]
     }
 ];
+
+const freeTools = [
+    {
+        id: "pdf_calculator",
+        name: "PDF 計算機",
+        tagline: "免費線上工具",
+        description: "眶選圖案按下計算可快速顯示PDF上方一樣的燈具有幾顆",
+        url: "https://script.google.com/macros/s/AKfycbzTPOOX5m_OR1t7JPbFA3iNDPhrezbOrwuOHrmHuwe62ksb0HG8HQ8mOctwMVHQD6OBHQ/exec",
+        features: ["線上直接使用，無需安裝", "快速選取區域進行圖案比對", "自動計算數量"]
+    }
+];
+

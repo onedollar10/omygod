@@ -4,6 +4,7 @@ let currentCategory = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
     renderSoftware();
+    renderFreeTools();
     renderFilters();
     renderTutorials();
     setupModal();
@@ -20,6 +21,22 @@ function renderSoftware() {
                 ${item.features.map(f => `<li>${f}</li>`).join('')}
             </ul>
             ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px">詳細介紹</a>` : ''}
+        </div>
+    `).join('');
+}
+
+function renderFreeTools() {
+    const container = document.getElementById('free-tools-container');
+    if (!container) return;
+    container.innerHTML = freeTools.map(item => `
+        <div class="card" id="${item.id}">
+            <h3>${item.name}</h3>
+            <p class="tagline">${item.tagline}</p>
+            <p>${item.description}</p>
+            <ul>
+                ${item.features ? item.features.map(f => `<li>${f}</li>`).join('') : ''}
+            </ul>
+            ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px" target="_blank">立即使用</a>` : ''}
         </div>
     `).join('');
 }
