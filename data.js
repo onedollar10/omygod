@@ -82,7 +82,7 @@ const tutorials = [
 const software = [
     {
         id: "osc_timecode",
-        name: "OSC Timecode Tool 4.0",
+        name: "OSC Timecode Tool",
         tagline: "專業音訊播放與時間碼同步工具",
         description: "專為燈光設計師與舞台技術人員打造，支援 MP3/WAV/OGG，並透過 OSC 協定與 ETC/EOS 燈控台深度同步。",
         url: "products/osc-tool.html",
