@@ -91,8 +91,7 @@ const software = [
             "即時音訊波形視覺化與 Cue 點標記",
             "自動續播與清單管理功能",
             "支援 CSV 匯入匯出與 Cue 資料管理"
-        ],
-        video: "osc_timecode_tool 4.0介紹影片.mp4"
+        ]
     },
     {
         id: "etc_grid",
