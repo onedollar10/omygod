@@ -17,7 +17,6 @@ __pycache__/
 .env
 
 # Large files
-*.mp4
 *.zip
 *.docx
 *.json
