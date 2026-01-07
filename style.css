@@ -284,37 +284,19 @@ footer {
   }
 }
 
-/* Visitor Counter Styling */
+/* Visitor Counter Styling (Simplified) */
 .visitor-counter {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  padding: 10px 20px;
-  border-radius: 5px;
-  border-left: 4px solid var(--primary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  bottom: 10px;
+  right: 15px;
+  opacity: 0.5;
+  /* Subtle transparency */
   z-index: 1000;
   pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.counter-label {
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: var(--text-dim);
-  letter-spacing: 2px;
-  margin-bottom: 2px;
 }
 
 .counter-value {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--primary);
-  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-dim);
 }
