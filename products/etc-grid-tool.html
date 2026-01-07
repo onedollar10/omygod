@@ -174,7 +174,8 @@
             position: relative;
         }
 
-        .feature-img-wrapper img {
+        .feature-img-wrapper img,
+        .feature-img-wrapper video {
             width: 100%;
             border-radius: 15px;
             border: 2px solid rgba(255, 255, 255, 0.1);
@@ -426,36 +427,22 @@
             </div>
         </div>
 
-        <!-- Feature 2: High Reactivity -->
+        <!-- Feature 2 & 3: Full Sync & Smart Arrangement -->
         <div class="feature-row">
             <div class="feature-img-wrapper">
-                <img src="../assets/products/etc-grid-tool/ui_full.png" alt="OSC Sync">
+                <video autoplay loop muted playsinline>
+                    <source src="../movice/xy group.mp4" type="video/mp4">
+                    您的瀏覽器不支援影片播放。
+                </video>
             </div>
             <div class="feature-content">
-                <h3 class="feature-title">FULL SYNC</h3>
+                <h3 class="feature-title">SYNC & ARRANGEMENT</h3>
                 <p class="feature-desc">
-                    深度雙向 OSC 整合。不只是發送指令，更能即時接收 ETC Eos 控台回傳的燈具選擇狀態。
+                    深度雙向 OSC 整合與智慧佈局。不只是發送指令，更能即時接收 ETC Eos 控台回傳的燈具選擇狀態，並支援從 Augment3d 自動同步位置，極速建立工作介面。
                 </p>
                 <div class="feature-highlight">
                     <span style="font-size: 1.5em; vertical-align: middle;">🔄</span>
-                    <strong>雙向聯動：</strong> 同步顯示控台當前活動通道，並支援讀取 Augment3d 座標資訊，自動生成對應網格位置。
-                </div>
-            </div>
-        </div>
-
-        <!-- Feature 3: Intelligent Arrangement -->
-        <div class="feature-row">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/etc-grid-tool/ui_full.png" alt="Intelligent Arrangement">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title">SMART ARRANGEMENT</h3>
-                <p class="feature-desc">
-                    極速建立佈局。支援從 Augment3d 自動同步位置，或透過手動輸入 Channel 號碼進行自定義排列，讓您能以最直觀的方式建立工作介面。
-                </p>
-                <div class="feature-highlight">
-                    <span style="font-size: 1.5em; vertical-align: middle;">⚡</span>
-                    <strong>快速排列：</strong> 系統可自動獲取控台 CH 資料與 3D 座標，省去繁瑣的手動對位時間，達成「所見即所得」的編程體驗。
+                    <strong>雙向聯動與快速排列：</strong> 系統可自動獲取控台 CH 資料與 3D 座標，同步生成網格位置，省去繁瑣的手動對位時間，達成「所見即所得」的編程體驗。
                 </div>
             </div>
         </div>
