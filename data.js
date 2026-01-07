@@ -102,9 +102,9 @@ const software = [
         url: "products/etc-grid-tool.html",
         features: [
             "視覺化網格佈局與智慧拖放排位",
-            "與 ETC Eos 雙向 OSC 通訊反饋",
+            "MA3 風格快速色彩分組，無需手動計算",
             "自動獲取 Augment3d 位置進行快速排列",
-            "支援控台輸入 CH 號碼自動獲取與手動排列",
+            "支援控台輸入 CH 自動獲取並傳回分組",
             "整合標準 CIE 1931 色度圖與佈局管理"
         ]
     }
