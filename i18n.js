@@ -33,6 +33,9 @@ const translations = {
         "osc_f4_title": "智慧播放清單",
         "osc_f4_desc": "自動化播放清單管理。專為多首曲目的演出設計，直觀的拖放與管理介面。",
         "osc_f4_hl": "獨立設定： 每一首曲目皆可設定獨立的 Track Offset (起始時間碼)，切換曲目時自動套用。",
+        "osc_f5_title": "sACN DMX 遙控",
+        "osc_f5_desc": "透過 sACN (E1.31) 協定接收 DMX 訊號，讓您可以直接從燈控台遙控播放器的 播放、暫停、停止、上一首與下一首等功能。",
+        "osc_f5_hl": "特色功能： 每個功能可自由設定對應的 DMX 通道 (1-512)，輕鬆實現燈光與音效的硬體連動控裝。",
         "osc_sys_req": "系統需求",
         "nav_products": "產品",
         // Product Page - ETC Grid Tool
@@ -82,6 +85,9 @@ const translations = {
         "osc_f4_title": "SMART PLAYLIST",
         "osc_f4_desc": "Automated playlist management. Designed for multi-track shows with drag-and-drop interface.",
         "osc_f4_hl": "Independent Settings: Each track has a unique Track Offset, applied automatically on switch.",
+        "osc_f5_title": "sACN DMX REMOTE",
+        "osc_f5_desc": "Receive DMX signals via sACN (E1.31) protocol, allowing your lighting console to remotely control Play, Pause, Stop, Prev, and Next functions.",
+        "osc_f5_hl": "Key Feature: Fully customizable DMX channel mapping (1-512) for each function, enabling seamless integration with hardware consoles.",
         "osc_sys_req": "SYSTEM REQUIREMENTS",
         "nav_products": "PRODUCTS",
         // Product Page - ETC Grid Tool
