@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sACN 協定詳解 | 技術 x 藝術</title>
     <link rel="stylesheet" href="../tutorial-style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-95B5G5KQ8B');
+    </script>
 </head>
+
 <body>
     <header>
         <a href="../index.html" class="back-btn">← 返回首頁</a>
@@ -21,54 +32,115 @@
 
     <div class="container">
         <article>
-<h2>sACN</h2>
-<p>sACN or Streaming-ACN is the colloquial name for the ANSI E1.31-2016 standard. This is primarily designed to move zero start code DMX data over a network in a way that is compatible with the full ACN standard (ANSI E1.17-2010).</p>
-<p>Art-Net is a public domain network protocol developed by Artistic Licence. It is designed to transport DMX512 and RDM packets over a network.</p>
-<p>RDMnet or Streaming-RDM is the colloquial name for ANSI BSR E1.33 (Board of Standards Review). This will become a standard that allows RDM packets to be streamed over a network.</p>
-<p>In functionality terms, the combination of sACN and RDMnet provide the same functionality as Art-Net.</p>
-<p>sACN and Art-Net are both based on UDP data and so can coexist on the same network.</p>
-<h2>Artistic Licence Support Map</h2>
-<p>The sACN protocol has been added to the entire range of Artistic Licence ethernet-to-DMX512 nodes. In parallel with this, Artistic Licence continues to develop and promote Art-Net in order to give its customers the widest range of options. Artistic Licence will support RDMnet when it is completed.</p>
-<h2>Protocol Comparisons</h2>
-<p>The ArtDmx packet within Art-Net is used to achieve the same results as the sACN protocol – to move DMX512 packets over a network. While both can handle non-zero start code packets – the primary purpose is zero-start code data – lighting levels.</p>
-<p>Both protocols achieve this by putting a packet wrapper around a frame of up to 512 channel levels. The sACN wrapper is setup in such a way that it can be understood by a full ACN product. This does mean that the wrapper is significantly larger than it would otherwise need to be, but given modern bandwidths this is not really a problem.</p>
-<p>sACN can carry up to 63,999 universes while Art-Net can carry 32,768.</p>
-<h2>Casting</h2>
-<p>There are three methods of sending network packets, referred to as ‘Casting’. These are Broadcast, Unicast and Multicast.</p>
-<h2>Broadcast:          One to All</h2>
-<h2>Unicast:               One to One</h2>
-<h2>Multicast:           One to many</h2>
-<p>Broadcast is the simplest construct and on the face of it is the most useful for lighting data. Consider the fact that there may be many consumers (moving lights, dimmers etc) that are patched to the same universe. It therefore makes sense for the lighting controller to broadcast the data so that all consumers can ‘see’ the data and use it if they need. Well that logic was ok when we were using a few tens of universes. Modern systems with hundreds of universes can no longer take this approach as it simply overloads the network.</p>
-<p>Unicast is in principle the most efficient form of network traffic as data is sent only to a single receiver. This means the lighting controller can actively manage the network and ensure redundant data is not sent. However unicast becomes less efficient as the number of consumers of a given universe increases. In this scenario the controller is forced to unicast multiple streams or switch to a different transmission method.</p>
-<p>Multicast is a one to many transmission method. This allows the controller to send to a unique multicast IP address for every possible universe. The consumers then subscribe to the relevant IP address.</p>
-<p>Both Art-Net and sACN can use all three methods, although they are each optimised for specific casts:</p>
-<p>Art-Net primarily uses unicast, but will broadcast when it detects a large number of consumers on a particular universe. The majority of very high universe (say over 200) applications tend to be RGB pixel style control. The topology of such systems is such that there are generally a small amount intelligent pixel controllers driving large amounts of pixels. This means that the broadcast fallback mode does not happen often. Art-Net can be multicast but there is no standardised address scheme.</p>
-<p>sACN is designed to be multicast, unicast is allowed and the document does not address broadcast (although it is a given that the designers would frown upon that)!</p>
-<p>A number of early implementations of sACN seem to be preferring unicast. Multicast does require some additional network management on the part of the controller and receiver. Both must support IGMP (Internet Group Management Protocol) V2 or V3 to manage the subscription of multicast addresses in network routers.</p>
-<h2>Real World – Ethernet Distribution</h2>
-<h2>Broadcast storms</h2>
-<p>Network infrastructure products such as switches are designed with the implicit expectation that they will see mostly TCP/IP packet traffic with occasional UDP data. They also expect to see the majority of data as unicast. Lighting control networks often contain mainly UDP and often a significant percentage of broadcast data (by design or otherwise – see below).</p>
-<p>Some network products such as Switches have a feature called ‘Broadcast Storm Protection’. This means that if too much broadcast data is seen, the device classes it as a fault and starts dumping the data. Features such as this tend to be seen in the more expensive network products, underlining my contention that the most expensive network products are not necessarily the best.</p>
-<h2>Multicast to broadcast conversion</h2>
-<p>sACN is primarily intended to use multicast. Network switches have differing levels of support for multicasting. In order to handle multicast data correctly a switch needs to know which multicast subscribers are attached to which of its physical ports. It obtains this information by monitoring IGMP packets. It the switch does not see these packets it will do one of two things:</p>
-<p>Treat the packets as unwanted and block them.</p>
-<p>Convert the packets to broadcast.</p>
-<p>Clearly both scenarios are bad. It is therefore very important to ensure that the network infrastructure fully supports multicast. I’m a fan of the Netgear Prosafe range of Switches. They are unmanaged with a minimum of configuration options. They do not have broadcast storm protection but do have configurable IGMP snooping which is important for multicast. They also default to blocking unknown multicast addresses – which is preferred compared to broadcast conversion.</p>
-<h2>Subscribe limit</h2>
-<p>One potential drawback with the sACN multicast scheme is that a receiver will need to subscribe to multiple IP addresses if it needs multiple universes. Many NICs limit the number of hardware based IP addresses that can be supported.</p>
-<h2>IP flow control</h2>
-<p>Flow control in ethernet networks can be a huge problem in large installations. Older half duplex systems use a system called Back Pressure. This consists of a receiver flooding the network with packet preambles to cause the controller to ‘back off’. That was a rather unsubtle technique that caused real time issues. However half duplex is falling out of fashion and so is no longer really a problem.</p>
-<p>In full duplex networks the flow control system is rather confused. The TCP and UDP protocols sit on top of the IP layer. Both TCP and IP have their own flow control techniques. However, the TCP and IP methods of flow control are oblivious of each other and having both enabled on a network can lead to problems. For this reason, many ethernet switch manufacturers ship their products with IP flow control disabled, assuming that TCP will handle its own flow control. That assumption is fair in an office environment. However entertainment networks tend to be primarily UDP which does not have any flow control.</p>
-<p>In reality I’ve only seen this problem manifest on networks with over 250 universes. However when the option exists – enable IP based flow control.</p>
-<h2>Packet favouritism</h2>
-<p>In network infrastructure – all packets are not born equal. This is particularly true of radio links and access points. When bandwidth limits are reached, the product will drop packets – it has no choice. Which packets are dropped first tends to be a very manufacturer specific decision and is often not documented. I’m a fan of Lancom and Bullet access points as they both treat UDP as priority traffic.</p>
-<h2>Insertion delay</h2>
-<p>Network infrastructure products all introduce an insertion delay. Some products such as routers can have a significant delay as they are processing data in firmware. Other products such as Switches tend to process at a silicon level and have a very low insertion delay. Cumulative insertion delays can cause aliasing and other visible effects</p>
-</article>
+            <h2>sACN</h2>
+            <p>sACN or Streaming-ACN is the colloquial name for the ANSI E1.31-2016 standard. This is primarily designed
+                to move zero start code DMX data over a network in a way that is compatible with the full ACN standard
+                (ANSI E1.17-2010).</p>
+            <p>Art-Net is a public domain network protocol developed by Artistic Licence. It is designed to transport
+                DMX512 and RDM packets over a network.</p>
+            <p>RDMnet or Streaming-RDM is the colloquial name for ANSI BSR E1.33 (Board of Standards Review). This will
+                become a standard that allows RDM packets to be streamed over a network.</p>
+            <p>In functionality terms, the combination of sACN and RDMnet provide the same functionality as Art-Net.</p>
+            <p>sACN and Art-Net are both based on UDP data and so can coexist on the same network.</p>
+            <h2>Artistic Licence Support Map</h2>
+            <p>The sACN protocol has been added to the entire range of Artistic Licence ethernet-to-DMX512 nodes. In
+                parallel with this, Artistic Licence continues to develop and promote Art-Net in order to give its
+                customers the widest range of options. Artistic Licence will support RDMnet when it is completed.</p>
+            <h2>Protocol Comparisons</h2>
+            <p>The ArtDmx packet within Art-Net is used to achieve the same results as the sACN protocol – to move
+                DMX512 packets over a network. While both can handle non-zero start code packets – the primary purpose
+                is zero-start code data – lighting levels.</p>
+            <p>Both protocols achieve this by putting a packet wrapper around a frame of up to 512 channel levels. The
+                sACN wrapper is setup in such a way that it can be understood by a full ACN product. This does mean that
+                the wrapper is significantly larger than it would otherwise need to be, but given modern bandwidths this
+                is not really a problem.</p>
+            <p>sACN can carry up to 63,999 universes while Art-Net can carry 32,768.</p>
+            <h2>Casting</h2>
+            <p>There are three methods of sending network packets, referred to as ‘Casting’. These are Broadcast,
+                Unicast and Multicast.</p>
+            <h2>Broadcast:          One to All</h2>
+            <h2>Unicast:               One to One</h2>
+            <h2>Multicast:           One to many</h2>
+            <p>Broadcast is the simplest construct and on the face of it is the most useful for lighting data. Consider
+                the fact that there may be many consumers (moving lights, dimmers etc) that are patched to the same
+                universe. It therefore makes sense for the lighting controller to broadcast the data so that all
+                consumers can ‘see’ the data and use it if they need. Well that logic was ok when we were using a few
+                tens of universes. Modern systems with hundreds of universes can no longer take this approach as it
+                simply overloads the network.</p>
+            <p>Unicast is in principle the most efficient form of network traffic as data is sent only to a single
+                receiver. This means the lighting controller can actively manage the network and ensure redundant data
+                is not sent. However unicast becomes less efficient as the number of consumers of a given universe
+                increases. In this scenario the controller is forced to unicast multiple streams or switch to a
+                different transmission method.</p>
+            <p>Multicast is a one to many transmission method. This allows the controller to send to a unique multicast
+                IP address for every possible universe. The consumers then subscribe to the relevant IP address.</p>
+            <p>Both Art-Net and sACN can use all three methods, although they are each optimised for specific casts:</p>
+            <p>Art-Net primarily uses unicast, but will broadcast when it detects a large number of consumers on a
+                particular universe. The majority of very high universe (say over 200) applications tend to be RGB pixel
+                style control. The topology of such systems is such that there are generally a small amount intelligent
+                pixel controllers driving large amounts of pixels. This means that the broadcast fallback mode does not
+                happen often. Art-Net can be multicast but there is no standardised address scheme.</p>
+            <p>sACN is designed to be multicast, unicast is allowed and the document does not address broadcast
+                (although it is a given that the designers would frown upon that)!</p>
+            <p>A number of early implementations of sACN seem to be preferring unicast. Multicast does require some
+                additional network management on the part of the controller and receiver. Both must support IGMP
+                (Internet Group Management Protocol) V2 or V3 to manage the subscription of multicast addresses in
+                network routers.</p>
+            <h2>Real World – Ethernet Distribution</h2>
+            <h2>Broadcast storms</h2>
+            <p>Network infrastructure products such as switches are designed with the implicit expectation that they
+                will see mostly TCP/IP packet traffic with occasional UDP data. They also expect to see the majority of
+                data as unicast. Lighting control networks often contain mainly UDP and often a significant percentage
+                of broadcast data (by design or otherwise – see below).</p>
+            <p>Some network products such as Switches have a feature called ‘Broadcast Storm Protection’. This means
+                that if too much broadcast data is seen, the device classes it as a fault and starts dumping the data.
+                Features such as this tend to be seen in the more expensive network products, underlining my contention
+                that the most expensive network products are not necessarily the best.</p>
+            <h2>Multicast to broadcast conversion</h2>
+            <p>sACN is primarily intended to use multicast. Network switches have differing levels of support for
+                multicasting. In order to handle multicast data correctly a switch needs to know which multicast
+                subscribers are attached to which of its physical ports. It obtains this information by monitoring IGMP
+                packets. It the switch does not see these packets it will do one of two things:</p>
+            <p>Treat the packets as unwanted and block them.</p>
+            <p>Convert the packets to broadcast.</p>
+            <p>Clearly both scenarios are bad. It is therefore very important to ensure that the network infrastructure
+                fully supports multicast. I’m a fan of the Netgear Prosafe range of Switches. They are unmanaged with a
+                minimum of configuration options. They do not have broadcast storm protection but do have configurable
+                IGMP snooping which is important for multicast. They also default to blocking unknown multicast
+                addresses – which is preferred compared to broadcast conversion.</p>
+            <h2>Subscribe limit</h2>
+            <p>One potential drawback with the sACN multicast scheme is that a receiver will need to subscribe to
+                multiple IP addresses if it needs multiple universes. Many NICs limit the number of hardware based IP
+                addresses that can be supported.</p>
+            <h2>IP flow control</h2>
+            <p>Flow control in ethernet networks can be a huge problem in large installations. Older half duplex systems
+                use a system called Back Pressure. This consists of a receiver flooding the network with packet
+                preambles to cause the controller to ‘back off’. That was a rather unsubtle technique that caused real
+                time issues. However half duplex is falling out of fashion and so is no longer really a problem.</p>
+            <p>In full duplex networks the flow control system is rather confused. The TCP and UDP protocols sit on top
+                of the IP layer. Both TCP and IP have their own flow control techniques. However, the TCP and IP methods
+                of flow control are oblivious of each other and having both enabled on a network can lead to problems.
+                For this reason, many ethernet switch manufacturers ship their products with IP flow control disabled,
+                assuming that TCP will handle its own flow control. That assumption is fair in an office environment.
+                However entertainment networks tend to be primarily UDP which does not have any flow control.</p>
+            <p>In reality I’ve only seen this problem manifest on networks with over 250 universes. However when the
+                option exists – enable IP based flow control.</p>
+            <h2>Packet favouritism</h2>
+            <p>In network infrastructure – all packets are not born equal. This is particularly true of radio links and
+                access points. When bandwidth limits are reached, the product will drop packets – it has no choice.
+                Which packets are dropped first tends to be a very manufacturer specific decision and is often not
+                documented. I’m a fan of Lancom and Bullet access points as they both treat UDP as priority traffic.</p>
+            <h2>Insertion delay</h2>
+            <p>Network infrastructure products all introduce an insertion delay. Some products such as routers can have
+                a significant delay as they are processing data in firmware. Other products such as Switches tend to
+                process at a silicon level and have a very low insertion delay. Cumulative insertion delays can cause
+                aliasing and other visible effects</p>
+        </article>
     </div>
 
     <footer class="footer">
         <p>&copy; 2026 onedoller. 我做的不是藝術是技術</p>
     </footer>
 </body>
+
 </html>

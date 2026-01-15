@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>網路檢視 sACN 實務 | 技術 x 藝術</title>
     <link rel="stylesheet" href="../tutorial-style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-95B5G5KQ8B');
+    </script>
 </head>
+
 <body>
     <header>
         <a href="../index.html" class="back-btn">← 返回首頁</a>
@@ -21,29 +32,30 @@
 
     <div class="container">
         <article>
-<p>近幾年場館已經變成網路化了，連到控台都只剩下一條網路線，但是網路的部分到底是否有連接到的判斷以及是哪個環節出問題，到底是控台沒發送還是館方系統連結問題還是權限大小問題就讓這篇小小的解析來讓大家了解了解</p>
-<p>首先Sacn為目前網路場館幾乎都走的協議，因為DIMMER、NODE、控台都通用所以先以這個為主，以後有出現其他MA2還是Artnet的再展開詳談</p>
-<p>在ETC有一個頁面是Sacn Output Viewer他是一個很好判斷是否有網路在裡面以及權限判斷的依據之一，而且裡面有很詳細的資訊(圖一)</p>
-<ul>
-<li>有幾個Sacn的發送源、IP是多少、名稱叫什麼</li>
-<li>當下Universe視圖選擇</li>
-<li>輸出的Level是多少</li>
-<li>當下DMX是由哪台發送</li>
-</ul>
-<p>光看這個頁面就可以很清楚了解到外來控台是否有送出訊號，場館網路是否有接收到，以及權限到底是誰高誰低</p>
-<h2>接下來控台的部分不管是ETC還是MA的設定都一定有的</h2>
-<ul>
-<li>Sacn 部分的傳輸有兩種模式，Muliticast以及Unicast兩種方式，差別是你的控台到底是否要設定網路在同區段還是，指定NODE的IP</li>
-<li>設定權限Priority  1-200 數字越小的權限越小，權限大的會蓋過小的，如果權限一樣他是以HTP的模式，Level大的會蓋過小的</li>
-</ul>
-<p>這兩點是任何控台有Sacn設定一定會有的，個別控台還有其他需要設定以及注意的東西就等有個別控台教學的時候再詳細講解</p>
-<p>要如何設定其實都看著你需要做怎樣的事情，做備份、雙系統同時控、場館以及外來控台同時在線監看有很多種邏輯可以做，怎樣才是安全不會互相影響等有人需要設定的時候小弟在為寧服務</p>
-<p class="hashtags" style="color: var(--primary); font-weight: bold;">#我做的不是藝術是技術</p>
-</article>
+            <p>近幾年場館已經變成網路化了，連到控台都只剩下一條網路線，但是網路的部分到底是否有連接到的判斷以及是哪個環節出問題，到底是控台沒發送還是館方系統連結問題還是權限大小問題就讓這篇小小的解析來讓大家了解了解</p>
+            <p>首先Sacn為目前網路場館幾乎都走的協議，因為DIMMER、NODE、控台都通用所以先以這個為主，以後有出現其他MA2還是Artnet的再展開詳談</p>
+            <p>在ETC有一個頁面是Sacn Output Viewer他是一個很好判斷是否有網路在裡面以及權限判斷的依據之一，而且裡面有很詳細的資訊(圖一)</p>
+            <ul>
+                <li>有幾個Sacn的發送源、IP是多少、名稱叫什麼</li>
+                <li>當下Universe視圖選擇</li>
+                <li>輸出的Level是多少</li>
+                <li>當下DMX是由哪台發送</li>
+            </ul>
+            <p>光看這個頁面就可以很清楚了解到外來控台是否有送出訊號，場館網路是否有接收到，以及權限到底是誰高誰低</p>
+            <h2>接下來控台的部分不管是ETC還是MA的設定都一定有的</h2>
+            <ul>
+                <li>Sacn 部分的傳輸有兩種模式，Muliticast以及Unicast兩種方式，差別是你的控台到底是否要設定網路在同區段還是，指定NODE的IP</li>
+                <li>設定權限Priority 1-200 數字越小的權限越小，權限大的會蓋過小的，如果權限一樣他是以HTP的模式，Level大的會蓋過小的</li>
+            </ul>
+            <p>這兩點是任何控台有Sacn設定一定會有的，個別控台還有其他需要設定以及注意的東西就等有個別控台教學的時候再詳細講解</p>
+            <p>要如何設定其實都看著你需要做怎樣的事情，做備份、雙系統同時控、場館以及外來控台同時在線監看有很多種邏輯可以做，怎樣才是安全不會互相影響等有人需要設定的時候小弟在為寧服務</p>
+            <p class="hashtags" style="color: var(--primary); font-weight: bold;">#我做的不是藝術是技術</p>
+        </article>
     </div>
 
     <footer class="footer">
         <p>&copy; 2026 onedoller. 我做的不是藝術是技術</p>
     </footer>
 </body>
+
 </html>
