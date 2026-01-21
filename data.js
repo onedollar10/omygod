@@ -104,8 +104,8 @@ const software = [
         name_en: "OSC Timecode Tool",
         tagline: "專業音訊播放與時間碼同步工具",
         tagline_en: "Professional Audio Playback & Timecode Sync Tool",
-        description: "專為燈光設計師與舞台技術人員打造，支援 MP3/WAV/OGG，並透過 OSC 協定與 ETC/EOS 燈控台深度同步。",
-        description_en: "Built for lighting designers and stage technicians, supporting MP3/WAV/OGG, with deep sync for ETC/EOS via OSC protocol.",
+        description: "專為燈光設計師與舞台技術人員打造，支援 MP3/WAV/OGG 播放與 LTC WAV 匯出，並透過 OSC 協定與 ETC/EOS 燈控台深度同步。",
+        description_en: "Built for lighting designers and stage technicians, supporting MP3/WAV/OGG playback and LTC WAV export, with deep sync for ETC/EOS via OSC protocol.",
         url: "products/osc-tool.html",
         features: [
             "支援 OSC 指令發送至 ETC 燈控台",
@@ -113,7 +113,8 @@ const software = [
             "即時音訊波形視覺化與 Cue 點標記",
             "sACN (E1.31) DMX 遠端遙控播放功能",
             "自動續播與清單管理功能",
-            "支援 CSV 匯入匯出與 Cue 資料管理"
+            "支援 CSV 匯入匯出與 Cue 資料管理",
+            "LTC (左聲道) + 原始音訊 (右聲道) WAV 輸出"
         ],
         features_en: [
             "Support OSC command sending to ETC consoles",
@@ -121,7 +122,8 @@ const software = [
             "Real-time audio waveform visualization & Cue marking",
             "sACN (E1.31) DMX Remote Playback Control",
             "Auto-next & Playlist management",
-            "Support CSV import/export & Cue data management"
+            "Support CSV import/export & Cue data management",
+            "LTC (Left) + Original Audio (Right) WAV Export"
         ]
     },
     {
