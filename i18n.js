@@ -16,6 +16,7 @@ const translations = {
         "btn_details": "詳細介紹",
         "footer_rights": "© 2026 onedoller. All rights reserved. | 我做的不是藝術是技術",
         "lang_toggle": "English",
+        "latest_update": "最新更新:",
         // Product Page - OSC Tool
         "osc_hero_subtitle": "專業燈光設計師的終極同步解決方案",
         "osc_buy_email": "欲購買請聯絡 5664762@gmail.com",
@@ -71,6 +72,7 @@ const translations = {
         "btn_details": "Details",
         "footer_rights": "© 2026 onedoller. All rights reserved. | Tech x Art Studio",
         "lang_toggle": "中文",
+        "latest_update": "Latest Update:",
         // Product Page - OSC Tool
         "osc_hero_subtitle": "The Ultimate Sync Solution for Lighting Designers",
         "osc_buy_email": "Contact 5664762@gmail.com to Purchase",
@@ -124,6 +126,7 @@ function toggleLanguage() {
         renderFreeTools();
         renderFilters();
         renderTutorials();
+        renderNewsTicker();
     }
 }
 

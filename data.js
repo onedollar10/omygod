@@ -166,3 +166,11 @@ const freeTools = [
         features_en: ["Use directly online, no installation", "Quick area selection for pattern matching", "Automatic count calculation"]
     }
 ];
+
+const latestUpdates = [
+    {
+        date: "2026-01-21",
+        content: "OSC Timecode Tool 新增 LTC + Audio WAV 匯出功能",
+        content_en: "OSC Timecode Tool: Added LTC + Audio WAV Export feature"
+    }
+];

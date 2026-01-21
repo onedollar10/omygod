@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFreeTools();
     renderFilters();
     renderTutorials();
+    renderNewsTicker();
     setupModal();
 });
 
@@ -126,4 +127,14 @@ function openModal(tutorial) {
     document.getElementById('modal-content').innerText = tutorial.content;
     document.getElementById('modal-download').href = `./${tutorial.file}`;
     modal.style.display = 'flex';
+}
+
+function renderNewsTicker() {
+    const container = document.getElementById('news-content');
+    if (!container) return;
+
+    container.innerHTML = latestUpdates.map(item => {
+        const content = currentLang === 'en' ? item.content_en : item.content;
+        return `<span class="news-date">${item.date}</span> ${content}`;
+    }).join(' • ');
 }
