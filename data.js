@@ -149,6 +149,28 @@ const software = [
             "Support console CH input for auto-grouping",
             "Integrated CIE 1931 chromaticity diagram"
         ]
+    },
+    {
+        id: "etc_cue_photo",
+        name: "ETC Cue Photo Tool",
+        name_en: "ETC Cue Photo Tool",
+        tagline: "自動接收 OSC 訊號並在 Cue 完成時截圖",
+        tagline_en: "Auto-record screenshot when Cue is fired via OSC",
+        description: "專為 ETC 燈光控台設計，自動偵測 Cue 與 Channel 指令，即時截取視訊畫面並匯出 PDF/Excel 記錄。",
+        description_en: "Designed for ETC consoles. Auto-detects Cue/Channel commands, captures video frame instantly, and exports PDF/Excel records.",
+        url: "products/etc-cue-photo.html",
+        features: [
+            "多元視訊輸入 (USB/NDI/RTSP)",
+            "Cue 模式自動截圖與去重",
+            "CH 模式支援 Auto-Delay 拍照",
+            "支援 Excel 與 PDF 專業匯出"
+        ],
+        features_en: [
+            "Multi-Video Input (USB/NDI/RTSP)",
+            "Cue Mode Auto-Screenshot & Dedup",
+            "CH Mode with Auto-Delay Snap",
+            "Professional Excel & PDF Export"
+        ]
     }
 ];
 
@@ -168,6 +190,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-02-04",
+        content: "新增 ETC Cue Photo Tool 自動截圖記錄軟體",
+        content_en: "New Release: ETC Cue Photo Tool - Auto Screenshot & Documentation"
+    },
     {
         date: "2026-01-21",
         content: "OSC Timecode Tool 新增 LTC + Audio WAV 匯出功能",

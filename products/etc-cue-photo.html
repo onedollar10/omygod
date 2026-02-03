@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSC Timecode Tool | 專業燈光同步解決方案</title>
+    <title>ETC Cue Photo | 自動截圖記錄解決方案</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,8 @@
 
         body {
             background-color: var(--dark-bg);
-            background-image: url('../assets/products/osc-tool/bg.png');
+            /* background-image: url('../assets/products/osc-tool/bg.png'); */
+            /* Using dark bg for now */
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
@@ -446,11 +447,12 @@
     </nav>
 
     <section class="hero-section">
-        <h1 class="hero-title">OSC TIMECODE<br>TOOL</h1>
-        <p class="hero-subtitle" data-i18n="osc_hero_subtitle">The Ultimate Sync Solution for Lighting Designers</p>
+        <h1 class="hero-title">ETC CUE<br>PHOTO TOOL</h1>
+        <p class="hero-subtitle" data-i18n="cue_hero_subtitle">ETC 燈光控台自動截圖記錄工具</p>
         <div class="hero-image-container">
-            <!-- Main Hero Image still keeping the full UI -->
-            <img src="../assets/products/osc-tool/ui_full.png" alt="OSC Tool Interface" class="hero-ui-img">
+            <!-- Main Hero Image -->
+            <img src="../assets/products/etc-cue-photo/ui_full.png" alt="ETC Cue Photo Tool Interface"
+                class="hero-ui-img">
         </div>
 
         <div class="btn-group">
@@ -463,119 +465,70 @@
         </div>
     </section>
 
-    <!-- Video Showcase Section -->
-    <section class="video-showcase"
-        style="max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; text-align: center;">
-        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 40px;"
-            data-i18n="osc_demo">PRODUCT
-            DEMO</h2>
-        <div
-            style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; border: 2px solid rgba(0, 243, 255, 0.3); box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);">
-            <video controls aria-label="Product Preview Video"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                <source src="../movice/osc_timecode_tool.mp4" type="video/mp4">
-                您的瀏覽器不支援影片播放。
-            </video>
-        </div>
-    </section>
+    <!-- No Video Showcase for now -->
 
     <div class="features-container">
 
-        <!-- Feature 1: Waveform -->
-        <div class="feature-row">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_waveform.png" alt="Waveform Visualization">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f1_title">VISUAL WAVEFORM</h3>
-                <p class="feature-desc" data-i18n="osc_f1_desc">
-                    精準的視覺化波形分析。支援縮放功能，讓您即時看見音樂的起伏，點擊波形即可瞬間定位。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f1_hl">
-                    特色功能： 已標註的 Cue 點會直接顯示於波形圖上，讓您一目了然，精確掌握每一個節奏點。
-                </div>
-            </div>
-        </div>
-
-        <!-- Feature 2: FPS & Timecode -->
-        <div class="feature-row">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_timecode.png" alt="Precision Timecode">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f2_title">PRECISION TIMING</h3>
-                <p class="feature-desc" data-i18n="osc_f2_desc">
-                    支援 24, 25, 30 FPS 標準影格率。我們深知同步的重要性，因此提供了雙重時間顯示。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f2_hl">
-                    同步顯示： 同時呈現 FPS 影格時間 (Frame Time) 以及 音樂播放時間 (Actual Playback
-                    Time)，讓您在編程與回放時能有最直觀的對照。
-                </div>
-            </div>
-        </div>
-
-        <!-- Feature 3: One-click Mark -->
-        <div class="feature-row">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_mark.png" alt="One-click Mark">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f3_title">ONE-CLICK MARK</h3>
-                <p class="feature-desc" data-i18n="osc_f3_desc">
-                    極致簡化的工作流程。當您設定好燈控台 IP 與 Cue 號碼後，同步工作變得輕而易舉。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f3_hl">
-                    即時同步： 當音樂播放到預定位置時，只需按下 Mark，時間碼將即刻發送至 ETC 控台，瞬間完成複雜的時間碼寫入。
-                </div>
-            </div>
-        </div>
-
-        <!-- Feature 6: LTC + Audio Export -->
+        <!-- Feature 1: Video Input -->
         <div class="feature-row feature-horizontal">
             <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_wav_export.png" alt="LTC Audio Export">
+                <img src="../assets/products/etc-cue-photo/feature_video_input.png" alt="Video Input">
             </div>
             <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f6_title">LTC + AUDIO EXPORT</h3>
-                <p class="feature-desc" data-i18n="osc_f6_desc">
-                    將 LTC (左聲道) 與 原始音訊 (右聲道) 整合輸出為 WAV 檔案。
+                <h3 class="feature-title" data-i18n="cue_f1_title">VIDEO INPUT</h3>
+                <p class="feature-desc" data-i18n="cue_f1_desc">
+                    多元視訊輸入模組，滿足各種現場需求。支援 USB 攝影機、NDI 網路視訊串流以及 RTSP 監控串流。
                 </p>
-                <div class="feature-highlight" data-i18n="osc_f6_hl">
-                    特色功能： 一鍵匯出立體聲 WAV 檔案，方便進行離線編程或作為備援系統使用。
+                <div class="feature-highlight" data-i18n="cue_f1_hl">
+                    核心支援： USB Camera / NDI / RTSP。即插即用，輕鬆設定，讓您的記錄畫面清晰不卡頓。
                 </div>
             </div>
         </div>
 
-        <!-- Feature 4: sACN Remote Control -->
+        <!-- Feature 2: Cue Mode -->
         <div class="feature-row feature-horizontal">
             <div class="feature-img-wrapper">
-                <img src="../pic/SACN.png" alt="sACN DMX Remote Control">
+                <img src="../assets/products/etc-cue-photo/feature_cue.png" alt="Cue Mode">
             </div>
             <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f5_title">sACN DMX REMOTE</h3>
-                <p class="feature-desc" data-i18n="osc_f5_desc">
-                    透過 sACN (E1.31) 協定接收 DMX 訊號，讓您可以直接從燈控台遙控播放器的 播放、暫停、停止、上一首與下一首等功能。
+                <h3 class="feature-title" data-i18n="cue_f2_title">CUE MODE</h3>
+                <p class="feature-desc" data-i18n="cue_f2_desc">
+                    自動化 Cue 點記錄。當 ETC 控台執行 Cue 時，軟體自動偵測並截取當下畫面。
                 </p>
-                <div class="feature-highlight" data-i18n="osc_f5_hl">
-                    特色功能： 每個功能可自由設定對應的 DMX 通道 (1-512)，輕鬆實現燈光與音效的硬體連動控裝。
+                <div class="feature-highlight" data-i18n="cue_f2_hl">
+                    智慧邏輯： 具備重複觸發處理機制，僅在秒數變更時更新，避免產生冗餘資料，確保每一張截圖都是關鍵時刻。
                 </div>
             </div>
         </div>
 
-
-
-        <!-- Feature 4: Playlist (Moved to bottom & Smaller) -->
-        <div class="feature-row img-small">
+        <!-- Feature 3: CH Mode -->
+        <div class="feature-row feature-horizontal">
             <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_playlist.png" alt="Smart Playlist">
+                <img src="../assets/products/etc-cue-photo/feature_ch.png" alt="Channel Mode">
             </div>
             <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f4_title">SMART PLAYLIST</h3>
-                <p class="feature-desc" data-i18n="osc_f4_desc">
-                    自動化播放清單管理。專為多首曲目的演出設計，直觀的拖放與管理介面。
+                <h3 class="feature-title" data-i18n="cue_f3_title">CH / CHANNEL MODE</h3>
+                <p class="feature-desc" data-i18n="cue_f3_desc">
+                    專為燈具調整設計的 CH 模式。支援多種指令格式，如 `Chan 1 Thru 3` 或 `Chan 1 + 5`。
                 </p>
-                <div class="feature-highlight" data-i18n="osc_f4_hl">
-                    獨立設定： 每一首曲目皆可設定獨立的 Track Offset (起始時間碼)，切換曲目時自動套用，演出過程無縫接軌。
+                <div class="feature-highlight" data-i18n="cue_f3_hl">
+                    自動延遲： 收到 Chan 指令後自動等待 Level/@ 設定，並智慧延遲拍照，確保燈光亮度到位後再行記錄。
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 4: Export -->
+        <div class="feature-row feature-horizontal">
+            <div class="feature-img-wrapper">
+                <img src="../assets/products/etc-cue-photo/feature_export.png" alt="Export Formats">
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title" data-i18n="cue_f4_title">PROFESSIONAL EXPORT</h3>
+                <p class="feature-desc" data-i18n="cue_f4_desc">
+                    一鍵匯出 Excel 與 PDF 報告。支援將 Cue 模式與 CH 模式拆分為獨立檔案，與中文內容完美相容。
+                </p>
+                <div class="feature-highlight" data-i18n="cue_f4_hl">
+                    排版優化： CH 模式匯出時自動隱藏秒數，圖片放大顯示，並自動最佳化列高與欄寬，提供最專業的交付文件。
                 </div>
             </div>
         </div>
@@ -584,10 +537,10 @@
 
     <!-- Integration Banner -->
     <div class="integration-banner">
-        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 20px;">SEAMLESS INTEGRATION</h2>
+        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 20px;">SEAMLESS WORKFLOW</h2>
         <p style="font-size: 1.3rem; color: #ddd; max-width: 800px; margin: 0 auto;">
-            內建 OSC 協議深度整合，一鍵 <strong>"Mark Cue"</strong> 直接寫入 ETC EOS 等燈控台。<br>
-            同步支援 <strong>Hardware LTC Output</strong>，透過音訊介面輸出標準 SMPTE 訊號。
+            專為 <strong>ETC EOS Family</strong> 控台設計。<br>
+            從輸入、記錄到匯出，全程自動化，讓您專注於燈光設計本身。
         </p>
     </div>
 

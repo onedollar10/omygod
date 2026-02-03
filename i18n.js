@@ -41,6 +41,8 @@ const translations = {
         "osc_f5_desc": "透過 sACN (E1.31) 協定接收 DMX 訊號，讓您可以直接從燈控台遙控播放器的 播放、暫停、停止、上一首與下一首等功能。",
         "osc_f5_hl": "特色功能： 每個功能可自由設定對應的 DMX 通道 (1-512)，輕鬆實現燈光與音效的硬體連動控裝。",
         "osc_sys_req": "系統需求",
+        "spec_os": "OS",
+        "spec_console": "控台",
         "nav_products": "產品",
         // Product Page - ETC Grid Tool
         "grid_hero_subtitle": "專業燈光師的視覺化矩陣控制",
@@ -53,7 +55,21 @@ const translations = {
         "grid_f3_title": "OPEN FADE",
         "grid_f3_desc": "強大的色彩與漸變控制。快速將您製作的 GROUP 進行 FAN (扇形) 設定。",
         "grid_f3_hl": "補足功能特效： 內建快速彩虹顏色功能，有效填補 ETC 控台原生的不足，一鍵渲染動態效果。",
-        "grid_tech_specs": "技術規格"
+        "grid_tech_specs": "技術規格",
+        // Product Page - ETC Cue Photo
+        "cue_hero_subtitle": "ETC 燈光控台自動截圖記錄工具",
+        "cue_f1_title": "視訊輸入模組",
+        "cue_f1_desc": "多元視訊輸入模組，滿足各種現場需求。支援 USB 攝影機、NDI 網路視訊串流以及 RTSP 監控串流。",
+        "cue_f1_hl": "核心支援： USB Camera / NDI / RTSP。即插即用，輕鬆設定，讓您的記錄畫面清晰不卡頓。",
+        "cue_f2_title": "CUE 自動記錄",
+        "cue_f2_desc": "自動化 Cue 點記錄。當 ETC 控台執行 Cue 結束時軟體自動偵測並截取當下畫面。",
+        "cue_f2_hl": "智慧邏輯： 具備重複觸發處理機制，僅在秒數變更時更新，避免產生冗餘資料，確保每一張截圖都是關鍵時刻。",
+        "cue_f3_title": "CH / CHANNEL 模式",
+        "cue_f3_desc": "專為燈具調整設計的 CH 模式。支援多種指令格式，如 `Chan 1 Thru 3` 或 `Chan 1 + 5`。",
+        "cue_f3_hl": "自動延遲： 收到 Chan 指令後自動等待 Level/@ 設定，並智慧延遲拍照，確保燈光亮度到位後再行記錄。",
+        "cue_f4_title": "專業報表匯出",
+        "cue_f4_desc": "一鍵匯出 Excel 與 PDF 報告。支援將 Cue 模式與 CH 模式拆分為獨立檔案，與中文內容完美相容。",
+        "cue_f4_hl": "排版優化： CH 模式匯出時自動隱藏秒數，圖片放大顯示，並自動最佳化列高與欄寬，提供最專業的交付文件。"
     },
     "en": {
         "nav_home": "Home",
@@ -97,6 +113,8 @@ const translations = {
         "osc_f5_desc": "Receive DMX signals via sACN (E1.31) protocol, allowing your lighting console to remotely control Play, Pause, Stop, Prev, and Next functions.",
         "osc_f5_hl": "Key Feature: Fully customizable DMX channel mapping (1-512) for each function, enabling seamless integration with hardware consoles.",
         "osc_sys_req": "SYSTEM REQUIREMENTS",
+        "spec_os": "OS",
+        "spec_console": "Console",
         "nav_products": "PRODUCTS",
         // Product Page - ETC Grid Tool
         "grid_hero_subtitle": "Visual Matrix Control for Lighting Pros",
@@ -109,7 +127,21 @@ const translations = {
         "grid_f3_title": "OPEN FADE/COLOR",
         "grid_f3_desc": "Powerful color and gradient control. Quickly apply FAN settings to your groups.",
         "grid_f3_hl": "Enhanced Effects: Built-in quick rainbow features to fill ETC console gaps for dynamic color rendering.",
-        "grid_tech_specs": "TECHNICAL SPECS"
+        "grid_tech_specs": "TECHNICAL SPECS",
+        // Product Page - ETC Cue Photo
+        "cue_hero_subtitle": "Auto Screenshot & Documentation for ETC Consoles",
+        "cue_f1_title": "Video Input Module",
+        "cue_f1_desc": "Versatile video input support for any onsite requirement. Supports USB Cameras, NDI network streams, and RTSP.",
+        "cue_f1_hl": "Core Support: USB Camera / NDI / RTSP. Plug & play, easy setup for clear, lag-free recording.",
+        "cue_f2_title": "Cue Auto-Record",
+        "cue_f2_desc": "Automated Cue recording. Detects ETC console Cues and captures the moment instantly.",
+        "cue_f2_hl": "Smart Logic: Handles duplicate triggers intelligently, updating only when timing changes to avoid redundancy.",
+        "cue_f3_title": "CH / Channel Mode",
+        "cue_f3_desc": "Designed for fixture focus. Supports various formats like `Chan 1 Thru 3` or `Chan 1 + 5`.",
+        "cue_f3_hl": "Auto-Delay: Waits for Level/@ commands after Channel selection, with smart delay to ensure lights are on before snapping.",
+        "cue_f4_title": "Professional Export",
+        "cue_f4_desc": "One-click Excel & PDF export. Splits Cue and CH modes into separate files, with full Chinese character support.",
+        "cue_f4_hl": "Layout Optimized: Hides seconds for CH mode, enlarges images, and optimizes row/column sizes for professional delivery."
     }
 };
 
