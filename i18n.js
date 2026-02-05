@@ -69,7 +69,10 @@ const translations = {
         "cue_f3_hl": "自動延遲： 收到 Chan 指令後自動等待 Level/@ 設定，並智慧延遲拍照，確保燈光亮度到位後再行記錄。",
         "cue_f4_title": "專業報表匯出",
         "cue_f4_desc": "一鍵匯出 Excel 與 PDF 報告。支援將 Cue 模式與 CH 模式拆分為獨立檔案，與中文內容完美相容。",
-        "cue_f4_hl": "排版優化： CH 模式匯出時自動隱藏秒數，圖片放大顯示，並自動最佳化列高與欄寬，提供最專業的交付文件。"
+        "cue_f4_hl": "排版優化： CH 模式匯出時自動隱藏秒數，圖片放大顯示，並自動最佳化列高與欄寬，提供最專業的交付文件。",
+        "cue_f5_title": "視訊錄影與時間戳",
+        "cue_f5_desc": "全新的 v3.0 錄影模組。在錄製現場畫面的同時，自動標記每一個 Cue 的精確影影格時間。",
+        "cue_f5_hl": "點擊即播： 匯出資料包含時間碼鏈結，點擊即可開啟影片並自動跳轉至對應 Cue 點，徹底解決回找關鍵畫面費時的問題。"
     },
     "en": {
         "nav_home": "Home",
@@ -141,7 +144,10 @@ const translations = {
         "cue_f3_hl": "Auto-Delay: Waits for Level/@ commands after Channel selection, with smart delay to ensure lights are on before snapping.",
         "cue_f4_title": "Professional Export",
         "cue_f4_desc": "One-click Excel & PDF export. Splits Cue and CH modes into separate files, with full Chinese character support.",
-        "cue_f4_hl": "Layout Optimized: Hides seconds for CH mode, enlarges images, and optimizes row/column sizes for professional delivery."
+        "cue_f4_hl": "Layout Optimized: Hides seconds for CH mode, enlarges images, and optimizes row/column sizes for professional delivery.",
+        "cue_f5_title": "Video Recording & Timestamps",
+        "cue_f5_desc": "Brand new v3.0 recording module. Records live video while automatically marking precise frame timestamps for every fired Cue.",
+        "cue_f5_hl": "Click to Play: Exported data includes timestamp links. Click to open the video and auto-seek to the exact Cue moment."
     }
 };
 

@@ -163,13 +163,15 @@ const software = [
             "多元視訊輸入 (USB/NDI/RTSP)",
             "Cue 模式自動截圖與去重",
             "CH 模式支援 Auto-Delay 拍照",
-            "支援 Excel 與 PDF 專業匯出"
+            "支援 Excel 與 PDF 專業匯出",
+            "v3.0 視訊錄影與精確時間戳功能"
         ],
         features_en: [
             "Multi-Video Input (USB/NDI/RTSP)",
             "Cue Mode Auto-Screenshot & Dedup",
             "CH Mode with Auto-Delay Snap",
-            "Professional Excel & PDF Export"
+            "Professional Excel & PDF Export",
+            "v3.0 Video Recording & Precise Timestamps"
         ]
     }
 ];
@@ -190,6 +192,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-02-06",
+        content: "ETC Cue Photo Tool v3.0 更新：新增視訊錄影與精確時間戳功能",
+        content_en: "ETC Cue Photo Tool v3.0: Added Video Recording & Precise Timestamping"
+    },
     {
         date: "2026-02-04",
         content: "新增 ETC Cue Photo Tool 自動截圖記錄軟體",
