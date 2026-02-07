@@ -196,6 +196,11 @@ const freeTools = [
 
 const latestUpdates = [
     {
+        date: "2026-02-07",
+        content: "全系列軟體新增線上說明書功能，歡迎查閱",
+        content_en: "All software now includes online manuals. Feel free to check them out!"
+    },
+    {
         date: "2026-02-06",
         content: "ETC Cue Photo Tool v3.0 更新：新增視訊錄影與精確時間戳功能",
         content_en: "ETC Cue Photo Tool v3.0: Added Video Recording & Precise Timestamping"
