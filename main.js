@@ -19,6 +19,7 @@ function renderSoftware() {
         const description = currentLang === 'en' ? item.description_en : item.description;
         const features = currentLang === 'en' ? item.features_en : item.features;
         const btnText = currentLang === 'en' ? translations.en.btn_details : translations.zh.btn_details;
+        const manualBtnText = currentLang === 'en' ? translations.en.manual_btn : translations.zh.manual_btn;
 
         return `
             <div class="card" id="${item.id}">
@@ -29,6 +30,7 @@ function renderSoftware() {
                     ${features.map(f => `<li>${f}</li>`).join('')}
                 </ul>
                 ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px">${btnText}</a>` : ''}
+                ${item.manual ? `<a href="${item.manual}" class="btn" style="margin-left:10px; background:linear-gradient(45deg, #00c6ff, #0072ff); color:white;" target="_blank">${manualBtnText}</a>` : ''}
             </div>
         `;
     }).join('');
