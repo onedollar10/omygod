@@ -57,6 +57,24 @@
             opacity: 0.9;
         }
 
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         .content {
             padding: 40px;
         }
@@ -299,6 +317,7 @@
 <body>
     <div class="container">
         <header class="header">
+            <a href="ETC_Cue_Manual_en.html" class="lang-toggle">English Version</a>
             <h1>ETC Cue 截圖記錄器</h1>
             <p class="version">版本 4.0 使用說明書</p>
         </header>
@@ -1006,6 +1025,11 @@
                     <p>主題請註明：ETC Cue 截圖記錄器 技術支援</p>
                 </div>
             </section>
+            <!-- Translation Widget -->
+            <div id="google_translate_element"
+                style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; text-align: center;">
+                <p style="font-size: 0.8rem; color: #888;">無法閱讀中文？使用 Google 翻譯：</p>
+            </div>
         </div>
 
         <footer class="footer">
@@ -1015,6 +1039,15 @@
             <p style="margin-top: 20px; opacity: 0.8;">本文件適用於 ETC Cue 截圖記錄器 v4.0</p>
         </footer>
     </div>
+
+    <!-- Google Translate Widget -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'zh-TW' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

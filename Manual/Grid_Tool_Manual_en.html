@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Tool for ETC Eos User Manual</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-95B5G5KQ8B');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .version {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .toc h2 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #2a5298;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            opacity: 0.95;
+            margin: 0;
+        }
+
+        .screenshot {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-caption {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .step-box {
+            background: #f8f9fa;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .step-box h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .info-box h4 {
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="Grid_Tool_Manual.html" class="lang-toggle">中文版本</a>
+            <h1>Grid Tool for ETC Eos</h1>
+            <p class="version">Lighting Channel Management Tool - User Manual</p>
+        </header>
+
+        <div class="content">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2>Table of Contents</h2>
+                <ul>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#install">Installation & Startup</a></li>
+                    <li><a href="#interface">Interface Overview</a></li>
+                    <li><a href="#layout">Layout Management</a></li>
+                    <li><a href="#osc_sort">OSC Sync Sort Mode</a></li>
+                    <li><a href="#group_creation">Group Creation & Transfer</a></li>
+                    <li><a href="#selection">Multi-select & Drag</a></li>
+                    <li><a href="#alignment">Alignment Features</a></li>
+                    <li><a href="#xygroup">X/Y Grouping</a></li>
+                    <li><a href="#send_eos">Sending to ETC Console</a></li>
+                    <li><a href="#color">Color Selection</a></li>
+                    <li><a href="#fade">FADE Slider Control</a></li>
+                    <li><a href="#osc">OSC Communication</a></li>
+                    <li><a href="#shortcuts">Shortcuts</a></li>
+                    <li><a href="#troubleshoot">Troubleshooting</a></li>
+                </ul>
+            </div>
+
+            <!-- Introduction -->
+            <section id="intro">
+                <h2>Introduction</h2>
+                <p><strong>Grid Tool for ETC Eos</strong> is a professional utility designed for lighting designers. It
+                    uses a visual grid interface to intuitively manage and configure channel layouts for ETC Eos
+                    series consoles. It syncs with the console via OSC protocol, significantly enhancing programming
+                    efficiency.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/GridTool_Main.png" alt="Main Interface">
+                    <div class="screenshot-caption">Fig 1: Grid Tool for ETC Eos Main Interface</div>
+                </div>
+
+                <h3>Key Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🎨 Visual Grid</h4>
+                        <p>Intuitive grid interface, see channel positions at a glance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📐 Multiple Selection</h4>
+                        <p>Supports single, Ctrl multi, Shift range, and marquee selection.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎨 CIE Color Picker</h4>
+                        <p>Professional CIE 1931 color space picker.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📋 Layout Manager</h4>
+                        <p>Save and load multiple channel layout configurations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📡 OSC Communication</h4>
+                        <p>Real-time data transmission to ETC Eos consoles.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎯 Alignment Tools</h4>
+                        <p>Center align on X/Y axis for perfectly arranged fixtures.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌈 X/Y Grouping</h4>
+                        <p>Block and Groups modes for visual grouping.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎚️ FADE Control</h4>
+                        <p>Professional slider interface with multiple Fan gradient modes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔄 Bidirectional Sync</h4>
+                        <p>Auto-sort by Channel Number or XY Position.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation -->
+            <section id="install">
+                <h2>Installation & Startup</h2>
+
+                <h3>System Requirements</h3>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Requirement</th>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>Windows 10/11</td>
+                    </tr>
+                    <tr>
+                        <td>Network</td>
+                        <td>Required for OSC communication</td>
+                    </tr>
+                    <tr>
+                        <td>Console</td>
+                        <td>ETC Eos Series (OSC enabled)</td>
+                    </tr>
+                </table>
+
+                <h3>First Startup</h3>
+                <p>Upon launching the software, you will see the activation window:</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/Activation_Window.png" alt="Activation Window">
+                    <div class="screenshot-caption">Fig 2: Startup and Licensing Window</div>
+                </div>
+
+                <div class="step-box">
+                    <h4>Activation Methods</h4>
+                    <p><strong>1. Trial Mode:</strong> Click "Start Trial (7 days)" for 7 days of free access.</p>
+                    <p><strong>2. Official License:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Click "Open Activation Website" to go to the licensing site.</li>
+                        <li>Enter your Email and Machine ID to get your activation code.</li>
+                        <li>Enter the code and click "Activate".</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Interface Overview -->
+            <section id="interface">
+                <h2>Interface Overview</h2>
+
+                <h3>Main Layout</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/Interface_Overview.png" alt="Full Interface">
+                    <div class="screenshot-caption">Fig 3: Full Interface Overview</div>
+                </div>
+
+                <h3>Area Descriptions</h3>
+                <table>
+                    <tr>
+                        <th>Area</th>
+                        <th>Location</th>
+                        <th>Function</th>
+                    </tr>
+                    <tr>
+                        <td>Grid Area</td>
+                        <td>Center</td>
+                        <td>Display and edit channel layouts</td>
+                    </tr>
+                    <tr>
+                        <td>Layout Manager</td>
+                        <td>Top Left</td>
+                        <td>Save/load layouts, OSC settings</td>
+                    </tr>
+                    <tr>
+                        <td>Color Section</td>
+                        <td>Bottom Left</td>
+                        <td>CIE selection, preset colors</td>
+                    </tr>
+                    <tr>
+                        <td>X/Y Grouping</td>
+                        <td>Bottom</td>
+                        <td>Block/Groups mode controls</td>
+                    </tr>
+                    <tr>
+                        <td>Alignment Controls</td>
+                        <td>Bottom</td>
+                        <td>Center alignment on X/Y axis</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Layout Management -->
+            <section id="layout">
+                <h2>Layout Management</h2>
+
+                <p>Layout management allows you to save different channel configurations and quickly switch between
+                    them.</p>
+
+                <h3>Saving a Layout</h3>
+                <div class="step-box">
+                    <h4>Steps</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Arrange channels on the grid.</li>
+                        <li>Click "Save Layout" button.</li>
+                        <li>Select a layout number (1-10).</li>
+                        <li>Confirm save.</li>
+                    </ol>
+                </div>
+
+                <h3>Loading a Layout</h3>
+                <p>Select a layout number from the list and click "Load Layout" to restore all channel positions.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/Layout_Manager.png" alt="Layout Manager">
+                    <div class="screenshot-caption">Fig 4: Layout Management Interface</div>
+                </div>
+
+                <h3>Import/Export</h3>
+                <table>
+                    <tr>
+                        <th>Function</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Export Layout</td>
+                        <td>Save current layout as a JSON file to share with others.</td>
+                    </tr>
+                    <tr>
+                        <td>Import Layout</td>
+                        <td>Load an external JSON layout file.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- OSC Sync Sort Mode -->
+            <section id="osc_sort">
+                <h2>OSC Sync Sort Mode</h2>
+
+                <p>Grid Tool supports bidirectional OSC. When the console sends channel selection commands, the software
+                    can auto-arrange channels based on sorting modes.</p>
+
+                <h3>Mode Selection</h3>
+                <p>Choose the mode in the "OSC Receive Sort Mode" dropdown:</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/OSC_Sort_Mode.png" alt="Sort Mode">
+                    <div class="screenshot-caption">Fig 13: OSC Receive Sorting Configuration</div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Sort Mode</th>
+                        <th>Description</th>
+                        <th>Use Case</th>
+                    </tr>
+                    <tr>
+                        <td>channel_number</td>
+                        <td>Arranged by channel ID sequence.</td>
+                        <td>Quickly find specific numbered fixtures.</td>
+                    </tr>
+                    <tr>
+                        <td>xy_position</td>
+                        <td>Arranged by actual 3D coordinates.</td>
+                        <td>Visualized layout matching physical stage positions.</td>
+                    </tr>
+                </table>
+
+                <h3>XY Position Mode</h3>
+                <p>This mode queries the console for each channel's 3D coordinates and arranges them on the grid
+                    accordingly.</p>
+
+                <div class="step-box">
+                    <h4>Workflow</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Receive channel list from console (e.g., "1-10,15,20").</li>
+                        <li>Query console for 3D position data of each channel.</li>
+                        <li>Calculate grid positions based on X, Y coordinates.</li>
+                        <li>Auto-resize grid to fit all channels if needed.</li>
+                        <li>Render channel blocks on the grid.</li>
+                    </ol>
+                </div>
+
+                <h3>Coordinate Mapping</h3>
+                <table>
+                    <tr>
+                        <th>Axis</th>
+                        <th>Console 3D Coord</th>
+                        <th>Grid Display</th>
+                    </tr>
+                    <tr>
+                        <td>X Axis</td>
+                        <td>Stage Left (-) to Right (+)</td>
+                        <td>Left to Right</td>
+                    </tr>
+                    <tr>
+                        <td>Y Axis</td>
+                        <td>Stage Height (Up + / Down -)</td>
+                        <td>Top to Bottom</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <h4>⚠️ Notice</h4>
+                    <p>XY Position mode requires the console to support 3D coordinate feedback. If query fails, system
+                        defaults back to <code>channel_number</code> mode.</p>
+                </div>
+            </section>
+
+            <!-- Group Creation & Transfer -->
+            <section id="group_creation">
+                <h2>Group Creation & Transfer</h2>
+
+                <p>Create groups intuitively using <strong>color coding</strong>. Identical colors are automatically
+                    wrapped in parentheses <code>( )</code> when sent to the console.</p>
+
+                <h3>Color Grouping Concept</h3>
+                <div class="info-box">
+                    <h4>Why use colors?</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Visual Recognition: One glance to see who belongs where.</li>
+                        <li>Intuitive Operation: Pick a color to tag members.</li>
+                        <li>Flexible: Combine different sub-groups easily.</li>
+                        <li>Auto-Parentheses: Syncing handles the syntax for you.</li>
+                    </ul>
+                </div>
+
+                <h3>Creation Methods</h3>
+                <h4>Method 1: X/Y Auto-Grouping</h4>
+                <div class="step-box">
+                    <p>Set "Blocks" or "Groups" values. System assigns colors based on grid position automatically.</p>
+                </div>
+
+                <h4>Method 2: Manual Assignment</h4>
+                <div class="step-box">
+                    <p>Select channels (Ctrl/Shift select) and click a color block or use the CIE picker.</p>
+                </div>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/Color_Grouping.png" alt="Color Grouping">
+                    <div class="screenshot-caption">Fig: Using color to distinguish sub-groups</div>
+                </div>
+            </section>
+
+            <!-- Multi-select & Drag -->
+            <section id="selection">
+                <h2>Multi-select & Drag</h2>
+
+                <table>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Function</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>Single Click</td>
+                        <td>Select Single</td>
+                        <td>Select one, deselect others.</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Click</td>
+                        <td>Multi-select</td>
+                        <td>Add/remove single channel to selection set.</td>
+                    </tr>
+                    <tr>
+                        <td>Shift + Click</td>
+                        <td>Range Select</td>
+                        <td>Select all between last and current click.</td>
+                    </tr>
+                    <tr>
+                        <td>Marquee (Drag)</td>
+                        <td>Area Select</td>
+                        <td>Drag a box on the grid to select contained fixtures.</td>
+                    </tr>
+                </table>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/Multi_Selection.png" alt="Multi Selection">
+                    <div class="screenshot-caption">Fig 8: Selection Mode - red borders indicate selected channels</div>
+                </div>
+
+                <h3>Multi-Fixture Dragging</h3>
+                <p>Drag any selected fixture; all members of the selection set move together, maintaining relative
+                    positions.</p>
+            </section>
+
+            <!-- Alignment Features -->
+            <section id="alignment">
+                <h2>Alignment Features</h2>
+
+                <p>Quickly center-align selected fixtures on X or Y axis for a neat layout.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/Alignment_Feature.png" alt="Alignment">
+                    <div class="screenshot-caption">Fig 9: Center alignment on X/Y axis</div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Collision Detection</h4>
+                    <p>Alignment checks if target positions are occupied. Operaton is canceled if fixtures would overlap
+                        or go out of bounds.</p>
+                </div>
+            </section>
+
+            <!-- X/Y Grouping -->
+            <section id="xygroup">
+                <h2>X/Y Grouping</h2>
+
+                <p>Visual grouping using colors. Supports two modes: Blocks and Groups.</p>
+
+                <h3>Blocks Mode</h3>
+                <p>Groups by fixed block size (e.g., every 5 fixtures).</p>
+
+                <h3>Groups Mode</h3>
+                <p>Evenly distributes all fixtures into N groups.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/XY_Grouping.png" alt="XY Grouping">
+                    <div class="screenshot-caption">Fig 10: X/Y Grouping - Visualizing Blocks and Groups</div>
+                </div>
+            </section>
+
+            <!-- Sending to ETC Console -->
+            <section id="send_eos">
+                <h2>Sending to ETC Console</h2>
+
+                <p>After completing group creation, click the "Send EOS" button to transmit group data to the ETC Eos console.</p>
+
+                <h3>Transmission Format</h3>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Same Color Channels</td>
+                        <td>Automatically wrapped in parentheses ( ) to form sub-groups</td>
+                    </tr>
+                    <tr>
+                        <td>Different Color Groups</td>
+                        <td>Separated by spaces as multiple sub-groups</td>
+                    </tr>
+                    <tr>
+                        <td>Target Group ID</td>
+                        <td>Set in "EOS Group ID" field, default is 3000</td>
+                    </tr>
+                </table>
+
+                <div class="step-box">
+                    <h4>Transmission Steps</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Confirm channels in grid are grouped by color</li>
+                        <li>Set "EOS Group ID" (skip if using default 3000)</li>
+                        <li>Click "Send EOS" button</li>
+                        <li>Review group content in confirmation dialog</li>
+                        <li>Confirm to transmit to console</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Important Notes</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure OSC connection settings are correct (IP and Port) before transmission</li>
+                        <li>Target group ID will be overwritten if it already exists on console</li>
+                        <li>Recommended to verify group ID availability on console first</li>
+                        <li>Un-colored channels use default color (lightgrey)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Color Selection -->
+            <section id="color">
+                <h2>Color Selection</h2>
+
+                <h3>CIE Color Picker</h3>
+                <p>The software includes a professional CIE 1931 color space picker for precise color selection.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/CIE_Color_Picker.png" alt="Color Picker">
+                    <div class="screenshot-caption">Fig 7: CIE 1931 Color Space Picker</div>
+                </div>
+
+                <h3>Usage</h3>
+                <div class="step-box">
+                    <h4>Operation Steps</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Enter the color group to set</li>
+                        <li>Click on the CIE chart to select color</li>
+                        <li>Mouse click to select first color point</li>
+                        <li>Hold SHIFT to select second point</li>
+                        <li>Color is immediately applied to selected group</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- FADE Control -->
+            <section id="fade">
+                <h2>FADE Slider Control</h2>
+
+                <p>FADE provides a professional slider interface for adjusting fixture parameters with multiple Fan modes for smooth gradient effects.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/Fade_Control.png" alt="Fade Control">
+                    <div class="screenshot-caption">Fig 12: Professional FADE Slider Interface</div>
+                </div>
+
+                <h3>Opening FADE Control Window</h3>
+                <p>In the "Fade Tools" area on the left side of the main interface, click the "Open Fade" button to open the FADE control window.</p>
+
+                <h3>Slider Management</h3>
+                <table>
+                    <tr>
+                        <th>Function</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Add Slider</td>
+                        <td>Click "+ Add Slider" button to add a pair of Y_Focus and X_Focus sliders</td>
+                    </tr>
+                    <tr>
+                        <td>Remove Slider</td>
+                        <td>Click "- Remove Slider" button to remove the last slider pair (minimum 2 sliders)</td>
+                    </tr>
+                    <tr>
+                        <td>Slider Drag</td>
+                        <td>Drag sliders up/down to adjust values, sending OSC commands to console in real-time</td>
+                    </tr>
+                    <tr>
+                        <td>Reset Sliders</td>
+                        <td>Click "Reset" button to zero all slider values</td>
+                    </tr>
+                </table>
+
+                <h3>Fan Modes</h3>
+                <p>Each slider can be set to different Fan modes to control parameter distribution across the group:</p>
+
+                <table>
+                    <tr>
+                        <th>Mode</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Center</td>
+                        <td>Spreads from group center to both sides</td>
+                    </tr>
+                    <tr>
+                        <td>Reverse</td>
+                        <td>Reverse Fan effect</td>
+                    </tr>
+                    <tr>
+                        <td>Mirror_Out</td>
+                        <td>Mirrors from both sides toward center</td>
+                    </tr>
+                    <tr>
+                        <td>NO</td>
+                        <td>No Fan, direct setting</td>
+                    </tr>
+                </table>
+
+                <h3>Slider Parameter Setup</h3>
+                <div class="step-box">
+                    <h4>Usage Steps</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Set "GROUP" field: Enter target group number (default 3000)</li>
+                        <li>Select "MODE": Choose Fan mode from dropdown</li>
+                        <li>Drag sliders to adjust values</li>
+                        <li>Or click "Confirm Send" button to manually send commands</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Important Notes</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Sliders send OSC commands in real-time during movement, ensure stable network connection</li>
+                        <li>Value range is 0 to 100, corresponding to percentage on console</li>
+                        <li>Center mode sends two commands with 0.2 second delay between them</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- OSC Communication -->
+            <section id="osc">
+                <h2>OSC Communication</h2>
+
+                <p>Grid Tool communicates with ETC Eos consoles via OSC (Open Sound Control) protocol, sending channel selection, color, and position data in real-time.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/OSC_Settings.png" alt="OSC Settings">
+                    <div class="screenshot-caption">Fig 11: OSC Connection Setup</div>
+                </div>
+
+                <h3>Sending Channels and World Coordinates</h3>
+                <p>Grid Tool can send grid channel configurations to ETC Eos consoles, including channel numbers and corresponding world coordinate information.</p>
+
+                <div class="step-box">
+                    <h4>Sending Steps</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Configure channel layout in the grid</li>
+                        <li>Set target group ID (EOS Group ID)</li>
+                        <li>Click "Send to ETC" button</li>
+                        <li>After confirming content, software automatically generates OSC commands</li>
+                    </ol>
+                </div>
+
+                <h3>Coordinate Conversion</h3>
+                <table>
+                    <tr>
+                        <th>Coordinate System</th>
+                        <th>Origin</th>
+                        <th>X Axis</th>
+                        <th>Y Axis</th>
+                    </tr>
+                    <tr>
+                        <td>Grid Coordinates</td>
+                        <td>Top-left (0,0)</td>
+                        <td>Increases to right</td>
+                        <td>Increases downward</td>
+                    </tr>
+                    <tr>
+                        <td>World Coordinates</td>
+                        <td>Grid center (0,0)</td>
+                        <td>Right positive, left negative</td>
+                        <td>Up positive, down negative</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <th>Setting</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                    <tr>
+                        <td>IP Address</td>
+                        <td>ETC Eos console IP address</td>
+                        <td>192.168.1.100</td>
+                    </tr>
+                    <tr>
+                        <td>Port</td>
+                        <td>OSC receive port</td>
+                        <td>8000</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>OSC Receive</h4>
+                    <p>The software also supports receiving OSC commands from the console, enabling bidirectional communication.</p>
+                </div>
+            </section>
+
+            <!-- Shortcuts -->
+            <section id="shortcuts">
+                <h2>Shortcuts</h2>
+                <table>
+                    <tr>
+                        <th>Shortcut</th>
+                        <th>Function</th>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Click</td>
+                        <td>Multi-select/Deselect channels</td>
+                    </tr>
+                    <tr>
+                        <td>Shift + Click</td>
+                        <td>Range selection</td>
+                    </tr>
+                    <tr>
+                        <td>Delete</td>
+                        <td>Delete selected channels</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + S</td>
+                        <td>Save layout</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + L</td>
+                        <td>Load layout</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Z</td>
+                        <td>Undo last action</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Y</td>
+                        <td>Redo</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section id="troubleshoot">
+                <h2>Troubleshooting</h2>
+
+                <h3>Common Issues</h3>
+
+                <div class="step-box">
+                    <h4>Q1: Cannot connect to lighting console</h4>
+                    <ul>
+                        <li>Verify the IP address is correct (use ping to test)</li>
+                        <li>Confirm the Port number matches console settings</li>
+                        <li>Check if Windows Firewall is blocking Port 8000</li>
+                        <li>Ensure OSC receive function is enabled on the console</li>
+                        <li>Confirm computer and console are on the same network segment</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q2: Channels cannot be dragged</h4>
+                    <ul>
+                        <li>Confirm channel is selected (shows red border)</li>
+                        <li>Check if target position already has another channel</li>
+                        <li>Ensure not exceeding grid boundaries</li>
+                        <li>Try restarting the software</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q3: Color cannot be sent to console</h4>
+                    <ul>
+                        <li>Confirm OSC connection is normal</li>
+                        <li>Check if console supports CIE color mode</li>
+                        <li>Ensure channels have color attributes</li>
+                        <li>Check OSC Log for error messages</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q4: Layout loading failed</h4>
+                    <ul>
+                        <li>Confirm layout file format is correct (JSON)</li>
+                        <li>Check if file is corrupted</li>
+                        <li>Confirm layout number is not occupied</li>
+                        <li>Try importing JSON file instead of direct loading</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q5: FADE slider cannot control console</h4>
+                    <ul>
+                        <li>Confirm OSC connection is normal</li>
+                        <li>Check if Group ID is correct (group must exist on console)</li>
+                        <li>Ensure console has selected that group</li>
+                        <li>Check if Fan mode is supported (some modes require specific console version)</li>
+                        <li>Try switching to different Fan modes (Center, Reverse, Mirror_Out, NO)</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q6: XY Position mode cannot display positions correctly</h4>
+                    <ul>
+                        <li>Confirm console has correct 3D coordinates set</li>
+                        <li>Check if OSC listening is enabled</li>
+                        <li>Confirm listening port (default 8001) is not occupied by other programs</li>
+                        <li>Check if Windows Firewall is blocking UDP Port</li>
+                        <li>Try switching back to channel_number mode then back to xy_position</li>
+                        <li>Confirm console supports position query commands (get/xyz)</li>
+                    </ul>
+                </div>
+
+                <h3>Contact Support</h3>
+                <div class="info-box">
+                    <h4>Technical Support</h4>
+                    <p>Email: 566472@gmail.com</p>
+                    <p>Subject: Grid Tool Technical Support</p>
+                </div>
+            </section>
+
+            <!-- Translation Widget -->
+            <div id="google_translate_element"
+                style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; text-align: center;">
+                <p style="font-size: 0.8rem; color: #888;">Need full translation? Use Google Translate below:</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><strong>Grid Tool for ETC Eos</strong></p>
+            <p>Developer: onedoller</p>
+            <p>Last Updated: 2026-02-08</p>
+            <p style="margin-top: 20px; opacity: 0.8;">This document applies to Grid Tool for ETC Eos</p>
+        </footer>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

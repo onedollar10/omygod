@@ -108,6 +108,7 @@ const software = [
         description_en: "Built for lighting designers and stage technicians, supporting MP3/WAV/OGG playback and LTC WAV export, with deep sync for ETC/EOS via OSC protocol.",
         url: "products/osc-tool.html",
         manual: "Manual/osc time codeManual.html",
+        manual_en: "Manual/osc_time_code_Manual_en.html",
         features: [
             "支援 OSC 指令發送至 ETC 燈控台",
             "實體 LTC 時間碼輸出 (24/25/30 FPS)",
@@ -137,6 +138,7 @@ const software = [
         description_en: "A visualization aid for ETC Eos consoles, providing an intuitive grid interface for fixture layout and control.",
         url: "products/etc-grid-tool.html",
         manual: "Manual/Grid_Tool_Manual.html",
+        manual_en: "Manual/Grid_Tool_Manual_en.html",
         features: [
             "視覺化網格佈局與智慧拖放排位",
             "MA3 風格快速色彩分組，無需手動計算",
@@ -162,6 +164,7 @@ const software = [
         description_en: "Designed for ETC consoles. Auto-detects Cue/Channel commands, captures video frame instantly, and exports PDF/Excel records.",
         url: "products/etc-cue-photo.html",
         manual: "Manual/ETC_Cue_Manual.html",
+        manual_en: "Manual/ETC_Cue_Manual_en.html",
         features: [
             "多元視訊輸入 (USB/NDI/RTSP)",
             "Cue 模式自動截圖與去重",

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETC Cue Screenshot Logger v4.0 User Manual</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-95B5G5KQ8B');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .version {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .toc h2 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #2a5298;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            opacity: 0.95;
+            margin: 0;
+        }
+
+        .screenshot {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-caption {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .step-box {
+            background: #f8f9fa;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .step-box h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .info-box h4 {
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="ETC_Cue_Manual.html" class="lang-toggle">中文版本</a>
+            <h1>ETC Cue Screenshot Logger</h1>
+            <p class="version">Version 4.0 User Manual</p>
+        </header>
+
+        <div class="content">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2>Table of Contents</h2>
+                <ul>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#install">Installation & Startup</a></li>
+                    <li><a href="#interface">Interface Overview</a></li>
+                    <li><a href="#video">Video Input Settings</a></li>
+                    <li><a href="#osc">OSC Connection Settings</a></li>
+                    <li><a href="#cue-mode">Cue Mode Operation</a></li>
+                    <li><a href="#ch-mode">CH Mode Operation</a></li>
+                    <li><a href="#recording">Video Recording Feature</a></li>
+                    <li><a href="#manual">Manual Screenshot Feature</a></li>
+                    <li><a href="#project">Project Management</a></li>
+                    <li><a href="#export">Export Features</a></li>
+                    <li><a href="#troubleshoot">Troubleshooting</a></li>
+                </ul>
+            </div>
+
+            <!-- Introduction -->
+            <section id="intro">
+                <h2>Introduction</h2>
+                <p><strong>ETC Cue Screenshot Logger</strong> is a professional tool designed for lighting designers and
+                    stage technicians. It communicates with ETC/EOS consoles via OSC protocol to automatically capture
+                    stage screenshots when a Cue is completed or Channel is set, providing comprehensive project
+                    management and report export features.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/01_main_window.png" alt="Main Interface">
+                    <div class="screenshot-caption">Fig 1: ETC Cue Screenshot Logger Main Interface</div>
+                </div>
+
+                <h3>Key Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🎯 Cue Mode</h4>
+                        <p>Auto-detects Cue fire events, captures screenshots, and logs Cue number and time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💡 CH Mode</h4>
+                        <p>Supports Chan command detection, ideal for logging parameter settings scenes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📹 Video Input</h4>
+                        <p>Supports USB cameras, NDI network video, and RTSP streams.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎬 Video Recording</h4>
+                        <p>Built-in recording with automatic Cue time-stamping.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Complete Logs</h4>
+                        <p>Logs Cue #, duration, screenshots, notes, and other complete information.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📁 Project Management</h4>
+                        <p>Supports saving/loading projects for managing multiple show projects.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📄 Report Export</h4>
+                        <p>One-click export to Excel and PDF reports for sharing and archiving.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔄 Overwrite Mode</h4>
+                        <p>Supports updating records by overwriting, convenient for correcting screenshots.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation -->
+            <section id="install">
+                <h2>Installation & Startup</h2>
+
+                <h3>System Requirements</h3>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Requirement</th>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>Windows 10/11</td>
+                    </tr>
+                    <tr>
+                        <td>Network</td>
+                        <td>Required for OSC and NDI/RTSP</td>
+                    </tr>
+                    <tr>
+                        <td>Video Device</td>
+                        <td>USB Camera, NDI Source, or RTSP Stream</td>
+                    </tr>
+                    <tr>
+                        <td>Memory</td>
+                        <td>Recommended 4GB or more</td>
+                    </tr>
+                </table>
+
+                <h3>First Startup</h3>
+                <p>Upon launching the software, you will see the activation window:</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/02_activation_window.png" alt="Activation Window">
+                    <div class="screenshot-caption">Fig 2: Startup and Licensing Window</div>
+                </div>
+
+                <div class="step-box">
+                    <h4>Activation Methods</h4>
+                    <p><strong>1. Trial Mode:</strong> Click "Start Trial (7 days)" for 7 days of free access.</p>
+                    <p><strong>2. Official License:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Click "Open Activation Website" to go to the licensing site.</li>
+                        <li>Enter your Email and Machine ID to get your activation code.</li>
+                        <li>Enter the code and click "Activate".</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Interface Overview -->
+            <section id="interface">
+                <h2>Interface Overview</h2>
+
+                <h3>Main Layout</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/03_interface_overview.png" alt="Full Interface">
+                    <div class="screenshot-caption">Fig 3: Full Interface Overview</div>
+                </div>
+
+                <h3>Area Descriptions</h3>
+                <table>
+                    <tr>
+                        <th>Area</th>
+                        <th>Location</th>
+                        <th>Function</th>
+                    </tr>
+                    <tr>
+                        <td>Video Preview</td>
+                        <td>Top Left</td>
+                        <td>Real-time video feed display</td>
+                    </tr>
+                    <tr>
+                        <td>Status Display</td>
+                        <td>Middle Left</td>
+                        <td>Shows current Cue/Chan number</td>
+                    </tr>
+                    <tr>
+                        <td>Control Buttons</td>
+                        <td>Bottom Left</td>
+                        <td>Mode switching, recording, and record controls</td>
+                    </tr>
+                    <tr>
+                        <td>Log Table</td>
+                        <td>Right Side</td>
+                        <td>Master list of all captured screenshots</td>
+                    </tr>
+                </table>
+
+                <h3>Menu Bar Functions</h3>
+                <table>
+                    <tr>
+                        <th>Menu</th>
+                        <th>Items</th>
+                        <th>Shortcuts</th>
+                    </tr>
+                    <tr>
+                        <td>File</td>
+                        <td>New/Open/Save Project</td>
+                        <td>Ctrl+N/O/S</td>
+                    </tr>
+                    <tr>
+                        <td>Export</td>
+                        <td>Export Excel / PDF</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Settings</td>
+                        <td>Open Settings Dialog</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Video Input Settings -->
+            <section id="video">
+                <h2>Video Input Settings</h2>
+
+                <p>The software supports three types of video input sources, configurable via the "Settings" dialog.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/04_settings_dialog.png" alt="Settings Dialog">
+                    <div class="screenshot-caption">Fig 4: Settings Dialog - Video & OSC</div>
+                </div>
+
+                <h3>Video Source Types</h3>
+                <table>
+                    <tr>
+                        <th>Source Type</th>
+                        <th>Description</th>
+                        <th>Best For</th>
+                    </tr>
+                    <tr>
+                        <td>USB Camera</td>
+                        <td>Direct local device or capture card</td>
+                        <td>Standalone work, on-site shooting</td>
+                    </tr>
+                    <tr>
+                        <td>NDI Video</td>
+                        <td>Network video via NDI protocol</td>
+                        <td>Professional streaming, multi-cam setups</td>
+                    </tr>
+                    <tr>
+                        <td>RTSP Stream</td>
+                        <td>IP cameras or streaming servers</td>
+                        <td>Remote monitoring, IP cameras</td>
+                    </tr>
+                </table>
+
+                <div class="step-box">
+                    <h4>Setup Steps</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Click "Settings" menu -> "Open Settings...".</li>
+                        <li>Select the source type in "Video Settings".</li>
+                        <li>Enter the required parameters for that type.</li>
+                        <li>Click "OK" to save.</li>
+                    </ol>
+                </div>
+
+                <h3>NDI Settings</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/05_video_source_settings.png" alt="NDI Settings">
+                    <div class="screenshot-caption">Fig 5: NDI Source Selection</div>
+                </div>
+
+                <div class="info-box">
+                    <h4>Searching for NDI Sources</h4>
+                    <p>The software automatically scans the LAN for NDI sources. If none appear, check:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>NDI source is ON and active.</li>
+                        <li>PC and NDI source are on the same subnet.</li>
+                        <li>Windows Firewall is not blocking NDI.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- OSC Connection -->
+            <section id="osc">
+                <h2>OSC Connection Settings</h2>
+
+                <p>The software uses OSC (Open Sound Control) protocol to communicate with ETC/EOS consoles for Cue and
+                    Channel commands.</p>
+
+                <h3>Console Settings</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/06_osc_settings_console.png" alt="Console Settings">
+                    <div class="screenshot-caption">Fig 6: ETC/EOS Console OSC Output Configuration</div>
+                </div>
+
+                <div class="step-box">
+                    <h4>Console Configuration Steps</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Enter Console Settings menu.</li>
+                        <li>Go to Setup > System Settings > Show Control.</li>
+                        <li>Enable OSC RX and TX.</li>
+                        <li>Set target IP to your PC's IP address.</li>
+                        <li>Set Port to 8000 (default software listening port).</li>
+                    </ol>
+                </div>
+
+                <h3>Software Settings</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/07_osc_settings_software.png"
+                        alt="Software OSC Settings">
+                    <div class="screenshot-caption">Fig 7: Software OSC Configuration</div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>OSC Port</td>
+                        <td>8000</td>
+                        <td>Port to receive incoming OSC messages</td>
+                    </tr>
+                    <tr>
+                        <td>Console IP</td>
+                        <td>-</td>
+                        <td>IP of the console (for requesting extra info)</td>
+                    </tr>
+                    <tr>
+                        <td>Console Port</td>
+                        <td>3032</td>
+                        <td>UDP Port for sending commands to console</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <h4>⚠️ Important</h4>
+                    <p>Ensure PC and Console are on the same subnet and Windows Firewall allows UDP Port 8000.</p>
+                </div>
+            </section>
+
+            <!-- Cue Mode Operation -->
+            <section id="cue-mode">
+                <h2>Cue Mode Operation</h2>
+
+                <p>Cue Mode is the primary mode, capturing screenshots automatically when the console fires a Cue.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/08_cue_mode_interface.png" alt="Cue Mode">
+                    <div class="screenshot-caption">Fig 8: Cue Mode displaying current Cue and remaining fade time</div>
+                </div>
+
+                <h3>Cue Mode Workflow</h3>
+                <div class="step-box">
+                    <h4>Automatic Workflow</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Software receives console signal.</li>
+                        <li>Displays current Cue # and remaining time in real-time.</li>
+                        <li>When Cue completes (fade ends), a screenshot is taken.</li>
+                        <li>The record appears in the right-side log table.</li>
+                    </ol>
+                </div>
+
+                <h3>Start Tracking</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/09_recording_started.png" alt="Start Tracking">
+                    <div class="screenshot-caption">Fig 9: Click "Start Recording" to begin auto-capture</div>
+                </div>
+
+                <div class="step-box">
+                    <h4>Operation</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Verify video and OSC connections.</li>
+                        <li>Click "▶ Start Recording" (button turns red).</li>
+                        <li>Fire Cues on the console.</li>
+                        <li>Software captures automatically upon Cue completion.</li>
+                    </ol>
+                </div>
+
+                <h3>Cue Record Table</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/10_cue_records_table.png" alt="Record Table">
+                    <div class="screenshot-caption">Fig 10: Master Log Table with captured entries</div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Cue #</td>
+                        <td>Cue ID Number</td>
+                    </tr>
+                    <tr>
+                        <td>List</td>
+                        <td>Cue List ID</td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td>Duration in seconds</td>
+                    </tr>
+                    <tr>
+                        <td>Detail</td>
+                        <td>Fade details from console (e.g., 5/6)</td>
+                    </tr>
+                    <tr>
+                        <td>Screenshot</td>
+                        <td>Thumbnail preview</td>
+                    </tr>
+                    <tr>
+                        <td>Video</td>
+                        <td>Linked recording file and timestamp</td>
+                    </tr>
+                    <tr>
+                        <td>Notes</td>
+                        <td>Editable text comments</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>Smart Update Mechanism</h4>
+                    <p>If the same Cue ID fires again:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Same time: No action (prevents duplicates).</li>
+                        <li>Different time: Automatically updates duration and recaptures image.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CH Mode Operation -->
+            <section id="ch-mode">
+                <h2>CH Mode Operation</h2>
+
+                <p>CH Mode is ideal for documenting static parameter settings. Captured when Chan commands are detected.
+                </p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/11_ch_mode_interface.png" alt="CH Mode">
+                    <div class="screenshot-caption">Fig 11: CH Mode tracking specified Channels</div>
+                </div>
+
+                <h3>CH Mode Workflow</h3>
+                <div class="step-box">
+                    <h4>Automatic Workflow</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Software receives Chan command (e.g., <code>Chan 1</code>).</li>
+                        <li>Displays current Chan ID.</li>
+                        <li>Waits for Level command (e.g., <code>@ Full</code>).</li>
+                        <li>Captures screenshot after a 1-second delay.</li>
+                        <li>Entry appears in log table.</li>
+                    </ol>
+                </div>
+
+                <h3>Supported Command Formats</h3>
+                <table>
+                    <tr>
+                        <th>Format</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>Chan X</td>
+                        <td>Single Channel</td>
+                        <td>Chan 1</td>
+                    </tr>
+                    <tr>
+                        <td>Chan X + Y</td>
+                        <td>Multiple Channels</td>
+                        <td>Chan 1 + 5</td>
+                    </tr>
+                    <tr>
+                        <td>Chan X Thru Y</td>
+                        <td>Channel Range</td>
+                        <td>Chan 1 Thru 3</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <h4>⚠️ Auto-Delay</h4>
+                    <p>To ensure lighting output has fully settled, the software <strong>waits 1 second</strong> after a
+                        Level command before capturing.</p>
+                </div>
+            </section>
+
+            <!-- Video Recording -->
+            <section id="recording">
+                <h2>Video Recording Feature</h2>
+
+                <p>The software has built-in recording to capture the entire show while syncing Cue timestamps.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/14_video_recording.png" alt="Start Recording">
+                    <div class="screenshot-caption">Fig 14: Click "Start Recording" for Master Video</div>
+                </div>
+
+                <h3>Recording Controls</h3>
+                <table>
+                    <tr>
+                        <th>Button</th>
+                        <th>Function</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>🎬 Start Recording</td>
+                        <td>Starts master video</td>
+                        <td>Prompts for project name</td>
+                    </tr>
+                    <tr>
+                        <td>⏸ Pause</td>
+                        <td>Pause/Resume</td>
+                        <td>Visible during active recording</td>
+                    </tr>
+                    <tr>
+                        <td>⏹ Stop</td>
+                        <td>Stop and Save</td>
+                        <td>Finalizes the MP4 file</td>
+                    </tr>
+                </table>
+
+                <h3>Recording Hud</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/15_recording_timer.png" alt="Timer">
+                    <div class="screenshot-caption">Fig 15: Recording timer displayed in video preview</div>
+                </div>
+
+                <div class="info-box">
+                    <h4>Cue Timestamping</h4>
+                    <p>During recording, Cue fire events are automatically logged with a timestamp relative to the
+                        video. Exported reports will include links that jump directly to that point in the video.</p>
+                </div>
+
+                <h3>Video Specs</h3>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Spec</th>
+                    </tr>
+                    <tr>
+                        <td>Format</td>
+                        <td>MP4 (H.264)</td>
+                    </tr>
+                    <tr>
+                        <td>Resolution</td>
+                        <td>Matches source</td>
+                    </tr>
+                    <tr>
+                        <td>Framerate</td>
+                        <td>30 fps</td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td>recordings/ProjectName_Time.mp4</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Manual Screenshot -->
+            <section id="manual">
+                <h2>Manual Screenshot Feature</h2>
+
+                <p>Beyond automation, you can capture manually to add missing entries or correct existing ones.</p>
+
+                <div class="step-box">
+                    <h4>Mode 1: New Entry</h4>
+                    <p>When <strong>no row is selected</strong>, clicking "📷 Manual Screenshot" will:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Cue Mode: Add a new record for current Cue.</li>
+                        <li>CH Mode: Add a new record for current Chan.</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Mode 2: Overwrite (Recommended)</h4>
+                    <p>When <strong>a row is selected</strong>, clicking "📷 Manual Screenshot" will:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Update ONLY the screenshot for that row.</li>
+                        <li>Keep existing metadata (Cue/Chan ID, etc.).</li>
+                        <li>Ideal for fixing entries where the original shot was poorly timed.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Project Management -->
+            <section id="project">
+                <h2>Project Management</h2>
+
+                <p>Manage multiple show files with full project saving and loading.</p>
+
+                <h3>Project Format</h3>
+                <div class="info-box">
+                    <h4>Project File (.json)</h4>
+                    <p>Contains record metadata but NOT actual images/videos. Media is stored in subfolders.</p>
+                </div>
+
+                <h3>Operations</h3>
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Menu Path</th>
+                        <th>Shortcut</th>
+                    </tr>
+                    <tr>
+                        <td>New Project</td>
+                        <td>File -> New</td>
+                        <td>Ctrl+N</td>
+                    </tr>
+                    <tr>
+                        <td>Open Project</td>
+                        <td>File -> Open</td>
+                        <td>Ctrl+O</td>
+                    </tr>
+                    <tr>
+                        <td>Save Project</td>
+                        <td>File -> Save</td>
+                        <td>Ctrl+S</td>
+                    </tr>
+                    <tr>
+                        <td>Save As</td>
+                        <td>File -> Save As</td>
+                        <td>Ctrl+Shift+S</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <h4>⚠️ Important</h4>
+                    <p>Always move the <code>screenshots</code> and <code>recordings</code> folders along with your
+                        <code>.json</code> project file when sharing.</p>
+                </div>
+            </section>
+
+            <!-- Export Features -->
+            <section id="export">
+                <h2>Export Features</h2>
+
+                <p>The software supports exporting Excel and PDF reports for archiving or sharing with crews.</p>
+
+                <h3>Excel Export</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/17_export_excel.png" alt="Excel Export">
+                    <div class="screenshot-caption">Fig 17: Professional Excel Report Example</div>
+                </div>
+
+                <div class="info-box">
+                    <h4>Excel Features</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Cue and CH data separated into sheets.</li>
+                        <li>Inlined images scaled for readability.</li>
+                        <li>Clickable video links.</li>
+                    </ul>
+                </div>
+
+                <h3>PDF Export</h3>
+                <div class="screenshot">
+                    <img src="../pic/etc cue PIC 4.0 manual_images/18_export_pdf.png" alt="PDF Export">
+                    <div class="screenshot-caption">Fig 18: PDF Report Layout</div>
+                </div>
+
+                <div class="step-box">
+                    <h4>Export Workflow</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Go to "Export" menu.</li>
+                        <li>Select "Excel" or "PDF".</li>
+                        <li>Choose filename and save.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section id="troubleshoot">
+                <h2>Troubleshooting</h2>
+
+                <div class="step-box">
+                    <h4>Q1: No connection to console?</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Check IP in both software and console.</li>
+                        <li>Verify firewall isn't blocking UDP 8000.</li>
+                        <li>Confirm OSC Output is ON on the console.</li>
+                        <li>Ensure console has enabled OSC output function</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q2: Video source won't connect?</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure USB camera is properly connected</li>
+                        <li>Confirm NDI source is ON and on same subnet</li>
+                        <li>Verify RTSP stream URL is correct</li>
+                        <li>Try restarting the software</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q3: Auto-capture not working?</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure "Start Recording" button is clicked (button should be RED)</li>
+                        <li>Verify "OSC Active" status is shown in bottom bar</li>
+                        <li>Confirm console is sending Cue signals</li>
+                        <li>Check if in Cue mode (not CH mode)</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q4: CH mode not capturing?</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure "Start Recording" button is clicked</li>
+                        <li>Confirm switched to CH mode</li>
+                        <li>Verify console Chan command format is correct</li>
+                        <li>Ensure Level command follows Chan command (e.g., @ Full)</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q5: PDF export shows squares for Chinese characters?</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure "Microsoft JhengHei" font is installed on system</li>
+                        <li>If not installed, software will automatically try other Chinese fonts</li>
+                    </ul>
+                </div>
+
+                <h3>Contact Support</h3>
+                <div class="info-box">
+                    <h4>Technical Support</h4>
+                    <p>Email: 566472@gmail.com</p>
+                    <p>Subject: ETC Cue Screenshot Logger Technical Support</p>
+                </div>
+            </section>
+
+            <!-- Translation Widget -->
+            <div id="google_translate_element"
+                style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; text-align: center;">
+                <p style="font-size: 0.8rem; color: #888;">Need full translation? Use Google Translate below:</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><strong>ETC Cue Screenshot Logger v4.0</strong></p>
+            <p>Developer: onedoller</p>
+            <p>Last Updated: 2026-02-08</p>
+            <p style="margin-top: 20px; opacity: 0.8;">This document applies to ETC Cue Screenshot Logger v4.0</p>
+        </footer>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

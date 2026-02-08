@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSC Absolute Timecode Tool v5.2 User Manual</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-95B5G5KQ8B');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .version {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .toc h2 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #2a5298;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            opacity: 0.95;
+            margin: 0;
+        }
+
+        .screenshot {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-caption {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .step-box {
+            background: #f8f9fa;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .step-box h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .info-box h4 {
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="osc time codeManual.html" class="lang-toggle">中文版本</a>
+            <h1>OSC Absolute Timecode Tool</h1>
+            <p class="version">Professional Audio & Timecode Sync Tool - User Manual</p>
+        </header>
+
+        <div class="content">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2>Table of Contents</h2>
+                <ul>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#install">Installation & Startup</a></li>
+                    <li><a href="#interface">Interface Overview</a></li>
+                    <li><a href="#playlist">Playlist Management</a></li>
+                    <li><a href="#playback">Playback Control</a></li>
+                    <li><a href="#timecode">Timecode Settings</a></li>
+                    <li><a href="#waveform">Waveform Display & Interaction</a></li>
+                    <li><a href="#ltc">LTC Timecode Output</a></li>
+                    <li><a href="#osc">OSC Sync & Mark Cue</a></li>
+                    <li><a href="#wav">WAV Audio Export</a></li>
+                    <li><a href="#sacn">sACN DMX Remote Control</a></li>
+                    <li><a href="#troubleshoot">Troubleshooting</a></li>
+                </ul>
+            </div>
+
+            <!-- Introduction -->
+            <section id="intro">
+                <h2>Introduction</h2>
+                <p><strong>OSC Absolute Timecode Tool</strong> is a professional timecode synchronization utility
+                    designed for lighting designers and technical crews. It communicates with ETC/EOS consoles via OSC
+                    protocol and outputs standard SMPTE LTC timecode.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_Timecode_Tool_Main.png"
+                        alt="Main Interface">
+                    <div class="screenshot-caption">Fig 1: OSC Absolute Timecode Tool Main Interface</div>
+                </div>
+
+                <h3>Key Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🎵 Playlist Management</h4>
+                        <p>Support for multi-track management, auto-next, and independent offsets.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📡 OSC Communication</h4>
+                        <p>Real-time timecode transmission to ETC/EOS lighting consoles.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔊 LTC Output</h4>
+                        <p>Output standard SMPTE timecode via audio interfaces.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Waveform Visualization</h4>
+                        <p>Real-time waveform display with zoom and click-to-seek support.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Cue Marking System</h4>
+                        <p>Quickly mark, edit, and import/export Cue timecode logs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💾 WAV Export</h4>
+                        <p>Export dual-channel WAV files (Left=LTC, Right=Music).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎛️ sACN Remote</h4>
+                        <p>Remote playback control via DMX network (sACN).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation -->
+            <section id="install">
+                <h2>Installation & Startup</h2>
+
+                <h3>System Requirements</h3>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Requirement</th>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>Windows 10/11</td>
+                    </tr>
+                    <tr>
+                        <td>Network</td>
+                        <td>Required for OSC/sACN features</td>
+                    </tr>
+                    <tr>
+                        <td>Audio Device</td>
+                        <td>Required for LTC output</td>
+                    </tr>
+                </table>
+
+                <h3>First Startup</h3>
+                <p>Upon launching the software, you will see the activation window:</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Activation_Window.png" alt="Activation Window">
+                    <div class="screenshot-caption">Fig 2: Startup and Licensing Window</div>
+                </div>
+
+                <div class="step-box">
+                    <h4>Activation Methods</h4>
+                    <p><strong>1. Trial Mode:</strong> Click "Start Trial (7 days)" for 7 days of free access.</p>
+                    <p><strong>2. Official License:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Click "Open Activation Website" to go to the licensing site.</li>
+                        <li>Enter your Email and Machine ID to get your activation code.</li>
+                        <li>Enter the code and click "Activate".</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Interface Overview -->
+            <section id="interface">
+                <h2>Interface Overview</h2>
+
+                <h3>Main Layout</h3>
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Interface_Overview.png" alt="Full Interface">
+                    <div class="screenshot-caption">Fig 3: Full Interface Overview</div>
+                </div>
+
+                <h3>Area Descriptions</h3>
+                <table>
+                    <tr>
+                        <th>Area</th>
+                        <th>Location</th>
+                        <th>Function</th>
+                    </tr>
+                    <tr>
+                        <td>Top Toolbar</td>
+                        <td>Top</td>
+                        <td>File, WAV Export, sACN settings</td>
+                    </tr>
+                    <tr>
+                        <td>Transport Controls</td>
+                        <td>Top Left</td>
+                        <td>Play/Pause/Stop, Prev/Next, Zoom</td>
+                    </tr>
+                    <tr>
+                        <td>Timecode Settings</td>
+                        <td>Mid Left</td>
+                        <td>Offset, FPS settings, TC modes</td>
+                    </tr>
+                    <tr>
+                        <td>Time Display</td>
+                        <td>Mid Left</td>
+                        <td>Clock and relative TC display</td>
+                    </tr>
+                    <tr>
+                        <td>Waveform View</td>
+                        <td>Center</td>
+                        <td>Audio visualizer, playhead, Cue markers</td>
+                    </tr>
+                    <tr>
+                        <td>LTC Controls</td>
+                        <td>Center</td>
+                        <td>LTC enable, volume, device selection</td>
+                    </tr>
+                    <tr>
+                        <td>OSC Settings</td>
+                        <td>Bottom Center</td>
+                        <td>IP, Port, Cue #, Mark buttons</td>
+                    </tr>
+                    <tr>
+                        <td>Logging Area</td>
+                        <td>Bottom</td>
+                        <td>Cue Log and OSC Log dual windows</td>
+                    </tr>
+                    <tr>
+                        <td>Playlist</td>
+                        <td>Right</td>
+                        <td>Track list and management</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Playlist Management -->
+            <section id="playlist">
+                <h2>Playlist Management</h2>
+
+                <h3>Adding Files</h3>
+                <p>Click "Add Files to Playlist" to select audio files:</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Add_Files.png" alt="Add Files">
+                    <div class="screenshot-caption">Fig 4: Audio File Selection Dialog</div>
+                </div>
+
+                <div class="info-box">
+                    <h4>Supported Formats</h4>
+                    <p>• MP3 • WAV • OGG</p>
+                </div>
+
+                <h3>Playlist Operations</h3>
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Playlist_Area.png" alt="Playlist Area">
+                    <div class="screenshot-caption">Fig 5: Playlist entries and control buttons</div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Button</th>
+                        <th>Function</th>
+                    </tr>
+                    <tr>
+                        <td>▲ / ▼</td>
+                        <td>Move track up or down in the sequence.</td>
+                    </tr>
+                    <tr>
+                        <td>Remove</td>
+                        <td>Delete track from current list.</td>
+                    </tr>
+                    <tr>
+                        <td>Save</td>
+                        <td>Save playlist to a JSON file.</td>
+                    </tr>
+                    <tr>
+                        <td>Load</td>
+                        <td>Restore a previously saved playlist.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Playback Control -->
+            <section id="playback">
+                <h2>Playback Control</h2>
+
+                <h3>Transport Buttons</h3>
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Playback_Controls.png" alt="Controls">
+                    <div class="screenshot-caption">Fig 6: Playback and Navigation Controls</div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Button</th>
+                        <th>Function</th>
+                        <th>Shortcut</th>
+                    </tr>
+                    <tr>
+                        <td>Play / Pause</td>
+                        <td>Toggle playback</td>
+                        <td>Space</td>
+                    </tr>
+                    <tr>
+                        <td>⏮ Prev / ⏭ Next</td>
+                        <td>Track navigation</td>
+                        <td>← / →</td>
+                    </tr>
+                    <tr>
+                        <td>Stop</td>
+                        <td>Stop playback</td>
+                        <td>Esc</td>
+                    </tr>
+                </table>
+
+                <h3>Waveform Zoom</h3>
+                <p>Use "Zoom -" and "Zoom +" to adjust visual detail. Zoom in for precise Cue marking, zoom out for full
+                    overview.</p>
+            </section>
+
+            <!-- Timecode Settings -->
+            <section id="timecode">
+                <h2>Timecode Settings</h2>
+
+                <h3>Track Offset</h3>
+                <p>Set starting timecode for each track. Format <code>HH:MM:SS:ss</code>. e.g. <code>00:01:00:00</code>
+                    starts at 1 minute mark.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Time_Display.png" alt="Time Display">
+                    <div class="screenshot-caption">Fig 7: Offset and FPS selection area</div>
+                </div>
+
+                <h3>FPS Selection</h3>
+                <table>
+                    <tr>
+                        <th>FPS</th>
+                        <th>Standard</th>
+                    </tr>
+                    <tr>
+                        <td>24 fps</td>
+                        <td>Film</td>
+                    </tr>
+                    <tr>
+                        <td>25 fps</td>
+                        <td>PAL / Europe TV</td>
+                    </tr>
+                    <tr>
+                        <td>30 fps</td>
+                        <td>NTSC / NA TV</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Waveform Display -->
+            <section id="waveform">
+                <h2>Waveform Display & Interaction</h2>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Waveform_Display.png" alt="Waveform">
+                    <div class="screenshot-caption">Fig 8: Waveform view - Green = Cue, Red = Playhead</div>
+                </div>
+
+                <div class="info-box">
+                    <h4>Click-to-Seek</h4>
+                    <p>Directly click anywhere on the waveform to jump to that timestamp instantly.</p>
+                </div>
+            </section>
+
+            <!-- LTC Output -->
+            <section id="ltc">
+                <h2>LTC Timecode Output</h2>
+
+                <p>Outputs standard Linear Timecode (LTC) via audio channels.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/LTC_Controls.png" alt="LTC Controls">
+                    <div class="screenshot-caption">Fig 9: LTC Panel - Switch, Gain, and Device selection</div>
+                </div>
+
+                <h3>Status Indicators</h3>
+                <table>
+                    <tr>
+                        <th>Status</th>
+                        <th>Color</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>⚫ OFF</td>
+                        <td>Gray</td>
+                        <td>LTC output disabled</td>
+                    </tr>
+                    <tr>
+                        <td>🟢 ON</td>
+                        <td>Green</td>
+                        <td>LTC output enabled, standby</td>
+                    </tr>
+                    <tr>
+                        <td>🟢 RUNNING</td>
+                        <td>Bright Green</td>
+                        <td>LTC actively outputting timecode</td>
+                    </tr>
+                    <tr>
+                        <td>🟡 PAUSED</td>
+                        <td>Yellow</td>
+                        <td>LTC paused</td>
+                    </tr>
+                </table>
+
+                <h3>Device Modes</h3>
+                <table>
+                    <tr>
+                        <th>LTC Output</th>
+                        <th>Left Channel (L)</th>
+                        <th>Right Channel (R)</th>
+                    </tr>
+                    <tr>
+                        <td>ON</td>
+                        <td>LTC Signal</td>
+                        <td>Music (Mono)</td>
+                    </tr>
+                    <tr>
+                        <td>OFF</td>
+                        <td>Music (Mono)</td>
+                        <td>Music (Mono)</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <h4>⚠️ Important Reminder</h4>
+                    <p>Please select a "dedicated audio device" for LTC output. Do not share with main speakers to avoid mixing timecode with music.</p>
+                    <p><strong>Channel Configuration:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>When LTC Output is ON:</strong> Left Channel (L) outputs LTC timecode signal, Right Channel (R) outputs audio</li>
+                        <li><strong>When LTC Output is OFF:</strong> Both Left (L) and Right (R) channels output audio (stereo)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- OSC Sync -->
+            <section id="osc">
+                <h2>OSC Sync & Mark Cue</h2>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_IP_Settings.png" alt="IP">
+                    <div class="screenshot-caption">Fig 10: OSC Network Connection</div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_Settings.png" alt="OSC Sync">
+                    <div class="screenshot-caption">Fig 11: Mark Cue setup and Path settings</div>
+                </div>
+
+                <h3>Marking Cues</h3>
+                <div class="step-box">
+                    <ol style="margin-left: 20px;">
+                        <li>Play your track.</li>
+                        <li>Click "Mark Cue" at desired timestamp.</li>
+                        <li>Command is sent to console and logged locally.</li>
+                    </ol>
+                </div>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Cue_Log.png" alt="Log">
+                    <div class="screenshot-caption">Fig 12: Detailed Cue Mark Log</div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Operation</th>
+                    </tr>
+                    <tr>
+                        <td>Edit Cue</td>
+                        <td>Double-click row to edit ID or Time.</td>
+                    </tr>
+                    <tr>
+                        <td>Export</td>
+                        <td>Save log as CSV for documentation.</td>
+                    </tr>
+                    <tr>
+                        <td>Resend</td>
+                        <td>Broadcast all logged Cues to the console.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- WAV Audio Export -->
+            <section id="wav">
+                <h2>WAV Audio Export</h2>
+
+                <p>Generate production-ready WAV files with baked-in LTC.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/WAV_Export.png" alt="WAV Export">
+                    <div class="screenshot-caption">Fig 13: Export settings for split-track WAV files</div>
+                </div>
+
+                <h3>Export Specifications</h3>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Specification</th>
+                    </tr>
+                    <tr>
+                        <td>Format</td>
+                        <td>WAV (RIFF)</td>
+                    </tr>
+                    <tr>
+                        <td>Sample Rate</td>
+                        <td>48,000 Hz</td>
+                    </tr>
+                    <tr>
+                        <td>Bit Depth</td>
+                        <td>16-bit PCM</td>
+                    </tr>
+                    <tr>
+                        <td>Channels</td>
+                        <td>Stereo (2ch)</td>
+                    </tr>
+                    <tr>
+                        <td>Left Channel</td>
+                        <td>LTC timecode signal</td>
+                    </tr>
+                    <tr>
+                        <td>Right Channel</td>
+                        <td>Original music</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- sACN Remote -->
+            <section id="sacn">
+                <h2>sACN DMX Remote Control</h2>
+
+                <p>Enables remote transport control via lighting console DMX values.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/sACN_Settings.png" alt="sACN">
+                    <div class="screenshot-caption">Fig 14: sACN Universe and Address settings</div>
+                </div>
+
+                <h3>Configuration</h3>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Universe</td>
+                        <td>1</td>
+                        <td>DMX Universe number</td>
+                    </tr>
+                    <tr>
+                        <td>Play</td>
+                        <td>Ch 1</td>
+                        <td>Playback trigger channel</td>
+                    </tr>
+                    <tr>
+                        <td>Pause</td>
+                        <td>Ch 2</td>
+                        <td>Pause trigger channel</td>
+                    </tr>
+                    <tr>
+                        <td>Stop</td>
+                        <td>Ch 3</td>
+                        <td>Stop trigger channel</td>
+                    </tr>
+                    <tr>
+                        <td>Previous</td>
+                        <td>Ch 4</td>
+                        <td>Previous track channel</td>
+                    </tr>
+                    <tr>
+                        <td>Next</td>
+                        <td>Ch 5</td>
+                        <td>Next track channel</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section id="troubleshoot">
+                <h2>Troubleshooting</h2>
+
+                <h3>Common Issues</h3>
+
+                <div class="step-box">
+                    <h4>Q1: Cannot connect to lighting console</h4>
+                    <ul>
+                        <li>Verify the IP address is correct (use ping to test)</li>
+                        <li>Confirm the Port number matches console settings</li>
+                        <li>Check if Windows Firewall is blocking Port 8000</li>
+                        <li>Ensure OSC receive function is enabled on the console</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q2: No LTC output sound</h4>
+                    <ul>
+                        <li>Confirm LTC Out switch is turned ON</li>
+                        <li>Verify the correct audio device is selected</li>
+                        <li>Check if volume is set too low</li>
+                        <li>Ensure the device is not occupied by another program</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q3: sACN cannot receive signal</h4>
+                    <ul>
+                        <li>Confirm computer and console are on the same network segment</li>
+                        <li>Check if Windows Firewall is blocking UDP Port 5568</li>
+                        <li>Verify Universe number matches</li>
+                        <li>Ensure console is outputting sACN signal</li>
+                    </ul>
+                </div>
+
+                <h3>Contact Support</h3>
+                <div class="info-box">
+                    <h4>Technical Support</h4>
+                    <p>Email: 566472@gmail.com</p>
+                    <p>Subject: OSC Timecode Tool Technical Support</p>
+                </div>
+            </section>
+
+            <!-- Translation Widget -->
+            <div id="google_translate_element"
+                style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; text-align: center;">
+                <p style="font-size: 0.8rem; color: #888;">Need full translation? Use Google Translate below:</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><strong>OSC Absolute Timecode Tool v5.2</strong></p>
+            <p>Developer: onedoller</p>
+            <p>Last Updated: 2026-02-08</p>
+            <p style="margin-top: 20px; opacity: 0.8;">This document applies to OSC Absolute Timecode Tool v5.2</p>
+        </footer>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
