@@ -321,6 +321,7 @@
                     <li><a href="#interface">Interface Overview</a></li>
                     <li><a href="#video">Video Input Settings</a></li>
                     <li><a href="#osc">OSC Connection Settings</a></li>
+                    <li><a href="#sacn">sACN DMX Trigger Setup</a></li>
                     <li><a href="#cue-mode">Cue Mode Operation</a></li>
                     <li><a href="#ch-mode">CH Mode Operation</a></li>
                     <li><a href="#recording">Video Recording Feature</a></li>
@@ -377,6 +378,10 @@
                     <div class="feature-card">
                         <h4>🔄 Overwrite Mode</h4>
                         <p>Supports updating records by overwriting, convenient for correcting screenshots.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📡 sACN DMX Trigger</h4>
+                        <p>Supports receiving sACN DMX signals with configurable trigger channel and threshold for automatic capture.</p>
                     </div>
                 </div>
             </section>
@@ -615,6 +620,102 @@
                 </div>
             </section>
 
+            <!-- sACN DMX Trigger Setup -->
+            <section id="sacn">
+                <h2>sACN DMX Trigger Setup</h2>
+
+                <p>The software supports receiving DMX signals via sACN (Streaming ACN) protocol. You can configure specific DMX channels as screenshot trigger conditions, perfect for synchronizing captures with lighting effects.</p>
+
+                <h3>sACN Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📡 sACN Signal Reception</h4>
+                        <p>Automatically receives sACN DMX signals from the network without additional hardware.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎯 Custom Trigger Channel</h4>
+                        <p>Specify any DMX channel (1-512) as the trigger source.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚡ Edge Trigger</h4>
+                        <p>Triggers only once when value rises above threshold, preventing duplicate captures.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎮 Manual Trigger Control</h4>
+                        <p>Manually control screenshot timing via DMX signals, synchronized with lighting effects.</p>
+                    </div>
+                </div>
+
+                <h3>sACN Configuration Steps</h3>
+                <div class="step-box">
+                    <h4>Setup Procedure</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Click "Settings" menu → "Open Settings..."</li>
+                        <li>Enable sACN reception in the "sACN Settings" section</li>
+                        <li>Set Universe number (default is 1)</li>
+                        <li>Set trigger channel (1-512, e.g., channel 1)</li>
+                        <li>Set trigger threshold (0-255, e.g., 128)</li>
+                        <li>Click "OK" to save settings</li>
+                    </ol>
+                </div>
+
+                <h3>Trigger Logic</h3>
+                <table>
+                    <tr>
+                        <th>Setting</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Universe</td>
+                        <td>1</td>
+                        <td>sACN Universe number (1-63999)</td>
+                    </tr>
+                    <tr>
+                        <td>Trigger Channel</td>
+                        <td>1</td>
+                        <td>DMX channel number (1-512)</td>
+                    </tr>
+                    <tr>
+                        <td>Trigger Threshold</td>
+                        <td>128</td>
+                        <td>Screenshot triggers when DMX value exceeds this (0-255)</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>Edge Trigger Mechanism</h4>
+                    <p>The software uses edge triggering to capture once when DMX value rises:</p>
+                    <ul style="margin-left: 20px;">
+                        <li>When DMX value changes from ≤ threshold to > threshold: Trigger capture</li>
+                        <li>When DMX value remains > threshold: Do not re-trigger</li>
+                        <li>When DMX value changes from > threshold to ≤ threshold: Reset trigger state</li>
+                    </ul>
+                    <p>This ensures each lighting change triggers only one screenshot, avoiding duplicate records.</p>
+                </div>
+
+                <h3>Usage Example</h3>
+                <div class="step-box">
+                    <h4>Example: Sync with Lighting Effects</h4>
+                    <p>Suppose you want to capture screenshots when specific lighting effects trigger:</p>
+                    <ol style="margin-left: 20px;">
+                        <li>On the console, assign a dedicated DMX channel (e.g., channel 512) as the trigger signal</li>
+                        <li>In the software, set sACN Universe to 1, trigger channel to 512, threshold to 1</li>
+                        <li>In Cues requiring capture, set channel 512 to 255</li>
+                        <li>When that Cue executes, the software automatically captures the current frame</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Network Configuration Notes</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure the PC is on the same subnet as the sACN source device</li>
+                        <li>sACN uses Multicast addresses (239.255.0.0/16) - ensure network devices support IGMP</li>
+                        <li>Windows Firewall may need to allow sACN-related network traffic</li>
+                    </ul>
+                </div>
+            </section>
+
             <!-- Cue Mode Operation -->
             <section id="cue-mode">
                 <h2>Cue Mode Operation</h2>
@@ -797,7 +898,7 @@
                 <h3>Recording Hud</h3>
                 <div class="screenshot">
                     <img src="../pic/etc cue PIC 4.0 manual_images/15_recording_timer.png" alt="Timer">
-                    <div class="screenshot-caption">Fig 15: Recording timer displayed in video preview</div>
+                    <div class="screenshot-caption">Fig 15: Recording timer displayed in bottom right corner of video preview</div>
                 </div>
 
                 <div class="info-box">
@@ -838,22 +939,25 @@
                 <p>Beyond automation, you can capture manually to add missing entries or correct existing ones.</p>
 
                 <div class="step-box">
-                    <h4>Mode 1: New Entry</h4>
-                    <p>When <strong>no row is selected</strong>, clicking "📷 Manual Screenshot" will:</p>
-                    <ul style="margin-left: 20px;">
-                        <li>Cue Mode: Add a new record for current Cue.</li>
-                        <li>CH Mode: Add a new record for current Chan.</li>
-                    </ul>
-                </div>
-
-                <div class="step-box">
-                    <h4>Mode 2: Overwrite (Recommended)</h4>
+                    <h4>Overwrite Mode</h4>
                     <p>When <strong>a row is selected</strong>, clicking "📷 Manual Screenshot" will:</p>
                     <ul style="margin-left: 20px;">
                         <li>Update ONLY the screenshot for that row.</li>
                         <li>Keep existing metadata (Cue/Chan ID, etc.).</li>
                         <li>Ideal for fixing entries where the original shot was poorly timed.</li>
                     </ul>
+                </div>
+
+                <h3>Manual Trigger via sACN DMX Signal</h3>
+                <p>When sACN is enabled, you can also manually control screenshot timing via DMX signals:</p>
+
+                <div class="step-box">
+                    <h4>sACN Manual Trigger Process</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Enable sACN reception in settings and configure the trigger channel</li>
+                        <li>When the configured DMX channel value exceeds the threshold, the software automatically captures</li>
+                        <li>Only updates the screenshot without changing Cue/Chan information</li>
+                    </ol>
                 </div>
             </section>
 

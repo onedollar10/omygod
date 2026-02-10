@@ -332,6 +332,7 @@
                     <li><a href="#interface">介面總覽</a></li>
                     <li><a href="#video">視訊輸入設定</a></li>
                     <li><a href="#osc">OSC 連線設定</a></li>
+                    <li><a href="#sacn">sACN DMX 觸發設定</a></li>
                     <li><a href="#cue-mode">Cue 模式操作</a></li>
                     <li><a href="#ch-mode">CH 模式操作</a></li>
                     <li><a href="#recording">視訊錄影功能</a></li>
@@ -386,6 +387,10 @@
                     <div class="feature-card">
                         <h4>🔄 覆蓋模式</h4>
                         <p>支援選取記錄後覆蓋更新，方便修正截圖</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📡 sACN DMX 觸發</h4>
+                        <p>支援接收 sACN DMX 訊號，可設定觸發通道與閾值進行自動截圖</p>
                     </div>
                 </div>
             </section>
@@ -622,6 +627,102 @@
                 </div>
             </section>
 
+            <!-- sACN DMX 觸發設定 -->
+            <section id="sacn">
+                <h2>sACN DMX 觸發設定</h2>
+
+                <p>軟體支援透過 sACN (Streaming ACN) 協議接收 DMX 訊號，可設定特定 DMX 通道作為截圖觸發條件，適合需要與燈光效果同步截圖的場合。</p>
+
+                <h3>sACN 功能特色</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📡 接收 sACN 訊號</h4>
+                        <p>自動接收網路中的 sACN DMX 訊號，無需額外硬體</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎯 自定義觸發通道</h4>
+                        <p>可指定任意 DMX 通道（1-512）作為觸發來源</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚡ 邊緣觸發機制</h4>
+                        <p>只在數值由低變高時觸發一次，避免重複截圖</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎮 手動觸發控制</h4>
+                        <p>可透過 DMX 訊號手動控制截圖時機，與燈光效果同步</p>
+                    </div>
+                </div>
+
+                <h3>sACN 設定步驟</h3>
+                <div class="step-box">
+                    <h4>設定流程</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>點擊選單「設定」→「開啟設定...」</li>
+                        <li>在「sACN 設定」區啟用 sACN 接收功能</li>
+                        <li>設定 Universe 編號（預設為 1）</li>
+                        <li>設定觸發通道（1-512，例如：通道 1）</li>
+                        <li>設定觸發閾值（0-255，例如：128）</li>
+                        <li>點擊「確定」儲存設定</li>
+                    </ol>
+                </div>
+
+                <h3>觸發邏輯說明</h3>
+                <table>
+                    <tr>
+                        <th>設定項目</th>
+                        <th>預設值</th>
+                        <th>說明</th>
+                    </tr>
+                    <tr>
+                        <td>Universe</td>
+                        <td>1</td>
+                        <td>sACN Universe 編號（1-63999）</td>
+                    </tr>
+                    <tr>
+                        <td>觸發通道</td>
+                        <td>1</td>
+                        <td>DMX 通道編號（1-512）</td>
+                    </tr>
+                    <tr>
+                        <td>觸發閾值</td>
+                        <td>128</td>
+                        <td>當 DMX 值超過此數值時觸發（0-255）</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>邊緣觸發機制</h4>
+                    <p>軟體採用邊緣觸發機制，只在 DMX 數值由低變高時觸發一次截圖：</p>
+                    <ul style="margin-left: 20px;">
+                        <li>當 DMX 值從 ≤ 閾值 變為 > 閾值：觸發截圖</li>
+                        <li>當 DMX 值持續 > 閾值：不重複觸發</li>
+                        <li>當 DMX 值從 > 閾值 變為 ≤ 閾值：重置觸發狀態</li>
+                    </ul>
+                    <p>此機制確保每個燈光變化只會觸發一次截圖，避免重複記錄。</p>
+                </div>
+
+                <h3>使用場景範例</h3>
+                <div class="step-box">
+                    <h4>範例：與燈光效果同步截圖</h4>
+                    <p>假設您想要在特定燈光效果觸發時自動截圖：</p>
+                    <ol style="margin-left: 20px;">
+                        <li>在燈控台上設定一個專門的 DMX 通道（例如通道 512）作為觸發信號</li>
+                        <li>在軟體中設定 sACN Universe 為 1，觸發通道為 512，閾值為 1</li>
+                        <li>在需要截圖的 Cue 中，將通道 512 設定為 255</li>
+                        <li>當該 Cue 執行時，軟體會自動截取當下畫面</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ 網路設定注意事項</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>請確保電腦與發送 sACN 訊號的設備在同一網段</li>
+                        <li>sACN 使用 Multicast 位址（239.255.0.0/16），請確保網路設備支援 IGMP</li>
+                        <li>Windows 防火牆可能需要允許 sACN 相關的網路流量</li>
+                    </ul>
+                </div>
+            </section>
+
             <!-- Cue 模式操作 -->
             <section id="cue-mode">
                 <h2>Cue 模式操作</h2>
@@ -805,7 +906,7 @@
                 <h3>錄影時間顯示</h3>
                 <div class="screenshot">
                     <img src="../pic/etc cue PIC 4.0 manual_images/15_recording_timer.png" alt="錄影時間">
-                    <div class="screenshot-caption">圖 15：錄影時間計時器顯示在視訊預覽右上角</div>
+                    <div class="screenshot-caption">圖 15：錄影時間計時器顯示在視訊預覽右下角</div>
                 </div>
 
                 <div class="info-box">
@@ -844,25 +945,26 @@
 
                 <p>除了自動截圖外，軟體也提供手動截圖功能，方便補充記錄或修正截圖。</p>
 
-                <h3>兩種操作模式</h3>
-
                 <div class="step-box">
-                    <h4>模式一：新增記錄</h4>
-                    <p>當表格中<strong>沒有選取任何列</strong>時，點擊「📷 手動截圖」會：</p>
-                    <ul style="margin-left: 20px;">
-                        <li>Cue 模式：新增一筆當前 Cue 的記錄</li>
-                        <li>CH 模式：新增一筆當前 Chan 的記錄</li>
-                    </ul>
-                </div>
-
-                <div class="step-box">
-                    <h4>模式二：覆蓋更新（推薦）</h4>
+                    <h4>覆蓋更新模式</h4>
                     <p>當表格中<strong>有選取列</strong>時，點擊「📷 手動截圖」會：</p>
                     <ul style="margin-left: 20px;">
                         <li>只更新該列的截圖</li>
                         <li>保留原有的 Cue/Chan 編號與其他資訊</li>
                         <li>適合修正拍攝效果不佳的截圖</li>
                     </ul>
+                </div>
+
+                <h3>透過 sACN DMX 訊號手動觸發</h3>
+                <p>當啟用 sACN 功能後，您也可以透過 DMX 訊號來手動控制截圖時機：</p>
+
+                <div class="step-box">
+                    <h4>sACN 手動觸發流程</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>在設定中啟用 sACN 接收功能並設定觸發通道</li>
+                        <li>當設定的 DMX 通道數值超過閾值時，軟體會自動截圖</li>
+                        <li>只會更新截圖，不會改變 Cue/Chan 資訊</li>
+                    </ol>
                 </div>
 
                 <!-- 手動截圖圖片已移除，僅保留文字說明 -->
