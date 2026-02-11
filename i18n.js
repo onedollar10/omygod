@@ -72,8 +72,11 @@ const translations = {
         "cue_f4_desc": "一鍵匯出 Excel 與 PDF 報告。支援將 Cue 模式與 CH 模式拆分為獨立檔案，與中文內容完美相容。",
         "cue_f4_hl": "排版優化： CH 模式匯出時自動隱藏秒數，圖片放大顯示，並自動最佳化列高與欄寬，提供最專業的交付文件。",
         "cue_f5_title": "視訊錄影與時間戳",
-        "cue_f5_desc": "全新的 v3.0 錄影模組。在錄製現場畫面的同時，自動標記每一個 Cue 的精確影影格時間。",
-        "cue_f5_hl": "點擊即播： 匯出資料包含時間碼鏈結，點擊即可開啟影片並自動跳轉至對應 Cue 點，徹底解決回找關鍵畫面費時的問題。"
+        "cue_f5_desc": "全新的錄影模組。在錄製現場畫面的同時，自動標記每一個 Cue 的精確影影格時間。",
+        "cue_f5_hl": "點擊即播： 匯出資料包含時間碼鏈結，點擊即可開啟影片並自動跳轉至對應 Cue 點，徹底解決回找關鍵畫面費時的問題。",
+        "cue_f6_title": "sACN 輸入支援",
+        "cue_f6_desc": "支援 sACN 網路協定輸入。透過接收 sACN 訊號來觸發截圖，提供更靈活的自動化記錄選擇。",
+        "cue_f6_hl": "網路整合： 無需實體線路，透過網路即可接收控台訊號，支援標準 E1.31 sACN 協定。"
     },
     "en": {
         "nav_home": "Home",
@@ -148,8 +151,11 @@ const translations = {
         "cue_f4_desc": "One-click Excel & PDF export. Splits Cue and CH modes into separate files, with full Chinese character support.",
         "cue_f4_hl": "Layout Optimized: Hides seconds for CH mode, enlarges images, and optimizes row/column sizes for professional delivery.",
         "cue_f5_title": "Video Recording & Timestamps",
-        "cue_f5_desc": "Brand new v3.0 recording module. Records live video while automatically marking precise frame timestamps for every fired Cue.",
-        "cue_f5_hl": "Click to Play: Exported data includes timestamp links. Click to open the video and auto-seek to the exact Cue moment."
+        "cue_f5_desc": "Brand new recording module. Records live video while automatically marking precise frame timestamps for every fired Cue.",
+        "cue_f5_hl": "Click to Play: Exported data includes timestamp links. Click to open the video and auto-seek to the exact Cue moment.",
+        "cue_f6_title": "sACN Input Support",
+        "cue_f6_desc": "Supports sACN network protocol input. Triggers screenshots by receiving sACN signals, offering flexible automation options.",
+        "cue_f6_hl": "Network Integration: No physical cables needed. Receives console signals via network, supporting standard E1.31 sACN protocol."
     }
 };
 

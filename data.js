@@ -170,14 +170,16 @@ const software = [
             "Cue 模式自動截圖與去重",
             "CH 模式支援 Auto-Delay 拍照",
             "支援 Excel 與 PDF 專業匯出",
-            "v3.0 視訊錄影與精確時間戳功能"
+            "視訊錄影與精確時間戳功能",
+            "sACN 網路協定輸觸發截圖"
         ],
         features_en: [
             "Multi-Video Input (USB/NDI/RTSP)",
             "Cue Mode Auto-Screenshot & Dedup",
             "CH Mode with Auto-Delay Snap",
             "Professional Excel & PDF Export",
-            "v3.0 Video Recording & Precise Timestamps"
+            "Video Recording & Precise Timestamps",
+            "sACN Network Input & Auto-Triggering"
         ]
     }
 ];
@@ -198,6 +200,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-02-11",
+        content: "ETC Cue Photo Tool 更新：新增 sACN 網路協定觸發截圖功能",
+        content_en: "ETC Cue Photo Tool: Added sACN Network Trigger for Screenshots"
+    },
     {
         date: "2026-02-07",
         content: "全系列軟體新增線上說明書功能，歡迎查閱",
