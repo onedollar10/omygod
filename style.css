@@ -71,7 +71,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.8s ease-out;
+  transition: opacity 0.4s ease-out;
 }
 
 #intro-video {

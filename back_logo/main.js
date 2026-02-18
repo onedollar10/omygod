@@ -45,7 +45,7 @@ function setupIntro() {
         overlay.style.opacity = '0';
         setTimeout(() => {
             overlay.style.display = 'none';
-        }, 800);
+        }, 400); // 縮短延遲時間，讓進入網頁更迅速
     }
 }
 
