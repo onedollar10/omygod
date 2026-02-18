@@ -80,28 +80,39 @@ header {
   object-fit: cover;
 }
 
-#skip-btn {
+#intro-controls {
   position: absolute;
   bottom: 40px;
   right: 40px;
-  padding: 0.7rem 2rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 10002;
+}
+
+.control-btn {
+  padding: 0.7rem 1.8rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
   border-radius: 50px;
   cursor: pointer;
-  z-index: 10002;
   backdrop-filter: blur(10px);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 1px;
   transition: all 0.3s ease;
 }
 
-#skip-btn:hover {
+.control-btn:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: var(--primary);
   color: #fff;
   transform: translateY(-2px);
+}
+
+#unmute-btn {
+  background: rgba(0, 210, 255, 0.1);
+  border-color: rgba(0, 210, 255, 0.2);
+  color: var(--primary);
 }
 
 #loading-spinner {

@@ -16,8 +16,17 @@ function setupIntro() {
     const overlay = document.getElementById('intro-overlay');
     const video = document.getElementById('intro-video');
     const skipBtn = document.getElementById('skip-btn');
+    const unmuteBtn = document.getElementById('unmute-btn');
 
     if (!overlay || !video) return;
+
+    // 聲音按鈕邏輯
+    if (unmuteBtn) {
+        unmuteBtn.addEventListener('click', () => {
+            video.muted = false; // 解除靜音
+            unmuteBtn.style.display = 'none'; // 點擊後隱藏自己
+        });
+    }
 
     // 監聽跳過按鈕
     if (skipBtn) {
