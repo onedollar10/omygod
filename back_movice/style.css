@@ -78,30 +78,29 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: none;
 }
 
-#skip-btn {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  padding: 0.7rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
+#intro-start-prompt {
+  z-index: 10001;
+  text-align: center;
+}
+
+#start-btn {
+  padding: 1.2rem 3rem;
+  background: var(--primary);
+  border: none;
   border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 800;
   cursor: pointer;
-  z-index: 10002;
-  backdrop-filter: blur(10px);
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+  box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#skip-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: var(--primary);
-  color: #fff;
-  transform: translateY(-2px);
+#start-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 50px rgba(0, 210, 255, 0.6);
 }
 
 #loading-spinner {

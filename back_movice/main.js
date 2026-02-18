@@ -15,24 +15,31 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupIntro() {
     const overlay = document.getElementById('intro-overlay');
     const video = document.getElementById('intro-video');
-    const skipBtn = document.getElementById('skip-btn');
+    const startBtn = document.getElementById('start-btn');
+    const spinner = document.getElementById('loading-spinner');
+    const prompt = document.getElementById('intro-start-prompt');
 
-    if (!overlay || !video) return;
+    if (!overlay || !video || !startBtn) return;
 
-    // 監聽跳過按鈕
-    if (skipBtn) {
-        skipBtn.addEventListener('click', () => {
+    startBtn.addEventListener('click', () => {
+        prompt.style.display = 'none';
+        spinner.style.display = 'block';
+
+        // 嘗試播放
+        video.style.display = 'block';
+        video.play().then(() => {
+            spinner.style.display = 'none';
+        }).catch(err => {
+            console.error("播放被攔截:", err);
             hideOverlay();
         });
-    }
+    });
 
-    // 影片播放結束自動隱藏
     video.onended = () => {
         hideOverlay();
     };
 
     function hideOverlay() {
-        video.pause(); // 確保影片停止播放
         overlay.style.opacity = '0';
         setTimeout(() => {
             overlay.style.display = 'none';
