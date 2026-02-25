@@ -3,7 +3,6 @@
 let currentCategory = 'all';
 
 document.addEventListener('DOMContentLoaded', () => {
-    setupIntro();
     renderSoftware();
     renderFreeTools();
     renderFilters();
@@ -12,42 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModal();
 });
 
-function setupIntro() {
-    const overlay = document.getElementById('intro-overlay');
-    const video = document.getElementById('intro-video');
-    const skipBtn = document.getElementById('skip-btn');
-    const unmuteBtn = document.getElementById('unmute-btn');
 
-    if (!overlay || !video) return;
-
-    // 聲音按鈕邏輯
-    if (unmuteBtn) {
-        unmuteBtn.addEventListener('click', () => {
-            video.muted = false; // 解除靜音
-            unmuteBtn.style.display = 'none'; // 點擊後隱藏自己
-        });
-    }
-
-    // 監聽跳過按鈕
-    if (skipBtn) {
-        skipBtn.addEventListener('click', () => {
-            hideOverlay();
-        });
-    }
-
-    // 影片播放結束自動隱藏
-    video.onended = () => {
-        hideOverlay();
-    };
-
-    function hideOverlay() {
-        video.pause(); // 確保影片停止播放
-        overlay.style.opacity = '0';
-        setTimeout(() => {
-            overlay.style.display = 'none';
-        }, 400); // 縮短延遲時間，讓進入網頁更迅速
-    }
-}
 
 function renderSoftware() {
     const container = document.getElementById('software-container');
