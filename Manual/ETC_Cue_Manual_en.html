@@ -357,7 +357,7 @@
                     </div>
                     <div class="feature-card">
                         <h4>📹 Video Input</h4>
-                        <p>Supports USB cameras, NDI network video, and RTSP streams.</p>
+                        <p>Supports USB cameras and RTSP streams.</p>
                     </div>
                     <div class="feature-card">
                         <h4>🎬 Video Recording</h4>
@@ -381,7 +381,8 @@
                     </div>
                     <div class="feature-card">
                         <h4>📡 sACN DMX Trigger</h4>
-                        <p>Supports receiving sACN DMX signals with configurable trigger channel and threshold for automatic capture.</p>
+                        <p>Supports receiving sACN DMX signals with configurable trigger channel and threshold for
+                            automatic capture.</p>
                     </div>
                 </div>
             </section>
@@ -402,11 +403,11 @@
                     </tr>
                     <tr>
                         <td>Network</td>
-                        <td>Required for OSC and NDI/RTSP</td>
+                        <td>Required for OSC and RTSP</td>
                     </tr>
                     <tr>
                         <td>Video Device</td>
-                        <td>USB Camera, NDI Source, or RTSP Stream</td>
+                        <td>USB Camera or RTSP Stream</td>
                     </tr>
                     <tr>
                         <td>Memory</td>
@@ -502,7 +503,7 @@
             <section id="video">
                 <h2>Video Input Settings</h2>
 
-                <p>The software supports three types of video input sources, configurable via the "Settings" dialog.</p>
+                <p>The software supports two types of video input sources, configurable via the "Settings" dialog.</p>
 
                 <div class="screenshot">
                     <img src="../pic/etc cue PIC 4.0 manual_images/04_settings_dialog.png" alt="Settings Dialog">
@@ -522,11 +523,6 @@
                         <td>Standalone work, on-site shooting</td>
                     </tr>
                     <tr>
-                        <td>NDI Video</td>
-                        <td>Network video via NDI protocol</td>
-                        <td>Professional streaming, multi-cam setups</td>
-                    </tr>
-                    <tr>
                         <td>RTSP Stream</td>
                         <td>IP cameras or streaming servers</td>
                         <td>Remote monitoring, IP cameras</td>
@@ -541,22 +537,6 @@
                         <li>Enter the required parameters for that type.</li>
                         <li>Click "OK" to save.</li>
                     </ol>
-                </div>
-
-                <h3>NDI Settings</h3>
-                <div class="screenshot">
-                    <img src="../pic/etc cue PIC 4.0 manual_images/05_video_source_settings.png" alt="NDI Settings">
-                    <div class="screenshot-caption">Fig 5: NDI Source Selection</div>
-                </div>
-
-                <div class="info-box">
-                    <h4>Searching for NDI Sources</h4>
-                    <p>The software automatically scans the LAN for NDI sources. If none appear, check:</p>
-                    <ul style="margin-left: 20px;">
-                        <li>NDI source is ON and active.</li>
-                        <li>PC and NDI source are on the same subnet.</li>
-                        <li>Windows Firewall is not blocking NDI.</li>
-                    </ul>
                 </div>
             </section>
 
@@ -624,7 +604,9 @@
             <section id="sacn">
                 <h2>sACN DMX Trigger Setup</h2>
 
-                <p>The software supports receiving DMX signals via sACN (Streaming ACN) protocol. You can configure specific DMX channels as screenshot trigger conditions, perfect for synchronizing captures with lighting effects.</p>
+                <p>The software supports receiving DMX signals via sACN (Streaming ACN) protocol. You can configure
+                    specific DMX channels as screenshot trigger conditions, perfect for synchronizing captures with
+                    lighting effects.</p>
 
                 <h3>sACN Features</h3>
                 <div class="feature-grid">
@@ -699,7 +681,8 @@
                     <h4>Example: Sync with Lighting Effects</h4>
                     <p>Suppose you want to capture screenshots when specific lighting effects trigger:</p>
                     <ol style="margin-left: 20px;">
-                        <li>On the console, assign a dedicated DMX channel (e.g., channel 512) as the trigger signal</li>
+                        <li>On the console, assign a dedicated DMX channel (e.g., channel 512) as the trigger signal
+                        </li>
                         <li>In the software, set sACN Universe to 1, trigger channel to 512, threshold to 1</li>
                         <li>In Cues requiring capture, set channel 512 to 255</li>
                         <li>When that Cue executes, the software automatically captures the current frame</li>
@@ -715,6 +698,7 @@
                     </ul>
                 </div>
             </section>
+
 
             <!-- Cue Mode Operation -->
             <section id="cue-mode">
@@ -898,7 +882,8 @@
                 <h3>Recording Hud</h3>
                 <div class="screenshot">
                     <img src="../pic/etc cue PIC 4.0 manual_images/15_recording_timer.png" alt="Timer">
-                    <div class="screenshot-caption">Fig 15: Recording timer displayed in bottom right corner of video preview</div>
+                    <div class="screenshot-caption">Fig 15: Recording timer displayed in bottom right corner of video
+                        preview</div>
                 </div>
 
                 <div class="info-box">
@@ -955,7 +940,8 @@
                     <h4>sACN Manual Trigger Process</h4>
                     <ol style="margin-left: 20px;">
                         <li>Enable sACN reception in settings and configure the trigger channel</li>
-                        <li>When the configured DMX channel value exceeds the threshold, the software automatically captures</li>
+                        <li>When the configured DMX channel value exceeds the threshold, the software automatically
+                            captures</li>
                         <li>Only updates the screenshot without changing Cue/Chan information</li>
                     </ol>
                 </div>
@@ -1005,7 +991,8 @@
                 <div class="warning-box">
                     <h4>⚠️ Important</h4>
                     <p>Always move the <code>screenshots</code> and <code>recordings</code> folders along with your
-                        <code>.json</code> project file when sharing.</p>
+                        <code>.json</code> project file when sharing.
+                    </p>
                 </div>
             </section>
 

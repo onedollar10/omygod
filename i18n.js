@@ -59,8 +59,8 @@ const translations = {
         // Product Page - ETC Cue Photo
         "cue_hero_subtitle": "ETC 燈光控台自動截圖記錄工具",
         "cue_f1_title": "視訊輸入模組",
-        "cue_f1_desc": "多元視訊輸入模組，滿足各種現場需求。支援 USB 攝影機、NDI 網路視訊串流以及 RTSP 監控串流。",
-        "cue_f1_hl": "核心支援： USB Camera / NDI / RTSP。即插即用，輕鬆設定，讓您的記錄畫面清晰不卡頓。",
+        "cue_f1_desc": "多元視訊輸入模組，滿足各種現場需求。支援 USB 攝影機以及 RTSP 監控串流。",
+        "cue_f1_hl": "核心支援： USB Camera / RTSP。即插即用，輕鬆設定，讓您的記錄畫面清晰不卡頓。",
         "cue_f2_title": "CUE 自動記錄",
         "cue_f2_desc": "自動化 Cue 點記錄。當 ETC 控台執行 Cue 結束時軟體自動偵測並截取當下畫面。",
         "cue_f2_hl": "智慧邏輯： 具備重複觸發處理機制，僅在秒數變更時更新，避免產生冗餘資料，確保每一張截圖都是關鍵時刻。",
@@ -137,8 +137,8 @@ const translations = {
         // Product Page - ETC Cue Photo
         "cue_hero_subtitle": "Auto Screenshot & Documentation for ETC Consoles",
         "cue_f1_title": "Video Input Module",
-        "cue_f1_desc": "Versatile video input support for any onsite requirement. Supports USB Cameras, NDI network streams, and RTSP.",
-        "cue_f1_hl": "Core Support: USB Camera / NDI / RTSP. Plug & play, easy setup for clear, lag-free recording.",
+        "cue_f1_desc": "Versatile video input support for any onsite requirement. Supports USB Cameras and RTSP.",
+        "cue_f1_hl": "Core Support: USB Camera / RTSP. Plug & play, easy setup for clear, lag-free recording。",
         "cue_f2_title": "Cue Auto-Record",
         "cue_f2_desc": "Automated Cue recording. Detects ETC console Cues and captures the moment instantly.",
         "cue_f2_hl": "Smart Logic: Handles duplicate triggers intelligently, updating only when timing changes to avoid redundancy.",

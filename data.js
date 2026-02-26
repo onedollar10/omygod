@@ -166,7 +166,7 @@ const software = [
         manual: "Manual/ETC_Cue_Manual.html",
         manual_en: "Manual/ETC_Cue_Manual_en.html",
         features: [
-            "多元視訊輸入 (USB/NDI/RTSP)",
+            "多元視訊輸入 (USB/RTSP)",
             "Cue 模式自動截圖與去重",
             "CH 模式支援 Auto-Delay 拍照",
             "支援 Excel 與 PDF 專業匯出",
@@ -174,7 +174,7 @@ const software = [
             "sACN 網路協定輸觸發截圖"
         ],
         features_en: [
-            "Multi-Video Input (USB/NDI/RTSP)",
+            "Multi-Video Input (USB/RTSP)",
             "Cue Mode Auto-Screenshot & Dedup",
             "CH Mode with Auto-Delay Snap",
             "Professional Excel & PDF Export",
