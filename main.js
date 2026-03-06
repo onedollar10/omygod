@@ -11,6 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModal();
 });
 
+function trackClick(label, category = 'Download') {
+    if (typeof gtag === 'function') {
+        gtag('event', 'click', {
+            'event_category': category,
+            'event_label': label
+        });
+    }
+    console.log(`Tracking click: ${category} - ${label}`);
+}
+
 
 
 function renderSoftware() {
@@ -32,8 +42,8 @@ function renderSoftware() {
                 <ul>
                     ${features.map(f => `<li>${f}</li>`).join('')}
                 </ul>
-                ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px">${btnText}</a>` : ''}
-                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-left:10px; background:linear-gradient(45deg, #00c6ff, #0072ff); color:white;" target="_blank">${manualBtnText}</a>` : ''}
+                ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px" onclick="trackClick('${item.id}_Details', 'Navigation')">${btnText}</a>` : ''}
+                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-left:10px; background:linear-gradient(45deg, #00c6ff, #0072ff); color:white;" target="_blank" onclick="trackClick('${item.id}_Manual', 'ManualView')">${manualBtnText}</a>` : ''}
             </div>
         `;
     }).join('');
@@ -60,8 +70,8 @@ function renderFreeTools() {
                 <ul>
                     ${features ? features.map(f => `<li>${f}</li>`).join('') : ''}
                 </ul>
-                ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px" target="_blank">${btnText}</a>` : ''}
-                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-left:10px; background:linear-gradient(45deg, #00c6ff, #0072ff); color:white;" target="_blank">${manualBtnText}</a>` : ''}
+                ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px" target="_blank" onclick="trackClick('${item.id}_${item.btn_key || 'link'}', 'FreeToolClick')">${btnText}</a>` : ''}
+                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-left:10px; background:linear-gradient(45deg, #00c6ff, #0072ff); color:white;" target="_blank" onclick="trackClick('${item.id}_Manual', 'ManualView')">${manualBtnText}</a>` : ''}
             </div>
         `;
     }).join('');

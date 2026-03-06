@@ -216,8 +216,8 @@ const freeTools = [
 const latestUpdates = [
     {
         date: "2026-03-06",
-        content: "新增：螢幕 RTSP 串流工具已發布，歡迎 <a href='https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank'>點此下載</a> (或 <a href='Manual/RTSP TOOL Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank'>查看說明書</a>)",
-        content_en: "New Release: Screen RTSP Streaming Tool available <a href='https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank'>Download Here</a> (or <a href='Manual/RTSP TOOL Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank'>View Manual</a>)"
+        content: "新增：螢幕 RTSP 串流工具已發布，歡迎 <a href='https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerDownload', 'TickerDownload')\">點此下載</a> (或 <a href='Manual/RTSP TOOL Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerManual', 'TickerManual')\">查看說明書</a>)",
+        content_en: "New Release: Screen RTSP Streaming Tool available <a href='https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerDownload', 'TickerDownload')\">Download Here</a> (or <a href='Manual/RTSP TOOL Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerManual', 'TickerManual')\">View Manual</a>)"
     },
     {
         date: "2026-02-11",
