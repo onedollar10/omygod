@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>螢幕 RTSP 串流工具 使用說明書</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 5;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+            border-radius: 999px;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-weight: 700;
+            backdrop-filter: blur(4px);
+        }
+
+        .lang-btn.active {
+            background: #fff;
+            color: #1e3c72;
+            border-color: #fff;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 2.3em; margin-bottom: 8px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
+        .header .version { opacity: 0.92; font-size: 1.05em; }
+        .content { padding: 40px; }
+
+        .toc {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .toc h2 { margin: 0 0 12px 0; color: #1e3c72; border: none; padding: 0; }
+        .toc ul { list-style: none; }
+        .toc li { padding: 7px 0; border-bottom: 1px solid #e4e4e4; }
+        .toc li:last-child { border-bottom: none; }
+        .toc a { color: #4556c3; text-decoration: none; font-weight: 600; }
+        .toc a:hover { text-decoration: underline; }
+
+        h2 { color: #1e3c72; font-size: 1.8em; margin: 28px 0 16px 0; padding-bottom: 8px; border-bottom: 3px solid #667eea; }
+        h3 { color: #2a5298; font-size: 1.3em; margin: 18px 0 10px 0; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 12px 22px; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin: 20px 0; }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+        }
+
+        .feature-card h4 { margin-bottom: 8px; font-size: 1.15em; }
+
+        .step-box, .warning-box, .info-box { padding: 18px; margin: 16px 0; border-radius: 0 10px 10px 0; }
+        .step-box { background: #f6faf7; border-left: 5px solid #28a745; }
+        .warning-box { background: #fff8e1; border-left: 5px solid #ffb300; }
+        .info-box { background: #e8f3ff; border-left: 5px solid #2196f3; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-align: left; padding: 12px; }
+        td { padding: 11px 12px; border-bottom: 1px solid #ececec; }
+        tr:last-child td { border-bottom: none; }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            color: #c2185b;
+        }
+
+        .ascii-art {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 10px;
+            font-family: Consolas, monospace;
+            overflow-x: auto;
+            margin: 14px 0;
+            font-size: 0.88em;
+        }
+
+        .footer { background: #1e3c72; color: #fff; text-align: center; padding: 28px; }
+        .footer p { margin: 4px 0; }
+
+        .lang-pane[hidden] { display: none !important; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .content { padding: 22px; }
+            .lang-switch { top: 10px; right: 10px; }
+            .lang-btn { padding: 5px 12px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="lang-switch" aria-label="Language Switch">
+            <button class="lang-btn active" id="btn-zh" type="button">中文</button>
+            <button class="lang-btn" id="btn-en" type="button">EN</button>
+        </div>
+
+        <header class="header">
+            <h1 data-i18n="title">螢幕 RTSP 串流工具</h1>
+            <p class="version" data-i18n="subtitle">使用說明書 v1.0</p>
+        </header>
+
+        <div class="content">
+            <div class="lang-pane" id="pane-zh">
+                <div class="toc">
+                    <h2>目錄</h2>
+                    <ul>
+                        <li><a href="#intro-zh">1. 軟體介紹</a></li>
+                        <li><a href="#requirements-zh">2. 系統需求</a></li>
+                        <li><a href="#install-zh">3. 安裝與啟動</a></li>
+                        <li><a href="#ui-zh">4. 介面說明</a></li>
+                        <li><a href="#quickstart-zh">5. 快速開始</a></li>
+                        <li><a href="#settings-zh">6. 串流參數說明</a></li>
+                        <li><a href="#viewer-zh">7. 播放端連線方式</a></li>
+                        <li><a href="#deploy-zh">8. EXE 部署建議</a></li>
+                        <li><a href="#faq-zh">9. 常見問題</a></li>
+                    </ul>
+                </div>
+
+                <section id="intro-zh">
+                    <h2>1. 軟體介紹</h2>
+                    <p><strong>螢幕 RTSP 串流工具</strong> 是一套 Windows 桌面串流應用程式，可將「整個螢幕」或「指定視窗」即時推送成 RTSP 串流，供 VLC、OBS 等軟體接收。</p>
+                    <p>工具內建自動下載 FFmpeg 與 MediaMTX，首次執行即可快速完成環境準備，適合現場導播、會議投放、節目側錄與跨設備監看。</p>
+                    <div class="feature-grid">
+                        <div class="feature-card"><h4>雙來源模式</h4><p>可選擇全螢幕或指定程式視窗進行串流。</p></div>
+                        <div class="feature-card"><h4>低延遲推流</h4><p>使用 FFmpeg + RTMP + MediaMTX，輸出 RTSP。</p></div>
+                        <div class="feature-card"><h4>自動相依下載</h4><p>首次啟動時自動下載所需執行檔，減少手動安裝。</p></div>
+                        <div class="feature-card"><h4>即時狀態回饋</h4><p>顯示串流燈號、FPS、位元率、累計時間。</p></div>
+                    </div>
+                </section>
+
+                <section id="requirements-zh">
+                    <h2>2. 系統需求</h2>
+                    <table>
+                        <tr><th>項目</th><th>需求</th></tr>
+                        <tr><td>作業系統</td><td>Windows 10 / Windows 11（64-bit）</td></tr>
+                        <tr><td>網路環境</td><td>建議同一個區域網路（LAN）內使用</td></tr>
+                        <tr><td>磁碟空間</td><td>至少 300MB（含相依下載）</td></tr>
+                        <tr><td>首次啟動</td><td>需可連外下載 FFmpeg / MediaMTX</td></tr>
+                    </table>
+                </section>
+
+                <section id="install-zh">
+                    <h2>3. 安裝與啟動</h2>
+                    <div class="step-box">
+                        <h3>3.1 以 EXE 啟動</h3>
+                        <ol>
+                            <li>雙擊 <code>螢幕RTSP串流.exe</code>。</li>
+                            <li>首次執行會自動下載相依元件。</li>
+                            <li>下載完成後可直接進入主畫面。</li>
+                        </ol>
+                    </div>
+                    <div class="warning-box">
+                        <h3>3.2 首次啟動注意事項</h3>
+                        <ul>
+                            <li>若防毒軟體跳出提示，請允許程式執行。</li>
+                            <li>若公司網路有代理或封鎖，可能導致下載失敗。</li>
+                            <li>可查看 <code>logs/startup.log</code> 與 <code>logs/quick_start.log</code> 進行除錯。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="ui-zh">
+                    <h2>4. 介面說明</h2>
+                    <table>
+                        <tr><th>區塊</th><th>用途</th></tr>
+                        <tr><td>來源面板</td><td>選擇「螢幕」或「視窗」，並可重新整理清單</td></tr>
+                        <tr><td>串流控制面板</td><td>設定解析度/FPS/編碼器/位元率，開始或停止串流</td></tr>
+                        <tr><td>RTSP 位址</td><td>顯示目前可連線位址，支援一鍵複製</td></tr>
+                        <tr><td>狀態區</td><td>燈號顯示待機或串流中，並顯示即時統計</td></tr>
+                    </table>
+                </section>
+
+                <section id="quickstart-zh">
+                    <h2>5. 快速開始</h2>
+                    <div class="step-box">
+                        <h3>5.1 串流整個螢幕</h3>
+                        <ol>
+                            <li>來源類型選擇「螢幕」。</li>
+                            <li>選擇目標螢幕（例如 螢幕 1）。</li>
+                            <li>按下「開始串流」。</li>
+                            <li>將 RTSP 位址貼到 VLC/OBS 進行播放。</li>
+                        </ol>
+                    </div>
+                    <div class="step-box">
+                        <h3>5.2 串流指定程式視窗</h3>
+                        <ol>
+                            <li>來源類型選擇「視窗」。</li>
+                            <li>在清單中選擇你要分享的程式視窗。</li>
+                            <li>按下「開始串流」。</li>
+                            <li>確認燈號為綠色「串流中」。</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="settings-zh">
+                    <h2>6. 串流參數說明</h2>
+                    <table>
+                        <tr><th>參數</th><th>建議值</th><th>說明</th></tr>
+                        <tr><td>解析度</td><td>原始 / 1280x720 / 1920x1080</td><td>解析度越高，畫質越好但耗能越高</td></tr>
+                        <tr><td>幀率</td><td>30 FPS</td><td>一般畫面建議 30，動態高可選 60</td></tr>
+                        <tr><td>編碼器</td><td>libx264</td><td>最穩定；有支援時可改用 NVENC / QSV</td></tr>
+                        <tr><td>位元率</td><td>4000 kbps</td><td>數值越高畫質越好，頻寬需求也越高</td></tr>
+                        <tr><td>預設速度</td><td>ultrafast / fast / medium</td><td>速度越快延遲越低，壓縮率通常較差</td></tr>
+                    </table>
+                </section>
+
+                <section id="viewer-zh">
+                    <h2>7. 播放端連線方式</h2>
+                    <table>
+                        <tr><th>軟體</th><th>輸入位址</th><th>說明</th></tr>
+                        <tr><td>VLC</td><td><code>rtsp://你的IP:8554/screen</code></td><td>開啟網路串流後貼上即可</td></tr>
+                        <tr><td>OBS</td><td><code>rtsp://你的IP:8554/screen</code></td><td>新增「媒體來源」並輸入網址</td></tr>
+                    </table>
+                    <div class="ascii-art">RTMP 來源（內部）: rtmp://127.0.0.1:1935/screen
+RTSP 輸出（對外）: rtsp://&lt;本機IP&gt;:8554/screen</div>
+                </section>
+
+                <section id="deploy-zh">
+                    <h2>8. EXE 部署建議</h2>
+                    <div class="info-box">
+                        <h3>8.1 提供給其他電腦使用</h3>
+                        <ul>
+                            <li>只要提供 <code>螢幕RTSP串流.exe</code> 即可啟動。</li>
+                            <li>第一次執行需連網下載相依元件。</li>
+                            <li>建議防火牆允許本程式的區域網路連線。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="faq-zh">
+                    <h2>9. 常見問題</h2>
+                    <div class="step-box">
+                        <h3>Q1：按「開始串流」後立刻停止</h3>
+                        <ul><li>請先確認來源視窗目前可見、未最小化。</li><li>改用 <code>libx264</code> 測試是否可正常啟動。</li><li>降低解析度與幀率後再試。</li></ul>
+                    </div>
+                    <div class="step-box">
+                        <h3>Q2：VLC/OBS 打不開 RTSP</h3>
+                        <ul><li>確認位址中的 IP 是推流電腦的區網 IP。</li><li>確認播放端在同一網路。</li><li>確認防火牆未阻擋 8554。</li></ul>
+                    </div>
+                </section>
+            </div>
+
+            <div class="lang-pane" id="pane-en" hidden>
+                <div class="toc">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                        <li><a href="#intro-en">1. Overview</a></li>
+                        <li><a href="#requirements-en">2. System Requirements</a></li>
+                        <li><a href="#install-en">3. Install and Launch</a></li>
+                        <li><a href="#ui-en">4. Interface Guide</a></li>
+                        <li><a href="#quickstart-en">5. Quick Start</a></li>
+                        <li><a href="#settings-en">6. Streaming Parameters</a></li>
+                        <li><a href="#viewer-en">7. Player Connection</a></li>
+                        <li><a href="#deploy-en">8. EXE Deployment Tips</a></li>
+                        <li><a href="#faq-en">9. FAQ</a></li>
+                    </ul>
+                </div>
+
+                <section id="intro-en">
+                    <h2>1. Overview</h2>
+                    <p><strong>Screen RTSP Streaming Tool</strong> is a Windows desktop app that streams either your full screen or a selected window as an RTSP feed for VLC, OBS, and similar tools.</p>
+                    <p>The app automatically downloads FFmpeg and MediaMTX on first launch, so setup is fast for live production, meetings, recording, and remote monitoring.</p>
+                    <div class="feature-grid">
+                        <div class="feature-card"><h4>Dual Source Modes</h4><p>Stream a full display or a single application window.</p></div>
+                        <div class="feature-card"><h4>Low-Latency Pipeline</h4><p>FFmpeg + RTMP + MediaMTX, then RTSP output.</p></div>
+                        <div class="feature-card"><h4>Auto Dependency Download</h4><p>Required binaries are downloaded automatically at first startup.</p></div>
+                        <div class="feature-card"><h4>Live Status Feedback</h4><p>Shows stream indicator, FPS, bitrate, and elapsed time.</p></div>
+                    </div>
+                </section>
+
+                <section id="requirements-en">
+                    <h2>2. System Requirements</h2>
+                    <table>
+                        <tr><th>Item</th><th>Requirement</th></tr>
+                        <tr><td>Operating System</td><td>Windows 10 / Windows 11 (64-bit)</td></tr>
+                        <tr><td>Network</td><td>Recommended on the same LAN</td></tr>
+                        <tr><td>Disk Space</td><td>At least 300MB (including dependencies)</td></tr>
+                        <tr><td>First Startup</td><td>Internet access required to download FFmpeg / MediaMTX</td></tr>
+                    </table>
+                </section>
+
+                <section id="install-en">
+                    <h2>3. Install and Launch</h2>
+                    <div class="step-box">
+                        <h3>3.1 Start with EXE</h3>
+                        <ol>
+                            <li>Double-click <code>螢幕RTSP串流.exe</code>.</li>
+                            <li>Dependencies will be downloaded on first run.</li>
+                            <li>After download, the main interface opens automatically.</li>
+                        </ol>
+                    </div>
+                    <div class="warning-box">
+                        <h3>3.2 First-run Notes</h3>
+                        <ul>
+                            <li>Allow execution if antivirus prompts appear.</li>
+                            <li>Corporate proxy/firewall policies may block downloads.</li>
+                            <li>Check <code>logs/startup.log</code> and <code>logs/quick_start.log</code> for troubleshooting.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="ui-en">
+                    <h2>4. Interface Guide</h2>
+                    <table>
+                        <tr><th>Section</th><th>Purpose</th></tr>
+                        <tr><td>Source Panel</td><td>Select monitor/window and refresh source list</td></tr>
+                        <tr><td>Stream Control</td><td>Set resolution/FPS/encoder/bitrate and start or stop stream</td></tr>
+                        <tr><td>RTSP URL</td><td>Shows current stream URL with one-click copy</td></tr>
+                        <tr><td>Status Area</td><td>Idle/running indicator and live metrics</td></tr>
+                    </table>
+                </section>
+
+                <section id="quickstart-en">
+                    <h2>5. Quick Start</h2>
+                    <div class="step-box">
+                        <h3>5.1 Stream Full Screen</h3>
+                        <ol>
+                            <li>Select source type: Monitor.</li>
+                            <li>Pick target monitor (for example, Monitor 1).</li>
+                            <li>Click Start Stream.</li>
+                            <li>Paste RTSP URL into VLC/OBS.</li>
+                        </ol>
+                    </div>
+                    <div class="step-box">
+                        <h3>5.2 Stream One App Window</h3>
+                        <ol>
+                            <li>Select source type: Window.</li>
+                            <li>Choose target app window in the list.</li>
+                            <li>Click Start Stream.</li>
+                            <li>Confirm green status indicator.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="settings-en">
+                    <h2>6. Streaming Parameters</h2>
+                    <table>
+                        <tr><th>Parameter</th><th>Recommended</th><th>Description</th></tr>
+                        <tr><td>Resolution</td><td>Original / 1280x720 / 1920x1080</td><td>Higher resolution improves quality but uses more resources</td></tr>
+                        <tr><td>Framerate</td><td>30 FPS</td><td>30 for general use, 60 for high-motion scenes</td></tr>
+                        <tr><td>Encoder</td><td>libx264</td><td>Most stable default; use NVENC/QSV when supported</td></tr>
+                        <tr><td>Bitrate</td><td>4000 kbps</td><td>Higher bitrate improves quality and network usage</td></tr>
+                        <tr><td>Preset</td><td>ultrafast / fast / medium</td><td>Faster preset lowers latency with lower compression efficiency</td></tr>
+                    </table>
+                </section>
+
+                <section id="viewer-en">
+                    <h2>7. Player Connection</h2>
+                    <table>
+                        <tr><th>Player</th><th>Input URL</th><th>Notes</th></tr>
+                        <tr><td>VLC</td><td><code>rtsp://your-ip:8554/screen</code></td><td>Open Network Stream and paste URL</td></tr>
+                        <tr><td>OBS</td><td><code>rtsp://your-ip:8554/screen</code></td><td>Add Media Source and enter URL</td></tr>
+                    </table>
+                    <div class="ascii-art">Internal RTMP source: rtmp://127.0.0.1:1935/screen
+External RTSP output: rtsp://&lt;your-local-ip&gt;:8554/screen</div>
+                </section>
+
+                <section id="deploy-en">
+                    <h2>8. EXE Deployment Tips</h2>
+                    <div class="info-box">
+                        <h3>8.1 Share with Other PCs</h3>
+                        <ul>
+                            <li>Distribute <code>螢幕RTSP串流.exe</code>.</li>
+                            <li>First launch needs internet for dependencies.</li>
+                            <li>Allow LAN traffic through firewall for this app.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="faq-en">
+                    <h2>9. FAQ</h2>
+                    <div class="step-box">
+                        <h3>Q1: Stream stops right after Start</h3>
+                        <ul><li>Make sure source window is visible and not minimized.</li><li>Try <code>libx264</code> first.</li><li>Lower resolution/FPS and retry.</li></ul>
+                    </div>
+                    <div class="step-box">
+                        <h3>Q2: VLC/OBS cannot open RTSP</h3>
+                        <ul><li>Use the streamer PC's LAN IP in URL.</li><li>Ensure both devices are on the same network.</li><li>Verify firewall is not blocking port 8554.</li></ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><strong id="footer-title">螢幕 RTSP 串流工具 使用說明書</strong></p>
+            <p id="footer-version">版本：v1.0</p>
+            <p id="footer-date">文件日期：2026-03-06</p>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            const btnZh = document.getElementById('btn-zh');
+            const btnEn = document.getElementById('btn-en');
+            const paneZh = document.getElementById('pane-zh');
+            const paneEn = document.getElementById('pane-en');
+            const title = document.querySelector('[data-i18n="title"]');
+            const subtitle = document.querySelector('[data-i18n="subtitle"]');
+            const footerTitle = document.getElementById('footer-title');
+            const footerVersion = document.getElementById('footer-version');
+            const footerDate = document.getElementById('footer-date');
+
+            function setLang(lang) {
+                const isZh = lang === 'zh';
+                paneZh.hidden = !isZh;
+                paneEn.hidden = isZh;
+                btnZh.classList.toggle('active', isZh);
+                btnEn.classList.toggle('active', !isZh);
+
+                if (isZh) {
+                    document.documentElement.lang = 'zh-TW';
+                    document.title = '螢幕 RTSP 串流工具 使用說明書';
+                    title.textContent = '螢幕 RTSP 串流工具';
+                    subtitle.textContent = '使用說明書 v1.0';
+                    footerTitle.textContent = '螢幕 RTSP 串流工具 使用說明書';
+                    footerVersion.textContent = '版本：v1.0';
+                    footerDate.textContent = '文件日期：2026-03-06';
+                } else {
+                    document.documentElement.lang = 'en';
+                    document.title = 'Screen RTSP Streaming Tool Manual';
+                    title.textContent = 'Screen RTSP Streaming Tool';
+                    subtitle.textContent = 'User Manual v1.0';
+                    footerTitle.textContent = 'Screen RTSP Streaming Tool User Manual';
+                    footerVersion.textContent = 'Version: v1.0';
+                    footerDate.textContent = 'Document Date: 2026-03-06';
+                }
+            }
+
+            btnZh.addEventListener('click', function () { setLang('zh'); });
+            btnEn.addEventListener('click', function () { setLang('en'); });
+            setLang('zh');
+        })();
+    </script>
+</body>
+
+</html>

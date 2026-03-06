@@ -196,10 +196,29 @@ const freeTools = [
         url: "https://script.google.com/macros/s/AKfycbzTPOOX5m_OR1t7JPbFA3iNDPhrezbOrwuOHrmHuwe62ksb0HG8HQ8mOctwMVHQD6OBHQ/exec",
         features: ["線上直接使用，無需安裝", "快速選取區域進行圖案比對", "自動計算數量"],
         features_en: ["Use directly online, no installation", "Quick area selection for pattern matching", "Automatic count calculation"]
+    },
+    {
+        id: "rtsp_tool",
+        name: "螢幕 RTSP 串流工具",
+        name_en: "Screen RTSP Streaming Tool",
+        tagline: "即時螢幕與視窗串流工具",
+        tagline_en: "Real-time Screen & Window Streaming Tool",
+        description: "可將「整個螢幕」或「指定視窗」即時推送成 RTSP 串流，供 VLC、OBS 等軟體接收。內建自動相依下載。",
+        description_en: "Streams your full screen or selected window as RTSP for VLC/OBS. Features automatic dependency downloading.",
+        url: "https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing",
+        btn_key: "btn_download_app",
+        manual: "Manual/RTSP TOOL Manual.html",
+        features: ["雙來源模式 (全螢幕/指定視窗)", "自動下載 FFmpeg 與 MediaMTX", "低延遲推流技術 (RTSP)", "即時狀態回饋 (FPS / Bitrate)"],
+        features_en: ["Dual Source (Full Screen/Window)", "Auto FFmpeg & MediaMTX download", "Low-latency RTSP streaming", "Real-time Metrics (FPS / Bitrate)"]
     }
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-03-06",
+        content: "新增：螢幕 RTSP 串流工具已發布，歡迎 <a href='https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank'>點此下載</a> (或 <a href='Manual/RTSP TOOL Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank'>查看說明書</a>)",
+        content_en: "New Release: Screen RTSP Streaming Tool available <a href='https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank'>Download Here</a> (or <a href='Manual/RTSP TOOL Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank'>View Manual</a>)"
+    },
     {
         date: "2026-02-11",
         content: "ETC Cue Photo Tool 更新：新增 sACN 網路協定觸發截圖功能",

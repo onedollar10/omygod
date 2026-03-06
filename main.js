@@ -47,7 +47,10 @@ function renderFreeTools() {
         const tagline = currentLang === 'en' ? item.tagline_en : item.tagline;
         const description = currentLang === 'en' ? item.description_en : item.description;
         const features = currentLang === 'en' ? item.features_en : item.features;
-        const btnText = currentLang === 'en' ? translations.en.btn_use_now : translations.zh.btn_use_now;
+        const btnKey = item.btn_key || "btn_use_now";
+        const btnText = currentLang === 'en' ? translations.en[btnKey] : translations.zh[btnKey];
+        const manualBtnText = currentLang === 'en' ? translations.en.manual_btn : translations.zh.manual_btn;
+        const manualUrl = currentLang === 'en' ? (item.manual_en || item.manual) : item.manual;
 
         return `
             <div class="card" id="${item.id}">
@@ -58,6 +61,7 @@ function renderFreeTools() {
                     ${features ? features.map(f => `<li>${f}</li>`).join('') : ''}
                 </ul>
                 ${item.url ? `<a href="${item.url}" class="btn" style="margin-left:10px" target="_blank">${btnText}</a>` : ''}
+                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-left:10px; background:linear-gradient(45deg, #00c6ff, #0072ff); color:white;" target="_blank">${manualBtnText}</a>` : ''}
             </div>
         `;
     }).join('');
