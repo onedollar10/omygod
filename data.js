@@ -102,22 +102,22 @@ const software = [
         id: "ma2_osc_tool",
         name: "OSC to MA2 Tool",
         name_en: "OSC to MA2 Tool",
-        tagline: "突破限制，讓 MA2 也能使用 OSC",
-        tagline_en: "Enable OSC functionality on MA2",
-        description: "⚠️ 強調：MA2 本身並無內建直接接收 OSC 的功能！本軟體獨家打破此限制，只要使用這套軟體就能達到直接使用 OSC 控制 MA2 的效果，實現跨設備的無縫連動！",
-        description_en: "⚠️ Note: MA2 does not natively support direct OSC! This software breaks that barrier, allowing MA2 to easily use OSC for seamless cross-device control.",
+        tagline: "創新思維，輕鬆實現跨平台 OSC 整合",
+        tagline_en: "Innovative cross-platform OSC integration",
+        description: "OSC（Open Sound Control）協定是現今業界廣泛使用的標準，舉凡 QLab、Resolume、TouchDesigner 等各大軟體皆具備強大支援。本工具運用創新技術，讓 MA2 也能完美無縫地接收 OSC，大幅提升跨設備連動的靈活性與創意空間。",
+        description_en: "OSC is the industry standard widely supported by QLab, Resolume, TouchDesigner, etc. This innovative tool empowers MA2 to flawlessly receive OSC, vastly improving flexibility and cross-device sync capabilities.",
         url: "products/ma2-osc-tool.html",
         manual: "Manual/OSC to MA2 Manual.html",
         manual_en: "Manual/OSC to MA2 Manual.html",
         features: [
-            "讓原本不支援的 MA2 系統擁有接收 OSC 的能力",
-            "即時轉換轉發 ETC 及其他軟體的 OSC 訊號",
-            "超低延遲同步，提供穩定的跨設備靈活控制"
+            "無縫銜接各類支援 OSC 協定的現代軟體與設備",
+            "即時高效轉換，並精準轉發 OSC 訊號至 MA2",
+            "打破設備孤島，激發無限的演出創意與整體連動性"
         ],
         features_en: [
-            "Provides non-native OSC reception capability to MA2",
-            "Real-time translation of OSC signals from ETC and other software",
-            "Ultra-low latency for stable and flexible device sync"
+            "Seamlessly connect any modern software or device supporting OSC",
+            "Real-time and highly efficient signal translation to MA2",
+            "Break hardware silos to inspire boundless show creativity"
         ]
     },
     {
