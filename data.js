@@ -99,6 +99,28 @@ const tutorials = [
 
 const software = [
     {
+        id: "ma2_osc_tool",
+        name: "OSC to MA2 Tool",
+        name_en: "OSC to MA2 Tool",
+        tagline: "突破限制，讓 MA2 也能使用 OSC",
+        tagline_en: "Enable OSC functionality on MA2",
+        description: "⚠️ 強調：MA2 本身並無內建直接接收 OSC 的功能！本軟體獨家打破此限制，只要使用這套軟體就能達到直接使用 OSC 控制 MA2 的效果，實現跨設備的無縫連動！",
+        description_en: "⚠️ Note: MA2 does not natively support direct OSC! This software breaks that barrier, allowing MA2 to easily use OSC for seamless cross-device control.",
+        url: "products/ma2-osc-tool.html",
+        manual: "Manual/OSC to MA2 Manual.html",
+        manual_en: "Manual/OSC to MA2 Manual.html",
+        features: [
+            "讓原本不支援的 MA2 系統擁有接收 OSC 的能力",
+            "即時轉換轉發 ETC 及其他軟體的 OSC 訊號",
+            "超低延遲同步，提供穩定的跨設備靈活控制"
+        ],
+        features_en: [
+            "Provides non-native OSC reception capability to MA2",
+            "Real-time translation of OSC signals from ETC and other software",
+            "Ultra-low latency for stable and flexible device sync"
+        ]
+    },
+    {
         id: "osc_timecode",
         name: "OSC Timecode Tool",
         name_en: "OSC Timecode Tool",
