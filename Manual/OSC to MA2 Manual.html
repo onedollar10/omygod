@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSC to MA2 Telnet 橋接工具 使用說明書</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 5;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+            border-radius: 999px;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-weight: 700;
+            backdrop-filter: blur(4px);
+        }
+
+        .lang-btn.active {
+            background: #fff;
+            color: #1e3c72;
+            border-color: #fff;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.3em;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .version {
+            opacity: 0.92;
+            font-size: 1.05em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .toc h2 {
+            margin: 0 0 12px 0;
+            color: #1e3c72;
+            border: none;
+            padding: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            padding: 7px 0;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .toc li:last-child {
+            border-bottom: none;
+        }
+
+        .toc a {
+            color: #4556c3;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin: 28px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #2a5298;
+            font-size: 1.3em;
+            margin: 18px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        ul,
+        ol {
+            margin: 10px 0 12px 22px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+        }
+
+        .feature-card h4 {
+            margin-bottom: 8px;
+            font-size: 1.15em;
+        }
+
+        .step-box,
+        .warning-box,
+        .info-box {
+            padding: 18px;
+            margin: 16px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .step-box {
+            background: #f6faf7;
+            border-left: 5px solid #28a745;
+        }
+
+        .warning-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffb300;
+        }
+
+        .info-box {
+            background: #e8f3ff;
+            border-left: 5px solid #2196f3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-align: left;
+            padding: 12px;
+        }
+
+        td {
+            padding: 11px 12px;
+            border-bottom: 1px solid #ececec;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            color: #c2185b;
+        }
+
+        .ascii-art {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 10px;
+            font-family: Consolas, monospace;
+            overflow-x: auto;
+            margin: 14px 0;
+            font-size: 0.88em;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: #fff;
+            text-align: center;
+            padding: 28px;
+        }
+
+        .footer p {
+            margin: 4px 0;
+        }
+
+        .lang-pane[hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 22px;
+            }
+
+            .lang-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .lang-btn {
+                padding: 5px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="lang-switch" aria-label="Language Switch">
+            <button class="lang-btn active" id="btn-zh" type="button">中文</button>
+            <button class="lang-btn" id="btn-en" type="button">EN</button>
+        </div>
+
+        <header class="header">
+            <h1 data-i18n="title">OSC to MA2 Telnet 橋接工具</h1>
+            <p class="version" data-i18n="subtitle">使用說明書 v1.0</p>
+        </header>
+
+        <div class="content">
+            <div class="lang-pane" id="pane-zh">
+                <div class="toc">
+                    <h2>目錄</h2>
+                    <ul>
+                        <li><a href="#intro-zh">1. 軟體介紹</a></li>
+                        <li><a href="#requirements-zh">2. 系統需求</a></li>
+                        <li><a href="#install-zh">3. 安裝與啟動</a></li>
+                        <li><a href="#ui-zh">4. 介面說明</a></li>
+                        <li><a href="#quickstart-zh">5. 快速開始</a></li>
+                        <li><a href="#osc-zh">6. OSC 訊息格式說明</a></li>
+                        <li><a href="#faq-zh">7. 常見問題</a></li>
+                    </ul>
+                </div>
+
+                <section id="intro-zh">
+                    <h2>1. 軟體介紹</h2>
+                    <p><strong>OSC to MA2 Telnet 橋接工具</strong> 是一套 Windows 桌面應用程式，可接收 OSC（Open Sound Control）訊息，並即時轉發為 grandMA2 lighting console 的 Telnet 指令，實現外部裝置（如觸控面板、手機 App、互動裝置）遠端控制 MA2 燈光系統。
+                    </p>
+                    <p>工具內建 OSC 伺服器與 MA2 Telnet 客戶端，透過圖形化介面即時顯示所有收發訊號，適合燈光秀、舞台演出、互動裝置、展覽展演等場景使用。</p>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>OSC 即時橋接</h4>
+                            <p>接收 OSC 訊息後自動轉發為 MA2 Telnet 指令。</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>智慧過濾</h4>
+                            <p>僅處理以 /ma2 開頭的 OSC 位址，避免誤觸。</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>即時監控介面</h4>
+                            <p>終端機面板即時顯示收發的 OSC 與 Telnet 訊息。</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>深色/淺色主題</h4>
+                            <p>一鍵切換黑底或白底，適應不同作業環境。</p>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <img src="ma2 osc.png" alt="OSC to MA2 主介面" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    </div>
+                </section>
+
+                <section id="requirements-zh">
+                    <h2>2. 系統需求</h2>
+                    <table>
+                        <tr>
+                            <th>項目</th>
+                            <th>需求</th>
+                        </tr>
+                        <tr>
+                            <td>作業系統</td>
+                            <td>Windows 10 / Windows 11（64-bit）</td>
+                        </tr>
+                        <tr>
+                            <td>Python 版本</td>
+                            <td>Python 3.8 以上（如以原始碼執行）</td>
+                        </tr>
+                        <tr>
+                            <td>網路環境</td>
+                            <td>OSC 發送端與本工具需在同一區域網路</td>
+                        </tr>
+                        <tr>
+                            <td>grandMA2</td>
+                            <td>需開啟 Telnet Server（預設 Port 30000）</td>
+                        </tr>
+                        <tr>
+                            <td>相依套件</td>
+                            <td>python-osc、PySide6</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section id="install-zh">
+                    <h2>3. 安裝與啟動</h2>
+                    <div class="warning-box">
+                        <h3>3.1 啟動前注意事項</h3>
+                        <ul>
+                            <li>請先確認 grandMA2 主機的 Telnet Server 已開啟。</li>
+                            <li>確認 MA2 登入帳號與密碼正確（預設: administrator / admin）。</li>
+                            <li>若防毒軟體跳出提示，請允許程式執行。</li>
+                            <li>確認 OSC 發送端的目標 IP 與 Port 與本工具設定一致。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="ui-zh">
+                    <h2>4. 介面說明</h2>
+                    <table>
+                        <tr>
+                            <th>區塊</th>
+                            <th>用途</th>
+                        </tr>
+                        <tr>
+                            <td>標題列</td>
+                            <td>顯示程式名稱與狀態燈號；右側有主題切換按鈕</td>
+                        </tr>
+                        <tr>
+                            <td>即時訊號觀看（左面板）</td>
+                            <td>以終端機樣式即時顯示 OSC 收訊、MA2 發送、系統訊息</td>
+                        </tr>
+                        <tr>
+                            <td>製作名單（右面板）</td>
+                            <td>顯示開發者資訊、聯絡方式與核心理念</td>
+                        </tr>
+                        <tr>
+                            <td>主題切換按鈕</td>
+                            <td>一鍵切換「黑底模式」或「白底模式」</td>
+                        </tr>
+                    </table>
+                    <div class="info-box">
+                        <h3>4.1 訊息格式辨識</h3>
+                        <p>終端機面板中的訊息前綴代表不同意義：</p>
+                        <ul>
+                            <li><code>&lt;-- [收到 OSC]</code> ：表示從 OSC 發送端收到的訊息</li>
+                            <li><code>--&gt; [發送到 MA2]</code> ：表示已轉發至 grandMA2 的 Telnet 指令</li>
+                            <li><code>[MA2]</code> ：表示與 MA2 連線相關的狀態訊息</li>
+                            <li><code>[OSC]</code> ：表示 OSC 伺服器相關的狀態訊息</li>
+                            <li><code>[系統]</code> ：表示程式內部系統訊息</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="quickstart-zh">
+                    <h2>5. 快速開始</h2>
+                    <div class="step-box">
+                        <h3>5.1 基本連線設定</h3>
+                        <ol>
+                            <li>確認 grandMA2 主機 IP 位址（例如 192.168.1.100）。</li>
+                            <li>在 grandMA2 上開啟 Telnet Server（預設 Port 30000）。</li>
+                            <li>以預設參數啟動本程式，或透過命令列指定參數。</li>
+                            <li>觀察終端機面板顯示 <code>[MA2] 成功連接到 MA2 Telnet</code> 即代表連線成功。</li>
+                        </ol>
+                        <div style="text-align: center; margin-top: 15px;">
+                            <img src="setting.png" alt="MA2 Telnet 設定" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                        </div>
+                    </div>
+                    <div class="step-box">
+                        <h3>5.2 發送 OSC 指令測試</h3>
+                        <ol>
+                            <li>使用 OSC 發送工具（如 TouchOSC、OSCculator、自訂 App）。</li>
+                            <li>發送 OSC 訊息到位址 <code>/ma2</code>，參數為完整 MA2 指令（如 <code>Go Executor 1.1</code>）。</li>
+                            <li>或發送到位址 <code>/ma2/Go Executor 1.1</code>。</li>
+                            <li>觀察終端機面板是否顯示收訊與轉發訊息。</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="osc-zh">
+                    <h2>6. OSC 訊息格式說明</h2>
+                    <div class="info-box">
+                        <h3>6.1 支援的 OSC 格式</h3>
+                        <p>本工具僅處理以 <code>/ma2</code> 開頭的 OSC 位址，其餘訊息將被過濾忽略。</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>格式</th>
+                            <th>OSC 位址</th>
+                            <th>OSC 參數</th>
+                            <th>轉換結果</th>
+                        </tr>
+                        <tr>
+                            <td>格式 A（推薦）</td>
+                            <td><code>/ma2</code></td>
+                            <td>完整指令字串（如 <code>Go Executor 1.1</code>）</td>
+                            <td><code>Go Executor 1.1</code></td>
+                        </tr>
+                        <tr>
+                            <td>格式 B</td>
+                            <td><code>/ma2/Go Executor 1.1</code></td>
+                            <td>可選附加參數</td>
+                            <td><code>Go Executor 1.1 [附加參數]</code></td>
+                        </tr>
+                    </table>
+                    <div class="step-box">
+                        <h3>6.2 範例：觸發 Executor</h3>
+                        <div class="ascii-art">
+# 格式 A：位址為 /ma2，第一個參數是指令
+OSC 位址: /ma2
+OSC 參數: "Go Executor 1.1"
+→ 轉發至 MA2: Go Executor 1.1
+
+# 格式 B：指令寫在位址路徑中
+OSC 位址: /ma2/Go Executor 1.1
+OSC 參數: (無)
+→ 轉發至 MA2: Go Executor 1.1
+
+# 格式 B + 附加參數
+OSC 位址: /ma2/SetChannel
+OSC 參數: 1, 255
+→ 轉發至 MA2: SetChannel 1 255
+                        </div>
+                    </div>
+                    <div class="warning-box">
+                        <h3>6.3 安全過濾機制</h3>
+                        <ul>
+                            <li>所有不以 <code>/ma2</code> 開頭的 OSC 訊息會被自動忽略。</li>
+                            <li>終端機面板會顯示 <code>[系統] 收到非 MA2 指令，已略過不轉發。</code>。</li>
+                            <li>此機制可防止其他 OSC 訊號誤觸 MA2 系統。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="faq-zh">
+                    <h2>7. 常見問題</h2>
+                    <div class="step-box">
+                        <h3>Q1：終端機顯示「連接 MA2 失敗」</h3>
+                        <ul>
+                            <li>確認 grandMA2 主機的 IP 位址是否正確。</li>
+                            <li>確認 grandMA2 的 Telnet Server 已開啟。</li>
+                            <li>確認 Port 30000 未被防火牆阻擋。</li>
+                            <li>嘗試在 MA2 上使用 <code>ping</code> 指令確認網路連通。</li>
+                        </ul>
+                    </div>
+                    <div class="step-box">
+                        <h3>Q2：收到 OSC 訊息但 MA2 沒反應</h3>
+                        <ul>
+                            <li>確認 OSC 位址是否以 <code>/ma2</code> 開頭。</li>
+                            <li>檢查 MA2 Telnet 是否已成功登入（查看終端機登入回覆）。</li>
+                            <li>確認發送的 MA2 指令格式是否正確。</li>
+                            <li>在 grandMA2 本地端手動測試該指令是否有效。</li>
+                        </ul>
+                    </div>
+                    <div class="step-box">
+                        <h3>Q3：OSC 發送端無法連接到本工具</h3>
+                        <ul>
+                            <li>確認 OSC 發送端的目標 IP 是本機區域網路 IP（非 127.0.0.1）。</li>
+                            <li>確認 OSC Port 與本工具設定一致（預設 8000）。</li>
+                            <li>確認本機防火牆允許該 UDP Port 的連入。</li>
+                        </ul>
+                    </div>
+                    <div class="step-box">
+                        <h3>Q4：程式執行後終端機面板無訊息</h3>
+                        <ul>
+                            <li>確認 OSC 發送端是否確實有發送訊息。</li>
+                            <li>確認 OSC 位址格式是否正確（需以 <code>/ma2</code> 開頭）。</li>
+                            <li>嘗試使用 OSC 工具發送測試訊息。</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <div class="lang-pane" id="pane-en" hidden>
+                <div class="toc">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                        <li><a href="#intro-en">1. Overview</a></li>
+                        <li><a href="#requirements-en">2. System Requirements</a></li>
+                        <li><a href="#install-en">3. Install and Launch</a></li>
+                        <li><a href="#ui-en">4. Interface Guide</a></li>
+                        <li><a href="#quickstart-en">5. Quick Start</a></li>
+                        <li><a href="#osc-en">6. OSC Message Format</a></li>
+                        <li><a href="#faq-en">7. FAQ</a></li>
+                    </ul>
+                </div>
+
+                <section id="intro-en">
+                    <h2>1. Overview</h2>
+                    <p><strong>OSC to MA2 Telnet Bridge</strong> is a Windows desktop application that receives OSC (Open Sound Control) messages and instantly forwards them as grandMA2 lighting console Telnet commands, enabling remote control of MA2 lighting systems from external devices such as touch panels, mobile apps, and interactive installations.</p>
+                    <p>The tool includes a built-in OSC server and MA2 Telnet client, with a graphical interface that displays all sent and received signals in real time. It is ideal for light shows, stage performances, interactive installations, and exhibitions.</p>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>OSC Real-time Bridge</h4>
+                            <p>Receives OSC messages and forwards them as MA2 Telnet commands.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Smart Filtering</h4>
+                            <p>Only processes OSC addresses starting with /ma2 to prevent accidental triggers.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Live Monitor UI</h4>
+                            <p>Terminal panel displays all OSC and Telnet messages in real time.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Dark/Light Theme</h4>
+                            <p>One-click toggle between dark and light modes for any environment.</p>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <img src="ma2 osc.png" alt="OSC to MA2 Main Interface" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    </div>
+                </section>
+
+                <section id="requirements-en">
+                    <h2>2. System Requirements</h2>
+                    <table>
+                        <tr>
+                            <th>Item</th>
+                            <th>Requirement</th>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>Windows 10 / Windows 11 (64-bit)</td>
+                        </tr>
+                        <tr>
+                            <td>Python Version</td>
+                            <td>Python 3.8 or above (if running from source)</td>
+                        </tr>
+                        <tr>
+                            <td>Network</td>
+                            <td>OSC sender and this tool must be on the same LAN</td>
+                        </tr>
+                        <tr>
+                            <td>grandMA2</td>
+                            <td>Telnet Server must be enabled (default Port 30000)</td>
+                        </tr>
+                        <tr>
+                            <td>Dependencies</td>
+                            <td>python-osc, PySide6</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section id="install-en">
+                    <h2>3. Install and Launch</h2>
+                    <div class="warning-box">
+                        <h3>3.1 Pre-launch Notes</h3>
+                        <ul>
+                            <li>Ensure grandMA2 Telnet Server is enabled.</li>
+                            <li>Verify MA2 login credentials (default: administrator / admin).</li>
+                            <li>Allow program execution if antivirus prompts appear.</li>
+                            <li>Ensure OSC sender target IP and Port match this tool's settings.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="ui-en">
+                    <h2>4. Interface Guide</h2>
+                    <table>
+                        <tr>
+                            <th>Section</th>
+                            <th>Purpose</th>
+                        </tr>
+                        <tr>
+                            <td>Title Bar</td>
+                            <td>Displays program name and status indicator; theme toggle button on the right</td>
+                        </tr>
+                        <tr>
+                            <td>Live Monitor (Left Panel)</td>
+                            <td>Terminal-style display showing all OSC receive, MA2 send, and system messages</td>
+                        </tr>
+                        <tr>
+                            <td>Credits (Right Panel)</td>
+                            <td>Shows developer info, contact details, and core philosophy</td>
+                        </tr>
+                        <tr>
+                            <td>Theme Toggle Button</td>
+                            <td>Switch between dark mode and light mode with one click</td>
+                        </tr>
+                    </table>
+                    <div class="info-box">
+                        <h3>4.1 Message Prefix Meanings</h3>
+                        <p>Message prefixes in the terminal panel indicate their source:</p>
+                        <ul>
+                            <li><code>&lt;-- [收到 OSC]</code> : Message received from OSC sender</li>
+                            <li><code>--&gt; [發送到 MA2]</code> : Telnet command forwarded to grandMA2</li>
+                            <li><code>[MA2]</code> : MA2 connection status messages</li>
+                            <li><code>[OSC]</code> : OSC server status messages</li>
+                            <li><code>[系統]</code> : Internal system messages</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="quickstart-en">
+                    <h2>5. Quick Start</h2>
+                    <div class="step-box">
+                        <h3>5.1 Basic Connection Setup</h3>
+                        <ol>
+                            <li>Identify your grandMA2 host IP address (e.g., 192.168.1.100).</li>
+                            <li>Enable Telnet Server on grandMA2 (default Port 30000).</li>
+                            <li>Launch this tool with default parameters, or specify via command-line.</li>
+                            <li>Check the terminal panel for <code>[MA2] 成功連接到 MA2 Telnet</code> to confirm connection.</li>
+                        </ol>
+                        <div style="text-align: center; margin-top: 15px;">
+                            <img src="setting.png" alt="MA2 Telnet Settings" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                        </div>
+                    </div>
+                    <div class="step-box">
+                        <h3>5.2 Test Sending OSC Commands</h3>
+                        <ol>
+                            <li>Use an OSC sending tool (TouchOSC, OSCculator, or custom app).</li>
+                            <li>Send OSC message to address <code>/ma2</code> with parameter as full MA2 command (e.g., <code>Go Executor 1.1</code>).</li>
+                            <li>Or send to address <code>/ma2/Go Executor 1.1</code>.</li>
+                            <li>Verify the terminal panel shows both receive and forward messages.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="osc-en">
+                    <h2>6. OSC Message Format</h2>
+                    <div class="info-box">
+                        <h3>6.1 Supported OSC Formats</h3>
+                        <p>This tool only processes OSC addresses starting with <code>/ma2</code>. All other messages are filtered out.</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Format</th>
+                            <th>OSC Address</th>
+                            <th>OSC Arguments</th>
+                            <th>Result</th>
+                        </tr>
+                        <tr>
+                            <td>Format A (Recommended)</td>
+                            <td><code>/ma2</code></td>
+                            <td>Full command string (e.g., <code>Go Executor 1.1</code>)</td>
+                            <td><code>Go Executor 1.1</code></td>
+                        </tr>
+                        <tr>
+                            <td>Format B</td>
+                            <td><code>/ma2/Go Executor 1.1</code></td>
+                            <td>Optional extra arguments</td>
+                            <td><code>Go Executor 1.1 [extras]</code></td>
+                        </tr>
+                    </table>
+                    <div class="step-box">
+                        <h3>6.2 Example: Trigger Executor</h3>
+                        <div class="ascii-art">
+# Format A: address is /ma2, first argument is the command
+OSC Address: /ma2
+OSC Args: "Go Executor 1.1"
+→ Forwarded to MA2: Go Executor 1.1
+
+# Format B: command in address path
+OSC Address: /ma2/Go Executor 1.1
+OSC Args: (none)
+→ Forwarded to MA2: Go Executor 1.1
+
+# Format B + extra arguments
+OSC Address: /ma2/SetChannel
+OSC Args: 1, 255
+→ Forwarded to MA2: SetChannel 1 255
+                        </div>
+                    </div>
+                    <div class="warning-box">
+                        <h3>6.3 Safety Filter</h3>
+                        <ul>
+                            <li>All OSC messages not starting with <code>/ma2</code> are automatically ignored.</li>
+                            <li>Terminal shows: <code>[系統] 收到非 MA2 指令，已略過不轉發。</code></li>
+                            <li>This prevents accidental MA2 triggers from other OSC signals.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="faq-en">
+                    <h2>7. FAQ</h2>
+                    <div class="step-box">
+                        <h3>Q1: Terminal shows "Connection to MA2 failed"</h3>
+                        <ul>
+                            <li>Verify the grandMA2 host IP address is correct.</li>
+                            <li>Ensure grandMA2 Telnet Server is enabled.</li>
+                            <li>Check that Port 30000 is not blocked by firewall.</li>
+                            <li>Try pinging from MA2 to confirm network connectivity.</li>
+                        </ul>
+                    </div>
+                    <div class="step-box">
+                        <h3>Q2: OSC received but MA2 not responding</h3>
+                        <ul>
+                            <li>Confirm OSC address starts with <code>/ma2</code>.</li>
+                            <li>Check MA2 Telnet login status in terminal output.</li>
+                            <li>Verify the MA2 command format is correct.</li>
+                            <li>Test the command manually on grandMA2 local console.</li>
+                        </ul>
+                    </div>
+                    <div class="step-box">
+                        <h3>Q3: OSC sender cannot connect to this tool</h3>
+                        <ul>
+                            <li>Use the local LAN IP (not 127.0.0.1) as the OSC target.</li>
+                            <li>Ensure OSC port matches this tool's setting (default 8000).</li>
+                            <li>Check firewall allows inbound UDP on the specified port.</li>
+                        </ul>
+                    </div>
+                    <div class="step-box">
+                        <h3>Q4: No messages appear in terminal panel</h3>
+                        <ul>
+                            <li>Confirm the OSC sender is actually transmitting.</li>
+                            <li>Verify the OSC address format is correct (must start with <code>/ma2</code>).</li>
+                            <li>Try sending test messages with an OSC debugging tool.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><strong id="footer-title">OSC to MA2 Telnet 橋接工具 使用說明書</strong></p>
+            <p id="footer-version">版本：v1.0</p>
+            <p id="footer-date">文件日期：2026-03-21</p>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            const btnZh = document.getElementById('btn-zh');
+            const btnEn = document.getElementById('btn-en');
+            const paneZh = document.getElementById('pane-zh');
+            const paneEn = document.getElementById('pane-en');
+            const title = document.querySelector('[data-i18n="title"]');
+            const subtitle = document.querySelector('[data-i18n="subtitle"]');
+            const footerTitle = document.getElementById('footer-title');
+            const footerVersion = document.getElementById('footer-version');
+            const footerDate = document.getElementById('footer-date');
+
+            function setLang(lang) {
+                const isZh = lang === 'zh';
+                paneZh.hidden = !isZh;
+                paneEn.hidden = isZh;
+                btnZh.classList.toggle('active', isZh);
+                btnEn.classList.toggle('active', !isZh);
+
+                if (isZh) {
+                    document.documentElement.lang = 'zh-TW';
+                    document.title = 'OSC to MA2 Telnet 橋接工具 使用說明書';
+                    title.textContent = 'OSC to MA2 Telnet 橋接工具';
+                    subtitle.textContent = '使用說明書 v1.0';
+                    footerTitle.textContent = 'OSC to MA2 Telnet 橋接工具 使用說明書';
+                    footerVersion.textContent = '版本：v1.0';
+                    footerDate.textContent = '文件日期：2026-03-21';
+                } else {
+                    document.documentElement.lang = 'en';
+                    document.title = 'OSC to MA2 Telnet Bridge Manual';
+                    title.textContent = 'OSC to MA2 Telnet Bridge';
+                    subtitle.textContent = 'User Manual v1.0';
+                    footerTitle.textContent = 'OSC to MA2 Telnet Bridge User Manual';
+                    footerVersion.textContent = 'Version: v1.0';
+                    footerDate.textContent = 'Document Date: 2026-03-21';
+                }
+            }
+
+            btnZh.addEventListener('click', function () { setLang('zh'); });
+            btnEn.addEventListener('click', function () { setLang('en'); });
+            setLang('zh');
+        })();
+    </script>
+</body>
+
+</html>
