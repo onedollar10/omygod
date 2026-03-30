@@ -18,6 +18,11 @@ const translations = {
         "footer_rights": "© 2026 onedoller. All rights reserved. | 我做的不是藝術是技術",
         "lang_toggle": "English",
         "latest_update": "最新更新:",
+        "osc_new_subtitle": "MA2 系統的 OSC 連動橋梁",
+        "osc_new_integration_title": "★ 創新思維，無縫整合 ★",
+        "osc_new_integration_desc": "OSC（Open Sound Control）是現今業界廣泛使用的通訊協定，能夠精準傳遞各種豐富的控制數據，舉凡 QLab、Resolume、TouchDesigner 等各大專業多媒體軟體皆有深度的支援。<br><br>藉由此軟體創新的轉換與橋接能力，讓 MA2 也能完美無縫地融合進這個豐富的生態圈中。<br><strong>輕鬆實現跨平台、跨設備的靈活連動</strong>，徹底解放您的演出創意與整體系統的彈性。",
+        "osc_vid_unsupported": "您的瀏覽器不支援影片播放。",
+        "osc_spec_device": "<strong>支援/控制設備</strong>: ETC EOS Family, GrandMA2 及各大支援 OSC 協定的軟體",
         // Product Page - OSC Tool
         "osc_hero_subtitle": "專業燈光設計師的終極同步解決方案",
         "osc_buy_email": "欲購買請聯絡 5664762@gmail.com",
@@ -97,6 +102,11 @@ const translations = {
         "footer_rights": "© 2026 onedoller. All rights reserved. | Tech x Art Studio",
         "lang_toggle": "中文",
         "latest_update": "Latest Update:",
+        "osc_new_subtitle": "The OSC Bridge for MA2 Systems",
+        "osc_new_integration_title": "★ Innovative Design, Seamless Integration ★",
+        "osc_new_integration_desc": "OSC (Open Sound Control) is a widely used communication protocol in the industry today, capable of precisely transmitting rich control data. It is deeply supported by major professional multimedia software such as QLab, Resolume, and TouchDesigner.<br><br>With this software's innovative bridging capabilities, MA2 can now seamlessly integrate into this rich ecosystem.<br><strong>Easily achieve cross-platform, cross-device flexible synchronization</strong>, completely liberating your show's creativity and the flexibility of your overall system.",
+        "osc_vid_unsupported": "Your browser does not support video playback.",
+        "osc_spec_device": "<strong>Supported / Control Devices</strong>: ETC EOS Family, GrandMA2, and major software supporting OSC protocols",
         // Product Page - OSC Tool
         "osc_hero_subtitle": "The Ultimate Sync Solution for Lighting Designers",
         "osc_buy_email": "Contact 5664762@gmail.com to Purchase",
@@ -184,7 +194,7 @@ function applyTranslations() {
             if (el.tagName === 'INPUT' && (el.type === 'button' || el.type === 'submit')) {
                 el.value = translations[currentLang][key];
             } else {
-                el.innerText = translations[currentLang][key];
+                el.innerHTML = translations[currentLang][key];
             }
         }
     });
