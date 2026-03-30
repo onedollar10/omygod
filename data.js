@@ -237,6 +237,11 @@ const freeTools = [
 
 const latestUpdates = [
     {
+        date: "2026-03-31",
+        content: "全新上架：創新的 OSC to MA2 Tool 已經發布，完美橋接跨平台裝置！歡迎 <a href='products/ma2-osc-tool.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('ma2_osc_tool_TickerDetails', 'TickerDetails')\">點此了解詳情</a> (或 <a href='Manual/OSC%20to%20MA2%20Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('ma2_osc_tool_TickerManual', 'TickerManual')\">查看說明書</a>)",
+        content_en: "New Release: The innovative OSC to MA2 Tool is out now! <a href='products/ma2-osc-tool.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('ma2_osc_tool_TickerDetails', 'TickerDetails')\">Learn More</a> (or <a href='Manual/OSC%20to%20MA2%20Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('ma2_osc_tool_TickerManual', 'TickerManual')\">View Manual</a>)"
+    },
+    {
         date: "2026-03-06",
         content: "新增：螢幕 RTSP 串流工具已發布，歡迎 <a href='https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerDownload', 'TickerDownload')\">點此下載</a> (或 <a href='Manual/RTSP TOOL Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerManual', 'TickerManual')\">查看說明書</a>)",
         content_en: "New Release: Screen RTSP Streaming Tool available <a href='https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerDownload', 'TickerDownload')\">Download Here</a> (or <a href='Manual/RTSP TOOL Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerManual', 'TickerManual')\">View Manual</a>)"

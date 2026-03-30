@@ -203,6 +203,35 @@
             to { text-shadow: 0 0 40px rgba(0, 243, 255, 1), 0 0 10px white; }
         }
 
+        /* Specs Section */
+        .specs-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 100px 20px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .specs-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+        }
+
+        .specs-list {
+            display: inline-block;
+            text-align: left;
+            font-size: 1.2rem;
+            color: #ddd;
+            list-style: none;
+            padding: 0;
+        }
+
+        .specs-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            border-left: 3px solid var(--neon-purple);
+        }
+
         /* Navigation Override */
         nav {
             background: rgba(0, 0, 0, 0.8) !important;
@@ -273,6 +302,16 @@
                 您的瀏覽器不支援影片播放。
             </video>
         </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section class="specs-section">
+        <h2 class="specs-title" data-i18n="osc_sys_req">SYSTEM REQUIREMENTS</h2>
+        <ul class="specs-list">
+            <li><strong>OS</strong>: Windows</li>
+            <li><strong>支援/控制設備</strong>: ETC EOS Family, GrandMA2 及各大支援 OSC 協定的軟體</li>
+        </ul>
+        <br><br>
     </section>
 
     <!-- Footer -->
