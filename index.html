@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>技術 x 藝術 | 個人網頁</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@600;700;800&family=Rajdhani:wght@500;700&display=swap"
+        rel="stylesheet">
     <!-- Visitor Counter Script -->
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <!-- Google tag (gtag.js) -->
@@ -22,58 +25,82 @@
 
 <body>
 
-    <div class="bg-glow"></div>
-
     <header>
         <div class="logo-container">
-            <img src="assets/logo.png" alt="Logo">
-            <span style="font-weight: 800; font-size: 1.2rem;">TECH & ART</span>
+            <img src="assets/logo-neo.svg" alt="ONEDOLLER NEO">
         </div>
+
         <div class="news-ticker">
             <span class="news-label" data-i18n="latest_update">最新更新:</span>
             <div class="news-content-wrapper">
                 <div id="news-content" class="news-content">
-                    <!-- Data injected by main.js -->
                 </div>
             </div>
         </div>
+
         <nav>
             <a href="#home" data-i18n="nav_home">首頁</a>
             <a href="#software" data-i18n="nav_software">軟體販售</a>
             <a href="#tutorials" data-i18n="nav_tutorials">教學區</a>
-            <button id="lang-toggle" class="btn-small" onclick="toggleLanguage()" data-i18n="lang_toggle"
-                style="margin-left: 1rem; padding: 0.3rem 0.8rem; font-size: 0.8rem;">English</button>
+            <button id="lang-toggle" class="btn-small" onclick="toggleLanguage()" data-i18n="lang_toggle">English</button>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <h1 data-i18n="hero_title">我做的不是藝術是技術</h1>
-            <p data-i18n="hero_subtitle">融合尖端科技與舞台美學，為燈光設計與影音同步提供最精確的解決方案。</p>
+            <div class="hero-grid">
+                <article class="hero-copy neo-panel">
+                    <p class="hero-kicker">LIGHTING CONTROL SYSTEM · NEO MODE</p>
+                    <h1 data-i18n="hero_title">我做的不是藝術是技術</h1>
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">融合尖端科技與舞台美學，為燈光設計與影音同步提供最精確的解決方案。</p>
+                    <div class="hero-points">
+                        <span>專業技術</span>
+                        <span>精準實作</span>
+                        <span>現場落地</span>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#software" class="btn">查看軟體</a>
+                        <a href="#tutorials" class="btn btn-ghost">看教學資源</a>
+                    </div>
+                </article>
 
+                <div class="hero-side">
+                    <article class="neo-panel mini-panel">
+                        <p class="mini-title">核心能力</p>
+                        <ul>
+                            <li>OSC / sACN / LTC 串接</li>
+                            <li>ETC / EOS 控台整合</li>
+                            <li>流程自動化與輸出文件</li>
+                        </ul>
+                    </article>
+                    <article class="neo-panel mini-panel">
+                        <p class="mini-title">AI 協作定位</p>
+                        <p>人機協作強化決策效率，保留實務判斷，讓演出執行更穩定。</p>
+                    </article>
+                    <article class="neo-panel mini-panel">
+                        <p class="mini-title">服務節奏</p>
+                        <p>需求確認 → 技術配置 → 現場驗證 → 文件交付</p>
+                    </article>
+                </div>
+            </div>
         </section>
 
         <section id="software">
             <h2 data-i18n="section_software">軟體販售區</h2>
             <div id="software-container" class="software-grid">
-                <!-- Data injected by main.js -->
             </div>
         </section>
 
-        <section id="free-tools" style="background: rgba(255,255,255,0.02)">
+        <section id="free-tools" class="section-soft">
             <h2 data-i18n="section_free">免費好用區</h2>
             <div id="free-tools-container" class="software-grid">
-                <!-- Data injected by main.js -->
             </div>
         </section>
 
-        <section id="tutorials" style="background: rgba(255,255,255,0.02)">
+        <section id="tutorials" class="section-soft">
             <h2 data-i18n="section_tutorials">教學資源區</h2>
-            <div id="category-filters" style="text-align: center; margin-bottom: 2rem;">
-                <!-- Filter buttons will be injected by main.js -->
-            </div>
-            <div id="tutorial-list" style="max-width: 900px; margin: 0 auto;">
-                <!-- Data injected by main.js -->
+            <div id="category-filters"></div>
+            <div id="tutorial-list" class="tutorial-book-wrap">
             </div>
         </section>
     </main>
@@ -92,18 +119,17 @@
             <div id="reader-body">
                 <h2 id="modal-title"></h2>
                 <div id="modal-content"></div>
-                <div id="modal-footer"
-                    style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                    <a id="modal-download" href="#" class="btn" style="margin:0">下載原始文件</a>
+                <div id="modal-footer">
+                    <a id="modal-download" href="#" class="btn">下載原始文件</a>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <div style="margin-bottom: 1rem;">
-            <a href="mailto:5664762@gmail.com" style="color: var(--primary); text-decoration: none; margin: 0 1rem; font-weight: 500;">Email: 5664762@gmail.com</a>
-            <a href="https://line.me/ti/p/~5664762" target="_blank" style="color: var(--primary); text-decoration: none; margin: 0 1rem; font-weight: 500;">Line ID: 5664762</a>
+        <div class="footer-contact">
+            <a href="mailto:5664762@gmail.com">Email: 5664762@gmail.com</a>
+            <a href="https://line.me/ti/p/~5664762" target="_blank">Line ID: 5664762</a>
         </div>
         <p data-i18n="footer_rights">&copy; 2026 onedoller. All rights reserved. | 我做的不是藝術是技術</p>
     </footer>

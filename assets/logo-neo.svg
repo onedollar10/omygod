@@ -1,0 +1,49 @@
+<svg width="540" height="150" viewBox="0 0 540 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="neoStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#86E7FF"/>
+      <stop offset="100%" stop-color="#5388FF"/>
+    </linearGradient>
+    <linearGradient id="neoText" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E9F6FF"/>
+      <stop offset="100%" stop-color="#95C4FF"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="540" height="150" rx="24" fill="rgba(5,14,34,0.62)"/>
+  <rect x="2" y="2" width="536" height="146" rx="22" stroke="url(#neoStroke)" stroke-opacity="0.35"/>
+
+  <g transform="translate(28 38)">
+    <g fill="#A5DDFF">
+      <circle cx="6" cy="6" r="3"/>
+      <circle cx="18" cy="6" r="3"/>
+      <circle cx="30" cy="6" r="3"/>
+      <circle cx="42" cy="6" r="3"/>
+      <circle cx="54" cy="6" r="3"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="18" r="3"/>
+      <circle cx="30" cy="18" r="3"/>
+      <circle cx="42" cy="18" r="3"/>
+      <circle cx="54" cy="18" r="3"/>
+      <circle cx="6" cy="30" r="3"/>
+      <circle cx="18" cy="30" r="3"/>
+      <circle cx="30" cy="30" r="3"/>
+      <circle cx="42" cy="30" r="3"/>
+      <circle cx="54" cy="30" r="3"/>
+      <circle cx="6" cy="42" r="3"/>
+      <circle cx="18" cy="42" r="3"/>
+      <circle cx="30" cy="42" r="3"/>
+      <circle cx="42" cy="42" r="3"/>
+      <circle cx="54" cy="42" r="3"/>
+      <circle cx="6" cy="54" r="3"/>
+      <circle cx="18" cy="54" r="3"/>
+      <circle cx="30" cy="54" r="3"/>
+      <circle cx="42" cy="54" r="3"/>
+      <circle cx="54" cy="54" r="3"/>
+    </g>
+    <path d="M74 30H124" stroke="url(#neoStroke)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="2 5"/>
+  </g>
+
+  <text x="170" y="66" fill="url(#neoText)" font-family="Rajdhani, Noto Sans TC, sans-serif" font-size="44" font-weight="700" letter-spacing="1.4">ONEDOLLER NEO</text>
+  <text x="170" y="104" fill="#8CC6FF" font-family="Rajdhani, Noto Sans TC, sans-serif" font-size="24" font-weight="600" letter-spacing="3.8">STAGE TECH CONTROL</text>
+</svg>

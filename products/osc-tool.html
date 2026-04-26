@@ -1,624 +1,1129 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSC Timecode Tool | 專業燈光同步解決方案</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>OSC Timecode Tool | 撠平???郊閫?捱?寞?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700&display=swap"
         rel="stylesheet">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-95B5G5KQ8B');
+        gtag("js", new Date());
+        gtag("config", "G-95B5G5KQ8B");
     </script>
     <style>
         :root {
-            --neon-blue: #00f3ff;
-            --neon-purple: #bc13fe;
-            --dark-bg: #050505;
-            --glass-bg: rgba(20, 20, 30, 0.6);
-            --border-glow: 0 0 10px rgba(0, 243, 255, 0.5);
+            --bg: #050b19;
+            --panel: rgba(7, 16, 36, 0.82);
+            --panel-soft: rgba(10, 24, 50, 0.72);
+            --line: rgba(120, 188, 255, 0.35);
+            --text: #edf5ff;
+            --text-dim: #a5bdd8;
+            --accent: #7cdfff;
+            --accent-2: #5f8fff;
+            --purple: #8e77ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--dark-bg);
-            background-image: url('../assets/products/osc-tool/bg.png');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            font-family: 'Rajdhani', sans-serif;
-            color: #fff;
+            font-family: "Noto Sans TC", sans-serif;
+            color: var(--text);
+            line-height: 1.65;
+            background-color: var(--bg);
             overflow-x: hidden;
-            margin: 0;
         }
 
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(118deg, rgba(2, 7, 20, 0.68), rgba(5, 13, 35, 0.58) 48%, rgba(18, 7, 38, 0.66)),
+                radial-gradient(circle at 18% 24%, rgba(70, 154, 255, 0.34), transparent 40%),
+                radial-gradient(circle at 84% 56%, rgba(138, 102, 255, 0.3), transparent 42%),
+                url("../assets/hero-neo-photo.png");
+            background-size: cover;
+            background-position: center;
+            filter: saturate(1.06);
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle at 15% 22%, rgba(156, 223, 255, 0.16) 0 2px, transparent 2px),
+                radial-gradient(circle at 84% 66%, rgba(150, 168, 255, 0.14) 0 2px, transparent 2px),
+                linear-gradient(transparent 96.7%, rgba(114, 176, 255, 0.12) 100%),
+                linear-gradient(90deg, transparent 98.3%, rgba(114, 176, 255, 0.08) 100%);
+            background-size: 4px 4px, 4px 4px, 100% 30px, 30px 100%;
+            opacity: 0.17;
+        }
+
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 80;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.9rem 3.6%;
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(14px);
+            background: rgba(4, 10, 26, 0.72);
+        }
+
+        .brand {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 0.75rem;
+            min-width: fit-content;
+        }
+
+        .brand img {
+            height: 2.65rem;
+            width: auto;
+        }
+
+        .brand strong {
+            font-family: "Orbitron", "Noto Sans TC", sans-serif;
+            letter-spacing: 0.08em;
+            font-size: 0.98rem;
+        }
+
+        .top-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .top-nav a {
+            color: #d8eaff;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .top-nav a.active {
+            color: var(--accent);
+        }
+
+        #lang-toggle {
+            border: 1px solid rgba(124, 201, 255, 0.48);
+            border-radius: 999px;
+            background: rgba(14, 29, 55, 0.72);
+            color: #d2ecff;
+            padding: 0.36rem 0.82rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .page {
+            width: min(1240px, 92%);
+            margin: 0 auto;
+            padding: 2.2rem 0 4.2rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.08fr 1fr;
+            gap: 1rem;
+            align-items: stretch;
+            margin-top: 0.3rem;
+        }
+
+        .hero-copy,
+        .hero-ui {
+            border: 1px solid var(--line);
+            border-radius: 1.1rem;
+            background:
+                linear-gradient(152deg, rgba(16, 30, 60, 0.88), rgba(7, 14, 32, 0.9)),
+                repeating-linear-gradient(90deg, rgba(129, 203, 255, 0.08) 0 1px, transparent 1px 8px);
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.36);
+        }
+
+        .hero-copy {
+            padding: clamp(1.2rem, 3vw, 2rem);
+            display: flex;
             flex-direction: column;
-            text-align: center;
-            position: relative;
-            padding-top: 80px;
+            justify-content: center;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            width: fit-content;
+            border: 1px solid rgba(128, 206, 255, 0.46);
+            border-radius: 999px;
+            padding: 0.33rem 0.72rem;
+            font-size: 0.78rem;
+            color: #afdcff;
+            letter-spacing: 0.09em;
+            font-family: "Rajdhani", sans-serif;
+            margin-bottom: 0.9rem;
         }
 
         .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5rem;
-            font-weight: 900;
-            background: linear-gradient(to right, #fff, var(--neon-blue));
+            font-family: "Orbitron", "Noto Sans TC", sans-serif;
+            font-size: clamp(2rem, 5vw, 3.45rem);
+            line-height: 1.08;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(92deg, #f2fbff 25%, #8cddff 70%, #8fa6ff 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
-            margin-bottom: 20px;
-            animation: glow 3s infinite alternate;
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            color: var(--neon-purple);
-            letter-spacing: 5px;
-            margin-bottom: 50px;
             text-transform: uppercase;
         }
 
-        .hero-image-container {
-            position: relative;
-            width: 80%;
-            max-width: 1200px;
-            perspective: 1000px;
-            margin-bottom: 50px;
+        .hero-sub {
+            color: #9dbeeb;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 1rem;
         }
 
-        .hero-ui-img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: rotateX(10deg);
-            transition: transform 0.5s ease;
-        }
-
-        .hero-ui-img:hover {
-            transform: rotateX(0deg) scale(1.02);
-            box-shadow: 0 0 80px rgba(188, 19, 254, 0.4);
-        }
-
-        .cta-btn {
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
-            transition: all 0.3s ease;
-            font-family: 'Orbitron', sans-serif;
-            display: inline-block;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 40px rgba(188, 19, 254, 0.8);
-        }
-
-        /* Contact Button Group */
-        .btn-group {
+        .hero-points {
             display: flex;
-            gap: 20px;
+            gap: 0.55rem;
             flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
+            margin-bottom: 1.2rem;
         }
 
-        .btn-email {
-            background: linear-gradient(45deg, #ea4335, #fbbc05);
-            box-shadow: 0 0 20px rgba(234, 67, 53, 0.4);
+        .hero-points span {
+            border: 1px solid rgba(114, 222, 255, 0.42);
+            color: #b9ecff;
+            border-radius: 999px;
+            padding: 0.32rem 0.67rem;
+            font-size: 0.84rem;
         }
 
-        .btn-line {
-            background: linear-gradient(45deg, #00b900, #00e000);
-            box-shadow: 0 0 20px rgba(0, 185, 0, 0.4);
-        }
-
-        .btn-line:hover {
-            box-shadow: 0 0 40px rgba(0, 185, 0, 0.8);
-        }
-
-        .btn-manual {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            box-shadow: 0 0 20px rgba(0, 114, 255, 0.4);
-        }
-
-        .btn-manual:hover {
-            box-shadow: 0 0 40px rgba(0, 114, 255, 0.8);
-        }
-
-        .cta-btn i {
-            margin-right: 10px;
-        }
-
-        /* Features Section - ZigZag Horizontal Layout */
-        .features-container {
-            max-width: 1400px;
-            margin: 100px auto;
-            padding: 0 20px;
+        .cta-group {
             display: flex;
-            flex-direction: column;
-            gap: 100px;
-            /* Space between rows */
+            gap: 0.6rem;
+            flex-wrap: wrap;
         }
 
-        .feature-row {
-            display: flex;
-            flex-direction: column;
+        .cta {
+            display: inline-flex;
             align-items: center;
-            gap: 40px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 30px;
-            padding: 60px 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.5s ease;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            border-radius: 0.65rem;
+            padding: 0.62rem 0.96rem;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-1px);
+        }
+
+        .cta.primary {
+            color: #061426;
+            background: linear-gradient(130deg, var(--accent), var(--accent-2));
+        }
+
+        .cta.secondary {
+            color: #d4e8ff;
+            border-color: rgba(124, 196, 255, 0.45);
+            background: rgba(9, 25, 49, 0.68);
+        }
+
+        .hero-ui {
+            padding: 0.95rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .hero-ui img {
+            width: 100%;
+            display: block;
+            border-radius: 0.85rem;
+            border: 1px solid rgba(128, 204, 255, 0.32);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
+        }
+
+        .quick-spec {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.6rem;
+        }
+
+        .quick-spec article {
+            border: 1px solid rgba(127, 196, 255, 0.3);
+            border-radius: 0.7rem;
+            padding: 0.65rem 0.58rem;
+            background: rgba(8, 23, 46, 0.75);
             text-align: center;
         }
 
-        .feature-row:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(0, 243, 255, 0.3);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        .quick-spec strong {
+            display: block;
+            font-family: "Orbitron", sans-serif;
+            font-size: 0.84rem;
+            color: #9ce2ff;
+            margin-bottom: 0.2rem;
         }
 
-        .feature-row:nth-child(even) {
-            flex-direction: column;
+        .quick-spec span {
+            color: #d4e7ff;
+            font-size: 0.82rem;
         }
 
-        .feature-img-wrapper {
-            width: 100%;
-            max-width: 1100px;
+        .section {
+            margin-top: 1.65rem;
+            border: 1px solid var(--line);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            background: var(--panel);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+        }
+
+        .section h2 {
+            font-family: "Orbitron", "Noto Sans TC", sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.9rem);
+            margin-bottom: 0.95rem;
+            letter-spacing: 0.04em;
+        }
+
+        .section-sub {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .demo-wrap {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 0.9rem;
+            align-items: stretch;
+        }
+
+        .demo-video {
             position: relative;
-        }
-
-        .feature-img-wrapper img {
-            width: 100%;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease;
-        }
-
-        /* Horizontal layout for Small Image (Playlist) */
-        .img-small {
-            flex-direction: row !important;
-            text-align: left !important;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .img-small .feature-img-wrapper {
-            flex: 0 0 300px;
-            /* Further reduced width to match text height */
-            max-width: 300px;
-        }
-
-        .img-small .feature-content {
-            margin-top: 0 !important;
-            max-width: 600px;
-        }
-
-        .img-small .feature-title::after {
-            left: 0;
-            transform: none;
-        }
-
-        /* Balanced side-by-side layout for large horizontal features */
-        .feature-horizontal {
-            flex-direction: row !important;
-            text-align: left !important;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-        }
-
-        .feature-horizontal .feature-img-wrapper {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .feature-horizontal .feature-content {
-            flex: 1;
-            max-width: 600px;
-            margin-top: 0 !important;
-        }
-
-
-        .feature-row:hover .feature-img-wrapper img {
-            transform: scale(1.02);
-            border-color: var(--neon-blue);
-        }
-
-        .feature-content {
-            width: 100%;
-            max-width: 900px;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 243, 255, 0.1);
-            backdrop-filter: blur(5px);
-            margin-top: -20px;
-            /* Slight overlap with image for depth */
-            position: relative;
-            z-index: 2;
-        }
-
-        .feature-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            color: var(--neon-blue);
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .feature-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--neon-purple);
-        }
-
-        .feature-desc {
-            font-size: 1.3rem;
-            color: #fff;
-            line-height: 1.8;
-            margin-bottom: 0px;
-            /* Reduced since highlight follows */
-        }
-
-        .feature-highlight {
-            background: rgba(188, 19, 254, 0.1);
-            border-top: 4px solid var(--neon-purple);
-            border-left: none;
-            padding: 20px;
-            margin-top: 30px;
-            color: #fff;
-            font-weight: 500;
-            border-radius: 0 0 15px 15px;
-        }
-
-        /* Integration Banner */
-        .integration-banner {
-            max-width: 1200px;
-            margin: 100px auto;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.9), rgba(0, 0, 0, 0.8));
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            text-align: center;
-            padding: 60px;
-            border-radius: 20px;
-            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
             overflow: hidden;
+            border-radius: 0.8rem;
+            border: 1px solid rgba(126, 196, 255, 0.36);
+            box-shadow: 0 0 26px rgba(97, 146, 255, 0.2);
         }
 
-        .integration-banner::before {
-            content: '';
+        .demo-video video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-blue));
-            animation: slideBg 3s linear infinite;
-            background-size: 200% 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        @keyframes slideBg {
+        .demo-notes {
+            border: 1px solid rgba(127, 196, 255, 0.3);
+            border-radius: 0.8rem;
+            padding: 1rem;
+            background: rgba(10, 25, 50, 0.72);
+        }
+
+        .demo-notes h3 {
+            font-size: 1.04rem;
+            margin-bottom: 0.6rem;
+            color: #9de2ff;
+            font-family: "Orbitron", sans-serif;
+            letter-spacing: 0.03em;
+        }
+
+        .demo-notes ul {
+            list-style: none;
+            display: grid;
+            gap: 0.52rem;
+        }
+
+        .demo-notes li {
+            color: #cde0f6;
+            padding-left: 0.9rem;
+            position: relative;
+        }
+
+        .demo-notes li::before {
+            content: "";
+            width: 0.36rem;
+            height: 0.36rem;
+            border-radius: 50%;
+            background: var(--accent);
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+        }
+
+        .feature-book-shell {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .feature-nav {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 50%;
+            border: 1px solid rgba(130, 203, 255, 0.48);
+            background: rgba(10, 27, 54, 0.82);
+            color: #bfe7ff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .feature-nav:hover {
+            background: linear-gradient(130deg, var(--accent), var(--accent-2));
+            color: #081323;
+        }
+
+        .feature-nav:disabled {
+            opacity: 0.45;
+            cursor: default;
+        }
+
+        .feature-book-wrap {
+            perspective: 1600px;
+            position: relative;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .feature-book {
+            display: grid;
+            grid-template-columns: 1fr;
+            border: 1px solid rgba(125, 197, 255, 0.38);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 42px rgba(0, 0, 0, 0.38);
+            background: rgba(6, 17, 37, 0.9);
+        }
+
+        .feature-page {
+            background:
+                linear-gradient(160deg, rgba(15, 31, 63, 0.88), rgba(8, 16, 33, 0.92)),
+                radial-gradient(circle at 18% 20%, rgba(132, 209, 255, 0.16), transparent 55%);
+            padding: 1.3rem;
+            min-height: 42rem;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+            transition: transform 0.25s ease;
+        }
+
+        .feature-media {
+            width: 100%;
+            height: 24rem;
+            border: 1px solid rgba(125, 198, 255, 0.35);
+            border-radius: 0.78rem;
+            background:
+                linear-gradient(145deg, rgba(13, 32, 64, 0.96), rgba(7, 16, 34, 0.96)),
+                radial-gradient(circle at 20% 18%, rgba(117, 204, 255, 0.18), transparent 56%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem;
+            margin-bottom: 1.1rem;
+            transition: transform 0.24s ease;
+        }
+
+        .feature-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 0.62rem;
+            filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.28));
+            transition: transform 0.25s ease;
+        }
+
+        .feature-page:hover {
+            transform: translateY(-2px);
+        }
+
+        .feature-page:hover .feature-media {
+            transform: translateZ(14px);
+        }
+
+        .feature-page:hover .feature-media img {
+            transform: scale(1.07);
+        }
+
+        .feature-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .feature-id {
+            display: inline-block;
+            border: 1px solid rgba(130, 205, 255, 0.42);
+            border-radius: 999px;
+            color: #99dcff;
+            background: rgba(9, 26, 52, 0.7);
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            font-size: 0.86rem;
+            padding: 0.2rem 0.58rem;
+            margin-bottom: 0.52rem;
+            width: fit-content;
+        }
+
+        .feature-body h3 {
+            font-family: "Orbitron", "Noto Sans TC", sans-serif;
+            font-size: 1.52rem;
+            color: #c5f2ff;
+            margin-bottom: 0.7rem;
+            letter-spacing: 0.04em;
+            line-height: 1.35;
+        }
+
+        .feature-body p {
+            color: #d8e9fb;
+            font-size: 1.14rem;
+            line-height: 1.9;
+            margin-bottom: 0.84rem;
+        }
+
+        .feature-highlight {
+            border-left: 3px solid var(--purple);
+            background: rgba(142, 119, 255, 0.16);
+            color: #edf2ff;
+            padding: 0.82rem 0.92rem;
+            border-radius: 0 0.45rem 0.45rem 0;
+            font-size: 1.02rem;
+            line-height: 1.78;
+            margin-top: auto;
+        }
+
+        .feature-book.is-next .feature-page {
+            transform-origin: right center;
+            animation: featureTurnRight 0.58s ease;
+        }
+
+        .feature-book.is-prev .feature-page {
+            transform-origin: left center;
+            animation: featureTurnLeft 0.58s ease;
+        }
+
+        @keyframes featureTurnRight {
             0% {
-                background-position: 0% 0%;
+                transform: rotateY(0deg);
+                opacity: 1;
+            }
+
+            50% {
+                transform: rotateY(-92deg);
+                opacity: 0.2;
             }
 
             100% {
-                background-position: 100% 0%;
+                transform: rotateY(-180deg);
+                opacity: 0;
             }
         }
 
-        /* Specs Section */
-        .specs-section {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 100px 20px;
-            text-align: center;
-            margin-top: 100px;
+        @keyframes featureTurnLeft {
+            0% {
+                transform: rotateY(0deg);
+                opacity: 1;
+            }
+
+            50% {
+                transform: rotateY(92deg);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: rotateY(180deg);
+                opacity: 0;
+            }
         }
 
-        .specs-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 50px;
+        .feature-page-indicator {
+            margin-top: 0.8rem;
+            text-align: center;
+            color: #a7c6e3;
+            font-family: "Rajdhani", sans-serif;
+            letter-spacing: 0.08em;
+            font-size: 0.92rem;
+        }
+
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.65rem;
+        }
+
+        .workflow article {
+            border: 1px solid rgba(124, 198, 255, 0.3);
+            border-radius: 0.78rem;
+            background: rgba(10, 25, 50, 0.66);
+            padding: 0.74rem;
+        }
+
+        .workflow strong {
+            display: block;
+            color: #97dfff;
+            margin-bottom: 0.2rem;
+            font-family: "Orbitron", sans-serif;
+            font-size: 0.88rem;
+            letter-spacing: 0.03em;
+        }
+
+        .workflow span {
+            color: #cadef4;
+            font-size: 0.9rem;
+        }
+
+        .specs-row {
+            display: block;
         }
 
         .specs-list {
-            display: inline-block;
-            text-align: left;
-            font-size: 1.2rem;
-            color: #ddd;
+            list-style: none;
+            display: grid;
+            gap: 0.48rem;
         }
 
         .specs-list li {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            border-left: 3px solid var(--neon-purple);
+            border-left: 3px solid var(--accent-2);
+            padding-left: 0.6rem;
+            color: #d5e5f8;
         }
 
-        /* Footer */
         footer {
+            margin-top: 2.2rem;
             text-align: center;
-            padding: 50px;
-            background: #000;
-            color: #666;
+            color: #9cb6d3;
+            padding: 1.4rem 0 0.6rem;
+            border-top: 1px solid rgba(124, 188, 255, 0.22);
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+        @media (max-width: 1080px) {
+            .hero {
+                grid-template-columns: 1fr;
             }
 
-            to {
-                text-shadow: 0 0 40px rgba(0, 243, 255, 1), 0 0 10px white;
+            .quick-spec {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .demo-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
-        /* Navigation Override */
-        nav {
-            background: rgba(0, 0, 0, 0.8) !important;
-            backdrop-filter: blur(20px);
-        }
-
-        /* Mobile Response */
-        @media (max-width: 900px) {
-
-            .feature-row,
-            .feature-row:nth-child(even) {
-                flex-direction: column;
-                text-align: center;
+        @media (max-width: 760px) {
+            .top-nav {
+                padding: 0.8rem 3.4%;
             }
 
-            .feature-title::after {
-                left: 50%;
-                transform: translateX(-50%);
+            .brand strong {
+                font-size: 0.85rem;
             }
 
-            .feature-content {
-                text-align: center;
+            .feature-book-shell {
+                grid-template-columns: 1fr;
             }
 
-            .hero-title {
-                font-size: 3rem;
+            .feature-nav {
+                width: 100%;
+                border-radius: 0.65rem;
+                height: 2.45rem;
             }
 
-            /* Responsive fix for horizontal images */
-            .img-small,
-            .feature-horizontal {
-                flex-direction: column !important;
-                text-align: center !important;
+            .feature-book {
+                grid-template-columns: 1fr;
             }
 
-            .img-small .feature-img-wrapper,
-            .feature-horizontal .feature-img-wrapper {
+            .feature-page {
+                min-height: auto;
+                padding: 0.95rem;
+            }
+
+            .feature-media {
+                height: 14.8rem;
+                padding: 0.7rem;
+            }
+
+            .feature-body h3 {
+                font-size: 1.06rem;
+            }
+
+            .feature-body p {
+                font-size: 0.95rem;
+            }
+
+            .feature-body {
                 max-width: 100%;
-                flex: none;
             }
 
-            .img-small .feature-title::after,
-            .feature-horizontal .feature-title::after {
-                left: 50%;
-                transform: translateX(-50%);
+            .feature-book.is-next .feature-page,
+            .feature-book.is-prev .feature-page {
+                animation: none;
+            }
+
+            .specs-row {
+                display: block;
+            }
+
+            .workflow {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Simple Nav for Context -->
-    <nav
-        style="position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
-        <div style="font-family: 'Orbitron'; font-weight: bold; font-size: 1.5rem; color: #fff;">
-            TECH & ART
+    <header class="top-nav">
+        <div class="brand">
+            <img src="../assets/logo-neo.svg" alt="ONEDOLLER NEO">
+            <strong>OSC TIMECODE TOOL</strong>
         </div>
-        <div style="display: flex; align-items: center;">
-            <a href="../index.html" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;"
-                data-i18n="nav_home">HOME</a>
-            <a href="#" style="color: var(--neon-blue); text-decoration: none; font-weight: bold; margin-right: 20px;"
-                data-i18n="nav_products">PRODUCTS</a>
-            <button id="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_toggle"
-                style="background: rgba(255,255,255,0.1); border: 1px solid var(--neon-blue); color: #fff; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-family: 'Orbitron'; font-size: 0.8rem;">English</button>
+        <div class="top-nav-links">
+            <a href="../index.html" data-i18n="nav_home">HOME</a>
+            <a href="#" class="active" data-i18n="nav_products">PRODUCTS</a>
+            <button id="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_toggle">English</button>
         </div>
-    </nav>
+    </header>
 
-    <section class="hero-section">
-        <h1 class="hero-title">OSC TIMECODE<br>TOOL</h1>
-        <p class="hero-subtitle" data-i18n="osc_hero_subtitle">The Ultimate Sync Solution for Lighting Designers</p>
-        <div class="hero-image-container">
-            <!-- Main Hero Image still keeping the full UI -->
-            <img src="../assets/products/osc-tool/ui_full.png" alt="OSC Tool Interface" class="hero-ui-img">
-        </div>
-
-        <div class="btn-group">
-            <a href="mailto:5664762@gmail.com" class="cta-btn btn-email">
-                <i class="fa-solid fa-envelope"></i><span data-i18n="osc_buy_email">欲購買請聯絡 5664762@gmail.com</span>
-            </a>
-            <a href="https://line.me/ti/p/~5664762" target="_blank" class="cta-btn btn-line">
-                <i class="fa-brands fa-line"></i><span data-i18n="osc_buy_line">LINE 聯繫 ID: 5664762</span>
-            </a>
-        </div>
-        <div class="btn-group" style="margin-top: 20px;">
-            <a href="../Manual/osc time codeManual.html" target="_blank" class="cta-btn btn-manual">
-                <i class="fa-solid fa-book"></i><span data-i18n="manual_btn">使用說明書 / Manual</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Video Showcase Section -->
-    <section class="video-showcase"
-        style="max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; text-align: center;">
-        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 40px;"
-            data-i18n="osc_demo">PRODUCT
-            DEMO</h2>
-        <div
-            style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; border: 2px solid rgba(0, 243, 255, 0.3); box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);">
-            <video controls aria-label="Product Preview Video"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                <source src="../movice/osc_timecode_tool.mp4" type="video/mp4">
-                您的瀏覽器不支援影片播放。
-            </video>
-        </div>
-    </section>
-
-    <div class="features-container">
-
-        <!-- Feature 1: Waveform -->
-        <div class="feature-row">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_waveform.png" alt="Waveform Visualization">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f1_title">VISUAL WAVEFORM</h3>
-                <p class="feature-desc" data-i18n="osc_f1_desc">
-                    精準的視覺化波形分析。支援縮放功能，讓您即時看見音樂的起伏，點擊波形即可瞬間定位。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f1_hl">
-                    特色功能： 已標註的 Cue 點會直接顯示於波形圖上，讓您一目了然，精確掌握每一個節奏點。
+    <main class="page">
+        <section class="hero">
+            <article class="hero-copy">
+                <span class="hero-kicker">SYNC ENGINE / AUDIO + LIGHTING</span>
+                <h1 class="hero-title">OSC TIMECODE TOOL</h1>
+                <p class="hero-sub" data-i18n="osc_hero_subtitle">The Ultimate Sync Solution for Lighting Designers</p>
+                <div class="hero-points">
+                    <span>OSC</span>
+                    <span>LTC</span>
+                    <span>sACN DMX</span>
+                    <span>WAV Export</span>
                 </div>
-            </div>
-        </div>
-
-        <!-- Feature 2: FPS & Timecode -->
-        <div class="feature-row">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_timecode.png" alt="Precision Timecode">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f2_title">PRECISION TIMING</h3>
-                <p class="feature-desc" data-i18n="osc_f2_desc">
-                    支援 24, 25, 30 FPS 標準影格率。我們深知同步的重要性，因此提供了雙重時間顯示。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f2_hl">
-                    同步顯示： 同時呈現 FPS 影格時間 (Frame Time) 以及 音樂播放時間 (Actual Playback
-                    Time)，讓您在編程與回放時能有最直觀的對照。
+                <div class="cta-group">
+                    <a href="mailto:5664762@gmail.com" class="cta primary">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span data-i18n="osc_buy_email">甈脰頃鞎瑁??舐窗 5664762@gmail.com</span>
+                    </a>
+                    <a href="https://line.me/ti/p/~5664762" target="_blank" class="cta secondary">
+                        <i class="fa-brands fa-line"></i>
+                        <span data-i18n="osc_buy_line">LINE ?舐鼠 ID: 5664762</span>
+                    </a>
+                    <a id="manual-link" href="../Manual/osc time codeManual.html" target="_blank" class="cta secondary">
+                        <i class="fa-solid fa-book"></i>
+                        <span data-i18n="manual_btn">雿輻隤芣???/ Manual</span>
+                    </a>
                 </div>
-            </div>
-        </div>
+            </article>
 
-        <!-- Feature 3: One-click Mark -->
-        <div class="feature-row">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_mark.png" alt="One-click Mark">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f3_title">ONE-CLICK MARK</h3>
-                <p class="feature-desc" data-i18n="osc_f3_desc">
-                    極致簡化的工作流程。當您設定好燈控台 IP 與 Cue 號碼後，同步工作變得輕而易舉。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f3_hl">
-                    即時同步： 當音樂播放到預定位置時，只需按下 Mark，時間碼將即刻發送至 ETC 控台，瞬間完成複雜的時間碼寫入。
+            <article class="hero-ui">
+                <img src="../assets/products/osc-tool/ui_full.png" alt="OSC Tool Interface">
+                <div class="quick-spec">
+                    <article>
+                        <strong>Audio</strong>
+                        <span>MP3 / WAV / OGG</span>
+                    </article>
+                    <article>
+                        <strong>FPS</strong>
+                        <span>24 / 25 / 30</span>
+                    </article>
+                    <article>
+                        <strong>Protocol</strong>
+                        <span>OSC + sACN</span>
+                    </article>
+                    <article>
+                        <strong>Export</strong>
+                        <span>LTC WAV + CSV</span>
+                    </article>
                 </div>
-            </div>
-        </div>
+            </article>
+        </section>
 
-        <!-- Feature 6: LTC + Audio Export -->
-        <div class="feature-row feature-horizontal">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_wav_export.png" alt="LTC Audio Export">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f6_title">LTC + AUDIO EXPORT</h3>
-                <p class="feature-desc" data-i18n="osc_f6_desc">
-                    將 LTC (左聲道) 與 原始音訊 (右聲道) 整合輸出為 WAV 檔案。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f6_hl">
-                    特色功能： 一鍵匯出立體聲 WAV 檔案，方便進行離線編程或作為備援系統使用。
+        <section class="section">
+            <h2 data-i18n="osc_demo">PRODUCT DEMO</h2>
+            <p class="section-sub" id="demo-sub">現場最常用的流程：載入音軌、對齊時間、標記 Cue、即時回放驗證。</p>
+            <div class="demo-wrap">
+                <div class="demo-video">
+                    <video controls aria-label="Product Preview Video">
+                        <source src="../movice/osc_timecode_tool.mp4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
                 </div>
+                <aside class="demo-notes">
+                    <h3 id="demo-focus-title">DEMO FOCUS</h3>
+                    <ul>
+                        <li id="demo-note-1">波形定位與 Mark Cue 速度</li>
+                        <li id="demo-note-2">LTC 輸出穩定度與雙時間顯示</li>
+                        <li id="demo-note-3">sACN 遙控播放動作反應</li>
+                        <li id="demo-note-4">播放清單切換與 Offset 套用</li>
+                    </ul>
+                </aside>
             </div>
-        </div>
+        </section>
 
-        <!-- Feature 4: sACN Remote Control -->
-        <div class="feature-row feature-horizontal">
-            <div class="feature-img-wrapper">
-                <img src="../pic/SACN.png" alt="sACN DMX Remote Control">
-            </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f5_title">sACN DMX REMOTE</h3>
-                <p class="feature-desc" data-i18n="osc_f5_desc">
-                    透過 sACN (E1.31) 協定接收 DMX 訊號，讓您可以直接從燈控台遙控播放器的 播放、暫停、停止、上一首與下一首等功能。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f5_hl">
-                    特色功能： 每個功能可自由設定對應的 DMX 通道 (1-512)，輕鬆實現燈光與音效的硬體連動控裝。
+        <section class="section">
+            <h2 id="features-heading">CORE FEATURES</h2>
+            <p class="section-sub" id="features-sub">左右翻頁查看功能細節，每頁放大展示 1 個核心能力。</p>
+            <div class="feature-book-shell">
+                <button class="feature-nav" id="feature-prev" aria-label="Previous Features">&#10094;</button>
+                <div class="feature-book-wrap">
+                    <div class="feature-book" id="feature-book">
+                        <article class="feature-page" id="feature-page-single"></article>
+                    </div>
+                    <div class="feature-page-indicator" id="feature-page-indicator">FEATURE 1 / 6</div>
                 </div>
+                <button class="feature-nav" id="feature-next" aria-label="Next Features">&#10095;</button>
             </div>
-        </div>
+        </section>
 
-
-
-        <!-- Feature 4: Playlist (Moved to bottom & Smaller) -->
-        <div class="feature-row img-small">
-            <div class="feature-img-wrapper">
-                <img src="../assets/products/osc-tool/feature_playlist.png" alt="Smart Playlist">
+        <section class="section">
+            <h2 id="integration-heading">SEAMLESS INTEGRATION</h2>
+            <p class="section-sub" id="integration-sub">把現場操作濃縮成最短流程，讓 Timecode 對齊、Cue 標記與播放控制都在同一個節奏內完成。</p>
+            <div class="workflow">
+                <article>
+                    <strong>01 LOAD</strong>
+                    <span id="workflow-step-1">匯入音訊與播放清單，設定 Track Offset。</span>
+                </article>
+                <article>
+                    <strong>02 SYNC</strong>
+                    <span id="workflow-step-2">設定 FPS、LTC、OSC IP 與 Port 連線。</span>
+                </article>
+                <article>
+                    <strong>03 MARK</strong>
+                    <span id="workflow-step-3">播放過程即時 Mark Cue，精準寫入控台。</span>
+                </article>
+                <article>
+                    <strong>04 DELIVER</strong>
+                    <span id="workflow-step-4">匯出 WAV / CSV，並用 sACN 進行遠端控制。</span>
+                </article>
             </div>
-            <div class="feature-content">
-                <h3 class="feature-title" data-i18n="osc_f4_title">SMART PLAYLIST</h3>
-                <p class="feature-desc" data-i18n="osc_f4_desc">
-                    自動化播放清單管理。專為多首曲目的演出設計，直觀的拖放與管理介面。
-                </p>
-                <div class="feature-highlight" data-i18n="osc_f4_hl">
-                    獨立設定： 每一首曲目皆可設定獨立的 Track Offset (起始時間碼)，切換曲目時自動套用，演出過程無縫接軌。
-                </div>
+        </section>
+
+        <section class="section">
+            <h2 class="specs-title" data-i18n="osc_sys_req">SYSTEM REQUIREMENTS</h2>
+            <div class="specs-row">
+                <ul class="specs-list">
+                    <li><strong data-i18n="spec_os">OS</strong>: Windows</li>
+                    <li><strong data-i18n="spec_console">?批</strong>: ETC EOS Family</li>
+                </ul>
             </div>
-        </div>
+        </section>
 
-    </div>
-
-    <!-- Integration Banner -->
-    <div class="integration-banner">
-        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 20px;">SEAMLESS INTEGRATION</h2>
-        <p style="font-size: 1.3rem; color: #ddd; max-width: 800px; margin: 0 auto;">
-            內建 OSC 協議深度整合，一鍵 <strong>"Mark Cue"</strong> 直接寫入 ETC EOS 等燈控台。<br>
-            同步支援 <strong>Hardware LTC Output</strong>，透過音訊介面輸出標準 SMPTE 訊號。
-        </p>
-    </div>
-
-    <section class="specs-section">
-        <h2 class="specs-title" data-i18n="osc_sys_req">SYSTEM REQUIREMENTS</h2>
-        <ul class="specs-list">
-            <li><strong data-i18n="spec_os">OS</strong>: Windows</li>
-            <li><strong data-i18n="spec_console">控台</strong>: ETC EOS Family</li>
-        </ul>
-        <br><br>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 onedoller. Tech & Art Studio.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2026 onedoller. Tech & Art Studio.</p>
+        </footer>
+    </main>
 
     <script src="../i18n.js"></script>
+    <script>
+        const featureItems = [
+            {
+                id: "F01",
+                image: "../assets/products/osc-tool/feature_waveform.png",
+                alt: "Waveform Visualization",
+                titleKey: "osc_f1_title",
+                descKey: "osc_f1_desc",
+                hlKey: "osc_f1_hl",
+                fallbackTitle: "VISUAL WAVEFORM",
+                fallbackDesc: "Precise waveform analysis with zoom and direct click-to-locate control.",
+                fallbackHl: "Cue marks are displayed directly on the waveform for fast rhythm alignment."
+            },
+            {
+                id: "F02",
+                image: "../assets/products/osc-tool/feature_timecode.png",
+                alt: "Precision Timecode",
+                titleKey: "osc_f2_title",
+                descKey: "osc_f2_desc",
+                hlKey: "osc_f2_hl",
+                fallbackTitle: "PRECISION TIMING",
+                fallbackDesc: "Supports 24, 25, and 30 FPS with dual time displays for accurate sync monitoring.",
+                fallbackHl: "View both frame-time and actual playback-time references during programming."
+            },
+            {
+                id: "F03",
+                image: "../assets/products/osc-tool/feature_mark.png",
+                alt: "One-click Mark",
+                titleKey: "osc_f3_title",
+                descKey: "osc_f3_desc",
+                hlKey: "osc_f3_hl",
+                fallbackTitle: "ONE-CLICK MARK",
+                fallbackDesc: "Set console IP and cue target, then write timing marks in real time while listening.",
+                fallbackHl: "One press sends cue timing to ETC console without breaking playback flow."
+            },
+            {
+                id: "F04",
+                image: "../assets/products/osc-tool/feature_wav_export.png",
+                alt: "LTC Audio Export",
+                titleKey: "osc_f6_title",
+                descKey: "osc_f6_desc",
+                hlKey: "osc_f6_hl",
+                fallbackTitle: "LTC + AUDIO EXPORT",
+                fallbackDesc: "Export LTC on one channel and program audio on the other as a stereo WAV file.",
+                fallbackHl: "Ideal for offline programming, playback servers, and backup workflows."
+            },
+            {
+                id: "F05",
+                image: "../pic/SACN.png",
+                alt: "sACN DMX Remote Control",
+                titleKey: "osc_f5_title",
+                descKey: "osc_f5_desc",
+                hlKey: "osc_f5_hl",
+                fallbackTitle: "sACN DMX REMOTE",
+                fallbackDesc: "Use E1.31 sACN input to remotely trigger playback actions from a lighting console.",
+                fallbackHl: "Map DMX channels flexibly for play, pause, stop, and track navigation."
+            },
+            {
+                id: "F06",
+                image: "../assets/products/osc-tool/feature_playlist.png",
+                alt: "Smart Playlist",
+                titleKey: "osc_f4_title",
+                descKey: "osc_f4_desc",
+                hlKey: "osc_f4_hl",
+                fallbackTitle: "SMART PLAYLIST",
+                fallbackDesc: "Manage multi-track shows with quick reordering and per-track timing control.",
+                fallbackHl: "Each track keeps an independent offset for seamless cue continuity across songs."
+            }
+        ];
+        let featureIndex = 0;
+        let featureIsFlipping = false;
+
+        function getFeatureText(item, keyName, fallbackName) {
+            if (typeof currentLang !== "undefined" &&
+                typeof translations !== "undefined" &&
+                translations[currentLang] &&
+                translations[currentLang][item[keyName]]) {
+                return translations[currentLang][item[keyName]];
+            }
+            return item[fallbackName];
+        }
+
+        function getFeatureTotal() { return featureItems.length; }
+
+        function renderFeaturePage(item) {
+            if (!item) return "";
+            const title = getFeatureText(item, "titleKey", "fallbackTitle");
+            const desc = getFeatureText(item, "descKey", "fallbackDesc");
+            const hl = getFeatureText(item, "hlKey", "fallbackHl");
+
+            return `
+                <div class="feature-media">
+                    <img src="${item.image}" alt="${item.alt}">
+                </div>
+                <div class="feature-body">
+                    <span class="feature-id">${item.id}</span>
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                    <div class="feature-highlight">${hl}</div>
+                </div>
+            `;
+        }
+
+        function getLocalHeadingLabels() {
+            const lang = (typeof currentLang !== "undefined") ? currentLang : (localStorage.getItem("lang") || "zh");
+            if (lang === "en") {
+                return {
+                    featuresHeading: "CORE FEATURES",
+                    featuresSub: "Flip left/right to inspect one feature per page in a large format.",
+                    integrationHeading: "SEAMLESS INTEGRATION",
+                    integrationSub: "Compress onsite operations into the shortest path: align timecode, mark cues, and control playback in one rhythm.",
+                    indicatorPrefix: "FEATURE"
+                };
+            }
+            return {
+                featuresHeading: "核心功能",
+                featuresSub: "左右翻頁查看功能細節，每頁放大展示 1 個核心能力。",
+                integrationHeading: "無縫整合流程",
+                integrationSub: "把現場操作濃縮成最短流程，讓 Timecode 對齊、Cue 標記與播放控制都在同一個節奏內完成。",
+                indicatorPrefix: "功能"
+            };
+        }
+
+        function getPageTexts() {
+            const lang = (typeof currentLang !== "undefined") ? currentLang : (localStorage.getItem("lang") || "zh");
+            if (lang === "en") {
+                return {
+                    demoSub: "Most-used onsite flow: load tracks, align time, mark cues, and validate with immediate playback.",
+                    demoTitle: "DEMO FOCUS",
+                    demoNotes: [
+                        "Waveform positioning speed and Mark Cue efficiency",
+                        "LTC output stability with dual time displays",
+                        "sACN remote playback response",
+                        "Playlist switching with per-track offset behavior"
+                    ],
+                    workflow: [
+                        "Import audio and playlist, then set Track Offset.",
+                        "Configure FPS, LTC, OSC IP, and Port connection.",
+                        "Mark Cue in real time during playback for precise console write-in.",
+                        "Export WAV/CSV and control playback remotely via sACN."
+                    ]
+                };
+            }
+            return {
+                demoSub: "現場最常用的流程：載入音軌、對齊時間、標記 Cue、即時回放驗證。",
+                demoTitle: "DEMO FOCUS",
+                demoNotes: [
+                    "波形定位與 Mark Cue 速度",
+                    "LTC 輸出穩定度與雙時間顯示",
+                    "sACN 遙控播放動作反應",
+                    "播放清單切換與 Offset 套用"
+                ],
+                workflow: [
+                    "匯入音訊與播放清單，設定 Track Offset。",
+                    "設定 FPS、LTC、OSC IP 與 Port 連線。",
+                    "播放過程即時 Mark Cue，精準寫入控台。",
+                    "匯出 WAV / CSV，並用 sACN 進行遠端控制。"
+                ]
+            };
+        }
+
+        function applyPageTexts() {
+            const t = getPageTexts();
+            const demoSub = document.getElementById("demo-sub");
+            const demoFocusTitle = document.getElementById("demo-focus-title");
+            if (demoSub) demoSub.textContent = t.demoSub;
+            if (demoFocusTitle) demoFocusTitle.textContent = t.demoTitle;
+            t.demoNotes.forEach((text, i) => {
+                const el = document.getElementById(`demo-note-${i + 1}`);
+                if (el) el.textContent = text;
+            });
+            t.workflow.forEach((text, i) => {
+                const el = document.getElementById(`workflow-step-${i + 1}`);
+                if (el) el.textContent = text;
+            });
+        }
+
+        function applyLocalHeadings() {
+            const labels = getLocalHeadingLabels();
+            const featuresHeading = document.getElementById("features-heading");
+            const featuresSub = document.getElementById("features-sub");
+            const integrationHeading = document.getElementById("integration-heading");
+            const integrationSub = document.getElementById("integration-sub");
+            if (featuresHeading) featuresHeading.textContent = labels.featuresHeading;
+            if (featuresSub) featuresSub.textContent = labels.featuresSub;
+            if (integrationHeading) integrationHeading.textContent = labels.integrationHeading;
+            if (integrationSub) integrationSub.textContent = labels.integrationSub;
+        }
+
+        function renderFeatureSpread() {
+            const single = document.getElementById("feature-page-single");
+            const indicator = document.getElementById("feature-page-indicator");
+            const prevBtn = document.getElementById("feature-prev");
+            const nextBtn = document.getElementById("feature-next");
+            if (!single || !indicator || !prevBtn || !nextBtn) return;
+
+            const total = getFeatureTotal();
+            const current = featureItems[featureIndex];
+            const labels = getLocalHeadingLabels();
+
+            single.innerHTML = renderFeaturePage(current);
+            indicator.textContent = `${labels.indicatorPrefix} ${featureIndex + 1} / ${total}`;
+
+            if (total <= 1) {
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+            }
+        }
+
+        function flipFeature(direction) {
+            const book = document.getElementById("feature-book");
+            if (!book || featureIsFlipping) return;
+
+            const total = getFeatureTotal();
+            if (total <= 1) return;
+
+            featureIsFlipping = true;
+            const cls = direction === "next" ? "is-next" : "is-prev";
+            book.classList.add(cls);
+
+            setTimeout(() => {
+                if (direction === "next") {
+                    featureIndex = (featureIndex + 1) % total;
+                } else {
+                    featureIndex = (featureIndex - 1 + total) % total;
+                }
+                renderFeatureSpread();
+            }, 280);
+
+            setTimeout(() => {
+                book.classList.remove(cls);
+                featureIsFlipping = false;
+            }, 620);
+        }
+
+        function setupFeatureBook() {
+            applyLocalHeadings();
+            applyPageTexts();
+            renderFeatureSpread();
+            const prevBtn = document.getElementById("feature-prev");
+            const nextBtn = document.getElementById("feature-next");
+            prevBtn?.addEventListener("click", () => flipFeature("prev"));
+            nextBtn?.addEventListener("click", () => flipFeature("next"));
+        }
+
+        function syncManualLinks() {
+            const lang = localStorage.getItem("lang") || "zh";
+            const href = lang === "en" ? "../Manual/osc_time_code_Manual_en.html" : "../Manual/osc time codeManual.html";
+            const top = document.getElementById("manual-link");
+            if (top) top.href = href;
+        }
+
+        function bootstrapProductPage() {
+            if (typeof applyTranslations === "function") {
+                applyTranslations();
+            }
+            syncManualLinks();
+            setupFeatureBook();
+        }
+
+        document.addEventListener("DOMContentLoaded", bootstrapProductPage);
+
+        const originalToggleLanguage = window.toggleLanguage;
+        if (typeof originalToggleLanguage === "function") {
+            window.toggleLanguage = function () {
+                originalToggleLanguage();
+                syncManualLinks();
+                applyLocalHeadings();
+                applyPageTexts();
+                renderFeatureSpread();
+            };
+        }
+    </script>
 </body>
 
 </html>
+
+

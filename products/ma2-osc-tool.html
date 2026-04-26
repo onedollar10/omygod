@@ -1,325 +1,433 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSC to MA2 Tool | MA2 OSC 解決方案</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>OSC to MA2 Tool | ONEDOLLER</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700&display=swap"
         rel="stylesheet">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Google tag (gtag.js) -->
+    <link rel="stylesheet" href="./product-page.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-95B5G5KQ8B');
+        gtag("js", new Date());
+        gtag("config", "G-95B5G5KQ8B");
     </script>
-    <style>
-        :root {
-            --neon-blue: #00f3ff;
-            --neon-purple: #bc13fe;
-            --dark-bg: #050505;
-            --glass-bg: rgba(20, 20, 30, 0.6);
-            --border-glow: 0 0 10px rgba(0, 243, 255, 0.5);
-        }
-
-        body {
-            background-color: var(--dark-bg);
-            /* Optional background pattern if needed */
-            font-family: 'Rajdhani', sans-serif;
-            color: #fff;
-            overflow-x: hidden;
-            margin: 0;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            position: relative;
-            padding-top: 80px;
-        }
-
-        .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5rem;
-            font-weight: 900;
-            background: linear-gradient(to right, #fff, var(--neon-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
-            margin-bottom: 20px;
-            animation: glow 3s infinite alternate;
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            color: var(--neon-purple);
-            letter-spacing: 5px;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-
-        .hero-image-container {
-            position: relative;
-            width: 80%;
-            max-width: 1200px;
-            perspective: 1000px;
-            margin-bottom: 50px;
-        }
-
-        .hero-ui-img {
-            width: 100%;
-            max-width: 800px; /* Kept concise since it's a standalone UI picture */
-            border-radius: 15px;
-            box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: rotateX(5deg);
-            transition: transform 0.5s ease;
-        }
-
-        .hero-ui-img:hover {
-            transform: rotateX(0deg) scale(1.02);
-            box-shadow: 0 0 80px rgba(188, 19, 254, 0.4);
-        }
-
-        .cta-btn {
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
-            transition: all 0.3s ease;
-            font-family: 'Orbitron', sans-serif;
-            display: inline-block;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 40px rgba(188, 19, 254, 0.8);
-        }
-
-        /* Contact Button Group */
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .btn-email {
-            background: linear-gradient(45deg, #ea4335, #fbbc05);
-            box-shadow: 0 0 20px rgba(234, 67, 53, 0.4);
-        }
-
-        .btn-line {
-            background: linear-gradient(45deg, #00b900, #00e000);
-            box-shadow: 0 0 20px rgba(0, 185, 0, 0.4);
-        }
-
-        .btn-line:hover {
-            box-shadow: 0 0 40px rgba(0, 185, 0, 0.8);
-        }
-
-        .btn-manual {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            box-shadow: 0 0 20px rgba(0, 114, 255, 0.4);
-        }
-
-        .btn-manual:hover {
-            box-shadow: 0 0 40px rgba(0, 114, 255, 0.8);
-        }
-
-        .cta-btn i {
-            margin-right: 10px;
-        }
-
-        /* Video Showcase */
-        .video-showcase {
-            max-width: 1200px;
-            margin: 0 auto 100px;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        /* Integration Banner */
-        .integration-banner {
-            max-width: 1200px;
-            margin: 50px auto 100px;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.9), rgba(0, 0, 0, 0.8));
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            text-align: center;
-            padding: 60px;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .integration-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-blue));
-            animation: slideBg 3s linear infinite;
-            background-size: 200% 100%;
-        }
-
-        .integration-banner h2 {
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 2.5rem; 
-            margin-bottom: 20px;
-            color: var(--neon-blue);
-        }
-
-        @keyframes slideBg {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 0%; }
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(0, 243, 255, 0.5); }
-            to { text-shadow: 0 0 40px rgba(0, 243, 255, 1), 0 0 10px white; }
-        }
-
-        /* Specs Section */
-        .specs-section {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 100px 20px;
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .specs-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 50px;
-        }
-
-        .specs-list {
-            display: inline-block;
-            text-align: left;
-            font-size: 1.2rem;
-            color: #ddd;
-            list-style: none;
-            padding: 0;
-        }
-
-        .specs-list li {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            border-left: 3px solid var(--neon-purple);
-        }
-
-        /* Navigation Override */
-        nav {
-            background: rgba(0, 0, 0, 0.8) !important;
-            backdrop-filter: blur(20px);
-        }
-
-        @media (max-width: 900px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Simple Nav for Context -->
-    <nav style="position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
-        <div style="font-family: 'Orbitron'; font-weight: bold; font-size: 1.5rem; color: #fff;">
-            TECH & ART
+    <header class="top-nav">
+        <div class="brand">
+            <img src="../assets/logo-neo.svg" alt="ONEDOLLER NEO">
+            <strong>OSC TO MA2</strong>
         </div>
-        <div style="display: flex; align-items: center;">
-            <a href="../index.html" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;" data-i18n="nav_home">HOME</a>
-            <a href="#" style="color: var(--neon-blue); text-decoration: none; font-weight: bold; margin-right: 20px;" data-i18n="nav_products">PRODUCTS</a>
-            <button id="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_toggle" style="background: rgba(255,255,255,0.1); border: 1px solid var(--neon-blue); color: #fff; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-family: 'Orbitron'; font-size: 0.8rem;">English</button>
+        <div class="top-nav-links">
+            <a href="../index.html" data-i18n="nav_home">HOME</a>
+            <a href="#" class="active" data-i18n="nav_products">PRODUCTS</a>
+            <button id="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_toggle">English</button>
         </div>
-    </nav>
+    </header>
 
-    <section class="hero-section">
-        <h1 class="hero-title">OSC TO MA2</h1>
-        <p class="hero-subtitle" data-i18n="osc_new_subtitle">MA2 系統的 OSC 連動橋梁</p>
-        <div class="hero-image-container">
-            <img src="../pic/osc%20to%20ma.png" alt="OSC to MA2 Tool Interface" class="hero-ui-img">
-        </div>
+    <main class="page">
+        <section class="hero">
+            <article class="hero-copy">
+                <span class="hero-kicker">OSC BRIDGE / MA2 WORKFLOW</span>
+                <h1 class="hero-title">OSC TO MA2</h1>
+                <p class="hero-sub" data-i18n="osc_new_subtitle">The OSC Bridge for MA2 Systems</p>
+                <div class="hero-points">
+                    <span>OSC Routing</span>
+                    <span>MA2 Bridge</span>
+                    <span>Live Trigger</span>
+                    <span>UDP</span>
+                </div>
+                <div class="cta-group">
+                    <a href="mailto:5664762@gmail.com" class="cta primary">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span data-i18n="osc_buy_email">Contact 5664762@gmail.com to Purchase</span>
+                    </a>
+                    <a href="https://line.me/ti/p/~5664762" target="_blank" class="cta secondary">
+                        <i class="fa-brands fa-line"></i>
+                        <span data-i18n="osc_buy_line">LINE Contact ID: 5664762</span>
+                    </a>
+                    <a id="manual-link" href="../Manual/OSC%20to%20MA2%20Manual.html" target="_blank" class="cta secondary">
+                        <i class="fa-solid fa-book"></i>
+                        <span data-i18n="manual_btn">User Manual</span>
+                    </a>
+                </div>
+            </article>
 
-        <div class="btn-group">
-            <a href="mailto:5664762@gmail.com" class="cta-btn btn-email">
-                <i class="fa-solid fa-envelope"></i><span data-i18n="osc_buy_email">欲購買請聯絡 5664762@gmail.com</span>
-            </a>
-            <a href="https://line.me/ti/p/~5664762" target="_blank" class="cta-btn btn-line">
-                <i class="fa-brands fa-line"></i><span data-i18n="osc_buy_line">LINE 聯繫 ID: 5664762</span>
-            </a>
-        </div>
-        <div class="btn-group" style="margin-top: 20px;">
-            <a href="../Manual/OSC%20to%20MA2%20Manual.html" target="_blank" class="cta-btn btn-manual">
-                <i class="fa-solid fa-book"></i><span data-i18n="manual_btn">使用說明書 / Manual</span>
-            </a>
-        </div>
-    </section>
+            <article class="hero-ui">
+                <img src="../pic/osc%20to%20ma.png" alt="OSC to MA2 Interface">
+                <div class="quick-spec">
+                    <article>
+                        <strong>Source</strong>
+                        <span>QLab / TD / Media</span>
+                    </article>
+                    <article>
+                        <strong>Target</strong>
+                        <span>grandMA2</span>
+                    </article>
+                    <article>
+                        <strong>Protocol</strong>
+                        <span>OSC over UDP</span>
+                    </article>
+                    <article>
+                        <strong>Platform</strong>
+                        <span>Windows</span>
+                    </article>
+                </div>
+            </article>
+        </section>
 
-    <!-- Integration Banner Emphasizing Innovation -->
-    <div class="integration-banner">
-        <h2 data-i18n="osc_new_integration_title">★ 創新思維，無縫整合 ★</h2>
-        <p data-i18n="osc_new_integration_desc" style="font-size: 1.3rem; color: #ddd; max-width: 800px; margin: 0 auto;">
-            OSC（Open Sound Control）是現今業界廣泛使用的通訊協定，能夠精準傳遞各種豐富的控制數據，舉凡 QLab、Resolume、TouchDesigner 等各大專業多媒體軟體皆有深度的支援。<br><br>
-            藉由此軟體創新的轉換與橋接能力，讓 MA2 也能完美無縫地融合進這個豐富的生態圈中。<br>
-            <strong>輕鬆實現跨平台、跨設備的靈活連動</strong>，徹底解放您的演出創意與整體系統的彈性。
-        </p>
-    </div>
+        <section class="section">
+            <h2 data-i18n="osc_demo">PRODUCT DEMO</h2>
+            <p class="section-sub" id="demo-sub">將創作端送出的 OSC 訊息橋接到 MA2 編程流程，降低現場整合與測試成本。</p>
+            <div class="demo-wrap">
+                <div class="demo-video">
+                    <video controls aria-label="Product Preview Video">
+                        <source src="../movice/ma2%20osc.mp4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+                <aside class="demo-notes">
+                    <h3 id="demo-focus-title">展示重點</h3>
+                    <ul>
+                        <li id="demo-note-1">OSC 訊息映射與轉發流程</li>
+                        <li id="demo-note-2">MA2 時序觸發的一致性控制</li>
+                        <li id="demo-note-3">演出前快速整合與測試路徑</li>
+                        <li id="demo-note-4">Live 播放階段的穩定運作</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
 
-    <!-- Video Showcase Section -->
-    <section class="video-showcase">
-        <h2 data-i18n="osc_demo" style="font-family: 'Orbitron'; font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 40px;">
-            PRODUCT DEMO
-        </h2>
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; border: 2px solid rgba(0, 243, 255, 0.3); box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);">
-            <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                <source src="../movice/ma2%20osc.mp4" type="video/mp4">
-                <span data-i18n="osc_vid_unsupported">您的瀏覽器不支援影片播放。</span>
-            </video>
-        </div>
-    </section>
+        <section class="section">
+            <h2 id="features-heading">核心功能</h2>
+            <p class="section-sub" id="features-sub">左右翻頁查看功能重點，每次聚焦一個項目。</p>
+            <div class="feature-book-shell">
+                <button class="feature-nav" id="feature-prev" aria-label="Previous Features">&#10094;</button>
+                <div class="feature-book-wrap">
+                    <div class="feature-book" id="feature-book">
+                        <article class="feature-page" id="feature-page-single"></article>
+                    </div>
+                    <div class="feature-page-indicator" id="feature-page-indicator">FEATURE 1 / 4</div>
+                </div>
+                <button class="feature-nav" id="feature-next" aria-label="Next Features">&#10095;</button>
+            </div>
+        </section>
 
-    <!-- Specs Section -->
-    <section class="specs-section">
-        <h2 class="specs-title" data-i18n="osc_sys_req">SYSTEM REQUIREMENTS</h2>
-        <ul class="specs-list">
-            <li><strong>OS</strong>: Windows</li>
-            <li data-i18n="osc_spec_device"><strong>支援/控制設備</strong>: ETC EOS Family, GrandMA2 及各大支援 OSC 協定的軟體</li>
-        </ul>
-        <br><br>
-    </section>
+        <section class="section">
+            <h2 id="integration-heading">整合流程</h2>
+            <p class="section-sub" id="integration-sub">以 OSC 橋接邏輯銜接 MA2 工作流，讓跨系統控制更直接。</p>
+            <div class="workflow">
+                <article>
+                    <strong>01 INPUT</strong>
+                    <span id="workflow-step-1">接收來自 QLab、Resolume、TouchDesigner 等系統的 OSC 訊號。</span>
+                </article>
+                <article>
+                    <strong>02 MAP</strong>
+                    <span id="workflow-step-2">將地址與參數映射到 MA2 觸發指令與控制值。</span>
+                </article>
+                <article>
+                    <strong>03 VALIDATE</strong>
+                    <span id="workflow-step-3">透過快速實測確認時序與 Cue 轉場一致性。</span>
+                </article>
+                <article>
+                    <strong>04 RUN</strong>
+                    <span id="workflow-step-4">部署到正式演出流程，穩定完成 OSC 到控台的橋接。</span>
+                </article>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer style="text-align: center; padding: 50px; background: #000; color: #666;">
-        <p>&copy; 2026 onedoller. Tech & Art Studio. | 我做的不是藝術是技術</p>
-    </footer>
+        <section class="section">
+            <h2 class="specs-title" data-i18n="osc_sys_req">SYSTEM REQUIREMENTS</h2>
+            <div class="specs-row">
+                <ul class="specs-list">
+                    <li><strong data-i18n="spec_os">OS</strong>: Windows</li>
+                    <li><strong data-i18n="spec_console">Console</strong>: <span id="spec-console-value">grandMA2（支援 OSC 工作流）</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 onedoller. Tech &amp; Art Studio.</p>
+        </footer>
+    </main>
 
     <script src="../i18n.js"></script>
+    <script>
+        const featureItems = [
+            {
+                id: "F01",
+                image: "../pic/osc%20to%20ma.png",
+                alt: "OSC Input Routing",
+                fallbackTitle: "OSC 訊號路由",
+                fallbackDesc: "接收外部軟體送出的 OSC 指令，並導入 MA2 可直接使用的控制路徑。",
+                fallbackHl: "快速部署：連接來源、設定映射、完成驗證即可上線。",
+                fallbackTitleEn: "OSC INPUT ROUTING",
+                fallbackDescEn: "Receive OSC commands from external software and route them into a MA2-ready control path.",
+                fallbackHlEn: "Fast deployment: connect source app, map addresses, and validate output in minutes."
+            },
+            {
+                id: "F02",
+                image: "../pic/osc%20to%20ma.png",
+                alt: "OSC Address Mapping",
+                fallbackTitle: "OSC 地址映射",
+                fallbackDesc: "將不同軟體送出的 OSC 地址與參數，整理成 MA2 可穩定接收的控制格式。",
+                fallbackHl: "映射集中管理，可降低現場換檔與重測時的出錯機率。",
+                fallbackTitleEn: "OSC ADDRESS MAPPING",
+                fallbackDescEn: "Normalize incoming OSC paths and values into stable MA2 trigger mappings.",
+                fallbackHlEn: "Centralized mapping reduces setup risk when switching show files onsite."
+            },
+            {
+                id: "F03",
+                image: "../pic/osc%20to%20ma.png",
+                alt: "Live Trigger Control",
+                fallbackTitle: "即時觸發控制",
+                fallbackDesc: "支援演出現場的即時 OSC 觸發需求，讓 MA2 能快速接收並執行外部控制邏輯。",
+                fallbackHl: "適合搭配多媒體與互動系統使用，維持控制反應的一致性。",
+                fallbackTitleEn: "LIVE TRIGGER CONTROL",
+                fallbackDescEn: "Support live OSC triggers so MA2 can respond to external control logic in real time.",
+                fallbackHlEn: "Built for multimedia and interactive systems where response consistency matters."
+            },
+            {
+                id: "F04",
+                image: "../pic/osc%20to%20ma.png",
+                alt: "Workflow Integration",
+                fallbackTitle: "工作流整合",
+                fallbackDesc: "在不改變既有 MA2 編程流程的前提下，將 QLab、Resolume、TouchDesigner 等系統直接接入。",
+                fallbackHl: "保留原本的 show workflow，同時補上跨系統 OSC 橋接能力。",
+                fallbackTitleEn: "WORKFLOW INTEGRATION",
+                fallbackDescEn: "Integrate QLab, Resolume, and TouchDesigner without replacing your MA2 programming flow.",
+                fallbackHlEn: "Keep your existing show workflow while adding practical OSC bridge capability."
+            }
+        ];
+
+        let featureIndex = 0;
+        let featureIsFlipping = false;
+
+        function getFeatureText(item, keyName, fallbackName) {
+            if (typeof currentLang !== "undefined" &&
+                typeof translations !== "undefined" &&
+                translations[currentLang] &&
+                item[keyName] &&
+                translations[currentLang][item[keyName]]) {
+                return translations[currentLang][item[keyName]];
+            }
+            const lang = (typeof currentLang !== "undefined") ? currentLang : (localStorage.getItem("lang") || "zh");
+            if (lang === "en") {
+                const enName = `${fallbackName}En`;
+                if (item[enName]) return item[enName];
+            }
+            return item[fallbackName];
+        }
+
+        function getPageTexts() {
+            const lang = (typeof currentLang !== "undefined") ? currentLang : (localStorage.getItem("lang") || "zh");
+            if (lang === "en") {
+                return {
+                    demoSub: "Bridge OSC output from creative tools into MA2 programming with lower onsite setup overhead.",
+                    demoTitle: "DEMO FOCUS",
+                    demoNotes: [
+                        "OSC message mapping and forwarding flow",
+                        "Consistent trigger behavior for MA2 timing execution",
+                        "Fast integration and testing path before showtime",
+                        "Stable operation during live playback"
+                    ],
+                    workflow: [
+                        "Receive OSC signals from systems such as QLab, Resolume, and TouchDesigner.",
+                        "Map addresses and parameters to MA2 trigger commands and values.",
+                        "Run quick validation to confirm timing and cue transition consistency.",
+                        "Deploy to show operation and keep OSC-to-console bridging stable."
+                    ],
+                    consoleText: "grandMA2 (OSC workflow supported)"
+                };
+            }
+            return {
+                demoSub: "將創作端送出的 OSC 訊息橋接到 MA2 編程流程，降低現場整合與測試成本。",
+                demoTitle: "展示重點",
+                demoNotes: [
+                    "OSC 訊息映射與轉發流程",
+                    "MA2 時序觸發的一致性控制",
+                    "演出前快速整合與測試路徑",
+                    "Live 播放階段的穩定運作"
+                ],
+                workflow: [
+                    "接收來自 QLab、Resolume、TouchDesigner 等系統的 OSC 訊號。",
+                    "將地址與參數映射到 MA2 觸發指令與控制值。",
+                    "透過快速實測確認時序與 Cue 轉場一致性。",
+                    "部署到正式演出流程，穩定完成 OSC 到控台的橋接。"
+                ],
+                consoleText: "grandMA2（支援 OSC 工作流）"
+            };
+        }
+
+        function applyPageTexts() {
+            const t = getPageTexts();
+            const demoSub = document.getElementById("demo-sub");
+            const demoFocusTitle = document.getElementById("demo-focus-title");
+            const consoleLine = document.getElementById("spec-console-value");
+            if (demoSub) demoSub.textContent = t.demoSub;
+            if (demoFocusTitle) demoFocusTitle.textContent = t.demoTitle;
+            if (consoleLine) consoleLine.textContent = t.consoleText;
+            t.demoNotes.forEach((text, i) => {
+                const el = document.getElementById(`demo-note-${i + 1}`);
+                if (el) el.textContent = text;
+            });
+            t.workflow.forEach((text, i) => {
+                const el = document.getElementById(`workflow-step-${i + 1}`);
+                if (el) el.textContent = text;
+            });
+        }
+
+        function getFeatureTotal() {
+            return featureItems.length;
+        }
+
+        function renderFeatureMedia(item) {
+            return `<img src="${item.image}" alt="${item.alt}">`;
+        }
+
+        function renderFeaturePage(item) {
+            if (!item) return "";
+            const title = getFeatureText(item, "titleKey", "fallbackTitle");
+            const desc = getFeatureText(item, "descKey", "fallbackDesc");
+            const hl = getFeatureText(item, "hlKey", "fallbackHl");
+
+            return `
+                <div class="feature-media">
+                    ${renderFeatureMedia(item)}
+                </div>
+                <div class="feature-body">
+                    <span class="feature-id">${item.id}</span>
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                    <div class="feature-highlight">${hl}</div>
+                </div>
+            `;
+        }
+
+        function getLocalHeadingLabels() {
+            const lang = (typeof currentLang !== "undefined") ? currentLang : (localStorage.getItem("lang") || "zh");
+            if (lang === "en") {
+                return {
+                    featuresHeading: "CORE FEATURES",
+                    featuresSub: "Flip left/right to inspect one feature at a time in large format.",
+                    integrationHeading: "INTEGRATION",
+                    integrationSub: "Innovative OSC bridge for MA2 workflows.",
+                    indicatorPrefix: "FEATURE"
+                };
+            }
+            return {
+                featuresHeading: "核心功能",
+                featuresSub: "左右翻頁查看功能重點，每次聚焦一個項目。",
+                integrationHeading: "整合流程",
+                integrationSub: "以 OSC 橋接邏輯銜接 MA2 工作流，讓跨系統控制更直接。",
+                indicatorPrefix: "功能"
+            };
+        }
+
+        function applyLocalHeadings() {
+            const labels = getLocalHeadingLabels();
+            const featuresHeading = document.getElementById("features-heading");
+            const featuresSub = document.getElementById("features-sub");
+            const integrationHeading = document.getElementById("integration-heading");
+            const integrationSub = document.getElementById("integration-sub");
+            if (featuresHeading) featuresHeading.textContent = labels.featuresHeading;
+            if (featuresSub) featuresSub.textContent = labels.featuresSub;
+            if (integrationHeading) integrationHeading.textContent = labels.integrationHeading;
+            if (integrationSub) integrationSub.textContent = labels.integrationSub;
+        }
+
+        function renderFeatureSpread() {
+            const single = document.getElementById("feature-page-single");
+            const indicator = document.getElementById("feature-page-indicator");
+            const prevBtn = document.getElementById("feature-prev");
+            const nextBtn = document.getElementById("feature-next");
+            if (!single || !indicator || !prevBtn || !nextBtn) return;
+
+            const total = getFeatureTotal();
+            const current = featureItems[featureIndex];
+            const labels = getLocalHeadingLabels();
+
+            single.innerHTML = renderFeaturePage(current);
+            indicator.textContent = `${labels.indicatorPrefix} ${featureIndex + 1} / ${total}`;
+
+            if (total <= 1) {
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+            }
+        }
+
+        function flipFeature(direction) {
+            const book = document.getElementById("feature-book");
+            if (!book || featureIsFlipping) return;
+
+            const total = getFeatureTotal();
+            if (total <= 1) return;
+
+            featureIsFlipping = true;
+            const cls = direction === "next" ? "is-next" : "is-prev";
+            book.classList.add(cls);
+
+            setTimeout(() => {
+                if (direction === "next") {
+                    featureIndex = (featureIndex + 1) % total;
+                } else {
+                    featureIndex = (featureIndex - 1 + total) % total;
+                }
+                renderFeatureSpread();
+            }, 280);
+
+            setTimeout(() => {
+                book.classList.remove(cls);
+                featureIsFlipping = false;
+            }, 620);
+        }
+
+        function setupFeatureBook() {
+            applyLocalHeadings();
+            applyPageTexts();
+            renderFeatureSpread();
+            const prevBtn = document.getElementById("feature-prev");
+            const nextBtn = document.getElementById("feature-next");
+            prevBtn?.addEventListener("click", () => flipFeature("prev"));
+            nextBtn?.addEventListener("click", () => flipFeature("next"));
+        }
+
+        function syncManualLinks() {
+            const href = "../Manual/OSC%20to%20MA2%20Manual.html";
+            const top = document.getElementById("manual-link");
+            if (top) top.href = href;
+        }
+
+        function bootstrapProductPage() {
+            if (typeof applyTranslations === "function") {
+                applyTranslations();
+            }
+            syncManualLinks();
+            setupFeatureBook();
+        }
+
+        document.addEventListener("DOMContentLoaded", bootstrapProductPage);
+
+        const originalToggleLanguage = window.toggleLanguage;
+        if (typeof originalToggleLanguage === "function") {
+            window.toggleLanguage = function () {
+                originalToggleLanguage();
+                syncManualLinks();
+                applyLocalHeadings();
+                applyPageTexts();
+                renderFeatureSpread();
+            };
+        }
+    </script>
 </body>
 
 </html>
