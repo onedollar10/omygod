@@ -329,6 +329,9 @@
                     <li><a href="#color">Color Selection</a></li>
                     <li><a href="#fade">FADE Slider Control</a></li>
                     <li><a href="#osc">OSC Communication</a></li>
+                    <li><a href="#rtsp">RTSP Stream & Multi-Region</a></li>
+                    <li><a href="#module_drag">UI Module Dragging</a></li>
+                    <li><a href="#magicsheet">ETC Magic Sheet Integration</a></li>
                     <li><a href="#shortcuts">Shortcuts</a></li>
                     <li><a href="#troubleshoot">Troubleshooting</a></li>
                 </ul>
@@ -689,6 +692,8 @@
                 </div>
             </section>
 
+
+
             <!-- X/Y Grouping -->
             <section id="xygroup">
                 <h2>X/Y Grouping</h2>
@@ -933,6 +938,105 @@
                     <h4>OSC Receive</h4>
                     <p>The software also supports receiving OSC commands from the console, enabling bidirectional communication.</p>
                 </div>
+            </section>
+
+            <!-- RTSP Stream & Multi-Region -->
+            <section id="rtsp">
+                <h2>RTSP Stream & Multi-Region Composition</h2>
+                <p>Grid Tool now supports direct desktop or window capture via FFmpeg, allowing multiple sources to be composed into a single RTSP stream for MediaMTX or other players.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/rstp setting.png" alt="RTSP Streaming Settings">
+                    <div class="screenshot-caption">Fig 13: RTSP Streaming Configuration and Options</div>
+                </div>
+
+                <div class="step-box">
+                    <h4>Key Features</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Multi-Region:</strong> Add multiple capture areas (Regions) with custom source and output coordinates.</li>
+                        <li><strong>Text Overlay:</strong> Overlay custom watermark text on the stream with adjustable positioning.</li>
+                        <li><strong>High Performance:</strong> Native FFmpeg processing without external dependencies.</li>
+                    </ul>
+                </div>
+
+                <h3>Configuration</h3>
+                <ol style="margin-left: 20px;">
+                    <li>Go to "Tools" -> "Settings" -> "RTSP Streaming" tab.</li>
+                    <li>Set output resolution and RTSP target URL.</li>
+                    <li>Click "Manage Capture Regions" to add or adjust areas.</li>
+                    <li>Set watermark text in the "Advanced Composition" section.</li>
+                    <li>Click "Start Stream" to begin transmission.</li>
+                </ol>
+            </section>
+
+            <!-- UI Module Dragging -->
+            <section id="module_drag">
+                <h2>UI Module Dragging & Reordering</h2>
+                <p>For a more flexible user experience, functional modules in the sidebar (such as Fade Tools, Layout Manager, Color Picker, etc.) now support free dragging.</p>
+
+                <div class="info-box">
+                    <h4>How to Use</h4>
+                    <p>Hover over a module's header or background space, then press and hold the left mouse button to drag it up or down. The order is automatically saved and restored on next launch.</p>
+                </div>
+            </section>
+
+            <!-- ETC Magic Sheet Integration -->
+            <section id="magicsheet">
+                <h2>ETC Magic Sheet Integration</h2>
+                <p>Using OSC commands, you can integrate Grid Tool's core functions into ETC Eos Magic Sheets for remote control of grid dimensions, directions, and transmission.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/etc_magic_sheet_integration.jpg" alt="ETC Magic Sheet Integration Example">
+                    <div class="screenshot-caption">Fig 14: ETC Magic Sheet Integration Example - with common control buttons</div>
+                </div>
+
+                <h3>Recommended Commands</h3>
+                <table>
+                    <tr>
+                        <th>OSC Path</th>
+                        <th>Function</th>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/cols/W/+</code></td>
+                        <td>Increase Columns</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/cols/W/-</code></td>
+                        <td>Decrease Columns</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/rows/h/+</code></td>
+                        <td>Increase Rows</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/rows/h/-</code></td>
+                        <td>Decrease Rows</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send/&gt;&gt;&gt;</code></td>
+                        <td>Set Left-to-Right (>>>) and Send</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send/&lt;&lt;&lt;</code></td>
+                        <td>Set Right-to-Left (<<<) and Send</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send/&gt;&lt;</code></td>
+                        <td>Set Outside-In (><) and Send</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send/&lt;&gt;</code></td>
+                        <td>Set Inside-Out (<>) and Send</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send to eos</code></td>
+                        <td>Send Layout immediately (no confirmation)</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/clear layout</code></td>
+                        <td>Clear current grid layout</td>
+                    </tr>
+                </table>
             </section>
 
             <!-- Shortcuts -->

@@ -326,6 +326,7 @@
                     <li><a href="#ch-mode">CH Mode Operation</a></li>
                     <li><a href="#recording">Video Recording Feature</a></li>
                     <li><a href="#manual">Manual Screenshot Feature</a></li>
+                    <li><a href="#sync">Content & Notes Sync</a></li>
                     <li><a href="#project">Project Management</a></li>
                     <li><a href="#export">Export Features</a></li>
                     <li><a href="#troubleshoot">Troubleshooting</a></li>
@@ -786,6 +787,37 @@
                         <li>Same time: No action (prevents duplicates).</li>
                         <li>Different time: Automatically updates duration and recaptures image.</li>
                     </ul>
+                </div>
+
+            <!-- Content & Notes Sync -->
+            <section id="sync">
+                <h2>Content & Notes Sync</h2>
+                <p>The software supports automatic synchronization of Cue Labels (Names) and Notes (Node/Comments) from the ETC Eos console, ensuring your documentation perfectly matches the console show file.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🏷️ Label Sync</h4>
+                        <p>Automatically fetches Cue Labels from the console and displays them in the Name or Label field.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Notes/Node Sync</h4>
+                        <p>Automatically fetches Cue Notes (also known as Nodes) from the console and populates the Notes field.</p>
+                    </div>
+                </div>
+
+                <h3>How it Works</h3>
+                <div class="info-box">
+                    <h4>Real-time Sync Logic</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Trigger:</strong> When an OSC message for a Cue fire is detected, the software automatically sends a request to the console for detailed metadata.</li>
+                        <li><strong>Auto-Update:</strong> If you modify a Label or Note on the console, the software will automatically update the corresponding field in your record the next time that Cue is triggered.</li>
+                        <li><strong>Export Priority:</strong> Exported reports (Excel/PDF) prioritize these synchronized latest values for accurate documentation.</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Requirement</h4>
+                    <p>This feature requires the <strong>Console IP</strong> and <strong>Console Port</strong> in "OSC Connection Settings" to be correctly configured so the software can communicate back to the console.</p>
                 </div>
             </section>
 

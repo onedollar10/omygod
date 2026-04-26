@@ -60,7 +60,13 @@ const translations = {
         "grid_f2_hl": "雙向聯動： 系統可自動獲取控台 CH 資料與 3D 座標，同步生成網格位置，達成「所見即所得」。",
         "grid_f3_title": "OPEN FADE",
         "grid_f3_desc": "強大的色彩與漸變控制。快速將您製作的 GROUP 進行 FAN (扇形) 設定。",
-        "grid_f3_hl": "補足功能特效： 內建快速彩虹顏色功能，有效填補 ETC 控台原生的不足，一鍵渲染動態效果。",
+        "grid_f3_hl": "內建效果可快速產生視覺變化，降低控台額外操作負擔。",
+        "grid_f4_title": "MAGIC SHEET 整合",
+        "grid_f4_desc": "深度整合 ETC Eos Magic Sheet。透過自定義 OSC 指令，直接從控台畫面遠端遙控網格大小、方向與發送功能。",
+        "grid_f4_hl": "遠端操控： 無需切換軟體視窗，在控台上即可完成所有網格配置，實現工作流的完美閉環。",
+        "grid_f5_title": "RTSP 多框串流",
+        "grid_f5_desc": "內建高效能 RTSP 串流引擎。支援桌面與視窗的多區域擷取合成，並可疊加文字浮水印輸出至 MediaMTX。",
+        "grid_f5_hl": "即時監看： 支援多來源畫面合成，讓您可以同時監看多個視角，並輸出為標準 RTSP 供其他播放器使用。",
         "grid_tech_specs": "技術規格",
         // Product Page - ETC Cue Photo
         "cue_hero_subtitle": "ETC 燈光控台自動截圖記錄工具",
@@ -81,7 +87,10 @@ const translations = {
         "cue_f5_hl": "點擊即播： 匯出資料包含時間碼鏈結，點擊即可開啟影片並自動跳轉至對應 Cue 點，徹底解決回找關鍵畫面費時的問題。",
         "cue_f6_title": "sACN 輸入支援",
         "cue_f6_desc": "支援 sACN 網路協定輸入。透過接收 sACN 訊號來觸發截圖，提供更靈活的自動化記錄選擇。",
-        "cue_f6_hl": "網路整合： 無需實體線路，透過網路即可接收控台訊號，支援標準 E1.31 sACN 協定。"
+        "cue_f6_hl": "網路整合： 無需實體線路，透過網路即可接收控台訊號，支援標準 E1.31 sACN 協定。",
+        "cue_f7_title": "內容與備註同步",
+        "cue_f7_desc": "自動同步 ETC Label 與 Node。當控台更新 Cue 的 Label 或備註時，軟體會即時獲取並同步至記錄表中。",
+        "cue_f7_hl": "即時同步： 確保記錄文檔與控台 show file 內容完全一致，減少手動輸入備註的時間。"
     },
     "en": {
         "nav_home": "Home",
@@ -145,6 +154,12 @@ const translations = {
         "grid_f3_title": "OPEN FADE/COLOR",
         "grid_f3_desc": "Powerful color and gradient control. Quickly apply FAN settings to your groups.",
         "grid_f3_hl": "Enhanced Effects: Built-in quick rainbow features to fill ETC console gaps for dynamic color rendering.",
+        "grid_f4_title": "MAGIC SHEET SYNC",
+        "grid_f4_desc": "Deep integration with ETC Eos Magic Sheets. Control grid dimensions, directions, and send actions directly via custom OSC commands.",
+        "grid_f4_hl": "Remote Control: Configure everything from the console screen without switching windows, achieving a perfect workflow loop.",
+        "grid_f5_title": "RTSP MULTI-REGION",
+        "grid_f5_desc": "Built-in high-performance RTSP engine. Supports multi-region capture and composition from screen/windows with text overlay.",
+        "grid_f5_hl": "Live Monitoring: Composes multiple sources into one stream for standard RTSP playback on any compatible player.",
         "grid_tech_specs": "TECHNICAL SPECS",
         // Product Page - ETC Cue Photo
         "cue_hero_subtitle": "Auto Screenshot & Documentation for ETC Consoles",
@@ -165,7 +180,10 @@ const translations = {
         "cue_f5_hl": "Click to Play: Exported data includes timestamp links. Click to open the video and auto-seek to the exact Cue moment.",
         "cue_f6_title": "sACN Input Support",
         "cue_f6_desc": "Supports sACN network protocol input. Triggers screenshots by receiving sACN signals, offering flexible automation options.",
-        "cue_f6_hl": "Network Integration: No physical cables needed. Receives console signals via network, supporting standard E1.31 sACN protocol."
+        "cue_f6_hl": "Network Integration: No physical cables needed. Receives console signals via network, supporting standard E1.31 sACN protocol.",
+        "cue_f7_title": "Content & Notes Sync",
+        "cue_f7_desc": "Auto-sync with ETC Label and Node. When the console updates a Cue's Label or Notes, the software fetches and syncs them instantly.",
+        "cue_f7_hl": "Real-time Sync: Ensures documentation matches the console show file perfectly, saving time on manual entry."
     }
 };
 

@@ -337,6 +337,7 @@
                     <li><a href="#ch-mode">CH 模式操作</a></li>
                     <li><a href="#recording">視訊錄影功能</a></li>
                     <li><a href="#manual">手動截圖功能</a></li>
+                    <li><a href="#sync">內容與備註同步</a></li>
                     <li><a href="#project">專案管理</a></li>
                     <li><a href="#export">匯出功能</a></li>
                     <li><a href="#troubleshoot">故障排除</a></li>
@@ -701,6 +702,38 @@
                         <li>sACN 使用 Multicast 位址（239.255.0.0/16），請確保網路設備支援 IGMP</li>
                         <li>Windows 防火牆可能需要允許 sACN 相關的網路流量</li>
                     </ul>
+                </div>
+            </section>
+
+            <!-- 內容與備註同步 -->
+            <section id="sync">
+                <h2>內容與備註同步</h2>
+                <p>軟體支援自動同步 ETC Eos 控台中的 Cue Label（名稱）與 Notes（備註/Node），確保記錄文檔與控台 show file 內容完全一致。</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🏷️ Label 同步</h4>
+                        <p>自動獲取控台中的 Cue Label，顯示於表格的「名稱」或「標籤」欄位</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Notes/Node 同步</h4>
+                        <p>自動獲取控台中的 Cue Notes (或稱為 Node)，顯示於表格的「備註」欄位</p>
+                    </div>
+                </div>
+
+                <h3>功能運作機制</h3>
+                <div class="info-box">
+                    <h4>即時同步邏輯</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>觸發時機：</strong>當軟體收到 OSC 訊息偵測到 Cue 執行時，會自動向控台發送請求以獲取詳細資訊。</li>
+                        <li><strong>自動更新：</strong>若您在控台上修改了 Label 或備註，下次觸發該 Cue 時，軟體會自動更新記錄中的對應欄位。</li>
+                        <li><strong>歷史記錄：</strong>匯出報表（Excel/PDF）時，會優先包含這些從控台同步回來的最新資訊。</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ 設定要求</h4>
+                    <p>此功能需要確保「OSC 連線設定」中的 <strong>Console IP</strong> 與 <strong>Console Port</strong> 正確無誤，以便軟體能向控台發送請求訊號。</p>
                 </div>
             </section>
 

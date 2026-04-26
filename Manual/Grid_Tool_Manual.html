@@ -328,6 +328,9 @@
                     <li><a href="#color">顏色選擇</a></li>
                     <li><a href="#fade">FADE 推桿控制</a></li>
                     <li><a href="#osc">OSC 通訊</a></li>
+                    <li><a href="#rtsp">RTSP 串流與多框合成</a></li>
+                    <li><a href="#module_drag">介面模組拖曳排序</a></li>
+                    <li><a href="#magicsheet">ETC Magic Sheet 整合</a></li>
                     <li><a href="#shortcuts">快捷鍵</a></li>
                     <li><a href="#troubleshoot">故障排除</a></li>
                 </ul>
@@ -1018,6 +1021,105 @@
                     <h4>OSC 接收</h4>
                     <p>軟體同時也支援接收來自燈控台的 OSC 指令，可實現雙向通訊。</p>
                 </div>
+            </section>
+
+            <!-- RTSP 串流與多框合成 -->
+            <section id="rtsp">
+                <h2>RTSP 串流與多框合成</h2>
+                <p>Grid Tool 現在支援直接透過 FFmpeg 進行桌面或視窗擷取，並將多個來源合成後輸出為 RTSP 串流，供 MediaMTX 或其他播放器使用。</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/rstp setting.png" alt="RTSP 串流設定畫面">
+                    <div class="screenshot-caption">圖 13：RTSP 串流設定與進階合成選項</div>
+                </div>
+
+                <div class="step-box">
+                    <h4>功能特色</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>多框合成：</strong>可新增多個擷取區域（Regions），自由設定來源與輸出位置。</li>
+                        <li><strong>文字浮水印：</strong>支援在串流畫面上疊加自訂文字，並可設定顯示位置。</li>
+                        <li><strong>高效能：</strong>直接使用 FFmpeg 處理，不依賴外部軟體。</li>
+                    </ul>
+                </div>
+
+                <h3>設定方式</h3>
+                <ol style="margin-left: 20px;">
+                    <li>開啟「工具」->「設定」->「RTSP 串流」分頁。</li>
+                    <li>設定輸出解析度與 RTSP 目標位址。</li>
+                    <li>點擊「管理擷取框」來新增或調整擷取區域。</li>
+                    <li>在「進階合成」中設定浮水印文字。</li>
+                    <li>點擊「啟動串流」即可開始傳輸。</li>
+                </ol>
+            </section>
+
+            <!-- 介面模組拖曳排序 -->
+            <section id="module_drag">
+                <h2>介面模組拖曳排序</h2>
+                <p>為了提供更彈性的使用體驗，現在側邊欄的功能模組（如 Fade Tools, Layout Manager, Color Picker 等）皆支援自由拖曳排序。</p>
+
+                <div class="info-box">
+                    <h4>操作說明</h4>
+                    <p>將滑鼠懸停於模組的標題或背景空白處，按住左鍵即可上下拖動調整位置。排序結果會自動儲存，下次啟動程式時將維持您偏好的佈局。</p>
+                </div>
+            </section>
+
+            <!-- ETC Magic Sheet 整合 -->
+            <section id="magicsheet">
+                <h2>ETC Magic Sheet 整合</h2>
+                <p>透過 OSC 指令，您可以將 Grid Tool 的核心功能整合到 ETC Eos 的 Magic Sheet 中，實現遠端遙控網格大小、方向與發送功能。</p>
+
+                <div class="screenshot">
+                    <img src="../pic/etc grid4.2 manual_images/etc_magic_sheet_integration.jpg" alt="ETC Magic Sheet 整合範例">
+                    <div class="screenshot-caption">圖 14：ETC Magic Sheet 整合範例 - 包含常用的網格控制按鈕</div>
+                </div>
+
+                <h3>建議整合指令</h3>
+                <table>
+                    <tr>
+                        <th>OSC 路徑</th>
+                        <th>功能說明</th>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/cols/W/+</code></td>
+                        <td>網格欄數 (Cols) 增加</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/cols/W/-</code></td>
+                        <td>網格欄數 (Cols) 減少</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/rows/h/+</code></td>
+                        <td>網格列數 (Rows) 增加</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/rows/h/-</code></td>
+                        <td>網格列數 (Rows) 減少</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send/&gt;&gt;&gt;</code></td>
+                        <td>設定方向為 由左至右 (>>>) 並立即發送</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send/&lt;&lt;&lt;</code></td>
+                        <td>設定方向為 由右至左 (<<<) 並立即發送</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send/&gt;&lt;</code></td>
+                        <td>設定方向為 由外往中 (><) 並立即發送</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send/&lt;&gt;</code></td>
+                        <td>設定方向為 由中往外 (<>) 並立即發送</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/send to eos</code></td>
+                        <td>立即發送當前佈局（不跳確認視窗）</td>
+                    </tr>
+                    <tr>
+                        <td><code>/gride/clear layout</code></td>
+                        <td>立即清空當前網格佈局</td>
+                    </tr>
+                </table>
             </section>
 
             <!-- 快捷鍵 -->

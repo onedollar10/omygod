@@ -166,14 +166,18 @@ const software = [
             "MA3 風格快速色彩分組，無需手動計算",
             "自動獲取 Augment3d 位置進行快速排列",
             "支援控台輸入 CH 自動獲取並傳回分組",
-            "整合標準 CIE 1931 色度圖與佈局管理"
+            "整合標準 CIE 1931 色度圖與佈局管理",
+            "ETC Magic Sheet 遠端連動與按鈕整合",
+            "RTSP 桌面/視窗多框串流與文字浮水印"
         ],
         features_en: [
             "Visualized grid layout with smart drag-and-drop",
             "MA3-style quick color grouping, no manual calc",
             "Auto-fetch Augment3d positions for quick layout",
             "Support console CH input for auto-grouping",
-            "Integrated CIE 1931 chromaticity diagram"
+            "Integrated CIE 1931 chromaticity diagram",
+            "ETC Magic Sheet remote control & button integration",
+            "RTSP multi-region streaming with text overlay"
         ]
     },
     {
@@ -193,7 +197,8 @@ const software = [
             "CH 模式支援 Auto-Delay 拍照",
             "支援 Excel 與 PDF 專業匯出",
             "視訊錄影與精確時間戳功能",
-            "sACN 網路協定輸觸發截圖"
+            "sACN 網路協定輸觸發截圖",
+            "內容與備註同步 ETC Label & Node"
         ],
         features_en: [
             "Multi-Video Input (USB/RTSP)",
@@ -201,7 +206,8 @@ const software = [
             "CH Mode with Auto-Delay Snap",
             "Professional Excel & PDF Export",
             "Video Recording & Precise Timestamps",
-            "sACN Network Input & Auto-Triggering"
+            "sACN Network Input & Auto-Triggering",
+            "Content & Notes Sync (ETC Label & Node)"
         ]
     }
 ];
@@ -236,6 +242,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-04-26",
+        content: "ETC Eos Grid Tool 更新：新增 ETC Magic Sheet 整合與 RTSP 多框串流功能",
+        content_en: "ETC Eos Grid Tool Update: Added ETC Magic Sheet Integration & RTSP Multi-Region Streaming"
+    },
     {
         date: "2026-03-31",
         content: "全新上架：創新的 OSC to MA2 Tool 已經發布，完美橋接跨平台裝置！歡迎 <a href='products/ma2-osc-tool.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('ma2_osc_tool_TickerDetails', 'TickerDetails')\">點此了解詳情</a> (或 <a href='Manual/OSC%20to%20MA2%20Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('ma2_osc_tool_TickerManual', 'TickerManual')\">查看說明書</a>)",
