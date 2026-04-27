@@ -90,7 +90,8 @@ const translations = {
         "cue_f6_hl": "網路整合： 無需實體線路，透過網路即可接收控台訊號，支援標準 E1.31 sACN 協定。",
         "cue_f7_title": "內容與備註同步",
         "cue_f7_desc": "自動同步 ETC Label 與 Node。當控台更新 Cue 的 Label 或備註時，軟體會即時獲取並同步至記錄表中。",
-        "cue_f7_hl": "即時同步： 確保記錄文檔與控台 show file 內容完全一致，減少手動輸入備註的時間。"
+        "cue_f7_hl": "即時同步： 確保記錄文檔與控台 show file 內容完全一致，減少手動輸入備註的時間。",
+        "comments_title": "COMMENTS / 留言區"
     },
     "en": {
         "nav_home": "Home",
@@ -183,7 +184,8 @@ const translations = {
         "cue_f6_hl": "Network Integration: No physical cables needed. Receives console signals via network, supporting standard E1.31 sACN protocol.",
         "cue_f7_title": "Content & Notes Sync",
         "cue_f7_desc": "Auto-sync with ETC Label and Node. When the console updates a Cue's Label or Notes, the software fetches and syncs them instantly.",
-        "cue_f7_hl": "Real-time Sync: Ensures documentation matches the console show file perfectly, saving time on manual entry."
+        "cue_f7_hl": "Real-time Sync: Ensures documentation matches the console show file perfectly, saving time on manual entry.",
+        "comments_title": "COMMENTS / FEEDBACK"
     }
 };
 
