@@ -319,7 +319,7 @@
         <header class="header">
             <a href="osc_time_code_Manual_en.html" class="lang-toggle">English Version</a>
             <h1>OSC Absolute Timecode Tool</h1>
-            <p class="version">版本 5.2 使用說明書</p>
+            <p class="version">版本 6.0 使用說明書</p>
         </header>
 
         <div class="content">
@@ -335,7 +335,9 @@
                     <li><a href="#timecode">時間碼設定</a></li>
                     <li><a href="#waveform">波形顯示與操作</a></li>
                     <li><a href="#ltc">LTC 時間碼輸出</a></li>
-                    <li><a href="#osc">OSC 通訊與 Cue 標記</a></li>
+                    <li><a href="#mtc">MTC 時間碼輸出</a></li>
+                    <li><a href="#settings">統一設定視窗</a></li>
+                    <li><a href="#mark-cue">Cue 標記</a></li>
                     <li><a href="#wav">WAV 音軌輸出</a></li>
                     <li><a href="#sacn">sACN DMX 遙控</a></li>
                     <li><a href="#troubleshoot">故障排除</a></li>
@@ -345,12 +347,12 @@
             <!-- 軟體簡介 -->
             <section id="intro">
                 <h2>軟體簡介</h2>
-                <p><strong>OSC Absolute Timecode Tool</strong> 是一款專業的時間碼同步工具，專為舞台燈光設計師與技術人員打造。它能透過 OSC 協定與 ETC/EOS
-                    燈控台通訊，並輸出標準 SMPTE LTC 時間碼。</p>
+                <p><strong>OSC Absolute Timecode Tool</strong> 是一款專業的時間碼同步工具，專為舞台燈光設計師與技術人員打造。它能透過 OSC 協定與 ETC/EOS 燈控台通訊，並支援輸出標準 SMPTE LTC（音訊格式）與 MTC（MIDI 格式）時間碼。</p>
+                <p>v6.0 版本引入了 MTC (MIDI Timecode) 支援，讓使用者能透過 MIDI 介面或虛擬 MIDI 埠進行數位傳輸，並整合了全新的統一設定視窗。</p>
 
                 <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_Timecode_Tool_Main.png" alt="軟體主畫面">
-                    <div class="screenshot-caption">圖 1：OSC Absolute Timecode Tool 主介面</div>
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Interface_Overview.png" alt="軟體主畫面">
+                    <div class="screenshot-caption">圖 1：OSC Absolute Timecode Tool 6.0 介面總覽</div>
                 </div>
 
                 <h3>主要特色</h3>
@@ -378,6 +380,10 @@
                     <div class="feature-card">
                         <h4>💾 WAV 輸出</h4>
                         <p>輸出雙聲道 WAV（左=LTC，右=音樂）</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎹 MTC 輸出</h4>
+                        <p>支援 MIDI 數位傳輸，不佔用音訊聲道</p>
                     </div>
                     <div class="feature-card">
                         <h4>🎛️ sACN 遙控</h4>
@@ -450,7 +456,7 @@
                     <tr>
                         <td>頂部功能列</td>
                         <td>最上方</td>
-                        <td>檔案管理、WAV輸出、sACN設定</td>
+                        <td>檔案管理、WAV輸出、設定</td>
                     </tr>
                     <tr>
                         <td>播放控制區</td>
@@ -478,9 +484,14 @@
                         <td>LTC輸出開關、音量、裝置選擇</td>
                     </tr>
                     <tr>
-                        <td>OSC設定區</td>
+                        <td>OSC控制區</td>
                         <td>中下</td>
-                        <td>IP、Port、Cue編號、Mark按鈕</td>
+                        <td>Cue編號、Mark按鈕</td>
+                    </tr>
+                    <tr>
+                        <td>⚙️設定區域</td>
+                        <td>頂部右側</td>
+                        <td>進入統一設定視窗進行連線與TC配置</td>
                     </tr>
                     <tr>
                         <td>記錄區</td>
@@ -725,24 +736,106 @@
                 </div>
             </section>
 
-            <!-- OSC 通訊 -->
+            <!-- MTC 輸出 -->
+            <section id="mtc">
+                <h2>MTC 時間碼輸出</h2>
+
+                <p>MTC (MIDI Timecode) 是透過 MIDI 協定傳送的時間碼，適合與 QLab、Resolume 或支援 MIDI 的燈控台連動。</p>
+
+                <div class="info-box">
+                    <h4>MTC 優勢</h4>
+                    <p>• 無需佔用音訊聲道</p>
+                    <p>• 數位傳輸，訊號更純淨</p>
+                    <p>• 支援虛擬 MIDI 埠 (如 loopMIDI)</p>
+                </div>
+
+                <h3>MTC 狀態指示</h3>
+                <table>
+                    <tr>
+                        <th>狀態</th>
+                        <th>顏色</th>
+                        <th>說明</th>
+                    </tr>
+                    <tr>
+                        <td>⚫ OFF</td>
+                        <td>灰色</td>
+                        <td>MIDI 輸出未開啟</td>
+                    </tr>
+                    <tr>
+                        <td>🟢 ON</td>
+                        <td>綠色</td>
+                        <td>MIDI 埠已連接，待命中</td>
+                    </tr>
+                    <tr>
+                        <td>🟢 RUNNING</td>
+                        <td>亮綠色</td>
+                        <td>正積極傳送 MIDI Timecode 數據</td>
+                    </tr>
+                </table>
+
+                <p>在播放過程中，您可以在介面上即時監控 MTC 的傳輸狀態，確保與燈控台或媒體伺服器精確同步。</p>
+            </section>
+
+            <!-- 統一設定視窗 -->
+            <section id="settings">
+                <h2>統一設定視窗</h2>
+
+                <p>v6.0 引入了全新的統一設定視窗，將所有進階設定整合在一起，使主介面更加清簡。</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/setting.png" alt="統一設定視窗">
+                    <div class="screenshot-caption">圖 10：統一設定視窗 - 一站式配置所有連線參數</div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>⏱️ Timecode 設定</h4>
+                        <p>切換 LTC/MTC 模式、選擇音訊裝置或 MIDI 埠、設定 FPS。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🖥️ 控台設定</h4>
+                        <p>設定燈控台 IP、OSC Port，以及選擇 ETC 控台版本。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌐 sACN 設定</h4>
+                        <p>啟用 DMX 遙控功能，並自定義每個動作的 DMX 通道。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>ℹ️ 關於</h4>
+                        <p>查看軟體版本、開發者資訊與官方網站連結。</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ ETC 版本適配 (重要)</h4>
+                    <p>針對 ETC Eos 系統的版本差異，現在可手動選擇：</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>3.3.5 以上：</strong> 使用 <code>/Timecode/</code> 指令路徑。</li>
+                        <li><strong>3.3.4 以下：</strong> 使用 <code>/Time_Code/</code> 指令路徑。</li>
+                    </ul>
+                    <p>這解決了舊版控台無法接收時間碼標記的問題。</p>
+                </div>
+            </section>
+
+            <!-- 控台設定 -->
             <section id="osc">
-                <h2>OSC 通訊與 Cue 標記</h2>
-
-                <h3>OSC 設定</h3>
-                <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_IP_Settings.png" alt="OSC IP設定">
-                    <div class="screenshot-caption">圖 10：OSC 連線設定 - IP 與 Port</div>
-                </div>
+                <h2>控台設定</h2>
 
                 <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_Settings.png" alt="OSC設定">
-                    <div class="screenshot-caption">圖 11：完整 OSC 設定區域包含 Mark Cue 按鈕</div>
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/etc setting.png" alt="控台設定">
+                    <div class="screenshot-caption">圖 11：控台設定視窗 - 配置 IP、Port 與控台版本</div>
                 </div>
 
-                <p>在 OSC 設定區域中，ETC IP 欄位輸入燈控台的 IP 位址，Port 欄位輸入 OSC 接收埠（預設 8000），Cue # / Path 欄位輸入 Cue 編號。</p>
 
-                <h3>Mark Cue（標記 Cue）</h3>
+                <div class="info-box">
+                    <h4>重要：控台版本選擇</h4>
+                    <p>為了適配不同世代的 ETC EOS 軟體，我們新增了版本選擇功能：</p>
+                    <p>• <strong>3.3.5+：</strong> 使用最新的 OSC 路徑指令（如 <code>/Timecode/</code>）。</p>
+                    <p>• <strong>3.3.4-：</strong> 使用舊版的路徑指令格式（如 <code>/Time_Code/</code>）。</p>
+                    <p><em>※ 如果您的控台無法接收到時間碼，請嘗試切換此版本設定。</em></p>
+                </div>
+
+                <h3 id="mark-cue">標記 Cue (Marking Cues)</h3>
                 <div class="step-box">
                     <h4>操作步驟</h4>
                     <ol style="margin-left: 20px;">

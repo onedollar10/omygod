@@ -132,22 +132,20 @@ const software = [
         manual: "Manual/osc time codeManual.html",
         manual_en: "Manual/osc_time_code_Manual_en.html",
         features: [
-            "支援 OSC 指令發送至 ETC 燈控台",
-            "實體 LTC 時間碼輸出 (24/25/30 FPS)",
+            "統一設定視窗，管理 OSC、sACN 與時間碼輸出",
             "即時音訊波形視覺化與 Cue 點標記",
             "sACN (E1.31) DMX 遠端遙控播放功能",
-            "自動續播與清單管理功能",
-            "支援 CSV 匯入匯出與 Cue 資料管理",
-            "LTC (左聲道) + 原始音訊 (右聲道) WAV 輸出"
+            "支援 ETC 控台版本選擇 (3.3.5+ / 3.3.4-)",
+            "LTC (左聲道) + 原始音訊 (右聲道) WAV 輸出",
+            "MTC (MIDI Timecode) 與 LTC (實體音訊) 雙模式輸出"
         ],
         features_en: [
-            "Support OSC command sending to ETC consoles",
-            "Physical LTC Timecode output (24/25/30 FPS)",
-            "Real-time audio waveform visualization & Cue marking",
-            "sACN (E1.31) DMX Remote Playback Control",
-            "Auto-next & Playlist management",
-            "Support CSV import/export & Cue data management",
-            "LTC (Left) + Original Audio (Right) WAV Export"
+            "Unified Settings window for OSC, sACN, and Timecode management",
+            "Real-time audio waveform visualization and Cue marking",
+            "sACN (E1.31) DMX remote playback control",
+            "Support for ETC console version selection (3.3.5+ / 3.3.4-)",
+            "LTC (Left) + Original Audio (Right) WAV output",
+            "Dual mode output: MTC (MIDI Timecode) and LTC (Audio)"
         ]
     },
     {
@@ -242,6 +240,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-05-04",
+        content: "OSC Timecode Tool v6.0 重磅更新：新增 MTC 支援、統一設定視窗與 ETC 控台版本適配功能",
+        content_en: "OSC Timecode Tool v6.0 Major Update: Added MTC support, Unified Settings, and ETC Console version compatibility."
+    },
     {
         date: "2026-04-26",
         content: "ETC Eos Grid Tool 更新：新增 ETC Magic Sheet 整合與 RTSP 多框串流功能",

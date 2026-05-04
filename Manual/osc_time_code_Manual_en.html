@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSC Absolute Timecode Tool v5.2 User Manual</title>
+    <title>OSC Absolute Timecode Tool v6.0 User Manual</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
     <script>
@@ -308,7 +308,7 @@
         <header class="header">
             <a href="osc time codeManual.html" class="lang-toggle">中文版本</a>
             <h1>OSC Absolute Timecode Tool</h1>
-            <p class="version">Professional Audio & Timecode Sync Tool - User Manual</p>
+            <p class="version">Professional Audio & Timecode Sync Tool - v6.0 User Manual</p>
         </header>
 
         <div class="content">
@@ -324,7 +324,9 @@
                     <li><a href="#timecode">Timecode Settings</a></li>
                     <li><a href="#waveform">Waveform Display & Interaction</a></li>
                     <li><a href="#ltc">LTC Timecode Output</a></li>
-                    <li><a href="#osc">OSC Sync & Mark Cue</a></li>
+                    <li><a href="#mtc">MTC Timecode Output</a></li>
+                    <li><a href="#settings">Unified Settings Window</a></li>
+                    <li><a href="#mark-cue">Marking Cues</a></li>
                     <li><a href="#wav">WAV Audio Export</a></li>
                     <li><a href="#sacn">sACN DMX Remote Control</a></li>
                     <li><a href="#troubleshoot">Troubleshooting</a></li>
@@ -334,14 +336,12 @@
             <!-- Introduction -->
             <section id="intro">
                 <h2>Introduction</h2>
-                <p><strong>OSC Absolute Timecode Tool</strong> is a professional timecode synchronization utility
-                    designed for lighting designers and technical crews. It communicates with ETC/EOS consoles via OSC
-                    protocol and outputs standard SMPTE LTC timecode.</p>
+                <p><strong>OSC Absolute Timecode Tool</strong> is a professional timecode synchronization utility designed for lighting designers and technical crews. It communicates with ETC/EOS consoles via OSC protocol and supports both SMPTE LTC (Audio) and MTC (MIDI) timecode output.</p>
+                <p>Version 6.0 introduces MTC (MIDI Timecode) support, enabling digital transmission via MIDI interfaces or virtual MIDI ports, alongside a brand new Unified Settings window.</p>
 
                 <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_Timecode_Tool_Main.png"
-                        alt="Main Interface">
-                    <div class="screenshot-caption">Fig 1: OSC Absolute Timecode Tool Main Interface</div>
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Interface_Overview.png" alt="Main Interface Overview">
+                    <div class="screenshot-caption">Fig 1: OSC Absolute Timecode Tool 6.0 Interface Overview</div>
                 </div>
 
                 <h3>Key Features</h3>
@@ -369,6 +369,10 @@
                     <div class="feature-card">
                         <h4>💾 WAV Export</h4>
                         <p>Export dual-channel WAV files (Left=LTC, Right=Music).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎹 MTC Output</h4>
+                        <p>Digital MIDI timecode transmission without using audio channels.</p>
                     </div>
                     <div class="feature-card">
                         <h4>🎛️ sACN Remote</h4>
@@ -427,7 +431,7 @@
 
                 <h3>Main Layout</h3>
                 <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Interface_Overview.png" alt="Full Interface">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Interface_Overview.png" alt="Full Interface Overview">
                     <div class="screenshot-caption">Fig 3: Full Interface Overview</div>
                 </div>
 
@@ -441,7 +445,7 @@
                     <tr>
                         <td>Top Toolbar</td>
                         <td>Top</td>
-                        <td>File, WAV Export, sACN settings</td>
+                        <td>File Management, WAV Export, Settings</td>
                     </tr>
                     <tr>
                         <td>Transport Controls</td>
@@ -469,9 +473,14 @@
                         <td>LTC enable, volume, device selection</td>
                     </tr>
                     <tr>
-                        <td>OSC Settings</td>
+                        <td>OSC Control</td>
                         <td>Bottom Center</td>
-                        <td>IP, Port, Cue #, Mark buttons</td>
+                        <td>Cue # entry and Mark button</td>
+                    </tr>
+                    <tr>
+                        <td>⚙️ Settings</td>
+                        <td>Top Right</td>
+                        <td>Access Unified Settings for connection and TC config</td>
                     </tr>
                     <tr>
                         <td>Logging Area</td>
@@ -567,8 +576,7 @@
                 </table>
 
                 <h3>Waveform Zoom</h3>
-                <p>Use "Zoom -" and "Zoom +" to adjust visual detail. Zoom in for precise Cue marking, zoom out for full
-                    overview.</p>
+                <p>Use "Zoom -" and "Zoom +" to adjust visual detail. Zoom in for precise Cue marking, zoom out for full overview.</p>
             </section>
 
             <!-- Timecode Settings -->
@@ -576,8 +584,7 @@
                 <h2>Timecode Settings</h2>
 
                 <h3>Track Offset</h3>
-                <p>Set starting timecode for each track. Format <code>HH:MM:SS:ss</code>. e.g. <code>00:01:00:00</code>
-                    starts at 1 minute mark.</p>
+                <p>Set starting timecode for each track. Format <code>HH:MM:SS:ss</code>. e.g. <code>00:01:00:00</code> starts at 1 minute mark.</p>
 
                 <div class="screenshot">
                     <img src="../pic/osc_timecode_tool 5.2 manual_images/Time_Display.png" alt="Time Display">
@@ -609,10 +616,13 @@
             <section id="waveform">
                 <h2>Waveform Display & Interaction</h2>
 
+                <h3>Waveform Visualization</h3>
                 <div class="screenshot">
                     <img src="../pic/osc_timecode_tool 5.2 manual_images/Waveform_Display.png" alt="Waveform">
                     <div class="screenshot-caption">Fig 8: Waveform view - Green = Cue, Red = Playhead</div>
                 </div>
+
+                <p>The waveform area displays the audio waveform in real-time. The red vertical line is the playhead, and green lines are Cue markers.</p>
 
                 <div class="info-box">
                     <h4>Click-to-Seek</h4>
@@ -660,25 +670,6 @@
                     </tr>
                 </table>
 
-                <h3>Device Modes</h3>
-                <table>
-                    <tr>
-                        <th>LTC Output</th>
-                        <th>Left Channel (L)</th>
-                        <th>Right Channel (R)</th>
-                    </tr>
-                    <tr>
-                        <td>ON</td>
-                        <td>LTC Signal</td>
-                        <td>Music (Mono)</td>
-                    </tr>
-                    <tr>
-                        <td>OFF</td>
-                        <td>Music (Mono)</td>
-                        <td>Music (Mono)</td>
-                    </tr>
-                </table>
-
                 <div class="warning-box">
                     <h4>⚠️ Important Reminder</h4>
                     <p>Please select a "dedicated audio device" for LTC output. Do not share with main speakers to avoid mixing timecode with music.</p>
@@ -690,32 +681,102 @@
                 </div>
             </section>
 
-            <!-- OSC Sync -->
+            <!-- MTC Output -->
+            <section id="mtc">
+                <h2>MTC Timecode Output</h2>
+
+                <p>MTC (MIDI Timecode) is timecode sent via the MIDI protocol, suitable for integration with QLab, Resolume, or MIDI-capable lighting consoles.</p>
+
+                <div class="info-box">
+                    <h4>Advantages of MTC</h4>
+                    <p>• Does not occupy audio channels</p>
+                    <p>• Digital transmission for cleaner signals</p>
+                    <p>• Supports virtual MIDI ports (e.g., loopMIDI)</p>
+                </div>
+
+                <h3>MTC Status Indicators</h3>
+                <table>
+                    <tr>
+                        <th>Status</th>
+                        <th>Color</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>⚫ OFF</td>
+                        <td>Gray</td>
+                        <td>MIDI output disabled</td>
+                    </tr>
+                    <tr>
+                        <td>🟢 ON</td>
+                        <td>Green</td>
+                        <td>MIDI port connected, standby</td>
+                    </tr>
+                    <tr>
+                        <td>🟢 RUNNING</td>
+                        <td>Bright Green</td>
+                        <td>Actively transmitting MIDI Timecode data</td>
+                    </tr>
+                </table>
+
+                <p>Monitor MTC transmission status in real-time to ensure precise synchronization with consoles or media servers during playback.</p>
+            </section>
+
+            <!-- Unified Settings Window -->
+            <section id="settings">
+                <h2>Unified Settings Window</h2>
+
+                <p>v6.0 introduces a brand new Unified Settings window, consolidating all advanced configurations for a cleaner main interface.</p>
+
+                <div class="screenshot">
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/setting.png" alt="Unified Settings Window">
+                    <div class="screenshot-caption">Fig 10: Unified Settings Window - One-stop configuration for all connection parameters</div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>⏱️ Timecode Settings</h4>
+                        <p>Toggle LTC/MTC modes, select audio devices or MIDI ports, and set FPS.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🖥️ Console Settings</h4>
+                        <p>Configure console IP, OSC Port, and select the ETC console version.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌐 sACN Settings</h4>
+                        <p>Enable DMX remote control and customize DMX channel mapping.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>ℹ️ About</h4>
+                        <p>View software version, developer info, and official website links.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Console Settings -->
             <section id="osc">
-                <h2>OSC Sync & Mark Cue</h2>
+                <h2>Console Settings</h2>
 
                 <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_IP_Settings.png" alt="IP">
-                    <div class="screenshot-caption">Fig 10: OSC Network Connection</div>
+                    <img src="../pic/osc_timecode_tool 5.2 manual_images/etc setting.png" alt="Console Settings">
+                    <div class="screenshot-caption">Fig 11: Console Settings Window - Configure IP, Port, and Console Version</div>
                 </div>
 
-                <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/OSC_Settings.png" alt="OSC Sync">
-                    <div class="screenshot-caption">Fig 11: Mark Cue setup and Path settings</div>
+
+                <div class="info-box">
+                    <h4>Important: Console Version Selection</h4>
+                    <p>To ensure compatibility across different generations of ETC EOS software, we've added a version selector:</p>
+                    <p>• <strong>3.3.5+:</strong> Uses the latest OSC path commands (e.g., <code>/Timecode/</code>).</p>
+                    <p>• <strong>3.3.4-:</strong> Uses legacy path formats (e.g., <code>/Time_Code/</code>).</p>
+                    <p><em>* If your console is not receiving timecode, try switching this version setting.</em></p>
                 </div>
 
-                <h3>Marking Cues</h3>
+                <h3 id="mark-cue">Marking Cues</h3>
                 <div class="step-box">
                     <ol style="margin-left: 20px;">
                         <li>Play your track.</li>
                         <li>Click "Mark Cue" at desired timestamp.</li>
                         <li>Command is sent to console and logged locally.</li>
                     </ol>
-                </div>
-
-                <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/Cue_Log.png" alt="Log">
-                    <div class="screenshot-caption">Fig 12: Detailed Cue Mark Log</div>
                 </div>
 
                 <table>
@@ -743,11 +804,6 @@
                 <h2>WAV Audio Export</h2>
 
                 <p>Generate production-ready WAV files with baked-in LTC.</p>
-
-                <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/WAV_Export.png" alt="WAV Export">
-                    <div class="screenshot-caption">Fig 13: Export settings for split-track WAV files</div>
-                </div>
 
                 <h3>Export Specifications</h3>
                 <table>
@@ -788,117 +844,43 @@
 
                 <p>Enables remote transport control via lighting console DMX values.</p>
 
-                <div class="screenshot">
-                    <img src="../pic/osc_timecode_tool 5.2 manual_images/sACN_Settings.png" alt="sACN">
-                    <div class="screenshot-caption">Fig 14: sACN Universe and Address settings</div>
-                </div>
-
                 <h3>Configuration</h3>
-                <table>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Default</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>Universe</td>
-                        <td>1</td>
-                        <td>DMX Universe number</td>
-                    </tr>
-                    <tr>
-                        <td>Play</td>
-                        <td>Ch 1</td>
-                        <td>Playback trigger channel</td>
-                    </tr>
-                    <tr>
-                        <td>Pause</td>
-                        <td>Ch 2</td>
-                        <td>Pause trigger channel</td>
-                    </tr>
-                    <tr>
-                        <td>Stop</td>
-                        <td>Ch 3</td>
-                        <td>Stop trigger channel</td>
-                    </tr>
-                    <tr>
-                        <td>Previous</td>
-                        <td>Ch 4</td>
-                        <td>Previous track channel</td>
-                    </tr>
-                    <tr>
-                        <td>Next</td>
-                        <td>Ch 5</td>
-                        <td>Next track channel</td>
-                    </tr>
-                </table>
+                <p>Configure Universe and Channel mapping in the "⚙️ Settings > sACN Settings" tab.</p>
             </section>
 
             <!-- Troubleshooting -->
             <section id="troubleshoot">
                 <h2>Troubleshooting</h2>
-
-                <h3>Common Issues</h3>
-
-                <div class="step-box">
-                    <h4>Q1: Cannot connect to lighting console</h4>
-                    <ul>
-                        <li>Verify the IP address is correct (use ping to test)</li>
-                        <li>Confirm the Port number matches console settings</li>
-                        <li>Check if Windows Firewall is blocking Port 8000</li>
-                        <li>Ensure OSC receive function is enabled on the console</li>
-                    </ul>
-                </div>
-
-                <div class="step-box">
-                    <h4>Q2: No LTC output sound</h4>
-                    <ul>
-                        <li>Confirm LTC Out switch is turned ON</li>
-                        <li>Verify the correct audio device is selected</li>
-                        <li>Check if volume is set too low</li>
-                        <li>Ensure the device is not occupied by another program</li>
-                    </ul>
-                </div>
-
-                <div class="step-box">
-                    <h4>Q3: sACN cannot receive signal</h4>
-                    <ul>
-                        <li>Confirm computer and console are on the same network segment</li>
-                        <li>Check if Windows Firewall is blocking UDP Port 5568</li>
-                        <li>Verify Universe number matches</li>
-                        <li>Ensure console is outputting sACN signal</li>
-                    </ul>
-                </div>
-
-                <h3>Contact Support</h3>
-                <div class="info-box">
-                    <h4>Technical Support</h4>
-                    <p>Email: 566472@gmail.com</p>
-                    <p>Subject: OSC Timecode Tool Technical Support</p>
-                </div>
+                <table>
+                    <tr>
+                        <th>Problem</th>
+                        <th>Possible Cause</th>
+                        <th>Solution</th>
+                    </tr>
+                    <tr>
+                        <td>No OSC signal</td>
+                        <td>Wrong IP or Port</td>
+                        <td>Check Settings > Console.</td>
+                    </tr>
+                    <tr>
+                        <td>Timecode jitter</td>
+                        <td>CPU overload</td>
+                        <td>Close heavy background apps.</td>
+                    </tr>
+                    <tr>
+                        <td>LTC no sound</td>
+                        <td>Wrong audio device</td>
+                        <td>Check Settings > Timecode.</td>
+                    </tr>
+                </table>
             </section>
-
-            <!-- Translation Widget -->
-            <div id="google_translate_element"
-                style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; text-align: center;">
-                <p style="font-size: 0.8rem; color: #888;">Need full translation? Use Google Translate below:</p>
-            </div>
         </div>
 
-        <footer class="footer">
-            <p><strong>OSC Absolute Timecode Tool v5.2</strong></p>
-            <p>Developer: onedoller</p>
-            <p>Last Updated: 2026-02-08</p>
-            <p style="margin-top: 20px; opacity: 0.8;">This document applies to OSC Absolute Timecode Tool v5.2</p>
-        </footer>
+        <div class="footer">
+            <p>&copy; 2026 onedoller. All rights reserved.</p>
+            <p>I build tech, not just art.</p>
+        </div>
     </div>
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
