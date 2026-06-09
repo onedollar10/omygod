@@ -239,8 +239,8 @@ const freeTools = [
     },
     {
         id: "cue_lab",
-        name: "Cue Lab",
-        name_en: "Cue Lab",
+        name: "Cue Lab 測試版",
+        name_en: "Cue Lab Beta",
         tagline: "演出控制與播放軟體",
         tagline_en: "Show Control & Playback Software",
         description: "類似 macOS QLab 的演出控制軟體，支援音軌、影片、圖片依序播放，並具備多螢幕投影與四角獨立梯形校正功能。",
@@ -255,8 +255,8 @@ const freeTools = [
 const latestUpdates = [
     {
         date: "2026-06-10",
-        content: "全新上架：演出控制軟體 Cue Lab 已發布！支援音軌/影片/圖片播放、多螢幕投影與四角梯形校正。歡迎 <a href='https://drive.google.com/file/d/1-RFBqzDfo8TdI_ZvJmN0HFMMDB6UtJc4/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDownload', 'TickerDownload')\">點此下載</a>",
-        content_en: "New Release: Show control software Cue Lab is out now! Supports audio/video/image playback, multi-screen projection & 4-corner keystone correction. <a href='https://drive.google.com/file/d/1-RFBqzDfo8TdI_ZvJmN0HFMMDB6UtJc4/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDownload', 'TickerDownload')\">Download Here</a>"
+        content: "全新上架：演出控制軟體 Cue Lab 測試版已發布！支援音軌/影片/圖片播放、多螢幕投影與四角梯形校正。歡迎 <a href='https://drive.google.com/file/d/1-RFBqzDfo8TdI_ZvJmN0HFMMDB6UtJc4/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDownload', 'TickerDownload')\">點此下載</a>",
+        content_en: "New Release: Show control software Cue Lab Beta is out now! Supports audio/video/image playback, multi-screen projection & 4-corner keystone correction. <a href='https://drive.google.com/file/d/1-RFBqzDfo8TdI_ZvJmN0HFMMDB6UtJc4/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDownload', 'TickerDownload')\">Download Here</a>"
     },
     {
         date: "2026-05-04",
