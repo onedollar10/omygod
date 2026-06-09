@@ -236,10 +236,28 @@ const freeTools = [
         manual: "Manual/RTSP TOOL Manual.html",
         features: ["雙來源模式 (全螢幕/指定視窗)", "自動下載 FFmpeg 與 MediaMTX", "低延遲推流技術 (RTSP)", "即時狀態回饋 (FPS / Bitrate)"],
         features_en: ["Dual Source (Full Screen/Window)", "Auto FFmpeg & MediaMTX download", "Low-latency RTSP streaming", "Real-time Metrics (FPS / Bitrate)"]
+    },
+    {
+        id: "cue_lab",
+        name: "Cue Lab",
+        name_en: "Cue Lab",
+        tagline: "演出控制與播放軟體",
+        tagline_en: "Show Control & Playback Software",
+        description: "類似 macOS QLab 的演出控制軟體，支援音軌、影片、圖片依序播放，並具備多螢幕投影與四角獨立梯形校正功能。",
+        description_en: "A macOS QLab-like show control software supporting sequential audio, video, and image playback, with multi-screen projection and 4-corner keystone correction.",
+        url: "https://drive.google.com/file/d/1-RFBqzDfo8TdI_ZvJmN0HFMMDB6UtJc4/view?usp=sharing",
+        btn_key: "btn_download_app",
+        features: ["多軌音影播放 (支援淡入/淡出、自動連動與群組播放)", "多螢幕投影輸出 (支援影片與圖片的全螢幕投影)", "獨立四角梯形校正 (配合現場投影進行畫面調整)"],
+        features_en: ["Multi-track audio/video playback (supports fade in/out, follow, and group cues)", "Multi-screen projection output (full screen video/image projection)", "4-corner keystone correction (adjust projection to match physical surfaces)"]
     }
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-06-10",
+        content: "全新上架：演出控制軟體 Cue Lab 已發布！支援音軌/影片/圖片播放、多螢幕投影與四角梯形校正。歡迎 <a href='https://drive.google.com/file/d/1-RFBqzDfo8TdI_ZvJmN0HFMMDB6UtJc4/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDownload', 'TickerDownload')\">點此下載</a>",
+        content_en: "New Release: Show control software Cue Lab is out now! Supports audio/video/image playback, multi-screen projection & 4-corner keystone correction. <a href='https://drive.google.com/file/d/1-RFBqzDfo8TdI_ZvJmN0HFMMDB6UtJc4/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDownload', 'TickerDownload')\">Download Here</a>"
+    },
     {
         date: "2026-05-04",
         content: "OSC Timecode Tool v6.0 重磅更新：新增 MTC 支援、統一設定視窗與 ETC 控台版本適配功能",
