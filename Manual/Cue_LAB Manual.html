@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cue Lab 舞台控制播放軟體 v1.0 使用說明書</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-95B5G5KQ8B');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .header .version {
+            font-size: 1.2em;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.15);
+            display: inline-block;
+            padding: 4px 15px;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 18px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
+        }
+
+        .content {
+            padding: 40px;
+            background: #ffffff;
+        }
+
+        .toc {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 6px solid #2563eb;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .toc h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 10px 20px;
+        }
+
+        .toc li {
+            padding: 4px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .toc a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #1e3a8a;
+            font-size: 2em;
+            margin: 45px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        h3 {
+            color: #1d4ed8;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            color: #0f172a;
+            font-size: 1.25em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            color: #334155;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
+        }
+
+        .feature-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.95);
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        .mockup-container {
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: center;
+        }
+
+        .mockup-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .mockup-caption {
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            color: #64748b;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 14px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .step-box {
+            background: #f0fdf4;
+            border-left: 6px solid #22c55e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .step-box h4 {
+            color: #15803d;
+            margin-bottom: 10px;
+        }
+
+        .step-box ol, .step-box ul {
+            margin-left: 20px;
+            color: #1e293b;
+        }
+
+        .step-box li {
+            margin-bottom: 5px;
+        }
+
+        .warning-box {
+            background: #fffbe6;
+            border-left: 6px solid #eab308;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box h4 {
+            color: #854d0e;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            color: #451a03;
+            margin: 0;
+        }
+
+        .info-box {
+            background: #f0f9ff;
+            border-left: 6px solid #0ea5e9;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .info-box h4 {
+            color: #0369a1;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #0c4a6e;
+            margin: 0;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 3px 6px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #db2777;
+            border: 1px solid #e2e8f0;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .footer p strong {
+            color: #f8fafc;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .toc ul {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="Cue_LAB Manual_en.html" class="lang-toggle">English Version</a>
+            <h1>Cue Lab 闊槫床謗ｧ蛻ｶ謦ｭ謾ｾ霆滄ｫ�</h1>
+            <p class="version">迚域悽 1.1.0 菴ｿ逕ｨ隱ｪ譏取嶌</p>
+        </header>
+
+        <div class="content">
+            <!-- 逶ｮ骭� -->
+            <div class="toc">
+                <h2>逶ｮ骭�</h2>
+                <ul>
+                    <li><a href="#intro">1. 霆滄ｫ皮ｰ｡莉�</a></li>
+                    <li><a href="#install">2. 邉ｻ邨ｱ髴豎り�蝠溷虚</a></li>
+                    <li><a href="#interface">3. 莉矩擇邵ｽ隕ｽ闊�ｸ�ｱ</a></li>
+                    <li><a href="#cue-types">4. Cue 鬘槫梛闊�音鮟�</a></li>
+                    <li><a href="#audio-edit">5. 髻ｳ險顔ｷｨ霈ｯ闊�ｳ｢蠖｢謗ｧ蛻ｶ</a></li>
+                    <li><a href="#video-display">6. 蠖ｱ蜒剰ｨｭ螳夊�謗堤ｨ区而蛻ｶ</a></li>
+                    <li><a href="#keystone">7. 陞｢蟷戊�蟷ｾ菴墓�｡豁｣ (Keystone)</a></li>
+                    <li><a href="#masking">8. 螻驛ｨ驕ｮ鄂ｩ闊��蝓滄�鄂ｩ髢矩梨</a></li>
+                    <li><a href="#playback">9. 謦ｭ謾ｾ謗ｧ蛻ｶ闊�嵯逶､蠢ｫ騾滄嵯</a></li>
+                    <li><a href="#timecode">10. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode)</a></li>
+                    <li><a href="#video-preview">11. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview)</a></li>
+                    <li><a href="#project">12. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕�</a></li>
+                    <li><a href="#troubleshoot">13. 謨�囿謗帝勁</a></li>
+                </ul>
+            </div>
+
+            <!-- 1. 霆滄ｫ皮ｰ｡莉� -->
+            <section id="intro">
+                <h2>1. 霆滄ｫ皮ｰ｡莉�</h2>
+                <p><strong>Cue Lab</strong> 譏ｯ荳谺ｾ蟆育ぜ闊槫床蜉��ｴ縲∝､壼ｪ帝ｫ泌ｱ墓ｼ泌所阯晁｡灘ｱ慕､ｺ謇髢狗匸逧�ｰ域･ｭ邏壹悟､壼ｪ帝ｫ� Show Control 謗ｧ蛻ｶ謦ｭ謾ｾ霆滄ｫ斐阪らｳｻ邨ｱ謾ｯ謠ｴ蝨ｨ螟夜Κ謚募ｽｱ蟷墓�蜑ｯ陞｢蟷暮ｲ陦檎昏遶狗噪鬮倡吻雉ｪ蠖ｱ蜒剰ｼｸ蜃ｺ�悟�蛯吝�騾ｲ逧�ｹｾ菴墓｢ｯ蠖｢譬｡豁｣縲��鄂ｩ陞榊粋蜿雁､夊ｻ碁浹險願ｷｯ逕ｱ遲臥樟蝣ｴ蝓ｷ陦悟粥閭ｽ�梧葎蝨ｨ轤ｺ蜉��ｴ險ｭ險亥ｸｫ謠蝉ｾ幃ｫ俶譜縲∫ｩｩ螳壻ｸ皮峩隕ｺ逧�眺謾ｾ鬮秘ｩ励�</p>
+
+                <div class="mockup-container">
+                    <img src="images/01_main_window.png" alt="Cue Lab 霆滄ｫ比ｸｻ逡ｫ髱｢">
+                </div>
+                <div class="mockup-caption">蝨� 1�咾ue Lab 霆滄ｫ比ｸｻ逡ｫ髱｢</div>
+
+                <h3>譬ｸ蠢�橿陦鍋音鮟�</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>�矧 迯ｨ遶矩浹險願ｷｯ逕ｱ</h4>
+                        <p>謾ｯ謠ｴ轤ｺ荳榊酔髻ｳ險願ｻ檎昏遶矩∈謫�悽讖溷ｯｦ鬮秘浹謨亥今霈ｸ蜃ｺ�悟ｮ檎ｾ朱←驟咲樟蝣ｴ迺ｰ郢樒ｫ矩ｫ碑�謌門､夊�驕楢ｷｯ逕ｱ髴豎ゅ�</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>�汐 蟆域･ｭ蠖ｱ蜒剰ｼｸ蜃ｺ</h4>
+                        <p>謾ｯ謠ｴ蝨ｨ蜑ｯ陞｢蟷�/謚募ｽｱ讖滉ｸ企ｲ陦檎昏遶狗噪鮟槫ｰ埼ｻ樣ｫ倡吻雉ｪ蠖ｱ迚��蝨也援謦ｭ謾ｾ�檎┌驕ｸ蝟ｮ谺�所邉ｻ邨ｱ貂ｸ讓吝ｹｲ謫ｾ縲�</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>�盗 蜈ｨ邯ｲ譬ｼ譴ｯ蠖｢譬｡豁｣</h4>
+                        <p>蜈ｧ蟒ｺ鮟槫ｰ埼ｻ� Keystone 譴ｯ蠖｢譬｡豁｣�梧署萓帶･ｵ邏ｰ蠕ｮ逧�屁隗堤ｶｲ譬ｼ骭ｨ鮟櫁ｪｿ謨ｴ�悟叉譎よ�｡豁｣謚募ｽｱ髱｢蛛乗万縲�</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>�鹿 螟壼ｱ､邏夐�鄂ｩ陞榊粋</h4>
+                        <p>謾ｯ謠ｴ閾ｪ險ょ､壼矩�鄂ｩ鬆�岼�悟�蛯� Crop�井ｿ晉蕗�峨。lock�磯�阡ｽ�臥ｭ画ｷｷ蜷域ｨ｡蠑剰�迯ｨ遶区雷霓画�｡豁｣縲�</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>�逃 蟆域｡井ｸ骰ｵ謇灘桁</h4>
+                        <p>閾ｪ蜍墓祉謠丈ｸｦ隍�｣ｽ蟆域｡井ｸｭ謇髣懆�荵句､夜Κ蟐帝ｫ費ｼ碁㍾譁ｰ螳壻ｽ咲ぜ逶ｸ蟆崎ｷｯ蠕大｣鍋ｸｮ謇灘桁�悟ｯｦ迴ｾ辟｡邵ｫ謾懷ｸｶ縲�</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>竊ｩ�� 謦､驫ｷ驥榊★邉ｻ邨ｱ</h4>
+                        <p>謾ｯ謠ｴ蜈ｨ蝓溽噪 Undo / Redo 謫堺ｽ懈ｭｷ蜿ｲ邏骭�ｼ碁圷譎よ潔 <code>Ctrl+Z</code> 謦､蝗樣険隱､逧�桃菴懈�蜿�丙蠕ｮ隱ｿ縲�</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. 邉ｻ邨ｱ髴豎り�蝠溷虚 -->
+            <section id="install">
+                <h2>2. 邉ｻ邨ｱ髴豎り�蝠溷虚</h2>
+
+                <div class="mockup-container">
+                    <img src="images/02_about.png" alt="髣懈名 Cue Lab 蟆崎ｩｱ譯��迚域悽雉�ｨ�">
+                </div>
+                <div class="mockup-caption">蝨� 2�夐梨譁ｼ Cue Lab 蟆崎ｩｱ譯��霆滄ｫ皮沿譛ｬ雉�ｨ�</div>
+
+                <h3>菴懈･ｭ邉ｻ邨ｱ闊�｡ｬ鬮疲髪謠ｴ</h3>
+                <table>
+                    <tr>
+                        <th>遑ｬ鬮�/邉ｻ邨ｱ鬆�岼</th>
+                        <th>譛菴朱怙豎りｦ乗�ｼ</th>
+                        <th>蟒ｺ隴ｰ隕乗�ｼ</th>
+                    </tr>
+                    <tr>
+                        <td>菴懈･ｭ邉ｻ邨ｱ</td>
+                        <td>Windows 10 64-bit</td>
+                        <td>Windows 11 蟆域･ｭ迚�</td>
+                    </tr>
+                    <tr>
+                        <td>陌慕炊蝎ｨ (CPU)</td>
+                        <td>Intel Core i5 遲臥ｴ壻ｻ･荳�</td>
+                        <td>Intel Core i7 / AMD Ryzen 7 莉･荳�</td>
+                    </tr>
+                    <tr>
+                        <td>險俶�鬮� (RAM)</td>
+                        <td>8 GB</td>
+                        <td>16 GB 莉･荳�</td>
+                    </tr>
+                    <tr>
+                        <td>鬘ｯ遉ｺ蜊｡ (GPU)</td>
+                        <td>謾ｯ謠ｴ OpenGL 3.3 荵句�鬘ｯ</td>
+                        <td>NVIDIA GeForce 迯ｨ遶矩｡ｯ遉ｺ蜊｡ (蠖ｱ髻ｳ隗｣遒ｼ譖ｴ豬∵圓)</td>
+                    </tr>
+                    <tr>
+                        <td>霈ｸ蜃ｺ莉矩擇</td>
+                        <td>HDMI / DisplayPort (螟夊椶蟷戊ｼｸ蜃ｺ逕ｨ)</td>
+                        <td>螟夊ｷｯ迯ｨ遶句ｽｱ蜒剰ｼｸ蜃ｺ蝓� (HDMI/DP)</td>
+                    </tr>
+                </table>
+
+                <div class="step-box">
+                    <h4>蝠溷虚豁･鬩�</h4>
+                    <p>隗｣螢鍋ｸｮ螳芽｣晏桁蠕鯉ｼ碁ｻ樊投 <code>CueLab.exe</code> 蜊ｳ蜿ｯ逶ｴ謗･蝠溷虚遞句ｼ上よ悽霆滄ｫ皮┌鬆育ｹ∬､�噪邱壻ｸ雁ｮ芽｣晄�騾｣邯ｲ蝠溽畑遒ｼ蜊ｳ蜿ｯ逶ｴ謗･蝓ｷ陦鯉ｼ碁←蜷育樟蝣ｴ蟆�哩邯ｲ霍ｯ逧�而蛻ｶ髮ｻ閻ｦ迺ｰ蠅��</p>
+                </div>
+            </section>
+
+            <!-- 3. 莉矩擇邵ｽ隕ｽ闊�ｸ�ｱ -->
+            <section id="interface">
+                <h2>3. 莉矩擇邵ｽ隕ｽ闊�ｸ�ｱ</h2>
+
+                <div class="mockup-container">
+                    <img src="images/03_ui_layout.png" alt="Cue Lab 莉矩擇荳ｻ隕∝項蝓�">
+                </div>
+                <div class="mockup-caption">蝨� 3�咾ue Lab 莉矩擇荳ｻ隕∝項蝓溷ｸ�ｱ邵ｽ隕ｽ</div>
+
+                <p>霆滄ｫ比ｸｻ逡ｫ髱｢荳ｻ隕∫罰蝗帛区�ｸ蠢�項蝓溽ｵ����<strong>鬆るΚ蟾･蜈ｷ蛻�</strong>縲�<strong>蟾ｦ蛛ｴ Cue 蛻苓｡ｨ陦ｨ譬ｼ</strong>縲�<strong>蠎暮Κ豕｢蠖｢闊�ｷｨ霈ｯ蜊</strong>莉･蜿�<strong>蜿ｳ蛛ｴ螻ｬ諤ｧ Inspector 髱｢譚ｿ</strong>縲�</p>
+
+                <h3>荳ｻ隕∽ｻ矩擇蜊蝓溯ｪｪ譏�</h3>
+                <table>
+                    <tr>
+                        <th style="width: 25%;">莉矩擇蜊蝓�</th>
+                        <th style="width: 25%;">菴咲ｽｮ</th>
+                        <th>蜉溯�隱ｪ譏�</th>
+                    </tr>
+                    <tr>
+                        <td><strong>謗ｧ蛻ｶ蟾･蜈ｷ蛻� (Toolbar)</strong></td>
+                        <td>隕也ｪ玲ｭ｣荳頑婿</td>
+                        <td>謠蝉ｾ帛､ｧ蝙� <code>GO</code>縲�<code>證ｫ蛛�</code>縲�<code>蜈ｨ驛ｨ蛛懈ｭ｢</code> 謗ｧ蛻ｶ驤包ｼ御ｻ･蜿雁ｿｫ騾滓眠蠅槫推鬘槫梛 Cue 逧�差蠕第潔驤戊�險ｭ螳壽潔驤輔�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cue 蛻苓｡ｨ陦ｨ譬ｼ (Cue List)</strong></td>
+                        <td>隕也ｪ怜ｷｦ蛛ｴ</td>
+                        <td>鬘ｯ遉ｺ逡ｶ蜑榊ｰ域｡井ｸｭ謇譛臥噪 Cue 謦ｭ謾ｾ蜍穂ｽ懶ｼ悟桁蜷ｫ邱ｨ陌溘�｡槫梛蝨也､ｺ縲∝錐遞ｱ縲�梨閨ｯ讙疲｡医∝濤陦檎朽諷玖�騾ｲ蠎ｦ譴晉ｭ峨�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>螻ｬ諤ｧ髱｢譚ｿ (Inspector)</strong></td>
+                        <td>隕也ｪ怜承蛛ｴ</td>
+                        <td>逡ｶ驕ｸ蜿匁汾蛟� Cue 譎ゑｼ梧ｭ､陌墓怎蛻怜�隧ｲ Cue 逧�園譛牙純謨ｸ�悟�轤ｺ縲悟渕譛ｬ縲阪√梧凾髢薙阪√碁浹險翫阪√碁｡ｯ遉ｺ縲崎�縲檎ｾ､邨�咲ｭ牙�鬆√�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>豕｢蠖｢隕冶ｦｺ蛹� (Waveform)</strong></td>
+                        <td>隕也ｪ怜ｷｦ荳区婿</td>
+                        <td>髻ｳ險願�蠖ｱ迚� Cue 逧�ｳ｢蠖｢鬘ｯ遉ｺ蜊�悟庄逶ｴ謗･鮟樊投諡匁峙謌紋ｻ･骰ｵ逶､譁ｹ蜷鷹嵯蠕ｮ隱ｿ蟐帝ｫ皮噪謦ｭ謾ｾ襍ｷ鮟櫁�邨るｻ樊凾髢薙�</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>�庁 蠢ｫ騾滄∈蝟ｮ闊�承骰ｵ謫堺ｽ�</h4>
+                    <p>蝨ｨ Cue 蛻苓｡ｨ荳頑潔貊鷹ｼ�蜿ｳ骰ｵ�悟庄髢句福荳贋ｸ区枚驕ｸ蝟ｮ�悟濤陦鯉ｼ夊､�｣ｽ縲∝岡荳九∬ｲｼ荳翫∝惠荳頑婿/荳区婿謠貞�譁ｰ Cue縲∬ｧ｣謨｣鄒､邨��閾ｪ蜍暮㍾譁ｰ邱ｨ陌溽ｭ臥ｵ先ｧ区ｧ蜍穂ｽ懊�</p>
+                </div>
+            </section>
+
+            <!-- 4. Cue 鬘槫梛闊�音鮟� -->
+            <section id="cue-types">
+                <h2>4. Cue 鬘槫梛闊�音鮟�</h2>
+
+                <div class="mockup-container">
+                    <img src="images/04_cue_types.png" alt="Cue 鬘槫梛陦ｨ譬ｼ">
+                </div>
+                <div class="mockup-caption">蝨� 4�咾ue 蛻苓｡ｨ謾ｯ謖∫噪逧�推遞ｮ鬘槫梛闊�朽諷�</div>
+
+                <p>譛ｬ霆滄ｫ疲署萓� 7 遞ｮ荳榊酔鬘槫梛逧� Cue�御ｽｿ逕ｨ閠�庄莉･閾ｪ逕ｱ邨�粋螳�台ｾ�ｻｺ讒倶ｸ蛟狗ｲｾ邏ｰ逧�ｼ泌�豬∫ｨ具ｼ�</p>
+
+                <table>
+                    <tr>
+                        <th style="width: 15%;">鬘槫梛</th>
+                        <th style="width: 15%;">蝨也､ｺ</th>
+                        <th style="width: 20%;">驕ｩ逕ｨ蝣ｴ譎ｯ</th>
+                        <th>譬ｸ蠢�而蛻ｶ螻ｬ諤ｧ</th>
+                    </tr>
+                    <tr>
+                        <td><strong>髻ｳ險� Cue</strong></td>
+                        <td>�矧 Audio</td>
+                        <td>閭梧勹髻ｳ讓ゅ∵譜譫憺浹</td>
+                        <td>髻ｳ驥丞､ｧ蟆上∵眺謾ｾ騾溷ｺｦ縲∬ｵｷ鮟�/邨るｻ槭∵ｷ｡蜈･/豺｡蜃ｺ遘呈丙縲∫｡ｬ鬮碑ｼｸ蜃ｺ陬晉ｽｮ縲�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>蠖ｱ迚� Cue</strong></td>
+                        <td>�汐 Video</td>
+                        <td>蜍墓�謚募ｽｱ縲∬レ譎ｯ蠖ｱ迚�</td>
+                        <td>髯､蛹�性髻ｳ險顔噪謇譛牙ｱｬ諤ｧ螟厄ｼ碁ｄ謾ｯ謠ｴ邵ｮ謾ｾ讓｡蠑上∬ｦ冶ｦｺ蝨門ｱ､縲∽ｸ埼乗�蠎ｦ縲々Y菴咲ｽｮ闊�､ｧ蟆上∵｢ｯ蠖｢譬｡豁｣闊��鄂ｩ縲�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>蝨也援 Cue</strong></td>
+                        <td>�名 Image</td>
+                        <td>髱懈�闊槫床閭梧攸</td>
+                        <td>邵ｮ謾ｾ讓｡蠑上∬ｦ冶ｦｺ蝨門ｱ､縲∽ｸ埼乗�蠎ｦ縲∽ｽ咲ｽｮ縲∝､ｧ蟆上∵｢ｯ蠖｢譬｡豁｣闊��鄂ｩ縲�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>證怜�ｴ Cue</strong></td>
+                        <td>筮� Blackout</td>
+                        <td>蝣ｴ譎ｯ霓画鋤縲∝�鮟鷹℃貂｡</td>
+                        <td>豺｡蜃ｺ譎る俣縲りｧｸ逋ｼ譎よ怎蟆�園譛牙濤陦御ｸｭ逧�ｽｱ迚��蝨也援蛛壼ｹｳ貊第ｷ｡蜃ｺ�御ｽｿ謚募ｽｱ鬘ｯ遉ｺ諱｢蠕ｩ轤ｺ蜈ｨ鮟代�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>鄒､邨� Cue</strong></td>
+                        <td>�逃 Group</td>
+                        <td>螟壽ｪ疲｡亥酔譎りｧｸ逋ｼ縲∵眺豁梧ｸ�粍</td>
+                        <td>謌仙藤蛻苓｡ｨ邂｡逅�∵眺謾ｾ鬆�ｺ上ょ庄螳ｹ邏榊､壼句ｭ� Cue�悟ｯｦ迴ｾ螟壼句ｪ帝ｫ泌酔譎りｧｸ逋ｼ謦ｭ謾ｾ謌冶�蜍墓磁郤梧眺謾ｾ縲�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>驕ｮ鄂ｩ Cue</strong></td>
+                        <td>�鹿 Mask</td>
+                        <td>迚ｹ谿雁ｱ驛ｨ蜴ｻ隗偵∵兜蠖ｱ鄒ｽ蛹�</td>
+                        <td>閾ｪ險ょ､壼ｼｵ驕ｮ鄂ｩ蠖ｱ蜒城��岼縲ょ庄險ｭ螳夐�鄂ｩ遽�恪縲�乗�蠎ｦ縲∵雷霓会ｼ御ｸｦ閭ｽ陲ｫ蜈ｶ莉門ｽｱ迚�/蝨也援 Cue 髣懆�螂礼畑縲�</td>
+                    </tr>
+                    <tr>
+                        <td><strong>譎る俣遒ｼ Cue</strong></td>
+                        <td>竢ｱ�� Timecode</td>
+                        <td>險ｭ蛯呵�蜍墓而蛻ｶ縲∬ｷ醍｢ｼ蜷梧ｭ･</td>
+                        <td>譎る俣遒ｼ鬘槫梛 (LTC/MTC)縲∬ｵｷ蟋句￥遘ｻ驥� (Offset)縲∬ｼｸ蜃ｺ蟷邇� (FPS) 闊� MIDI 霈ｸ蜃ｺ險ｭ蛯吝泛縲�</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- 5. 髻ｳ險顔ｷｨ霈ｯ闊�ｳ｢蠖｢謗ｧ蛻ｶ -->
+            <section id="audio-edit">
+                <h2>5. 髻ｳ險顔ｷｨ霈ｯ闊�ｳ｢蠖｢謗ｧ蛻ｶ</h2>
+
+                <div class="mockup-container">
+                    <img src="images/05_audio_waveform.png" alt="髻ｳ險頑ｳ｢蠖｢隕冶ｦｺ蛹�">
+                </div>
+                <div class="mockup-caption">蝨� 5�夐浹險頑ｳ｢蠖｢隕冶ｦｺ蛹夜�占ｦｽ闊�｣∝岡讓呵ｨ�</div>
+
+                <p>逡ｶ謔ｨ驕ｸ蜿� <strong>髻ｳ險� Cue</strong> 謌� <strong>蠖ｱ迚� Cue</strong> 譎ゑｼ瑚ｻ滄ｫ比ｸ区婿逧�ｳ｢蠖｢隕冶ｦｺ蛹也ｷｨ霈ｯ蝎ｨ譛��蜍慕ｹｪ陬ｽ荳ｦ霈牙�隧ｲ蟐帝ｫ皮噪髻ｳ霆梧険蟷�ｳ｢蠖｢�梧婿萓ｿ謔ｨ騾ｲ陦悟庄隕門喧逧�｣∝岡縲�</p>
+
+                <div class="step-box">
+                    <h4>豕｢蠖｢陬∝岡謫堺ｽ懈ｭ･鬩�</h4>
+                    <ol>
+                        <li><strong>驕ｸ蜿冶ｵｷ鮟�/邨るｻ樒ｷ�</strong>�夐ｻ樣∈豕｢蠖｢蝨紋ｸｭ逧�<strong>邯�濶ｲ襍ｷ鮟樊ｨ呵ｨ�</strong>謌�<strong>讖倩牡邨るｻ樊ｨ呵ｨ�</strong>�碁∈蜿也噪謗ｧ蛻ｶ邱壽怎莉･蜉�邊嶺ｺｮ濶ｲ鬮倅ｺｮ鬘ｯ遉ｺ縲�</li>
+                        <li><strong>貊鷹ｼ�諡匁峙</strong>�夂峩謗･蟾ｦ蜿ｳ諡匁峙鬮倅ｺｮ謗ｧ蛻ｶ邱夲ｼ悟叉蜿ｯ蠢ｫ騾溷ｮ壻ｽ肴眺謾ｾ逧�ｵｷ蟋玖�邨先據遘呈丙縲�</li>
+                        <li><strong>骰ｵ逶､蠕ｮ隱ｿ</strong>�夐∈蜿匁而蛻ｶ邱壼ｾ鯉ｼ悟庄菴ｿ逕ｨ骰ｵ逶､ <code>竊�</code> 謌� <code>竊�</code> 譁ｹ蜷鷹嵯莉･ <code>0.1 遘�</code> 轤ｺ豁･髟ｷ騾ｲ陦悟燕遘ｻ/蠕檎ｧｻ蠕ｮ隱ｿ��
+                            <ul>
+                                <li>謖我ｽ� <code>Shift</code> + 譁ｹ蜷鷹嵯�夐ｲ陦� <code>1.0 遘�</code> 逧�ｲ苓ｪｿ縲�</li>
+                                <li>謖我ｽ� <code>Ctrl</code> 謌� <code>Alt</code> + 譁ｹ蜷鷹嵯�夐ｲ陦� <code>0.01 遘�</code> 逧�ｶ�ｾｮ隱ｿ縲�</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <h3>髻ｳ險雁ｱｬ諤ｧ隱ｿ謨ｴ</h3>
+                <p>蝨ｨ螻ｬ諤ｧ髱｢譚ｿ逧�碁浹險翫榊�鬆∽ｸｭ�梧お蜿ｯ莉･謇句虚霈ｸ蜈･蜿�丙謌冶ｪｿ謨ｴ貊第｡ｿ��</p>
+                <ul>
+                    <li><strong>髻ｳ驥� (Volume)</strong>�壽而蛻ｶ VLC 隗｣遒ｼ謦ｭ謾ｾ髻ｳ驥擾ｼ梧髪謠ｴ <code>0%</code> 蛻ｰ <code>200%</code> 逧�｢樒寢�御ｸｦ謠蝉ｾ帑ｸ骰ｵ蜿匁ｶ亥鏡驕ｸ莉･蝓ｷ陦悟ｿｫ騾滄撩髻ｳ縲�</li>
+                    <li><strong>騾溷ｺｦ (Speed)</strong>�壽髪謠ｴ隶企滓眺謾ｾ�檎ｯ�恪轤ｺ蜴滄溽噪 <code>0.25</code> 蛟榊芦 <code>4.0</code> 蛟阪�</li>
+                    <li><strong>霈ｸ蜃ｺ陬晉ｽｮ (Output Device)</strong>�夊凶髮ｻ閻ｦ騾｣謗･莠�､壼句､匁磁髻ｳ謨亥今謌夜浹險贋ｻ矩擇�梧ｭ､陌墓怎閾ｪ蜍墓椢闊臥｡ｬ鬮泌錐遞ｱ�梧お蜿ｯ莉･蝟ｮ迯ｨ轤ｺ隧ｲ Cue 險ｭ螳壼ｯｦ鬮秘浹險願ｷｯ逕ｱ霈ｸ蜃ｺ縲�</li>
+                </ul>
+            </section>
+
+            <!-- 6. 蠖ｱ蜒剰ｨｭ螳夊�謗堤ｨ区而蛻ｶ -->
+            <section id="video-display">
+                <h2>6. 蠖ｱ蜒剰ｨｭ螳夊�謗堤ｨ区而蛻ｶ</h2>
+
+                <div class="mockup-container">
+                    <img src="images/06_timing_inspector.png" alt="蠖ｱ蜒乗賜遞玖ｨｭ螳�">
+                </div>
+                <div class="mockup-caption">蝨� 6�唔nspector 逧� Timing 譎る俣謗堤ｨ玖�譴昜ｻｶ隗ｸ逋ｼ險ｭ螳�</div>
+
+                <p>蟆肴名 <strong>蠖ｱ迚� Cue</strong> 蜥� <strong>蝨也援 Cue</strong>�梧お蜿ｯ莉･蝨ｨ螻ｬ諤ｧ髱｢譚ｿ逧�碁｡ｯ遉ｺ縲榊�鬆∬ｪｿ謨ｴ逡ｫ髱｢菴亥ｱ闊�賜遞玖ｦ丞援��</p>
+
+                <h3>蠖ｱ蜒丞ｹｾ菴募ｱｬ諤ｧ</h3>
+                <ul>
+                    <li><strong>蝨門ｱ､螻､邏� (Layer)</strong>�夂ｯ�恪轤ｺ <code>1 ~ 10</code>�悟ｱ､邏壽ц鬮倡噪 Cue 逡ｫ髱｢譛�ｦ�搭蝨ｨ螻､邏壻ｽ守噪 Cue 荵倶ｸ翫�</li>
+                    <li><strong>荳埼乗�蠎ｦ (Opacity)</strong>�壼ｾ� <code>0.0</code> (螳悟�騾乗�) 蛻ｰ <code>1.0</code> (螳悟�荳埼乗�)�悟庄逕ｨ譁ｼ陬ｽ菴懃吻髱｢驥咲槙蜊企乗�陞榊粋縲�</li>
+                    <li><strong>邵ｮ謾ｾ讓｡蠑� (Scale Mode)</strong>��
+                        <ul>
+                            <li><code>Fit (驕ｩ蜷�)</code>�夂ｶｭ謖∝次蟋矩聞蟇ｬ豈皮ｸｮ謾ｾ閾ｳ驍頑｡�ｼ悟�蛛ｴ蜿ｯ閭ｽ逡咎ｻ鷹ｊ縲�</li>
+                            <li><code>Fill (蝪ｫ貊ｿ)</code>�夊｣∝岡荳ｦ蝪ｫ貊ｿ謨ｴ蛟玖ｼｸ蜃ｺ逡ｫ髱｢�御ｸ咲蕗鮟鷹ｊ縲�</li>
+                            <li><code>Stretch (諡我ｼｸ)</code>�壼ｼｷ陦梧級莨ｸ逡ｫ髱｢莉･驪ｪ貊ｿ謨ｴ蛟玖ｼｸ蜃ｺ豈比ｾ具ｼ悟庄閭ｽ逕｢逕溯ｮ雁ｽ｢縲�</li>
+                        </ul>
+                    </li>
+                    <li><strong>菴咲ｽｮ闊�､ｧ蟆� (Transform)</strong>�夐ｻ樣∈ <code>Transform</code> 謖蛾�蜿ｯ髢句福迯ｨ遶狗噪蜿ｯ隕門喧諡匁峙隕也ｪ暦ｼ碁城℃諡匁峙謌紋ｽｿ逕ｨ譁ｹ蜷鷹嵯隱ｿ謨ｴ逡ｫ髱｢蝨ｨ陞｢蟷穂ｸ顔噪 XY 蠎ｧ讓吩ｽ咲ｽｮ莉･蜿雁ｯｬ蠎ｦ縲�ｫ伜ｺｦ豈比ｾ九�</li>
+                </ul>
+
+                <h3>譎る俣闊�賜遞区而蛻ｶ (Timing)</h3>
+                <p>豈丞� Cue 蝮�髪謠ｴ髱域ｴｻ逧�凾髢捺而蛻ｶ�梧婿萓ｿ謇馴�辟｡莠ｺ蛟ｼ螳育噪閾ｪ蜍募喧閨ｯ蜍包ｼ�</p>
+                <ul>
+                    <li><strong>蜑咲ｭ牙ｾ� (Pre-Wait)</strong>�夂文謔ｨ謖� GO 隗ｸ逋ｼ蠕鯉ｼ靴ue 譛�ｻｶ驕ｲ謖�ｮ夂噪遘呈丙謇咲悄豁｣髢句ｧ区眺謾ｾ縲�</li>
+                    <li><strong>蠕檎ｭ牙ｾ� (Post-Wait)</strong>�壽ｭ､ Cue 隗ｸ逋ｼ蠕鯉ｼ悟ｿ��育ｶ馴℃謖�ｮ夂ｧ呈丙�檎ｳｻ邨ｱ謇榊�險ｱ荳倶ｸ谺｡謖� <code>Space (GO)</code>縲�</li>
+                    <li><strong>Follow 讓｡蠑� (閾ｪ蜍墓磁郤�)</strong>��
+                        <ul>
+                            <li><code>辟｡ (遲牙ｾ� GO)</code>�壼濤陦悟ｮ檎覆蠕悟ｾ�多�檎ｭ牙ｾ�ｽｿ逕ｨ閠�焔蜍墓潔 GO縲�</li>
+                            <li><code>謦ｭ螳悟ｾ瑚�蜍穂ｸ倶ｸ蛟� (Follow)</code>�壽悽 Cue 謦ｭ謾ｾ螳檎覆�亥桁諡ｬ豺｡蜃ｺ譎る俣�牙ｾ鯉ｼ檎ｫ句叉閾ｪ蜍� GO 荳倶ｸ蛟� Cue縲�</li>
+                            <li><code>髢句ｧ句ｾ檎ｫ句叉荳倶ｸ蛟� (Continue)</code>�壽悽 Cue 髢句ｧ区眺謾ｾ逧�酔譎ゑｼ檎ｫ句叉閾ｪ蜍戊ｧｸ逋ｼ荳倶ｸ蛟� Cue�碁←逕ｨ譁ｼ蠖ｱ髻ｳ蜷梧ｭ･騾｣蜍輔�</li>
+                        </ul>
+                    </li>
+                    <li><strong>驥崎､�ｬ｡謨ｸ (Loop)</strong>�夊ｨｭ螳壼ｪ帝ｫ秘㍾隍�眺謾ｾ谺｡謨ｸ�瑚ｨｭ轤ｺ <code>-1</code> 陦ｨ遉ｺ辟｡髯仙ｾｪ迺ｰ�碁←逕ｨ譁ｼ闊槫床蜍墓�閭梧勹 Loop縲�</li>
+                    <li><strong>霍ｳ霓臥岼讓� (Jump Target)</strong>�夂文豁､ Cue 謦ｭ謾ｾ螳檎覆蠕鯉ｼ梧眺謾ｾ謖�ｨ� (Playhead) 譛��蜍戊ｷｳ霓牙芦謖�ｮ夂噪 Cue 邱ｨ陌滂ｼ碁←逕ｨ譁ｼ髱樒ｷ壽ｧ逧�ｷｳ霓画ｵ∫ｨ九�</li>
+                </ul>
+            </section>
+
+            <!-- 7. 陞｢蟷戊�蟷ｾ菴墓�｡豁｣ (Keystone) -->
+            <section id="keystone">
+                <h2>7. 陞｢蟷戊�蟷ｾ菴墓�｡豁｣ (Keystone)</h2>
+                <p>逡ｶ闊槫床迴ｾ蝣ｴ謚募ｽｱ讖溽噪謚募ｽｱ髱｢闊�橿蟷募争蛯ｾ譁懷､ｾ隗呈凾�檎吻髱｢譛�箸逕溷呈｢ｯ蠖｢謌門ｹｳ陦悟屁驍雁ｽ｢蛛乗万縲りｻ滄ｫ疲署萓帑ｺ�ｰ亥ｱｬ逧�ｻ槫ｰ埼ｻ槫ｹｾ菴墓�｡豁｣蟾･蜈ｷ萓�ｧ｣豎ｺ豁､蝠城｡後�</p>
+
+                <div class="mockup-container">
+                    <img src="images/07_keystone_editor.png" alt="蟷ｾ菴墓｢ｯ蠖｢譬｡豁｣邱ｨ霈ｯ蝎ｨ">
+                </div>
+                <div class="mockup-caption">蝨� 7�壼ｹｾ菴墓｢ｯ蠖｢譬｡豁｣謗ｧ蛻ｶ鮟樒ｷｨ霈ｯ蝎ｨ</div>
+
+                <h3>蟷ｾ菴墓�｡豁｣讓｡蠑�</h3>
+                <ol style="margin-left: 20px;">
+                    <li><strong>蜈ｨ蝓滓｢ｯ蠖｢譬｡豁｣ (Global Keystone)</strong>�夐ｻ樊投驕ｸ蝟ｮ縲瑚ｨｭ螳壹坂� 蝨ｨ縲碁｡ｯ遉ｺ險ｭ螳壹榊項謖峨瑚椶蟷慕浣豁｣縲搾ｼ碁幕蝠滓ｭ､蜉溯�縲ょ惠豁､邱ｨ霈ｯ逧            <!-- 10. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode) -->
+            <section id="timecode">
+                <h2>10. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode)</h2>
+ 
+                <div class="mockup-container">
+                    <img src="images/12_timecode_cue.png" alt="譎る俣遒ｼ謗ｧ蛻ｶ髱｢譚ｿ闊�ｷ醍｢ｼ">
+                </div>
+                <div class="mockup-caption">蝨� 10�壽凾髢鍋｢ｼ (Timecode) 謗ｧ蛻ｶ髱｢譚ｿ闊�昏遶玖ｷ醍｢ｼ諛ｸ豬ｮ隕也ｪ�</div>
+ 
+                <p>譛ｬ霆滄ｫ疲紛蜷井ｺ� SMPTE 讓呎ｺ匁凾髢鍋｢ｼ逕｢逕溷勣�梧署萓� <strong>LTC (髻ｳ險頑凾髢鍋｢ｼ)</strong> 闊� <strong>MTC (MIDI 譎る俣遒ｼ)</strong> 髮呎ｨ｡蠑剰ｼｸ蜃ｺ縲る←逕ｨ譁ｼ辯亥�髻ｳ髻ｿ縲�峭蟆�∫音謨郁ｨｭ蛯咏噪螟ｧ蝙玖�蜍墓而蛻ｶ縲�</p>
+ 
+                <h3>荳ｻ隕∝粥閭ｽ闊�橿陦鍋音濶ｲ</h3>
+                <ul>
+                    <li><strong>LTC/MTC 髮呎ｨ｡蠑剰ｼｸ蜃ｺ</strong>�哭TC 謾ｯ謠ｴ髻ｳ險願ｷｯ逕ｱ霈ｸ蜃ｺ荳ｦ邯馴℃ Bessel 莠碁嚴菴朱壽ｿｾ豕｢陌慕炊�娥TC 謾ｯ謠ｴ蝨ｨ蛛丞･ｽ險ｭ螳壻ｸｭ驕ｸ謫��占ｨｭ逧� MIDI 蝓�謌門ｯｦ鬮�/陌帶闘 MIDI 陬晉ｽｮ縲�</li>
+                    <li><strong>陌帶闘霆滄ｫ疲凾髏� Fallback</strong>�夊凶髻ｳ謨亥今陲ｫ迯ｨ菴疲� MIDI 陬晉ｽｮ陦晉ｪ�幕蝠溷､ｱ謨暦ｼ梧怎閾ｪ蜍募�謠幄�陌帶闘鬮倡ｲｾ蠎ｦ譎る据�御ｾ晄答 <code>HH:MM:SS:FF</code> 蟷邇�ｼ域髪謠ｴ 24/25/30 FPS�画戟郤悟燕騾ｲ�御ｸ堺ｽｿ貍泌�荳ｭ譁ｷ縲�</li>
+                    <li><strong>證ｫ蛛懃朽諷句悉驥埼事 (Pause Deduplication)</strong>�夐亟遽� Group 鄒､邨�圻蛛懈凾逕ｱ譁ｼ螟夐㍾ Toggle 蝗槫他騾�謌先圻蛛懃朽諷区慣豸郁檎ｹｼ郤梧眺謾ｾ縲�</li>
+                    <li><strong>譎る俣遒ｼ闊�ｪ帝ｫ秘ｲ蠎ｦ Seek 蜷梧ｭ･螳壻ｽ�</strong>�壼惠蜷御ｸ Group 荳具ｼ瑚凶蟆埼浹霆梧�蠖ｱ迚�ｲ陦� Seek (謦ｭ謾ｾ騾ｲ蠎ｦ隱ｿ謨ｴ)�檎ｳｻ邨ｱ譛��蜍戊ｨ育ｮ礼嶌蟆肴凾髢捺圧荳ｦ蜷梧ｭ･蟆榊酔邨�凾髢鍋｢ｼ Cue 騾ｲ陦� <code>seek_seconds</code> 邨募ｰ榊ｰ埼ｽ翫�</li>
+                    <li><strong>譬ｼ蠑丞喧驕ｮ鄂ｩ霈ｸ蜈･</strong>�壽凾髢鍋｢ｼ蛛冗ｧｻ驥丞惠 Inspector 荳ｭ謠蝉ｾ� <code>HH:MM:SS:FF</code> 驕ｮ鄂ｩ霈ｸ蜈･蛹｡�梧�ｼ蠑丞喧霈ｸ蜈･荳ｦ髦ｲ蜻��</li>
+                </ul>
+            </section>
+ 
+            <!-- 11. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview) -->
+            <section id="video-preview">
+                <h2>11. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview)</h2>
+ 
+                <div class="mockup-container">
+                    <img src="images/13_video_preview.png" alt="隕冶ｨ企�占ｦｽ隕也ｪ苓�謗ｧ蛻ｶ">
+                </div>
+                <div class="mockup-caption">蝨� 11�夊ｦ冶ｨ企�占ｦｽ隕也ｪ苓�譛荳雁ｱ､鬘ｯ遉ｺ謗ｧ蛻ｶ驕ｸ鬆�</div>
+ 
+                <p>轤ｺ莠�ｧ｣豎ｺ蝨ｨ蝟ｮ陞｢蟷�/遲�ｨ伜梛髮ｻ閻ｦ髢狗匸縲∵賜邱ｴ謌也樟蝣ｴ豐呈怏騾｣謗･螟匁磁謚募ｽｱ讖滓凾逧�ｸｬ隧ｦ髴豎ゑｼ瑚ｻ滄ｫ疲署萓帑ｺ�<strong>縲瑚ｦ冶ｨ企�占ｦｽ讓｡蠑上�</strong>縲よｭ､讓｡蠑丞庄蟆�次譛ｬ蝨ｨ蜑ｯ陞｢蟷�/謚募ｽｱ讖溷�陞｢蟷戊ｼｸ蜃ｺ逧�ｦ也ｪ暦ｼ悟�謠帷ぜ蜈ｷ蛯呵ｦ也ｪ玲ｨ咎｡悟�闊�ｸｮ謾ｾ謖蛾�逧�勸騾夊ｦ也ｪ暦ｼ梧婿萓ｿ蝨ｨ荳ｻ逡ｫ髱｢荳ｭ蜷梧凾騾ｲ陦檎ｷｨ霈ｯ闊�ｽｱ蜒城�占ｦｽ縲�</p>
+ 
+                <h3>蜉溯�迚ｹ濶ｲ闊�桃菴懆ｪｪ譏�</h3>
+                <ul>
+                    <li><strong>髮呎ｨ｡蠢ｫ騾溷�謠�</strong>�壼惠鬆るΚ驕ｸ蝟ｮ縲瑚ｦ也ｪ� (Window)縲坂�縲瑚ｦ冶ｨ企�占ｦｽ讓｡蠑� (Video Preview Mode)縲堺ｸｭ�悟鏡驕ｸ蜊ｳ蜿ｯ蟆�兜蠖ｱ隕也ｪ玲隼轤ｺ譛画｡�噪隕也ｪ怜喧鬆占ｦｽ�帛叙豸亥鏡驕ｸ蜑��蜍墓△蠕ｩ轤ｺ蜈ｨ陞｢蟷墓兜蠖ｱ讓｡蠑上よｭ､險ｭ螳壽怎閾ｪ蜍募┫蟄倩�蛛丞･ｽ險ｭ螳壻ｸｭ�御ｸ区ｬ｡蝠溷虚譎よ怎險倅ｽ丈ｸ頑ｬ｡逧�∈謫��</li>
+                    <li><strong>譛荳雁ｱ､鬘ｯ遉ｺ (Stay on Top)</strong>�夂文蝠溽畑鬆占ｦｽ讓｡蠑乗凾�悟庄騾ｲ荳豁･蜍ｾ驕ｸ驕ｸ蝟ｮ荳ｭ逧�碁�占ｦｽ譛荳雁ｱ､鬘ｯ遉ｺ (Preview Stay on Top)縲搾ｼ梧ｭ､譎る�占ｦｽ隕也ｪ玲怎蠑ｷ蛻ｶ鬘ｯ遉ｺ蝨ｨ謇譛牙�莉冶ｦ也ｪ礼噪荳頑婿�梧婿萓ｿ蝨ｨ隱ｿ謨ｴ Inspector 螻ｬ諤ｧ謌也ｷｨ霈ｯ Cue 蛻苓｡ｨ譎ゑｼ悟叉譎りｧ逵狗吻髱｢隶雁喧閠御ｸ肴怎陲ｫ荳ｻ遞句ｼ剰ｦ也ｪ鈴�謫九�</li>
+                    <li><strong>貊鷹ｼ�諡匁峙闊��逕ｱ邵ｮ謾ｾ</strong>�壼惠鬆占ｦｽ讓｡蠑丈ｸ具ｼ梧お蜿ｯ莉･菴ｿ逕ｨ貊鷹ｼ�莉ｻ諢乗許譖ｳ縲∬ｪｿ謨ｴ鬆占ｦｽ隕也ｪ礼噪螟ｧ蟆擾ｼ檎爆閾ｳ諡牙芦莉ｻ諢剰椶蟷穂ｽ咲ｽｮ騾ｲ陦梧賜邱ｴ讓｡謫ｬ縲�</li>
+                </ul>
+            </section>
+ 
+            <!-- 12. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕� -->
+            <section id="project">
+                <h2>12. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕�</h2>
+ 
+                <div class="mockup-container">
+                    <img src="images/10_project_menu.png" alt="蟆域｡育ｮ｡逅��謇灘桁">
+                </div>
+                <div class="mockup-caption">蝨� 12�壼ｰ域｡磯∈蝟ｮ蜿頑遠蛹�さ驕樣∈鬆�</div>
+ 
+                <p>Cue Lab 蟆域｡井ｻ･蠕檎ｶｴ蜷咲ぜ <code>.cuelab.json</code> 逧�ｰ域｡域ｪ秘ｲ陦悟┫蟄倥りｩｲ讙疲｡井ｿ晏ｭ倅ｺ� Cue 逧���ｺ上∵園譛画凾髢馴聞蠎ｦ縲∵ｷ｡蜈･豺｡蜃ｺ遘呈丙縲�浹驥上∝ｹｾ菴� Keystone 遲我ｸｭ郢ｼ雉�侭縲�</p>
+ 
+                <div class="warning-box">
+                    <h4>笞��� 蟐帝ｫ碑ｷｯ蠕醍ｮ｡逅�剞蛻ｶ</h4>
+                    <p>鬆占ｨｭ諠�ｳ∽ｸ具ｼ檎文謔ｨ譁ｰ蠅槫ｪ帝ｫ疲ｪ疲｡郁�蛻苓｡ｨ譎ゑｼ悟ｰ域｡域ｪ泌�菫晏ｭ倡噪譏ｯ謔ｨ譛ｬ讖溽噪<strong>邨募ｰ崎ｷｯ蠕�</strong>�亥ｦ� <code>D:\ShowMedia\audio.wav</code>�峨り凶謔ｨ髴隕∝ｰ�ｭ､蟆域｡域狭雋晏芦蜿ｦ荳蜿ｰ貍泌�髮ｻ閻ｦ�悟庄閭ｽ譛�屏轤ｺ遑ｬ遒溽｣∫｢溽ｬｦ縲∽ｽｿ逕ｨ閠�錐遞ｱ荳榊酔閠悟ｰ手�蟐帝ｫ秘⊆螟ｱ (File Not Found)縲�</p>
+                </div>
+ 
+                <h3>謇灘桁謇譛画ｪ疲｡� (Package Project)</h3>
+                <p>轤ｺ莠�ｯｦ迴ｾ螳檎ｾ守噪蟆域｡域莫蟶ｶ�瑚ｻ滄ｫ泌�蟒ｺ莠�ｸ骰ｵ謇灘桁蜉溯���</p>
+                <div class="step-box">
+                    <h4>謇灘桁闊�ｧｻ蜍墓ｵ∫ｨ�</h4>
+                    <ol>
+                        <li>鮟樊投驕ｸ蝟ｮ縲梧ｪ疲｡医坂�縲梧遠蛹�園譛画ｪ疲｡�...縲阪�</li>
+                        <li>驕ｸ謫�ｸ蛟狗ｩｺ逧�┫蟄倩ｳ�侭螟ｾ�檎ｳｻ邨ｱ譛��蜍募惠隧ｲ雉�侭螟ｾ蜈ｧ蟒ｺ遶� <code>audio/</code>縲�<code>video/</code> 闊� <code>masks/</code> 蟄占ｳ�侭螟ｾ縲�</li>
+                        <li>閾ｪ蜍募ｰ�お蟆域｡井ｸｭ菴ｿ逕ｨ蛻ｰ逧�園譛蛾浹險翫∝ｽｱ迚�∝恂迚��驕ｮ鄂ｩ蝨也援隍�｣ｽ諡ｷ雋晁�隧ｲ雉�侭螟ｾ荳ｭ縲�</li>
+                        <li>閾ｪ蜍募ｰ�ｰ域｡� JSON 讙疲｡亥�逧�園譛臥ｵ募ｰ崎ｷｯ蠕第隼蟇ｫ轤ｺ莉･隧ｲ雉�侭螟ｾ轤ｺ襍ｷ鮟樒噪<strong>逶ｸ蟆崎ｷｯ蠕�</strong>�御ｸｦ驥肴眠蜻ｽ蜷榊┫蟄倥�</li>
+                    </ol>
+                </div>
+ 
+                <h3>閾ｪ蜍戊ｷｯ蠕題�逋呈ｩ溷宛</h3>
+                <p>逡ｶ謔ｨ蟆�遠蛹�･ｽ逧�ｰ域｡亥､ｾ隍�｣ｽ蛻ｰ蜈ｶ莉夜崕閻ｦ荳ｦ髮呎投 <code>.cuelab.json</code> 髢句福譎ゑｼ瑚ｻ滄ｫ疲怎閾ｪ蜍募濤陦瑚�逋抵ｼ�</p>
+                <ul>
+                    <li>蜆ｪ蜈亥�貂ｬ蜴滓怏逧�ｵ募ｰ崎ｷｯ蠕第弍蜷ｦ蟄伜惠縲�</li>
+                    <li>闍･荳榊ｭ伜惠�梧怎閾ｪ蜍墓鞄蜿也文蜑埼幕蝠滉ｹ句ｰ域｡� JSON 謇蝨ｨ逧�ｳ�侭螟ｾ霍ｯ蠕托ｼ悟惠逡ｶ蜑咲噪逶ｸ蟆咲岼骭�ｼ井ｾ句ｦ� <code>audio/</code>縲�<code>video/</code>縲�<code>masks/</code> 遲会ｼ我ｸ玖�蜍暮�蟆榊ｰ区伽蜷悟錐逧�ｪ帝ｫ疲ｪ疲｡井ｸｦ菫ｮ蠕ｩ縲�</li>
+                    <li>騾吩ｿ晁ｭ我ｺ�狭雋晏ｾ檎噪蟆域｡郁�髢狗ｮｱ蜊ｳ逕ｨ�御ｸ肴怎逋ｼ逕滓ｪ疲｡磯⊆螟ｱ縲�</li>
+                </ul>
+            </section>
+ 
+            <!-- 13. 謨�囿謗帝勁 -->
+            <section id="troubleshoot">
+                <h2>13. 謨�囿謗帝勁</h2>
+ 
+                <div class="mockup-container">
+                    <img src="images/11_settings_dialog.png" alt="蛛丞･ｽ險ｭ螳壼ｰ崎ｩｱ譯�">
+                </div>
+                <div class="mockup-caption">蝨� 13�壼￥螂ｽ險ｭ螳壻ｸｭ逧�｡ｯ遉ｺ霈ｸ蜃ｺ險ｭ螳夐��擇</div>
+ 
+                <div class="step-box">
+                    <h4>Q1: 蜑ｯ陞｢蟷�/謚募ｽｱ讖溽┌豕戊ｼｸ蜃ｺ逡ｫ髱｢��</h4>
+                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>隲句�蝨ｨ Windows 鬘ｯ遉ｺ蝎ｨ險ｭ螳壻ｸｭ�悟ｰ�､匁磁陞｢蟷戊ｨｭ螳夂ぜ縲悟ｻｶ莨ｸ縲肴ｨ｡蠑擾ｼ瑚碁撼縲悟酔豁･/隍�｣ｽ縲肴ｨ｡蠑上�</li>
+                        <li>髢句福霆滄ｫ斐瑚ｨｭ螳壹榊ｰ崎ｩｱ譯�ｼ悟惠縲碁｡ｯ遉ｺ險ｭ螳壹堺ｸ狗噪縲梧兜蠖ｱ霈ｸ蜃ｺ陞｢蟷輔堺ｸ区級驕ｸ蝟ｮ荳ｭ驕ｸ謫�ｰ肴㊨逧�､匁磁鬘ｯ遉ｺ蝎ｨ index�磯壼ｸｸ轤ｺ 1 謌� 2�会ｼ悟�鮟樣∈遒ｺ螳壽�螂礼畑縲�</li>
+                    </ul>
+                </div>
+ 
+                <div class="step-box">
+                    <h4>Q2: 蠖ｱ蜒城ｊ逡瑚｢ｫ蛻�脂�梧�譴ｯ蠖｢譬｡豁｣蠕梧級莨ｸ隶雁ｽ｢��</h4>
+                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>隲句惠險ｭ螳壻ｸｭ蟆�ｧ｣譫仙ｺｦ蠕槭悟次逕溯ｧ｣譫仙ｺｦ (Native)縲榊�謠帷ぜ蝗ｺ螳夂噪豈比ｾ具ｼ井ｾ句ｦ� 1920x1080�峨�</li>
+                        <li>驕ｸ蜿冶ｩｲ蠖ｱ蜒� Cue�悟惠 Inspector 逧�碁｡ｯ遉ｺ縲榊�鬆∽ｸｭ蝌苓ｩｦ蟆�檎ｸｮ謾ｾ讓｡蠑上榊�謠帷ぜ <code>Fit</code> 謌� <code>Fill</code>�御ｻ･蛻ｩ蜷磯←蝨ｰ閾ｪ驕ｩ諛峨�</li>
+                    </ul>
+                </div>
+ 
+                <div class="step-box">
+                    <h4>Q3: 謦ｭ謾ｾ蠖ｱ迚��髻ｳ讓よ凾逋ｼ逕滓ｲ呈怏閨ｲ髻ｳ逧�ュ豕�ｼ�</h4>
+                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>隲句惠螻ｬ諤ｧ髱｢譚ｿ縲碁浹險翫榊�鬆∽ｸｭ�梧ｪ｢譟･縲瑚ｼｸ蜃ｺ陬晉ｽｮ縲堺ｸ区級驕ｸ蝟ｮ縲ら｢ｺ隱肴弍蜷ｦ陲ｫ蛻��蛻ｰ莠�険隱､逧��蜊｡謌門ｷｲ諡秘勁逧�｣晉ｽｮ縲ょｻｺ隴ｰ謾ｹ驕ｸ轤ｺ縲檎ｳｻ邨ｱ鬆占ｨｭ (default)縲肴�驥肴眠驕ｸ謫�文蜑堺ｽ懃畑荳ｭ逧�ｯｦ鬮碑�蜊｡縲�</li>
+                        <li>遒ｺ隱榊ｱｬ諤ｧ髱｢譚ｿ荳ｭ逧�瑚ｼｸ蜃ｺ髻ｳ險翫肴�ｸ蜿匁婿蝪頑怏蜍ｾ驕ｸ�郁凶辟｡蜍ｾ驕ｸ譛�ｼｷ蛻ｶ髱憺浹�峨�</li>
+                    </ul>
+                </div>
+ 
+                <div class="step-box">
+                    <h4>Q4: 謖我ｸ矩嵯逶､ Ctrl+Z 豐呈怏蜿肴㊨��</h4>
+                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>隲狗｢ｺ菫晉岼蜑堺ｸｻ隕也ｪ礼噪辟ｦ鮟樔ｽ肴名 Cue 蛻苓｡ｨ荳奇ｼ亥庄蝨ｨ蛻苓｡ｨ遨ｺ逋ｽ陌暮ｻ樊投貊鷹ｼ�蟾ｦ骰ｵ�峨り凶辟ｦ鮟樊ｭ｣蛛懃蕗蝨ｨ譟蝉ｺ帛ｱｬ諤ｧ霈ｸ蜈･譯���悟ｿｫ騾滄嵯譛�━蜈域署萓帶枚蟄礼ｷｨ霈ｯ謦､驫ｷ縲�</li>
+                    </ul>
+                </div>
+            </section>陬｡蛻ｪ髯､逡ｶ蜑埼∈蜿也噪 Cue 蛻鈴��岼縲�</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ctrl + C</code></td>
+                        <td>-</td>
+                        <td>隍�｣ｽ驕ｸ蜿也噪 Cue 蛻怜所蜈ｶ蜈ｧ驛ｨ謇譛牙純謨ｸ閾ｳ蜑ｪ雋ｼ邁ｿ�郁凶蝨ｨ譁�ｭ苓ｼｸ蜈･譯��蜑�ぜ隍�｣ｽ譁�ｭ暦ｼ峨�</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ctrl + V</code></td>
+                        <td>-</td>
+                        <td>蟆�岡雋ｼ邁ｿ荳ｭ逧� Cue 隍�｣ｽ荳ｦ謠貞�蝨ｨ逡ｶ蜑埼∈蜿門�逧�ｸ区婿�御ｸｦ閾ｪ蜍暮㍾譁ｰ蛻��蜚ｯ荳隴伜挨遒ｼ闊�◇蠅樒ｷｨ陌溘�</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ctrl + Z</code></td>
+                        <td>-</td>
+                        <td><strong>蠕ｩ蜴� (Undo)</strong>縲よ彫蝗樔ｸ贋ｸ豁･逧�純謨ｸ菫ｮ謾ｹ縲∫ｧｻ蜉ｨ縲∬､�｣ｽ謌門穐髯､縲�</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ctrl + Y</code></td>
+                        <td>-</td>
+                        <td><strong>驥榊★ (Redo)</strong>縲る㍾蛛夊｢ｫ蠕ｩ蜴溽噪蜍穂ｽ懊�</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- 10. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕� -->
+            <section id="project">
+                <h2>10. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕�</h2>
+
+                <div class="mockup-container">
+                    <img src="images/10_project_menu.png" alt="蟆域｡育ｮ｡逅��謇灘桁">
+                </div>
+                <div class="mockup-caption">蝨� 10�壼ｰ域｡磯∈蝟ｮ蜿頑遠蛹�さ驕樣∈鬆�</div>
+
+                <p>Cue Lab 蟆域｡井ｻ･蠕檎ｶｴ蜷咲ぜ <code>.cuelab.json</code> 逧�ｰ域｡域ｪ秘ｲ陦悟┫蟄倥りｩｲ讙疲｡井ｿ晏ｭ倅ｺ� Cue 逧���ｺ上∵園譛画凾髢馴聞蠎ｦ縲∵ｷ｡蜈･豺｡蜃ｺ遘呈丙縲�浹驥上∝ｹｾ菴� Keystone 遲我ｸｭ郢ｼ雉�侭縲�</p>
+
+                <div class="warning-box">
+                    <h4>笞��� 蟐帝ｫ碑ｷｯ蠕醍ｮ｡逅�剞蛻ｶ</h4>
+                    <p>鬆占ｨｭ諠�ｳ∽ｸ具ｼ檎文謔ｨ譁ｰ蠅槫ｪ帝ｫ疲ｪ疲｡郁�蛻苓｡ｨ譎ゑｼ悟ｰ域｡域ｪ泌�菫晏ｭ倡噪譏ｯ謔ｨ譛ｬ讖溽噪<strong>邨募ｰ崎ｷｯ蠕�</strong>�亥ｦ� <code>D:\ShowMedia\audio.wav</code>�峨り凶謔ｨ髴隕∝ｰ�ｭ､蟆域｡域狭雋晏芦蜿ｦ荳蜿ｰ貍泌�髮ｻ閻ｦ�悟庄閭ｽ譛�屏轤ｺ遑ｬ遒溽｣∫｢溽ｬｦ縲∽ｽｿ逕ｨ閠�錐遞ｱ荳榊酔閠悟ｰ手�蟐帝ｫ秘⊆螟ｱ (File Not Found)縲�</p>
+                </div>
+
+                <h3>謇灘桁謇譛画ｪ疲｡� (Package Project)</h3>
+                <p>轤ｺ莠�ｯｦ迴ｾ螳檎ｾ守噪蟆域｡域莫蟶ｶ�瑚ｻ滄ｫ泌�蟒ｺ莠�ｸ骰ｵ謇灘桁蜉溯���</p>
+                <div class="step-box">
+                    <h4>謇灘桁闊�ｧｻ蜍墓ｵ∫ｨ�</h4>
+                    <ol>
+                        <li>鮟樊投驕ｸ蝟ｮ縲梧ｪ疲｡医坂�縲梧遠蛹�園譛画ｪ疲｡�...縲阪�</li>
+                        <li>驕ｸ謫�ｸ蛟狗ｩｺ逧�┫蟄倩ｳ�侭螟ｾ�檎ｳｻ邨ｱ譛��蜍募惠隧ｲ雉�侭螟ｾ蜈ｧ蟒ｺ遶� <code>audio/</code>縲�<code>video/</code> 闊� <code>masks/</code> 蟄占ｳ�侭螟ｾ縲�</li>
+                        <li>閾ｪ蜍募ｰ�お蟆域｡井ｸｭ菴ｿ逕ｨ蛻ｰ逧�園譛蛾浹險翫∝ｽｱ迚�∝恂迚��驕ｮ鄂ｩ蝨也援隍�｣ｽ諡ｷ雋晁�隧ｲ雉�侭螟ｾ荳ｭ縲�</li>
+                        <li>閾ｪ蜍募ｰ�ｰ域｡� JSON 讙疲｡亥�逧�園譛臥ｵ募ｰ崎ｷｯ蠕第隼蟇ｫ轤ｺ莉･隧ｲ雉�侭螟ｾ轤ｺ襍ｷ鮟樒噪<strong>逶ｸ蟆崎ｷｯ蠕�</strong>�御ｸｦ驥肴眠蜻ｽ蜷榊┫蟄倥�</li>
+                    </ol>
+                </div>
+
+                <h3>閾ｪ蜍戊ｷｯ蠕題�逋呈ｩ溷宛</h3>
+                <p>逡ｶ謔ｨ蟆�遠蛹�･ｽ逧�ｰ域｡亥､ｾ隍�｣ｽ蛻ｰ蜈ｶ莉夜崕閻ｦ荳ｦ髮呎投 <code>.cuelab.json</code> 髢句福譎ゑｼ瑚ｻ滄ｫ疲怎閾ｪ蜍募濤陦瑚�逋抵ｼ�</p>
+                <ul>
+                    <li>蜆ｪ蜈亥�貂ｬ蜴滓怏逧�ｵ募ｰ崎ｷｯ蠕第弍蜷ｦ蟄伜惠縲�</li>
+                    <li>闍･荳榊ｭ伜惠�梧怎閾ｪ蜍墓鞄蜿也文蜑埼幕蝠滉ｹ句ｰ域｡� JSON 謇蝨ｨ逧�ｳ�侭螟ｾ霍ｯ蠕托ｼ悟惠逡ｶ蜑咲噪逶ｸ蟆咲岼骭�ｼ井ｾ句ｦ� <code>audio/</code>縲�<code>video/</code>縲�<code>masks/</code> 遲会ｼ我ｸ玖�蜍暮�蟆榊ｰ区伽蜷悟錐逧�ｪ帝ｫ疲ｪ疲｡井ｸｦ菫ｮ蠕ｩ縲�</li>
+                    <li>騾吩ｿ晁ｭ我ｺ�狭雋晏ｾ檎噪蟆域｡郁�髢狗ｮｱ蜊ｳ逕ｨ�御ｸ肴怎逋ｼ逕滓ｪ疲｡磯⊆螟ｱ縲�</li>
+                </ul>
+            </section>
+
+            <!-- 11. 謨�囿謗帝勁 -->
+            <section id="troubleshoot">
+                <h2>11. 謨�囿謗帝勁</h2>
+
+                <div class="mockup-container">
+                    <img src="images/11_settings_dialog.png" alt="蛛丞･ｽ險ｭ螳壼ｰ崎ｩｱ譯�">
+                </div>
+                <div class="mockup-caption">蝨� 11�壼￥螂ｽ險ｭ螳壻ｸｭ逧�｡ｯ遉ｺ霈ｸ蜃ｺ險ｭ螳夐��擇</div>
+
+                <div class="step-box">
+                    <h4>Q1: 蜑ｯ陞｢蟷�/謚募ｽｱ讖溽┌豕戊ｼｸ蜃ｺ逡ｫ髱｢��</h4>
+                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>隲句�蝨ｨ Windows 鬘ｯ遉ｺ蝎ｨ險ｭ螳壻ｸｭ�悟ｰ�､匁磁陞｢蟷戊ｨｭ螳夂ぜ縲悟ｻｶ莨ｸ縲肴ｨ｡蠑擾ｼ瑚碁撼縲悟酔豁･/隍�｣ｽ縲肴ｨ｡蠑上�</li>
+                        <li>髢句福霆滄ｫ斐瑚ｨｭ螳壹榊ｰ崎ｩｱ譯�ｼ悟惠縲碁｡ｯ遉ｺ險ｭ螳壹堺ｸ狗噪縲梧兜蠖ｱ霈ｸ蜃ｺ陞｢蟷輔堺ｸ区級驕ｸ蝟ｮ荳ｭ驕ｸ謫�ｰ肴㊨逧�､匁磁鬘ｯ遉ｺ蝎ｨ index�磯壼ｸｸ轤ｺ 1 謌� 2�会ｼ悟�鮟樣∈遒ｺ螳壽�螂礼畑縲�</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q2: 蠖ｱ蜒城ｊ逡瑚｢ｫ蛻�脂�梧�譴ｯ蠖｢譬｡豁｣蠕梧級莨ｸ隶雁ｽ｢��</h4>
+                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>隲句惠險ｭ螳壻ｸｭ蟆�ｧ｣譫仙ｺｦ蠕槭悟次逕溯ｧ｣譫仙ｺｦ (Native)縲榊�謠帷ぜ蝗ｺ螳夂噪豈比ｾ具ｼ井ｾ句ｦ� 1920x1080�峨�</li>
+                        <li>驕ｸ蜿冶ｩｲ蠖ｱ蜒� Cue�悟惠 Inspector 逧�碁｡ｯ遉ｺ縲榊�鬆∽ｸｭ蝌苓ｩｦ蟆�檎ｸｮ謾ｾ讓｡蠑上榊�謠帷ぜ <code>Fit</code> 謌� <code>Fill</code>�御ｻ･蛻ｩ蜷磯←蝨ｰ閾ｪ驕ｩ諛峨�</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q3: 謦ｭ謾ｾ蠖ｱ迚��髻ｳ讓よ凾逋ｼ逕滓ｲ呈怏閨ｲ髻ｳ逧�ュ豕�ｼ�</h4>
+                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>隲句惠螻ｬ諤ｧ髱｢譚ｿ縲碁浹險翫榊�鬆∽ｸｭ�梧ｪ｢譟･縲瑚ｼｸ蜃ｺ陬晉ｽｮ縲堺ｸ区級驕ｸ蝟ｮ縲ら｢ｺ隱肴弍蜷ｦ陲ｫ蛻��蛻ｰ莠�険隱､逧��蜊｡謌門ｷｲ諡秘勁逧�｣晉ｽｮ縲ょｻｺ隴ｰ謾ｹ驕ｸ轤ｺ縲檎ｳｻ邨ｱ鬆占ｨｭ (default)縲肴�驥肴眠驕ｸ謫�文蜑堺ｽ懃畑荳ｭ逧�ｯｦ鬮碑�蜊｡縲�</li>
+                        <li>遒ｺ隱榊ｱｬ諤ｧ髱｢譚ｿ荳ｭ逧�瑚ｼｸ蜃ｺ髻ｳ險翫肴�ｸ蜿匁婿蝪頑怏蜍ｾ驕ｸ�郁凶辟｡蜍ｾ驕ｸ譛�ｼｷ蛻ｶ髱憺浹�峨�</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q4: 謖我ｸ矩嵯逶､ Ctrl+Z 豐呈怏蜿肴㊨��</h4>
+                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>隲狗｢ｺ菫晉岼蜑堺ｸｻ隕也ｪ礼噪辟ｦ鮟樔ｽ肴名 Cue 蛻苓｡ｨ荳奇ｼ亥庄蝨ｨ蛻苓｡ｨ遨ｺ逋ｽ陌暮ｻ樊投貊鷹ｼ�蟾ｦ骰ｵ�峨り凶辟ｦ鮟樊ｭ｣蛛懃蕗蝨ｨ譟蝉ｺ帛ｱｬ諤ｧ霈ｸ蜈･譯���悟ｿｫ騾滄嵯譛�━蜈域署萓帶枚蟄礼ｷｨ霈ｯ謦､驫ｷ縲�</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 12. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode) -->
+            <section id="timecode">
+                <h2>12. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode)</h2>
+
+                <div class="mockup-container">
+                    <img src="images/12_timecode_cue.png" alt="譎る俣遒ｼ謗ｧ蛻ｶ髱｢譚ｿ闊�ｷ醍｢ｼ">
+                </div>
+                <div class="mockup-caption">蝨� 12�壽凾髢鍋｢ｼ (Timecode) 謗ｧ蛻ｶ髱｢譚ｿ闊�昏遶玖ｷ醍｢ｼ諛ｸ豬ｮ隕也ｪ�</div>
+
+                <p>譛ｬ霆滄ｫ疲紛蜷井ｺ� SMPTE 讓呎ｺ匁凾髢鍋｢ｼ逕｢逕溷勣�梧署萓� <strong>LTC (髻ｳ險頑凾髢鍋｢ｼ)</strong> 闊� <strong>MTC (MIDI 譎る俣遒ｼ)</strong> 髮呎ｨ｡蠑剰ｼｸ蜃ｺ縲る←逕ｨ譁ｼ辯亥�髻ｳ髻ｿ縲�峭蟆�∫音謨郁ｨｭ蛯咏噪螟ｧ蝙玖�蜍墓而蛻ｶ縲�</p>
+
+                <h3>荳ｻ隕∝粥閭ｽ闊�橿陦鍋音濶ｲ</h3>
+                <ul>
+                    <li><strong>LTC/MTC 髮呎ｨ｡蠑剰ｼｸ蜃ｺ</strong>�哭TC 謾ｯ謠ｴ髻ｳ險願ｷｯ逕ｱ霈ｸ蜃ｺ荳ｦ邯馴℃ Bessel 莠碁嚴菴朱壽ｿｾ豕｢陌慕炊�娥TC 謾ｯ謠ｴ蝨ｨ蛛丞･ｽ險ｭ螳壻ｸｭ驕ｸ謫��占ｨｭ逧� MIDI 蝓�謌門ｯｦ鬮�/陌帶闘 MIDI 陬晉ｽｮ縲�</li>
+                    <li><strong>陌帶闘霆滄ｫ疲凾髏� Fallback</strong>�夊凶髻ｳ謨亥今陲ｫ迯ｨ菴疲� MIDI 陬晉ｽｮ陦晉ｪ�幕蝠溷､ｱ謨暦ｼ梧怎閾ｪ蜍募�謠幄�陌帶闘鬮倡ｲｾ蠎ｦ譎る据�御ｾ晄答 <code>HH:MM:SS:FF</code> 蟷邇�ｼ域髪謠ｴ 24/25/30 FPS�画戟郤悟燕騾ｲ�御ｸ堺ｽｿ貍泌�荳ｭ譁ｷ縲�</li>
+                    <li><strong>證ｫ蛛懃朽諷句悉驥埼事 (Pause Deduplication)</strong>�夐亟遽� Group 鄒､邨�圻蛛懈凾逕ｱ譁ｼ螟夐㍾ Toggle 蝗槫他騾�謌先圻蛛懃朽諷区慣豸郁檎ｹｼ郤梧眺謾ｾ縲�</li>
+                    <li><strong>譎る俣遒ｼ闊�ｪ帝ｫ秘ｲ蠎ｦ Seek 蜷梧ｭ･螳壻ｽ�</strong>�壼惠蜷御ｸ Group 荳具ｼ瑚凶蟆埼浹霆梧�蠖ｱ迚�ｲ陦� Seek (謦ｭ謾ｾ騾ｲ蠎ｦ隱ｿ謨ｴ)�檎ｳｻ邨ｱ譛��蜍戊ｨ育ｮ礼嶌蟆肴凾髢捺圧荳ｦ蜷梧ｭ･蟆榊酔邨�凾髢鍋｢ｼ Cue 騾ｲ陦� <code>seek_seconds</code> 邨募ｰ榊ｰ埼ｽ翫�</li>
+                    <li><strong>譬ｼ蠑丞喧驕ｮ鄂ｩ霈ｸ蜈･</strong>�壽凾髢鍋｢ｼ蛛冗ｧｻ驥丞惠 Inspector 荳ｭ謠蝉ｾ� <code>HH:MM:SS:FF</code> 驕ｮ鄂ｩ霈ｸ蜈･蛹｡�梧�ｼ蠑丞喧霈ｸ蜈･荳ｦ髦ｲ蜻��</li>
+                </ul>
+            </section>
+
+            <!-- 13. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview) -->
+            <section id="video-preview">
+                <h2>13. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview)</h2>
+
+                <div class="mockup-container">
+                    <img src="images/13_video_preview.png" alt="隕冶ｨ企�占ｦｽ隕也ｪ苓�謗ｧ蛻ｶ">
+                </div>
+                <div class="mockup-caption">蝨� 13�夊ｦ冶ｨ企�占ｦｽ隕也ｪ苓�譛荳雁ｱ､鬘ｯ遉ｺ謗ｧ蛻ｶ驕ｸ鬆�</div>
+
+                <p>轤ｺ莠�ｧ｣豎ｺ蝨ｨ蝟ｮ陞｢蟷�/遲�ｨ伜梛髮ｻ閻ｦ髢狗匸縲∵賜邱ｴ謌也樟蝣ｴ豐呈怏騾｣謗･螟匁磁謚募ｽｱ讖滓凾逧�ｸｬ隧ｦ髴豎ゑｼ瑚ｻ滄ｫ疲署萓帑ｺ�<strong>縲瑚ｦ冶ｨ企�占ｦｽ讓｡蠑上�</strong>縲よｭ､讓｡蠑丞庄蟆�次譛ｬ蝨ｨ蜑ｯ陞｢蟷�/謚募ｽｱ讖溷�陞｢蟷戊ｼｸ蜃ｺ逧�ｦ也ｪ暦ｼ悟�謠帷ぜ蜈ｷ蛯呵ｦ也ｪ玲ｨ咎｡悟�闊�ｸｮ謾ｾ謖蛾�逧�勸騾夊ｦ也ｪ暦ｼ梧婿萓ｿ蝨ｨ荳ｻ逡ｫ髱｢荳ｭ蜷梧凾騾ｲ陦檎ｷｨ霈ｯ闊�ｽｱ蜒城�占ｦｽ縲�</p>
+
+                <h3>蜉溯�迚ｹ濶ｲ闊�桃菴懆ｪｪ譏�</h3>
+                <ul>
+                    <li><strong>髮呎ｨ｡蠢ｫ騾溷�謠�</strong>�壼惠鬆るΚ驕ｸ蝟ｮ縲瑚ｦ也ｪ� (Window)縲坂�縲瑚ｦ冶ｨ企�占ｦｽ讓｡蠑� (Video Preview Mode)縲堺ｸｭ�悟鏡驕ｸ蜊ｳ蜿ｯ蟆�兜蠖ｱ隕也ｪ玲隼轤ｺ譛画｡�噪隕也ｪ怜喧鬆占ｦｽ�帛叙豸亥鏡驕ｸ蜑��蜍墓△蠕ｩ轤ｺ蜈ｨ陞｢蟷墓兜蠖ｱ讓｡蠑上よｭ､險ｭ螳壽怎閾ｪ蜍募┫蟄倩�蛛丞･ｽ險ｭ螳壻ｸｭ�御ｸ区ｬ｡蝠溷虚譎よ怎險倅ｽ丈ｸ頑ｬ｡逧�∈謫��</li>
+                    <li><strong>譛荳雁ｱ､鬘ｯ遉ｺ (Stay on Top)</strong>�夂文蝠溽畑鬆占ｦｽ讓｡蠑乗凾�悟庄騾ｲ荳豁･蜍ｾ驕ｸ驕ｸ蝟ｮ荳ｭ逧�碁�占ｦｽ譛荳雁ｱ､鬘ｯ遉ｺ (Preview Stay on Top)縲搾ｼ梧ｭ､譎る�占ｦｽ隕也ｪ玲怎蠑ｷ蛻ｶ鬘ｯ遉ｺ蝨ｨ謇譛牙�莉冶ｦ也ｪ礼噪荳頑婿�梧婿萓ｿ蝨ｨ隱ｿ謨ｴ Inspector 螻ｬ諤ｧ謌也ｷｨ霈ｯ Cue 蛻苓｡ｨ譎ゑｼ悟叉譎りｧ逵狗吻髱｢隶雁喧閠御ｸ肴怎陲ｫ荳ｻ遞句ｼ剰ｦ也ｪ鈴�謫九�</li>
+                    <li><strong>貊鷹ｼ�諡匁峙闊��逕ｱ邵ｮ謾ｾ</strong>�壼惠鬆占ｦｽ讓｡蠑丈ｸ具ｼ梧お蜿ｯ莉･菴ｿ逕ｨ貊鷹ｼ�莉ｻ諢乗許譖ｳ縲∬ｪｿ謨ｴ鬆占ｦｽ隕也ｪ礼噪螟ｧ蟆擾ｼ檎爆閾ｳ諡牙芦莉ｻ諢剰椶蟷穂ｽ咲ｽｮ騾ｲ陦梧賜邱ｴ讓｡謫ｬ縲�</li>
+                </ul>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p><strong>Cue Lab 闊槫床謗ｧ蛻ｶ謦ｭ謾ｾ霆滄ｫ� v1.1.0</strong></p>
+            <p>髢狗匸閠�ｼ嗤nedoller | 閨ｯ邨｡謾ｯ謠ｴ��5664762@gmail.com</p>
+            <p style="margin-top: 15px; opacity: 0.6; font-size: 0.85em;">ﾂｩ 2026 CueLab. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

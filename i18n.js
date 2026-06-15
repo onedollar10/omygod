@@ -94,7 +94,21 @@ const translations = {
         "cue_f7_title": "內容與備註同步",
         "cue_f7_desc": "自動同步 ETC Label 與 Node。當控台更新 Cue 的 Label 或備註時，軟體會即時獲取並同步至記錄表中。",
         "cue_f7_hl": "即時同步： 確保記錄文檔與控台 show file 內容完全一致，減少手動輸入備註的時間。",
-        "comments_title": "COMMENTS / 留言區"
+        "comments_title": "COMMENTS / 留言區",
+        // Product Page - Cue Lab
+        "cue_lab_hero_subtitle": "類似 macOS QLab 的演出控制軟體，支援多軌音影播放與四角獨立梯形校正",
+        "cue_lab_f1_title": "多軌音影播放",
+        "cue_lab_f1_desc": "支援音軌、影片、圖片依序播放，具備淡入/淡出、自動連動與群組播放功能。",
+        "cue_lab_f1_hl": "特色功能： 提供極致流暢的音視頻混合播放體驗，滿足舞台演出現場的多變節奏需求。",
+        "cue_lab_f2_title": "多螢幕投影輸出",
+        "cue_lab_f2_desc": "支援將影片與圖片全螢幕投影輸出至外部顯示器或投影機，為舞台視覺效果提供靈活的配置方案。",
+        "cue_lab_f2_hl": "特色功能： 可獨立控制各個投影端點的顯示內容，輕鬆達成多視角的同步演出。",
+        "cue_lab_f3_title": "獨立四角梯形校正",
+        "cue_lab_f3_desc": "內建獨立四角梯形校正（Keystone Correction）功能，讓您在複雜的實體現場能快速對齊投影畫面。",
+        "cue_lab_f3_hl": "特色功能： 精準調校四個頂角，即使投影角度偏移也能維持正圓或矩形顯示。",
+        "cue_lab_f4_title": "專案打包與管理",
+        "cue_lab_f4_desc": "一鍵打包專案（Package Project），將音訊、影片、圖片等所有演出資源與設定整合，無縫轉移至其他電腦。",
+        "cue_lab_f4_hl": "特色功能： 自動修正資源相對路徑，徹底避免演出現場因找不到檔案而發生的意外。"
     },
     "en": {
         "nav_home": "Home",
@@ -191,7 +205,21 @@ const translations = {
         "cue_f7_title": "Content & Notes Sync",
         "cue_f7_desc": "Auto-sync with ETC Label and Node. When the console updates a Cue's Label or Notes, the software fetches and syncs them instantly.",
         "cue_f7_hl": "Real-time Sync: Ensures documentation matches the console show file perfectly, saving time on manual entry.",
-        "comments_title": "COMMENTS / FEEDBACK"
+        "comments_title": "COMMENTS / FEEDBACK",
+        // Product Page - Cue Lab
+        "cue_lab_hero_subtitle": "macOS QLab-like show control software supporting multi-track playback & 4-corner keystone correction",
+        "cue_lab_f1_title": "MULTI-TRACK PLAYBACK",
+        "cue_lab_f1_desc": "Supports sequential audio, video, and image playback, with fade in/out, auto-follow, and group cues.",
+        "cue_lab_f1_hl": "Key Feature: Provides smooth audio-visual mixed playback to adapt to dynamic live show requirements.",
+        "cue_lab_f2_title": "MULTI-SCREEN PROJECTION",
+        "cue_lab_f2_desc": "Supports full-screen projection of video and images to external displays or projectors for flexible setups.",
+        "cue_lab_f2_hl": "Key Feature: Independently controls output content for each projection display, easily achieving multi-angle sync shows.",
+        "cue_lab_f3_title": "4-CORNER KEYSTONE",
+        "cue_lab_f3_desc": "Built-in independent 4-corner keystone correction to quickly align projection screens on complex physical surfaces.",
+        "cue_lab_f3_hl": "Key Feature: Precise control over 4 points to keep circle/rect shapes even with off-angle projections.",
+        "cue_lab_f4_title": "PACKAGE PROJECT",
+        "cue_lab_f4_desc": "One-click Package Project to consolidate all audio, video, images, and config for seamless machine transfers.",
+        "cue_lab_f4_hl": "Key Feature: Auto-fixes relative resource paths to prevent missing files during live shows."
     }
 };
 

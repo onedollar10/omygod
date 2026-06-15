@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cue Lab | ONEDOLLER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./product-page.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag("js", new Date());
+        gtag("config", "G-95B5G5KQ8B");
+    </script>
+</head>
+
+<body>
+    <header class="top-nav">
+        <div class="brand">
+            <img src="../assets/logo-neo.svg" alt="ONEDOLLER NEO">
+            <strong>CUE LAB</strong>
+        </div>
+        <div class="top-nav-links">
+            <a href="../index.html" data-i18n="nav_home">HOME</a>
+            <a href="#" class="active" data-i18n="nav_products">PRODUCTS</a>
+            <button id="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_toggle">English</button>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="hero">
+            <article class="hero-copy">
+                <span class="hero-kicker">SHOW CONTROL / PLAYBACK</span>
+                <h1 class="hero-title">CUE LAB</h1>
+                <p class="hero-sub" data-i18n="cue_lab_hero_subtitle">macOS QLab-like show control software supporting multi-track playback & 4-corner keystone correction</p>
+                <div class="hero-points">
+                    <span>Multi-track Audio/Video</span>
+                    <span>Multi-Screen Out</span>
+                    <span>Keystone Edit</span>
+                    <span>Project Package</span>
+                </div>
+                <div class="cta-group">
+                    <a href="mailto:5664762@gmail.com" class="cta primary">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span data-i18n="osc_buy_email">Contact 5664762@gmail.com to Purchase</span>
+                    </a>
+                    <a href="https://line.me/ti/p/~5664762" target="_blank" class="cta secondary">
+                        <i class="fa-brands fa-line"></i>
+                        <span data-i18n="osc_buy_line">LINE Contact ID: 5664762</span>
+                    </a>
+                    <a id="manual-link" href="../Manual/Cue_LAB%20Manual.html" target="_blank" class="cta secondary">
+                        <i class="fa-solid fa-book"></i>
+                        <span data-i18n="manual_btn">User Manual</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="hero-ui">
+                <img id="main-ui-img" src="../pic/cue lab/01_main_window.png" alt="Cue Lab Interface">
+                <div class="quick-spec">
+                    <article>
+                        <strong>Audio Track</strong>
+                        <span>Fade in/out, Loop</span>
+                    </article>
+                    <article>
+                        <strong>Video Out</strong>
+                        <span>Full Screen Projector</span>
+                    </article>
+                    <article>
+                        <strong>Calibration</strong>
+                        <span>4-Corner Keystone</span>
+                    </article>
+                    <article>
+                        <strong>Platform</strong>
+                        <span>Windows</span>
+                    </article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section">
+            <h2 data-i18n="osc_demo">PRODUCT DEMO</h2>
+            <p class="section-sub" id="demo-sub">直觀易用的多媒體演出控制介面，帶來極致流暢的舞台效果與高度穩定的現場執行體驗。</p>
+            <div class="demo-wrap">
+                <div class="demo-video">
+                    <img id="demo-preview-img" src="../pic/cue lab/03_ui_layout.png" alt="Cue Lab UI Layout">
+                </div>
+                <aside class="demo-notes">
+                    <h3 id="demo-focus-title">展示重點</h3>
+                    <ul>
+                        <li id="demo-note-1">多音軌/多視頻無縫播放</li>
+                        <li id="demo-note-2">獨立四角校正適應複雜投影</li>
+                        <li id="demo-note-3">專案打包避免現場資源遺漏</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 id="features-heading">核心功能</h2>
+            <p class="section-sub" id="features-sub">功能特色與說明</p>
+            <div class="feature-book-shell">
+                <button class="feature-nav" id="feature-prev" aria-label="Previous Features">&#10094;</button>
+                <div class="feature-book-wrap">
+                    <div class="feature-book" id="feature-book">
+                        <article class="feature-page" id="feature-page-single"></article>
+                    </div>
+                    <div class="feature-page-indicator" id="feature-page-indicator">FEATURE 1 / 4</div>
+                </div>
+                <button class="feature-nav" id="feature-next" aria-label="Next Features">&#10095;</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 id="integration-heading">SYSTEM REQUIREMENTS</h2>
+            <p class="section-sub" id="integration-sub">硬體規格與作業系統支援</p>
+            <div class="specs-grid">
+                <ul>
+                    <li><strong>OS</strong>: Windows 10 / 11 (64-bit)</li>
+                    <li><strong>CPU</strong>: Intel Core i5 / AMD Ryzen 5 或以上</li>
+                    <li><strong>Memory</strong>: 8 GB RAM 或以上</li>
+                    <li><strong>Graphics</strong>: 獨立顯示卡 (NVIDIA / AMD) 建議，以獲得最佳多螢幕投影效能</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="comments-section">
+            <h2 data-i18n="comments_title">COMMENTS / 留言區</h2>
+            <div class="giscus"></div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 onedoller. Tech &amp; Art Studio.</p>
+        </footer>
+
+        <script src="https://giscus.app/client.js"
+                data-repo="onedollar10/omygod"
+                data-repo-id="R_kgDOQ1Fg5g"
+                data-category="General"
+                data-category-id="DIC_kwDOQ1Fg5s4C7zG2"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="dark_dimmed"
+                data-lang="zh-TW"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </main>
+
+    <script src="../i18n.js"></script>
+    <script>
+        const featureItems = [
+            {
+                id: "F01",
+                image: "../pic/cue lab/05_audio_waveform.png",
+                alt: "Audio Waveform Playback",
+                titleKey: "cue_lab_f1_title",
+                descKey: "cue_lab_f1_desc",
+                hlKey: "cue_lab_f1_hl",
+                fallbackTitle: "多軌音影播放",
+                fallbackDesc: "支援音軌、影片、圖片依序播放，具備淡入/淡出、自動連動與群組播放功能。",
+                fallbackHl: "特色功能： 提供極致流暢的音視頻混合播放體驗，滿足舞台演出現場的多變節奏需求。"
+            },
+            {
+                id: "F02",
+                image: "../pic/cue lab/13_video_preview.png",
+                alt: "Multi-Screen Projection",
+                titleKey: "cue_lab_f2_title",
+                descKey: "cue_lab_f2_desc",
+                hlKey: "cue_lab_f2_hl",
+                fallbackTitle: "多螢幕投影輸出",
+                fallbackDesc: "支援將影片與圖片全螢幕投影輸出至外部顯示器或投影機，為舞台視覺效果提供靈活的配置方案。",
+                fallbackHl: "特色功能： 可獨立控制各個投影端點的顯示內容，輕鬆達成多視角的同步演出。"
+            },
+            {
+                id: "F03",
+                image: "../pic/cue lab/07_keystone_editor.png",
+                alt: "4-Corner Keystone Correction",
+                titleKey: "cue_lab_f3_title",
+                descKey: "cue_lab_f3_desc",
+                hlKey: "cue_lab_f3_hl",
+                fallbackTitle: "獨立四角梯形校正",
+                fallbackDesc: "內建獨立四角梯形校正（Keystone Correction）功能，讓您在複雜的實體現場能快速對齊投影畫面。",
+                fallbackHl: "特色功能： 精準調校四個頂角，即使投影角度偏移也能維持正圓或矩形顯示。"
+            },
+            {
+                id: "F04",
+                image: "../pic/cue lab/10_project_menu.png",
+                alt: "Project Package & Management",
+                titleKey: "cue_lab_f4_title",
+                descKey: "cue_lab_f4_desc",
+                hlKey: "cue_lab_f4_hl",
+                fallbackTitle: "專案打包與管理",
+                fallbackDesc: "一鍵打包專案（Package Project），將音訊、影片、圖片等所有演出資源與設定整合，無縫轉移至其他電腦。",
+                fallbackHl: "特色功能： 自動修正資源相對路徑，徹底避免演出現場因找不到檔案而發生的意外。"
+            }
+        ];
+
+        let featureIndex = 0;
+        let featureIsFlipping = false;
+
+        function getFeatureTotal() {
+            return featureItems.length;
+        }
+
+        function getLocalHeadingLabels() {
+            const lang = localStorage.getItem("lang") || "zh";
+            if (lang === "en") {
+                return {
+                    featuresHeading: "CORE FEATURES",
+                    featuresSub: "Flip left/right to inspect one feature at a time in large format.",
+                    integrationHeading: "SYSTEM REQUIREMENTS",
+                    integrationSub: "Hardware specifications and OS compatibility",
+                    indicatorPrefix: "FEATURE"
+                };
+            }
+            return {
+                featuresHeading: "核心功能",
+                featuresSub: "左右翻頁，在大圖模式下逐一了解核心技術特點。",
+                integrationHeading: "系統需求",
+                integrationSub: "硬體規格與作業系統支援",
+                indicatorPrefix: "功能"
+            };
+        }
+
+        function getLocalNotesLabels() {
+            const lang = localStorage.getItem("lang") || "zh";
+            if (lang === "en") {
+                return {
+                    demoFocusTitle: "Showcase Focus",
+                    note1: "Seamless multi-track audio & video playback",
+                    note2: "4-corner keystone calibration adapt to complex projections",
+                    note3: "One-click Project Packaging to avoid missing files",
+                    specsTitle: "SYSTEM REQUIREMENTS",
+                    specsSub: "Hardware specifications and OS compatibility"
+                };
+            }
+            return {
+                demoFocusTitle: "展示重點",
+                note1: "多音軌/多視頻無縫播放",
+                note2: "獨立四角校正適應複雜投影",
+                note3: "專案打包避免現場資源遺漏",
+                specsTitle: "系統需求",
+                specsSub: "硬體規格與作業系統支援"
+            };
+        }
+
+        function applyPageTexts() {
+            const notes = getLocalNotesLabels();
+            const demoFocusTitle = document.getElementById("demo-focus-title");
+            const note1 = document.getElementById("demo-note-1");
+            const note2 = document.getElementById("demo-note-2");
+            const note3 = document.getElementById("demo-note-3");
+            if (demoFocusTitle) demoFocusTitle.textContent = notes.demoFocusTitle;
+            if (note1) note1.textContent = notes.note1;
+            if (note2) note2.textContent = notes.note2;
+            if (note3) note3.textContent = notes.note3;
+        }
+
+        function getFeatureText(item, keyName, fallbackName) {
+            if (typeof currentLang !== "undefined" &&
+                typeof translations !== "undefined" &&
+                translations[currentLang] &&
+                item[keyName] &&
+                translations[currentLang][item[keyName]]) {
+                return translations[currentLang][item[keyName]];
+            }
+            return item[fallbackName];
+        }
+
+        function renderFeatureMedia(item) {
+            const lang = localStorage.getItem("lang") || "zh";
+            let imageSrc = item.image;
+            if (lang === "en" && item.image.includes("/cue lab/")) {
+                imageSrc = item.image.replace("/cue lab/", "/cue lab/en/");
+            }
+            return `<img src="${imageSrc}" alt="${item.alt}" class="feature-img">`;
+        }
+
+        function renderFeaturePage(item) {
+            if (!item) return "";
+            const title = getFeatureText(item, "titleKey", "fallbackTitle");
+            const desc = getFeatureText(item, "descKey", "fallbackDesc");
+            const hl = getFeatureText(item, "hlKey", "fallbackHl");
+
+            return `
+                <div class="feature-media">
+                    ${renderFeatureMedia(item)}
+                </div>
+                <div class="feature-body">
+                    <span class="feature-id">${item.id}</span>
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                    <div class="feature-highlight">${hl}</div>
+                </div>
+            `;
+        }
+
+        function applyLocalHeadings() {
+            const labels = getLocalHeadingLabels();
+            const featuresHeading = document.getElementById("features-heading");
+            const featuresSub = document.getElementById("features-sub");
+            const integrationHeading = document.getElementById("integration-heading");
+            const integrationSub = document.getElementById("integration-sub");
+            if (featuresHeading) featuresHeading.textContent = labels.featuresHeading;
+            if (featuresSub) featuresSub.textContent = labels.featuresSub;
+            if (integrationHeading) integrationHeading.textContent = labels.integrationHeading;
+            if (integrationSub) integrationSub.textContent = labels.integrationSub;
+        }
+
+        function renderFeatureSpread() {
+            const single = document.getElementById("feature-page-single");
+            const indicator = document.getElementById("feature-page-indicator");
+            const prevBtn = document.getElementById("feature-prev");
+            const nextBtn = document.getElementById("feature-next");
+            if (!single || !indicator || !prevBtn || !nextBtn) return;
+
+            const total = getFeatureTotal();
+            const current = featureItems[featureIndex];
+            const labels = getLocalHeadingLabels();
+
+            single.innerHTML = renderFeaturePage(current);
+            indicator.textContent = `${labels.indicatorPrefix} ${featureIndex + 1} / ${total}`;
+
+            if (total <= 1) {
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+            }
+        }
+
+        function flipFeature(direction) {
+            const book = document.getElementById("feature-book");
+            if (!book || featureIsFlipping) return;
+
+            const total = getFeatureTotal();
+            if (total <= 1) return;
+
+            featureIsFlipping = true;
+            const cls = direction === "next" ? "is-next" : "is-prev";
+            book.classList.add(cls);
+
+            setTimeout(() => {
+                if (direction === "next") {
+                    featureIndex = (featureIndex + 1) % total;
+                } else {
+                    featureIndex = (featureIndex - 1 + total) % total;
+                }
+                renderFeatureSpread();
+            }, 280);
+
+            setTimeout(() => {
+                book.classList.remove(cls);
+                featureIsFlipping = false;
+            }, 620);
+        }
+
+        function setupFeatureBook() {
+            applyLocalHeadings();
+            applyPageTexts();
+            renderFeatureSpread();
+            const prevBtn = document.getElementById("feature-prev");
+            const nextBtn = document.getElementById("feature-next");
+            prevBtn?.addEventListener("click", () => flipFeature("prev"));
+            nextBtn?.addEventListener("click", () => flipFeature("next"));
+        }
+
+        function syncManualLinks() {
+            const lang = localStorage.getItem("lang") || "zh";
+            const href = lang === "en" ? "../Manual/Cue_LAB Manual_en.html" : "../Manual/Cue_LAB Manual.html";
+            const top = document.getElementById("manual-link");
+            if (top) top.href = href;
+
+            const mainUiImg = document.getElementById("main-ui-img");
+            if (mainUiImg) {
+                mainUiImg.src = lang === "en" ? "../pic/cue lab/en/01_main_window.png" : "../pic/cue lab/01_main_window.png";
+            }
+            const demoPreviewImg = document.getElementById("demo-preview-img");
+            if (demoPreviewImg) {
+                demoPreviewImg.src = lang === "en" ? "../pic/cue lab/en/03_ui_layout.png" : "../pic/cue lab/03_ui_layout.png";
+            }
+        }
+
+        function bootstrapProductPage() {
+            if (typeof applyTranslations === "function") {
+                applyTranslations();
+            }
+            syncManualLinks();
+            setupFeatureBook();
+        }
+
+        document.addEventListener("DOMContentLoaded", bootstrapProductPage);
+
+        const originalToggleLanguage = window.toggleLanguage;
+        if (typeof originalToggleLanguage === "function") {
+            window.toggleLanguage = function () {
+                originalToggleLanguage();
+                syncManualLinks();
+                applyLocalHeadings();
+                applyPageTexts();
+                renderFeatureSpread();
+            };
+        }
+    </script>
+</body>
+
+</html>

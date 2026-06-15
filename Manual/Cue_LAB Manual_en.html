@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cue Lab Show Control Playback Software v1.0 User Manual</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-95B5G5KQ8B');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .header .version {
+            font-size: 1.2em;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.15);
+            display: inline-block;
+            padding: 4px 15px;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 18px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
+        }
+
+        .content {
+            padding: 40px;
+            background: #ffffff;
+        }
+
+        .toc {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 6px solid #2563eb;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .toc h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 10px 20px;
+        }
+
+        .toc li {
+            padding: 4px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .toc a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #1e3a8a;
+            font-size: 2em;
+            margin: 45px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        h3 {
+            color: #1d4ed8;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            color: #0f172a;
+            font-size: 1.25em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            color: #334155;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
+        }
+
+        .feature-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.95);
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        .mockup-container {
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: center;
+        }
+
+        .mockup-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .mockup-caption {
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            color: #64748b;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 14px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .step-box {
+            background: #f0fdf4;
+            border-left: 6px solid #22c55e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .step-box h4 {
+            color: #15803d;
+            margin-bottom: 10px;
+        }
+
+        .step-box ol, .step-box ul {
+            margin-left: 20px;
+            color: #1e293b;
+        }
+
+        .step-box li {
+            margin-bottom: 5px;
+        }
+
+        .warning-box {
+            background: #fffbe6;
+            border-left: 6px solid #eab308;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box h4 {
+            color: #854d0e;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            color: #451a03;
+            margin: 0;
+        }
+
+        .info-box {
+            background: #f0f9ff;
+            border-left: 6px solid #0ea5e9;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .info-box h4 {
+            color: #0369a1;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #0c4a6e;
+            margin: 0;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 3px 6px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #db2777;
+            border: 1px solid #e2e8f0;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .footer p strong {
+            color: #f8fafc;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .toc ul {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="Cue_LAB Manual.html" class="lang-toggle">中文版本</a>
+            <h1>Cue Lab Show Control Playback Software</h1>
+            <p class="version">Version 1.1.0 User Manual</p>
+        </header>
+
+        <div class="content">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2>Table of Contents</h2>
+                <ul>
+                    <li><a href="#intro">1. Introduction</a></li>
+                    <li><a href="#install">2. System Requirements & Startup</a></li>
+                    <li><a href="#interface">3. Interface Overview & Layout</a></li>
+                    <li><a href="#cue-types">4. Cue Types & Features</a></li>
+                    <li><a href="#audio-edit">5. Audio Editing & Waveform Control</a></li>
+                    <li><a href="#video-display">6. Video & Image Settings & Timing</a></li>
+                    <li><a href="#keystone">7. Display & Geometry Calibration (Keystone)</a></li>
+                    <li><a href="#masking">8. Custom Masking & Global Mask Toggle</a></li>
+                    <li><a href="#playback">9. Playback Controls & Keyboard Shortcuts</a></li>
+                    <li><a href="#timecode">10. Timecode System</a></li>
+                    <li><a href="#video-preview">11. Video Preview Window</a></li>
+                    <li><a href="#project">12. Project Management & Packaging</a></li>
+                    <li><a href="#troubleshoot">13. Troubleshooting</a></li>
+                </ul>
+            </div>
+
+            <!-- 1. Introduction -->
+            <section id="intro">
+                <h2>1. Introduction</h2>
+                <p><strong>Cue Lab</strong> is a professional multi-cue show control playback software designed for theater productions, multimedia exhibitions, and art installations. It supports high-definition video output to external screens or projectors, features advanced real-time keystone correction, multi-layer masking blending, and multi-channel audio routing to deliver a stable, reliable, and intuitive control experience for lighting and media designers.</p>
+
+                <div class="mockup-container">
+                    <img src="images/en/01_main_window.png" alt="Cue Lab Main Window">
+                </div>
+                <div class="mockup-caption">Fig 1: Cue Lab Main Window</div>
+
+                <h3>Key Technical Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔊 Independent Audio Routing</h4>
+                        <p>Configure dedicated local soundcards or physical outputs for different audio channels to fit surround-sound layouts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎬 Dedicated Projection Output</h4>
+                        <p>Output borderless, clean high-definition video and images to external projectors or screens without mouse cursor interference.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📐 Geometry & Keystone Correction</h4>
+                        <p>Adjust distorted projections in real-time using four-corner grids and precise keyboard adjustments.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎭 Multi-Layer Mask Blending</h4>
+                        <p>Apply custom image masks with Normal, Crop, and Block blending modes, independent rotation, and opacity control.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📦 One-Click Project Bundling</h4>
+                        <p>Scan and copy all associated media files, rewrite paths to relative directory formats, and package into a portable bundle folder.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>↩️ Full Undo/Redo Engine</h4>
+                        <p>Record operation histories, allowing you to hit <code>Ctrl+Z</code> to cancel accidental edits or values adjustments.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. System Requirements -->
+            <section id="install">
+                <h2>2. System Requirements & Startup</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/02_about.png" alt="About Cue Lab Dialog">
+                </div>
+                <div class="mockup-caption">Fig 2: About Cue Lab dialog and version information</div>
+
+                <h3>OS & Hardware Recommendations</h3>
+                <table>
+                    <tr>
+                        <th>Hardware / OS Item</th>
+                        <th>Minimum Requirement</th>
+                        <th>Recommended Specification</th>
+                    </tr>
+                    <tr>
+                        <td>Operating System</td>
+                        <td>Windows 10 64-bit</td>
+                        <td>Windows 11 Pro</td>
+                    </tr>
+                    <tr>
+                        <td>Processor (CPU)</td>
+                        <td>Intel Core i5 equivalent or higher</td>
+                        <td>Intel Core i7 / AMD Ryzen 7 or higher</td>
+                    </tr>
+                    <tr>
+                        <td>Memory (RAM)</td>
+                        <td>8 GB</td>
+                        <td>16 GB or more</td>
+                    </tr>
+                    <tr>
+                        <td>Graphics Card (GPU)</td>
+                        <td>Integrated Intel HD graphics (OpenGL 3.3+)</td>
+                        <td>Discrete NVIDIA GeForce card (for smooth video decoding)</td>
+                    </tr>
+                    <tr>
+                        <td>Outputs</td>
+                        <td>HDMI / DisplayPort (for multi-screen projection)</td>
+                        <td>Multiple independent outputs (HDMI/DP/etc.)</td>
+                    </tr>
+                </table>
+
+                <div class="step-box">
+                    <h4>First Startup</h4>
+                    <p>Extract the package folder and double-click <code>CueLab.exe</code> to run. The software is fully portable and requires no internet connection or activation keys—ideal for theater control environments with closed LANs.</p>
+                </div>
+            </section>
+
+            <!-- 3. Interface Overview -->
+            <section id="interface">
+                <h2>3. Interface Overview & Layout</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/03_ui_layout.png" alt="Cue Lab Interface Layout">
+                </div>
+                <div class="mockup-caption">Fig 3: Overview of Cue Lab primary interface layout</div>
+
+                <p>The main interface consists of four primary sections: <strong>Control Toolbar</strong>, <strong>Left Cue List Table</strong>, <strong>Bottom Waveform Visualizer</strong>, and <strong>Right Inspector Panel</strong>.</p>
+
+                <h3>Primary Interface Areas</h3>
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Area</th>
+                        <th style="width: 25%;">Location</th>
+                        <th>Functionality</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Control Toolbar</strong></td>
+                        <td>Top center</td>
+                        <td>Provides large <code>GO</code>, <code>Pause</code>, and <code>Panic</code> controls, quick shortcuts to add Cues, and the Settings Dialog launcher.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cue List Table</strong></td>
+                        <td>Left side</td>
+                        <td>Displays all programmed Cues in the project, showing ID number, type icon, name, file path, timing duration, follow mode, and state.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inspector Panel</strong></td>
+                        <td>Right side</td>
+                        <td>Lists all properties and attributes of the selected Cue, categorized into Basic, Time, Audio, Display, and Group tabs.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Waveform Visualizer</strong></td>
+                        <td>Bottom left</td>
+                        <td>Draws the visual audio wave representation for the selected Cue, supporting drag and keyboard markers to adjust start/end times.</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>💡 Right-Click Context Menu</h4>
+                    <p>Right-click any row in the Cue List to access actions: Copy, Cut, Paste, Insert Above/Below, Group Selected, Ungroup, or Auto-Renumber.</p>
+                </div>
+            </section>
+
+            <!-- 4. Cue Types -->
+            <section id="cue-types">
+                <h2>4. Cue Types & Features</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/04_cue_types.png" alt="Cue Types list">
+                </div>
+                <div class="mockup-caption">Fig 4: Cue list containing various cue types and standby states</div>
+
+                <p>Cue Lab provides 7 specialized Cue types to construct your show playback structure:</p>
+
+                <table>
+                    <tr>
+                        <th style="width: 15%;">Type</th>
+                        <th style="width: 15%;">Icon</th>
+                        <th style="width: 20%;">Best For</th>
+                        <th>Core Attributes</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Audio Cue</strong></td>
+                        <td>🔊 Audio</td>
+                        <td>Background music, SFX</td>
+                        <td>Volume scale, playback speed, start/end crop markers, fade times, hardware soundcard routing.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Video Cue</strong></td>
+                        <td>🎬 Video</td>
+                        <td>Dynamic projections</td>
+                        <td>Shares all audio attributes, plus scale mode, visual layers, opacity, custom coordinates (XY position/size), keystone grids, and masks.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Image Cue</strong></td>
+                        <td>🖼 Image</td>
+                        <td>Static backdrop images</td>
+                        <td>Scale mode, visual layers, opacity, XY positions, sizes, keystone, and masks.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Blackout Cue</strong></td>
+                        <td>⬛ Blackout</td>
+                        <td>Transitions & scene ends</td>
+                        <td>Fade-out time. Automatically fades out all active visual items and resets display output to pure black.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Group Cue</strong></td>
+                        <td>📦 Group</td>
+                        <td>Parallel trigger, playlist</td>
+                        <td>Child member list, playback orders. Groups multiple child cues to trigger them at once or sequentially.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mask Cue</strong></td>
+                        <td>🎭 Mask</td>
+                        <td>Edge feathering, custom shape</td>
+                        <td>Saves custom mask shapes. Controls opacity, rotation, scaling, and can be applied by other Video or Image Cues.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Timecode Cue</strong></td>
+                        <td>⏱️ Timecode</td>
+                        <td>External show sync, timeline track</td>
+                        <td>Timecode output modes (LTC/MTC), start offset timing, output frames rate (FPS), and target MIDI port.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- 5. Audio Waveform Control -->
+            <section id="audio-edit">
+                <h2>5. Audio Editing & Waveform Control</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/05_audio_waveform.png" alt="Audio Waveform visualization">
+                </div>
+                <div class="mockup-caption">Fig 5: Audio waveform representation with crop markers</div>
+
+                <p>When an <strong>Audio Cue</strong> or <strong>Video Cue</strong> is selected, the waveform editor at the bottom visualizes the sound track, allowing you to crop media visually.</p>
+
+                <div class="step-box">
+                    <h4>Visual Waveform Cropping</h4>
+                    <ol>
+                        <li><strong>Select Marker</strong>: Click the **green start marker** or **orange end marker** in the waveform. The selected line will highlight with a thick line width.</li>
+                        <li><strong>Mouse Drag</strong>: Drag the highlighted line left or right to set the playback start or end seconds.</li>
+                        <li><strong>Keyboard Micro-adjustments</strong>: Press <code>←</code> or <code>→</code> keys to adjust in increments of <code>0.1 seconds</code>:
+                            <ul>
+                                <li>Press <code>Shift</code> + Arrow keys: Jump by <code>1.0 second</code> (coarse edit).</li>
+                                <li>Press <code>Ctrl</code> or <code>Alt</code> + Arrow keys: Fine-tune by <code>0.01 seconds</code> (super micro-edit).</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <h3>Audio Properties Adjustments</h3>
+                <p>Under the "Audio" tab in the Inspector panel:</p>
+                <ul>
+                    <li><strong>Volume</strong>: Controls VLC player volume from <code>0%</code> to <code>200%</code>, with a quick mute toggle checkbox.</li>
+                    <li><strong>Playback Rate (Speed)</strong>: Speed scale from <code>0.25x</code> to <code>4.0x</code> of the original speed.</li>
+                    <li><strong>Output Device</strong>: Route the specific Cue to an external sound card by selecting the hardware device name from the dropdown.</li>
+                </ul>
+            </section>
+
+            <!-- 6. Video Display & Timing -->
+            <section id="video-display">
+                <h2>6. Video & Image Settings & Timing</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/06_timing_inspector.png" alt="Display & Timing inspector">
+                </div>
+                <div class="mockup-caption">Fig 6: Inspector Panel displaying Timing & conditional triggers settings</div>
+
+                <p>For <strong>Video Cues</strong> and <strong>Image Cues</strong>, modify display layout and trigger timing rules under the "Display" and "Timing" tabs in the Inspector:</p>
+
+                <h3>Visual Properties</h3>
+                <ul>
+                    <li><strong>Visual Layer</strong>: Layer rank from <code>1 to 10</code>. Cues on higher layers display on top of lower ones.</li>
+                    <li><strong>Opacity</strong>: Transparency from <code>0.0</code> (fully clear) to <code>1.0</code> (fully opaque) for overlap blending.</li>
+                    <li><strong>Scale Mode</strong>:
+                        <ul>
+                            <li><code>Fit</code>: Scales media to fit the display boundary preserving aspect ratio, creating black margins if needed.</li>
+                            <li><code>Fill</code>: Crops and fills the screen, leaving no borders.</li>
+                            <li><code>Stretch</code>: Stretches the image to fit the projection output, regardless of aspect ratio.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Transform (Coordinates)</strong>: Click <code>Transform</code> to open a visual layout window where you can drag and scale the projection item, or use arrow keys to edit XY position, width, and height.</li>
+                </ul>
+
+                <h3>Timing & Follow Scheduling</h3>
+                <ul>
+                    <li><strong>Pre-Wait</strong>: Delay in seconds after GO is clicked before the Cue begins playing.</li>
+                    <li><strong>Post-Wait</strong>: Enforce a waiting period in seconds after trigger before any subsequent GO inputs are allowed.</li>
+                    <li><strong>Follow Mode</strong>:
+                        <ul>
+                            <li><code>None (Wait for GO)</code>: Holds after execution, waiting for manual GO input.</li>
+                            <li><code>Follow (Auto Next on Finish)</code>: Auto-triggers the next Cue in list once this Cue finishes playing.</li>
+                            <li><code>Continue (Auto Next on Start)</code>: Automatically triggers the next Cue the exact instant this Cue starts playing.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Loop Count</strong>: Loop repetition times. Set to <code>-1</code> for infinite loop playback.</li>
+                    <li><strong>Jump Target</strong>: Automatically jump the Playhead pointer to a specific Cue ID when this Cue finishes playing.</li>
+                </ul>
+            </section>
+
+            <!-- 7. Display & Keystone Correction -->
+            <section id="keystone">
+                <h2>7. Display & Geometry Calibration (Keystone)</h2>
+                <p>When the projector angle is not perfectly perpendicular to the projection surface, the output will skew. Cue Lab has built-in keystone calibration tools to correct grid projection maps.</p>
+
+                <div class="mockup-container">
+                    <img src="images/en/07_keystone_editor.png" alt="Geometry Keystone Editor">
+                </div>
+                <div class="mockup-caption">Fig 7: Display calibration and keystone grid editor</div>
+
+                <h3>Calibration Modes</h3>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Global Screen Calibration</strong>: Select "Settings" menu -> Click "Screen Calibration". Geometry settings defined here directly modify the **entire output screen**, mapping all active visuals.</li>
+                    <li><strong>Cue-level Calibration</strong>: Under the "Display" tab in Inspector, select "Keystone". This modifies **only that specific Video or Image Cue**, useful for aligning mapping spots.</li>
+                </ol>
+
+                <div class="step-box">
+                    <h4>Keystone Keyboard Shortcuts</h4>
+                    <p>To let technicians calibrate the screen single-handedly at the venue, the editor canvas supports keyboard keys:</p>
+                    <ul>
+                        <li>Click any corner anchor point with the mouse to select it (turns **green**).</li>
+                        <li>Press keyboard <code>↑</code>, <code>↓</code>, <code>←</code>, or <code>→</code> arrow keys to move the anchor by <code>0.002</code> normalized coordinates (about 2 pixels).</li>
+                        <li>Hold <code>Shift</code> + Arrow keys: Move quickly in increments of <code>0.01</code> (coarse edit).</li>
+                        <li>Hold <code>Ctrl</code> or <code>Alt</code> + Arrow keys: Micro-adjust in increments of <code>0.0005</code> (super fine edit).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 8. Masking -->
+            <section id="masking">
+                <h2>8. Custom Masking & Global Mask Toggle</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/08_mask_editor.png" alt="Masking Tab Editor">
+                </div>
+                <div class="mockup-caption">Fig 8: Global screen masking config and modes</div>
+
+                <p>The software features an OpenGL screen-space masking engine. Load custom PNG shapes to frame, feather, crop, or block projection regions.</p>
+
+                <h3>Mask Blending Modes</h3>
+                <ul>
+                    <li><strong>Normal</strong>: Overlays the mask image directly on top of the media.</li>
+                    <li><strong>Crop (Keep Inside)</strong>: Keeps the media inside the opaque/white parts of the mask image and blacks out the rest. Useful for round or triangle projection frames.</li>
+                    <li><strong>Block (Hide Inside)</strong>: Masks out media behind the opaque parts of the mask image, displaying a black shape instead. Perfect for blocking reflections off stage columns, hardware, or speaker towers.</li>
+                </ul>
+
+                <h3>Mask Hierarchy</h3>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Cue Mask</strong>: Users create a <code>CueType.MASK</code> Cue containing several mask items. Other Image or Video Cues apply it by choosing its ID under their <code>parent_mask_id</code> properties.</li>
+                    <li><strong>Global Screen Mask</strong>: Open the "Screen Calibration" settings dialog and navigate to the "Screen Mask" tab. Mask items configured here apply globally to the entire projection.</li>
+                </ol>
+
+                <div class="warning-box">
+                    <h4>💡 Global Mask Toggle Checkbox</h4>
+                    <p>At the top of the "Screen Mask" calibration page, there is an **"Enable Global Mask" checkbox**. If you have complex global mask layers but need to temporarily project a full-screen image for alignment, uncheck this box to disable global masks instantly without losing your items configuration.</p>
+                </div>
+            </section>
+
+            <!-- 9. Playback Controls -->
+            <section id="playback">
+                <h2>9. Playback Controls & Keyboard Shortcuts</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/09_transport_bar.png" alt="Transport controls">
+                </div>
+                <div class="mockup-caption">Fig 9: Bottom Transport Bar GO & Panic triggers</div>
+
+                <p>To ensure performance execution safety, Cue Lab features structured shortcuts and playback triggers.</p>
+
+                <h3>Core Playback Shortcuts</h3>
+                <table>
+                    <tr>
+                        <th style="width: 20%;">Shortcut</th>
+                        <th style="width: 25%;">Control Button</th>
+                        <th>Execution Behavior</th>
+                    </tr>
+                    <tr>
+                        <td><code>Space</code></td>
+                        <td>Toolbar <strong>GO</strong></td>
+                        <td>Fires the currently selected Cue. Automatically advances playhead to the next line.</td>
+                    </tr>
+                    <tr>
+                        <td><code>Escape</code> (ESC)</td>
+                        <td>Toolbar <strong>Panic</strong></td>
+                        <td>Fades out and stops all active audio and video playbacks immediately.</td>
+                    </tr>
+                    <tr>
+                        <td><code>P</code></td>
+                        <td>Toolbar <strong>Pause</strong></td>
+                        <td>Toggles Pause/Resume for all active playing Cues.</td>
+                    </tr>
+                    <tr>
+                        <td><code>↑</code> / <code>↓</code></td>
+                        <td>Toolbar <strong>Prev / Next</strong></td>
+                        <td>Move the playhead selection cursor up and down the list.</td>
+                    </tr>
+                    <tr>
+                        <td><code>Delete</code></td>
+                        <td>Toolbar <strong>Delete Cue</strong></td>
+                        <td>Removes the selected Cue from the show list.</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ctrl + C</code> / <code>Ctrl + V</code></td>
+                        <td>-</td>
+                        <td>Copy and Paste the selected Cue items (clones UUIDs, auto-renumbers Cues, and appends below the selection).</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ctrl + Z</code></td>
+                        <td>-</td>
+                        <td><strong>Undo</strong> the last action (renumber, copy/paste, deletions, movements, or Inspector sliders).</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ctrl + Y</code></td>
+                        <td>-</td>
+                        <td><strong>Redo</strong> the undone action history.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- 10. Project Management -->
+            <section id="timecode">
+                <h2>10. Timecode System</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/12_timecode_cue.png" alt="Timecode settings and hover window">
+                </div>
+                <div class="mockup-caption">Fig 10: Timecode settings and floating timecode window</div>
+
+                <p>This software integrates a robust SMPTE standard timecode generator supporting <strong>LTC (Linear Timecode Audio)</strong> and <strong>MTC (MIDI Timecode)</strong> output modes to coordinate lighting, sound, lasers, and stage effects equipment timelines.</p>
+
+                <h3>Key Functionality & Specifications</h3>
+                <ul>
+                    <li><strong>Dual Output Formats</strong>: LTC routing utilizes Bessel 2nd order lowpass filter processing. MTC routing routes MIDI signals to configurable target MIDI ports.</li>
+                    <li><strong>Virtual Software clock Fallback</strong>: Automatically falls back to a software high-precision virtual clock in memory if physical sound card or MIDI device connection fails, keeping time ticking without disruption.</li>
+                    <li><strong>Group Pause Deduplication</strong>: Prevents status toggles cancellation when pausing/resuming Timecode Cues within groups, ensuring stable synchronization.</li>
+                    <li><strong>Seek Synchronization Alignment</strong>: Triggers relative media playhead adjustments (seek) which are calculated and synchronized to sibling Timecode Cues within the group on progress bar scrolls.</li>
+                    <li><strong>Mask Input Validation</strong>: Input offset values format checking is enforced inside inspector fields using a <code>HH:MM:SS:FF</code> text mask.</li>
+                </ul>
+            </section>
+
+            <section id="video-preview">
+                <h2>11. Video Preview Window</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/13_video_preview.png" alt="Video Preview Window & Controls">
+                </div>
+                <div class="mockup-caption">Fig 11: Video preview window with stay-on-top selection controls</div>
+
+                <p>To support design, rehearsal, and testing on single-screen monitors or laptops when an external projector is disconnected, Cue Lab features a dedicated <strong>"Video Preview Mode"</strong>. This mode switches the full-screen secondary display output into a standard bordered window with a title bar and resize/minimize buttons, allowing you to edit cues and preview visual outputs simultaneously on the same main screen.</p>
+
+                <h3>Key Functionality & Specifications</h3>
+                <ul>
+                    <li><strong>Dual-Mode Switching</strong>: Under the top menu "Window" → "Video Preview Mode", toggle the checkmark to convert the projection screen into a windowed preview. Unchecking it instantly restores full-screen output mode. This mode selection is stored in the application settings and restored automatically upon launch.</li>
+                    <li><strong>Stay on Top (Float)</strong>: When Video Preview Mode is active, enable "Preview Stay on Top" from the Window menu. The preview window will float above all other program windows. This allows you to select and modify cues in the Cue List or adjust parameters in the Inspector Panel while keeping a real-time eye on the output without the window getting buried.</li>
+                    <li><strong>Draggable & Free Resizing</strong>: You can drag, maximize, or adjust the borders of the preview window using the mouse cursor to customize your screen layout during rehearsals.</li>
+                </ul>
+            </section>
+
+            <section id="project">
+                <h2>12. Project Management & Packaging</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/10_project_menu.png" alt="Project menu">
+                </div>
+                <div class="mockup-caption">Fig 12: File menu showing Package Project action</div>
+
+                <p>Cue Lab projects are saved with the <code>.cuelab.json</code> extension, storing timing rules, volume values, layout scales, and keystone configurations.</p>
+
+                <div class="warning-box">
+                    <h4>⚠️ Absolute Media Paths Warning</h4>
+                    <p>By default, newly imported media is linked via **absolute local paths** (e.g. <code>D:\StageFolder\song.wav</code>). Copying only the <code>.cuelab.json</code> file to another control computer will result in "File Not Found" errors due to drive letter changes.</p>
+                </div>
+
+                <h3>Bundle Project (Package Project)</h3>
+                <p>To safely migrate projects, utilize the packaging feature:</p>
+                <div class="step-box">
+                    <h4>Packaging Steps</h4>
+                    <ol>
+                        <li>Click "File" menu → select "Package Project".</li>
+                        <li>Select an empty target folder. The software will create <code>audio/</code>, <code>video/</code>, and <code>masks/</code> directories inside.</li>
+                        <li>Copies all referenced audio, video, image, and mask assets into the bundle.</li>
+                        <li>Rewrites all file paths inside the project JSON to **relative paths** and saves the new project bundle.</li>
+                    </ol>
+                </div>
+
+                <h3>Auto Path Healing</h3>
+                <p>When the packaged folder is transferred, double-clicking <code>.cuelab.json</code> launches the project with auto-healing:</p>
+                <ul>
+                    <li>Checks if original absolute files are reachable.</li>
+                    <li>If missing, it automatically resolves paths relative to the current project file path inside the <code>audio/</code>, <code>video/</code>, or <code>masks/</code> subfolders.</li>
+                    <li>Restores missing files seamlessly, making show file transfers worry-free.</li>
+                </ul>
+            </section>
+
+            <section id="troubleshoot">
+                <h2>13. Troubleshooting</h2>
+
+                <div class="mockup-container">
+                    <img src="images/en/11_settings_dialog.png" alt="Preferences dialog">
+                </div>
+                <div class="mockup-caption">Fig 13: Display options inside Application Settings</div>
+
+                <div class="step-box">
+                    <h4>Q1: Projector is not displaying any video output.</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure external screen settings are set to "Extend" mode in Windows Display Settings.</li>
+                        <li>Open Cue Lab Settings dialog, verify the target output index (usually 1 or 2) in the "Projection Screen" dropdown, and click OK.</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q2: Projection borders are clipped or layout is stretched out of shape.</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Switch the display resolution from "Native" to a fixed screen resolution (such as 1920x1080) in Settings.</li>
+                        <li>Change the selected Cue's "Scale Mode" in the Inspector Display tab from <code>Stretch</code> to <code>Fit</code> or <code>Fill</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q3: Audio is not outputting sound.</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Under the Cue's Audio tab in Inspector, verify that the "Output Device" dropdown is mapped to the active sound card. If it was unplugged, select "System Default (default)".</li>
+                        <li>Verify that the "Output Audio" checkbox is checked (unchecking it will mute the player).</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q4: Keyboard shortcuts like Ctrl+Z are not responding.</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure the Cue List Table is focused (click anywhere on the table). If focus is trapped inside a text input line, shortcuts will edit text rather than the Cue list history.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p><strong>Cue Lab Show Control Playback Software v1.1.0</strong></p>
+            <p>Developer: onedoller | Support Email: 5664762@gmail.com</p>
+            <p style="margin-top: 15px; opacity: 0.6; font-size: 0.85em;">© 2026 CueLab. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
