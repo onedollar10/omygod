@@ -224,6 +224,7 @@ const software = [
             "多路獨立音效卡路由與聲道音量包絡線控制",
             "多螢幕投影輸出 (支援影片與圖片的全螢幕投影)",
             "獨立四角梯形校正 (配合現場投影進行畫面調整)",
+            "局部與全域遮罩 (支援自訂多遮罩與全域啟用開關，解決投影遮擋問題)",
             "WMI 啟動防卡死與註冊表高可靠備用機制"
         ],
         features_en: [
@@ -231,6 +232,7 @@ const software = [
             "Multi-device audio routing and independent channel volume envelopes",
             "Multi-screen projection output (full screen video/image projection)",
             "4-corner keystone correction (adjust projection to match physical surfaces)",
+            "Local & Global Masks (Support custom masks & global toggle switch to resolve projection blocking)",
             "WMI startup hang protection and registry hardware GUID fallback"
         ]
     }

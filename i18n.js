@@ -111,7 +111,10 @@ const translations = {
         "cue_lab_f4_hl": "特色功能： 自動修正資源相對路徑，徹底避免演出現場因找不到檔案而發生的意外。",
         "cue_lab_f5_title": "多音效卡路由與包絡線",
         "cue_lab_f5_desc": "支援多音效卡獨立路由輸出，並可為每個輸出裝置的各個聲道獨立繪製音量包絡線，控制現場漸變效果。",
-        "cue_lab_f5_hl": "特色功能： 聲道級別的動態音量分配，配合 WMI 啟動防卡死保護，帶來極致的可靠度與放音體驗。"
+        "cue_lab_f5_hl": "特色功能： 聲道級別的動態音量分配，配合 WMI 啟動防卡死保護，帶來極致的可靠度與放音體驗。",
+        "cue_lab_f6_title": "局部與全域遮罩",
+        "cue_lab_f6_desc": "支援自訂多個遮罩項目，具備 Crop（保留）、Block（遮蔽）等混合模式與全域啟用開關，解決現場投影遮擋與去邊問題。",
+        "cue_lab_f6_hl": "特色功能： 支援自訂圖片遮罩，可一鍵開啟或停用全域遮罩，為複雜舞台結構提供完美的面幅調校與遮擋。"
     },
     "en": {
         "nav_home": "Home",
@@ -225,7 +228,10 @@ const translations = {
         "cue_lab_f4_hl": "Key Feature: Auto-fixes relative resource paths to prevent missing files during live shows.",
         "cue_lab_f5_title": "MULTI-DEVICE ROUTING & ENVELOPES",
         "cue_lab_f5_desc": "Route audio to multiple local soundcards simultaneously and draw independent channel-level volume envelopes.",
-        "cue_lab_f5_hl": "Key Feature: Precise spatial audio distribution and sync playback paired with robust WMI hang startup protection."
+        "cue_lab_f5_hl": "Key Feature: Precise spatial audio distribution and sync playback paired with robust WMI hang startup protection.",
+        "cue_lab_f6_title": "LOCAL & GLOBAL MASKS",
+        "cue_lab_f6_desc": "Supports custom mask items with blending modes like Crop and Block, and a global toggle switch to resolve projection blocking and masking issues.",
+        "cue_lab_f6_hl": "Key Feature: Custom image masking and a one-click global mask toggle to adapt to complex stage structures."
     }
 };
 
