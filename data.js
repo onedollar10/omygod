@@ -221,13 +221,17 @@ const software = [
         manual_en: "Manual/Cue_LAB Manual_en.html",
         features: [
             "多軌音影播放 (支援淡入/淡出、自動連動與群組播放)",
+            "多路獨立音效卡路由與聲道音量包絡線控制",
             "多螢幕投影輸出 (支援影片與圖片的全螢幕投影)",
-            "獨立四角梯形校正 (配合現場投影進行畫面調整)"
+            "獨立四角梯形校正 (配合現場投影進行畫面調整)",
+            "WMI 啟動防卡死與註冊表高可靠備用機制"
         ],
         features_en: [
             "Multi-track audio/video playback (supports fade in/out, follow, and group cues)",
+            "Multi-device audio routing and independent channel volume envelopes",
             "Multi-screen projection output (full screen video/image projection)",
-            "4-corner keystone correction (adjust projection to match physical surfaces)"
+            "4-corner keystone correction (adjust projection to match physical surfaces)",
+            "WMI startup hang protection and registry hardware GUID fallback"
         ]
     }
 ];
@@ -262,6 +266,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-06-16",
+        content: "Cue Lab 重磅更新：新增多音軌裝置路由輸出、獨立聲道音量包絡線編輯，以及 WMI 啟動防卡死保護機制。歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a>",
+        content_en: "Cue Lab Major Update: Added multi-device audio routing, channel volume envelope editing, and WMI startup hang protection. <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">Learn More</a>"
+    },
     {
         date: "2026-06-10",
         content: "全新上架：演出控制軟體 Cue Lab 已發布！支援音軌/影片/圖片播放、多螢幕投影與四角梯形校正。歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a>",

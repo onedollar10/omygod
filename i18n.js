@@ -108,7 +108,10 @@ const translations = {
         "cue_lab_f3_hl": "特色功能： 精準調校四個頂角，即使投影角度偏移也能維持正圓或矩形顯示。",
         "cue_lab_f4_title": "專案打包與管理",
         "cue_lab_f4_desc": "一鍵打包專案（Package Project），將音訊、影片、圖片等所有演出資源與設定整合，無縫轉移至其他電腦。",
-        "cue_lab_f4_hl": "特色功能： 自動修正資源相對路徑，徹底避免演出現場因找不到檔案而發生的意外。"
+        "cue_lab_f4_hl": "特色功能： 自動修正資源相對路徑，徹底避免演出現場因找不到檔案而發生的意外。",
+        "cue_lab_f5_title": "多音效卡路由與包絡線",
+        "cue_lab_f5_desc": "支援多音效卡獨立路由輸出，並可為每個輸出裝置的各個聲道獨立繪製音量包絡線，控制現場漸變效果。",
+        "cue_lab_f5_hl": "特色功能： 聲道級別的動態音量分配，配合 WMI 啟動防卡死保護，帶來極致的可靠度與放音體驗。"
     },
     "en": {
         "nav_home": "Home",
@@ -219,7 +222,10 @@ const translations = {
         "cue_lab_f3_hl": "Key Feature: Precise control over 4 points to keep circle/rect shapes even with off-angle projections.",
         "cue_lab_f4_title": "PACKAGE PROJECT",
         "cue_lab_f4_desc": "One-click Package Project to consolidate all audio, video, images, and config for seamless machine transfers.",
-        "cue_lab_f4_hl": "Key Feature: Auto-fixes relative resource paths to prevent missing files during live shows."
+        "cue_lab_f4_hl": "Key Feature: Auto-fixes relative resource paths to prevent missing files during live shows.",
+        "cue_lab_f5_title": "MULTI-DEVICE ROUTING & ENVELOPES",
+        "cue_lab_f5_desc": "Route audio to multiple local soundcards simultaneously and draw independent channel-level volume envelopes.",
+        "cue_lab_f5_hl": "Key Feature: Precise spatial audio distribution and sync playback paired with robust WMI hang startup protection."
     }
 };
 

@@ -472,6 +472,11 @@
                     <h4>First Startup</h4>
                     <p>Extract the package folder and double-click <code>CueLab.exe</code> to run. The software is fully portable and requires no internet connection or activation keys—ideal for theater control environments with closed LANs.</p>
                 </div>
+
+                <div class="info-box">
+                    <h4>💡 Licensing & WMI Hang Protection</h4>
+                    <p>During startup, the system automatically checks hardware fingerprints for license verification. To prevent the program from getting stuck on a black screen due to corrupted WMI services or slow Windows system environments (which can cause commands like <code>wmic</code> or <code>vol</code> to hang indefinitely), the software integrates a 2.0-second timeout mechanism. If WMI fails to respond within 2 seconds, the startup automatically falls back to a highly reliable lookup of the Windows Registry <code>MachineGuid</code>, ensuring the app loads securely and quickly under any corrupted OS state.</p>
+                </div>
             </section>
 
             <!-- 3. Interface Overview -->
@@ -608,13 +613,49 @@
                     </ol>
                 </div>
 
-                <h3>Audio Properties Adjustments</h3>
-                <p>Under the "Audio" tab in the Inspector panel:</p>
+                <h3>Audio Properties & Multi-device Routing</h3>
+                <p>Under the "Audio" tab in the Inspector panel, you can configure high-level routing and fine-grained channel volume controls:</p>
                 <ul>
-                    <li><strong>Volume</strong>: Controls VLC player volume from <code>0%</code> to <code>200%</code>, with a quick mute toggle checkbox.</li>
+                    <li><strong>Volume</strong>: Controls VLC player overall playback volume from <code>0%</code> to <code>200%</code>, with a quick mute toggle checkbox.</li>
                     <li><strong>Playback Rate (Speed)</strong>: Speed scale from <code>0.25x</code> to <code>4.0x</code> of the original speed.</li>
-                    <li><strong>Output Device</strong>: Route the specific Cue to an external sound card by selecting the hardware device name from the dropdown.</li>
                 </ul>
+
+                <h3>Multi-device Audio Routing & Channel Volume Envelopes Configuration</h3>
+                <p>The software supports routing a single Audio Cue to multiple physical audio output devices simultaneously. Additionally, you can configure linear volume envelopes independently per output device and channel, which is perfect for multi-channel live theater settings or complex sound routing designs.</p>
+
+                <div class="mockup-container">
+                    <img src="images/en/14_multi_device_audio.png" alt="Multi-device Audio Output and Waveform Settings">
+                </div>
+                <div class="mockup-caption">Fig 5-1: Multi-device Audio Routing List and Waveform Volume Envelope</div>
+
+                <div class="step-box">
+                    <h4>Multi-device Audio Routing Workflow</h4>
+                    <ol>
+                        <li><strong>Add Output Devices</strong>: In the Inspector's "Audio" tab, click the <strong>"Add"</strong> button and select target physical soundcards or audio interfaces from the menu.</li>
+                        <li><strong>Manage Device List</strong>: Select any device in the list and click <strong>"Delete"</strong> to remove it, or use the <strong>"Move Up"</strong> and <strong>"Move Down"</strong> buttons to prioritize and adjust their playback order.</li>
+                        <li><strong>Synchronized Playback</strong>: When played, the engine instantiates dedicated VLC media players for each device in the list, keeping them in microsecond-level synchronization.</li>
+                    </ol>
+                </div>
+
+                <div class="mockup-container">
+                    <img src="images/en/15_audio_envelope.png" alt="Waveform and Channel Volume Envelope Adjustment">
+                </div>
+                <div class="mockup-caption">Fig 5-2: Waveform Editor and independent channel volume envelope points</div>
+
+                <div class="step-box">
+                    <h4>Volume Envelope Points Editing Workflow</h4>
+                    <ol>
+                        <li><strong>Select Target Device & Channel</strong>: Navigate to the "Waveform" tab in the Inspector and select the target device channel index (e.g. Channel 1, Channel 2) above the waveform graph.</li>
+                        <li><strong>Add/Edit Volume Points</strong>:
+                            <ul>
+                                <li><strong>Add Points</strong>: Click the left mouse button anywhere in the waveform envelope graph area (blue line) to insert a new yellow envelope control point at that time.</li>
+                                <li><strong>Adjust Values & Time</strong>: Click and drag any yellow point vertically to adjust the volume gain (from 0% to 200%) or horizontally to adjust its position on the timeline.</li>
+                                <li><strong>Linear Interpolation Fade</strong>: The audio engine performs real-time linear interpolation between points to dynamically scale the volume during playback, creating smooth fade curves.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Table Data Management</strong>: The table under the waveform widget lists the precise time (in seconds) and volume value of all points. You can also edit values directly in the table cells or delete points from there.</li>
+                    </ol>
+                </div>
             </section>
 
             <!-- 6. Video Display & Timing -->

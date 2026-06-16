@@ -5,15 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cue Lab 舞台控制播放軟體 v1.0 使用說明書</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-95B5G5KQ8B');
-    </script>
     <style>
         * {
             margin: 0;
@@ -361,588 +352,600 @@
     <div class="container">
         <header class="header">
             <a href="Cue_LAB Manual_en.html" class="lang-toggle">English Version</a>
-            <h1>Cue Lab 闊槫床謗ｧ蛻ｶ謦ｭ謾ｾ霆滄ｫ�</h1>
-            <p class="version">迚域悽 1.1.0 菴ｿ逕ｨ隱ｪ譏取嶌</p>
+            <h1>Cue Lab 舞台控制播放軟體</h1>
+            <p class="version">版本 1.1.0 使用說明書</p>
         </header>
 
         <div class="content">
-            <!-- 逶ｮ骭� -->
+            <!-- 目錄 -->
             <div class="toc">
-                <h2>逶ｮ骭�</h2>
+                <h2>目錄</h2>
                 <ul>
-                    <li><a href="#intro">1. 霆滄ｫ皮ｰ｡莉�</a></li>
-                    <li><a href="#install">2. 邉ｻ邨ｱ髴豎り�蝠溷虚</a></li>
-                    <li><a href="#interface">3. 莉矩擇邵ｽ隕ｽ闊�ｸ�ｱ</a></li>
-                    <li><a href="#cue-types">4. Cue 鬘槫梛闊�音鮟�</a></li>
-                    <li><a href="#audio-edit">5. 髻ｳ險顔ｷｨ霈ｯ闊�ｳ｢蠖｢謗ｧ蛻ｶ</a></li>
-                    <li><a href="#video-display">6. 蠖ｱ蜒剰ｨｭ螳夊�謗堤ｨ区而蛻ｶ</a></li>
-                    <li><a href="#keystone">7. 陞｢蟷戊�蟷ｾ菴墓�｡豁｣ (Keystone)</a></li>
-                    <li><a href="#masking">8. 螻驛ｨ驕ｮ鄂ｩ闊��蝓滄�鄂ｩ髢矩梨</a></li>
-                    <li><a href="#playback">9. 謦ｭ謾ｾ謗ｧ蛻ｶ闊�嵯逶､蠢ｫ騾滄嵯</a></li>
-                    <li><a href="#timecode">10. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode)</a></li>
-                    <li><a href="#video-preview">11. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview)</a></li>
-                    <li><a href="#project">12. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕�</a></li>
-                    <li><a href="#troubleshoot">13. 謨�囿謗帝勁</a></li>
+                    <li><a href="#intro">1. 軟體簡介</a></li>
+                    <li><a href="#install">2. 系統需求與啟動</a></li>
+                    <li><a href="#interface">3. 介面總覽與布局</a></li>
+                    <li><a href="#cue-types">4. Cue 類型與特點</a></li>
+                    <li><a href="#audio-edit">5. 音訊編輯與波形控制</a></li>
+                    <li><a href="#video-display">6. 影像設定與排程控制</a></li>
+                    <li><a href="#keystone">7. 螢幕與幾何校正 (Keystone)</a></li>
+                    <li><a href="#masking">8. 局部遮罩與全域遮罩開關</a></li>
+                    <li><a href="#playback">9. 播放控制與鍵盤快速鍵</a></li>
+                    <li><a href="#timecode">10. 時間碼系統 (Timecode)</a></li>
+                    <li><a href="#video-preview">11. 視訊預覽視窗 (Video Preview)</a></li>
+                    <li><a href="#project">12. 專案管理與打包傳遞</a></li>
+                    <li><a href="#troubleshoot">13. 故障排除</a></li>
                 </ul>
             </div>
 
-            <!-- 1. 霆滄ｫ皮ｰ｡莉� -->
+            <!-- 1. 軟體簡介 -->
             <section id="intro">
-                <h2>1. 霆滄ｫ皮ｰ｡莉�</h2>
-                <p><strong>Cue Lab</strong> 譏ｯ荳谺ｾ蟆育ぜ闊槫床蜉��ｴ縲∝､壼ｪ帝ｫ泌ｱ墓ｼ泌所阯晁｡灘ｱ慕､ｺ謇髢狗匸逧�ｰ域･ｭ邏壹悟､壼ｪ帝ｫ� Show Control 謗ｧ蛻ｶ謦ｭ謾ｾ霆滄ｫ斐阪らｳｻ邨ｱ謾ｯ謠ｴ蝨ｨ螟夜Κ謚募ｽｱ蟷墓�蜑ｯ陞｢蟷暮ｲ陦檎昏遶狗噪鬮倡吻雉ｪ蠖ｱ蜒剰ｼｸ蜃ｺ�悟�蛯吝�騾ｲ逧�ｹｾ菴墓｢ｯ蠖｢譬｡豁｣縲��鄂ｩ陞榊粋蜿雁､夊ｻ碁浹險願ｷｯ逕ｱ遲臥樟蝣ｴ蝓ｷ陦悟粥閭ｽ�梧葎蝨ｨ轤ｺ蜉��ｴ險ｭ險亥ｸｫ謠蝉ｾ幃ｫ俶譜縲∫ｩｩ螳壻ｸ皮峩隕ｺ逧�眺謾ｾ鬮秘ｩ励�</p>
+                <h2>1. 軟體簡介</h2>
+                <p><strong>Cue Lab</strong> 是一款專為舞台劇場、多媒體展演及藝術展示所開發的專業級「多媒體 Show Control 控制播放軟體」。系統支援在外部投影幕或副螢幕進行獨立的高畫質影像輸出，具備先進的幾何梯形校正、遮罩融合及多軌音訊路由等現場執行功能，旨在為劇場設計師提供高效、穩定且直覺的播放體驗。</p>
 
                 <div class="mockup-container">
-                    <img src="images/01_main_window.png" alt="Cue Lab 霆滄ｫ比ｸｻ逡ｫ髱｢">
+                    <img src="images/01_main_window.png" alt="Cue Lab 軟體主畫面">
                 </div>
-                <div class="mockup-caption">蝨� 1�咾ue Lab 霆滄ｫ比ｸｻ逡ｫ髱｢</div>
+                <div class="mockup-caption">圖 1：Cue Lab 軟體主畫面</div>
 
-                <h3>譬ｸ蠢�橿陦鍋音鮟�</h3>
+                <h3>核心技術特點</h3>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h4>�矧 迯ｨ遶矩浹險願ｷｯ逕ｱ</h4>
-                        <p>謾ｯ謠ｴ轤ｺ荳榊酔髻ｳ險願ｻ檎昏遶矩∈謫�悽讖溷ｯｦ鬮秘浹謨亥今霈ｸ蜃ｺ�悟ｮ檎ｾ朱←驟咲樟蝣ｴ迺ｰ郢樒ｫ矩ｫ碑�謌門､夊�驕楢ｷｯ逕ｱ髴豎ゅ�</p>
+                        <h4>🔊 獨立音訊路由</h4>
+                        <p>支援為不同音訊軌獨立選擇本機實體音效卡輸出，完美適配現場環繞立體聲或多聲道路由需求。</p>
                     </div>
                     <div class="feature-card">
-                        <h4>�汐 蟆域･ｭ蠖ｱ蜒剰ｼｸ蜃ｺ</h4>
-                        <p>謾ｯ謠ｴ蝨ｨ蜑ｯ陞｢蟷�/謚募ｽｱ讖滉ｸ企ｲ陦檎昏遶狗噪鮟槫ｰ埼ｻ樣ｫ倡吻雉ｪ蠖ｱ迚��蝨也援謦ｭ謾ｾ�檎┌驕ｸ蝟ｮ谺�所邉ｻ邨ｱ貂ｸ讓吝ｹｲ謫ｾ縲�</p>
+                        <h4>🎬 專業影像輸出</h4>
+                        <p>支援在副螢幕/投影機上進行獨立的點對點高畫質影片或圖片播放，無選單欄及系統游標干擾。</p>
                     </div>
                     <div class="feature-card">
-                        <h4>�盗 蜈ｨ邯ｲ譬ｼ譴ｯ蠖｢譬｡豁｣</h4>
-                        <p>蜈ｧ蟒ｺ鮟槫ｰ埼ｻ� Keystone 譴ｯ蠖｢譬｡豁｣�梧署萓帶･ｵ邏ｰ蠕ｮ逧�屁隗堤ｶｲ譬ｼ骭ｨ鮟櫁ｪｿ謨ｴ�悟叉譎よ�｡豁｣謚募ｽｱ髱｢蛛乗万縲�</p>
+                        <h4>📐 全網格梯形校正</h4>
+                        <p>內建點對點 Keystone 梯形校正，提供極細微的四角網格錨點調整，即時校正投影面偏斜。</p>
                     </div>
                     <div class="feature-card">
-                        <h4>�鹿 螟壼ｱ､邏夐�鄂ｩ陞榊粋</h4>
-                        <p>謾ｯ謠ｴ閾ｪ險ょ､壼矩�鄂ｩ鬆�岼�悟�蛯� Crop�井ｿ晉蕗�峨。lock�磯�阡ｽ�臥ｭ画ｷｷ蜷域ｨ｡蠑剰�迯ｨ遶区雷霓画�｡豁｣縲�</p>
+                        <h4>🎭 多層級遮罩融合</h4>
+                        <p>支援自訂多個遮罩項目，具備 Crop（保留）、Block（遮蔽）等混合模式與獨立旋轉校正。</p>
                     </div>
                     <div class="feature-card">
-                        <h4>�逃 蟆域｡井ｸ骰ｵ謇灘桁</h4>
-                        <p>閾ｪ蜍墓祉謠丈ｸｦ隍�｣ｽ蟆域｡井ｸｭ謇髣懆�荵句､夜Κ蟐帝ｫ費ｼ碁㍾譁ｰ螳壻ｽ咲ぜ逶ｸ蟆崎ｷｯ蠕大｣鍋ｸｮ謇灘桁�悟ｯｦ迴ｾ辟｡邵ｫ謾懷ｸｶ縲�</p>
+                        <h4>📦 專案一鍵打包</h4>
+                        <p>自動掃描並複製專案中所關聯之外部媒體，重新定位為相對路徑壓縮打包，實現無縫攜帶。</p>
                     </div>
                     <div class="feature-card">
-                        <h4>竊ｩ�� 謦､驫ｷ驥榊★邉ｻ邨ｱ</h4>
-                        <p>謾ｯ謠ｴ蜈ｨ蝓溽噪 Undo / Redo 謫堺ｽ懈ｭｷ蜿ｲ邏骭�ｼ碁圷譎よ潔 <code>Ctrl+Z</code> 謦､蝗樣険隱､逧�桃菴懈�蜿�丙蠕ｮ隱ｿ縲�</p>
+                        <h4>↩️ 撤銷重做系統</h4>
+                        <p>支援全域的 Undo / Redo 操作歷史紀錄，隨時按 <code>Ctrl+Z</code> 撤回錯誤的操作或參數微調。</p>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. 邉ｻ邨ｱ髴豎り�蝠溷虚 -->
+            <!-- 2. 系統需求與啟動 -->
             <section id="install">
-                <h2>2. 邉ｻ邨ｱ髴豎り�蝠溷虚</h2>
+                <h2>2. 系統需求與啟動</h2>
 
                 <div class="mockup-container">
-                    <img src="images/02_about.png" alt="髣懈名 Cue Lab 蟆崎ｩｱ譯��迚域悽雉�ｨ�">
+                    <img src="images/02_about.png" alt="關於 Cue Lab 對話框與版本資訊">
                 </div>
-                <div class="mockup-caption">蝨� 2�夐梨譁ｼ Cue Lab 蟆崎ｩｱ譯��霆滄ｫ皮沿譛ｬ雉�ｨ�</div>
+                <div class="mockup-caption">圖 2：關於 Cue Lab 對話框與軟體版本資訊</div>
 
-                <h3>菴懈･ｭ邉ｻ邨ｱ闊�｡ｬ鬮疲髪謠ｴ</h3>
+                <h3>作業系統與硬體支援</h3>
                 <table>
                     <tr>
-                        <th>遑ｬ鬮�/邉ｻ邨ｱ鬆�岼</th>
-                        <th>譛菴朱怙豎りｦ乗�ｼ</th>
-                        <th>蟒ｺ隴ｰ隕乗�ｼ</th>
+                        <th>硬體/系統項目</th>
+                        <th>最低需求規格</th>
+                        <th>建議規格</th>
                     </tr>
                     <tr>
-                        <td>菴懈･ｭ邉ｻ邨ｱ</td>
+                        <td>作業系統</td>
                         <td>Windows 10 64-bit</td>
-                        <td>Windows 11 蟆域･ｭ迚�</td>
+                        <td>Windows 11 專業版</td>
                     </tr>
                     <tr>
-                        <td>陌慕炊蝎ｨ (CPU)</td>
-                        <td>Intel Core i5 遲臥ｴ壻ｻ･荳�</td>
-                        <td>Intel Core i7 / AMD Ryzen 7 莉･荳�</td>
+                        <td>處理器 (CPU)</td>
+                        <td>Intel Core i5 等級以上</td>
+                        <td>Intel Core i7 / AMD Ryzen 7 以上</td>
                     </tr>
                     <tr>
-                        <td>險俶�鬮� (RAM)</td>
+                        <td>記憶體 (RAM)</td>
                         <td>8 GB</td>
-                        <td>16 GB 莉･荳�</td>
+                        <td>16 GB 以上</td>
                     </tr>
                     <tr>
-                        <td>鬘ｯ遉ｺ蜊｡ (GPU)</td>
-                        <td>謾ｯ謠ｴ OpenGL 3.3 荵句�鬘ｯ</td>
-                        <td>NVIDIA GeForce 迯ｨ遶矩｡ｯ遉ｺ蜊｡ (蠖ｱ髻ｳ隗｣遒ｼ譖ｴ豬∵圓)</td>
+                        <td>顯示卡 (GPU)</td>
+                        <td>支援 OpenGL 3.3 之內顯</td>
+                        <td>NVIDIA GeForce 獨立顯示卡 (影音解碼更流暢)</td>
                     </tr>
                     <tr>
-                        <td>霈ｸ蜃ｺ莉矩擇</td>
-                        <td>HDMI / DisplayPort (螟夊椶蟷戊ｼｸ蜃ｺ逕ｨ)</td>
-                        <td>螟夊ｷｯ迯ｨ遶句ｽｱ蜒剰ｼｸ蜃ｺ蝓� (HDMI/DP)</td>
+                        <td>輸出介面</td>
+                        <td>HDMI / DisplayPort (多螢幕輸出用)</td>
+                        <td>多路獨立影像輸出埠 (HDMI/DP)</td>
                     </tr>
                 </table>
 
                 <div class="step-box">
-                    <h4>蝠溷虚豁･鬩�</h4>
-                    <p>隗｣螢鍋ｸｮ螳芽｣晏桁蠕鯉ｼ碁ｻ樊投 <code>CueLab.exe</code> 蜊ｳ蜿ｯ逶ｴ謗･蝠溷虚遞句ｼ上よ悽霆滄ｫ皮┌鬆育ｹ∬､�噪邱壻ｸ雁ｮ芽｣晄�騾｣邯ｲ蝠溽畑遒ｼ蜊ｳ蜿ｯ逶ｴ謗･蝓ｷ陦鯉ｼ碁←蜷育樟蝣ｴ蟆�哩邯ｲ霍ｯ逧�而蛻ｶ髮ｻ閻ｦ迺ｰ蠅��</p>
+                    <h4>啟動步驟</h4>
+                    <p>解壓縮安裝包後，點擊 <code>CueLab.exe</code> 即可直接啟動程式。本軟體無須繁複的線上安裝或連網啟用碼即可直接執行，適合現場封閉網路的控制電腦環境。</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>💡 授權啟動防卡死保護機制 (WMI Hang Protection)</h4>
+                    <p>系統啟動時會自動查詢硬體指紋進行授權識別。為了防範部分 Windows 電腦因 WMI 服務損毀或系統異常導致查詢硬體指令（如 <code>wmic</code> 或 <code>vol</code>）無限期掛起（Hang）而使程式卡死在啟動黑畫面的問題，系統內建了 2.0 秒的命令超時機制。一旦超時，將自動降級並回退至高精度的 Windows 註冊表 <code>MachineGuid</code> 讀取特徵，確保程式不論在何種損毀系統環境下皆能在 2 秒內順利啟動並跳出主畫面或啟動對話框。</p>
                 </div>
             </section>
 
-            <!-- 3. 莉矩擇邵ｽ隕ｽ闊�ｸ�ｱ -->
+            <!-- 3. 介面總覽與布局 -->
             <section id="interface">
-                <h2>3. 莉矩擇邵ｽ隕ｽ闊�ｸ�ｱ</h2>
+                <h2>3. 介面總覽與布局</h2>
 
                 <div class="mockup-container">
-                    <img src="images/03_ui_layout.png" alt="Cue Lab 莉矩擇荳ｻ隕∝項蝓�">
+                    <img src="images/03_ui_layout.png" alt="Cue Lab 介面主要區域">
                 </div>
-                <div class="mockup-caption">蝨� 3�咾ue Lab 莉矩擇荳ｻ隕∝項蝓溷ｸ�ｱ邵ｽ隕ｽ</div>
+                <div class="mockup-caption">圖 3：Cue Lab 介面主要區域布局總覽</div>
 
-                <p>霆滄ｫ比ｸｻ逡ｫ髱｢荳ｻ隕∫罰蝗帛区�ｸ蠢�項蝓溽ｵ����<strong>鬆るΚ蟾･蜈ｷ蛻�</strong>縲�<strong>蟾ｦ蛛ｴ Cue 蛻苓｡ｨ陦ｨ譬ｼ</strong>縲�<strong>蠎暮Κ豕｢蠖｢闊�ｷｨ霈ｯ蜊</strong>莉･蜿�<strong>蜿ｳ蛛ｴ螻ｬ諤ｧ Inspector 髱｢譚ｿ</strong>縲�</p>
+                <p>軟體主畫面主要由四個核心區域組成：<strong>頂部工具列</strong>、<strong>左側 Cue 列表表格</strong>、<strong>底部波形與編輯區</strong>以及<strong>右側屬性 Inspector 面板</strong>。</p>
 
-                <h3>荳ｻ隕∽ｻ矩擇蜊蝓溯ｪｪ譏�</h3>
+                <h3>主要介面區域說明</h3>
                 <table>
                     <tr>
-                        <th style="width: 25%;">莉矩擇蜊蝓�</th>
-                        <th style="width: 25%;">菴咲ｽｮ</th>
-                        <th>蜉溯�隱ｪ譏�</th>
+                        <th style="width: 25%;">介面區域</th>
+                        <th style="width: 25%;">位置</th>
+                        <th>功能說明</th>
                     </tr>
                     <tr>
-                        <td><strong>謗ｧ蛻ｶ蟾･蜈ｷ蛻� (Toolbar)</strong></td>
-                        <td>隕也ｪ玲ｭ｣荳頑婿</td>
-                        <td>謠蝉ｾ帛､ｧ蝙� <code>GO</code>縲�<code>證ｫ蛛�</code>縲�<code>蜈ｨ驛ｨ蛛懈ｭ｢</code> 謗ｧ蛻ｶ驤包ｼ御ｻ･蜿雁ｿｫ騾滓眠蠅槫推鬘槫梛 Cue 逧�差蠕第潔驤戊�險ｭ螳壽潔驤輔�</td>
+                        <td><strong>控制工具列 (Toolbar)</strong></td>
+                        <td>視窗正上方</td>
+                        <td>提供大型 <code>GO</code>、<code>暫停</code>、<code>全部停止</code> 控制鈕，以及快速新增各類型 Cue 的捷徑按鈕與設定按鈕。</td>
                     </tr>
                     <tr>
-                        <td><strong>Cue 蛻苓｡ｨ陦ｨ譬ｼ (Cue List)</strong></td>
-                        <td>隕也ｪ怜ｷｦ蛛ｴ</td>
-                        <td>鬘ｯ遉ｺ逡ｶ蜑榊ｰ域｡井ｸｭ謇譛臥噪 Cue 謦ｭ謾ｾ蜍穂ｽ懶ｼ悟桁蜷ｫ邱ｨ陌溘�｡槫梛蝨也､ｺ縲∝錐遞ｱ縲�梨閨ｯ讙疲｡医∝濤陦檎朽諷玖�騾ｲ蠎ｦ譴晉ｭ峨�</td>
+                        <td><strong>Cue 列表表格 (Cue List)</strong></td>
+                        <td>視窗左側</td>
+                        <td>顯示當前專案中所有的 Cue 播放動作，包含編號、類型圖示、名稱、關聯檔案、執行狀態與進度條等。</td>
                     </tr>
                     <tr>
-                        <td><strong>螻ｬ諤ｧ髱｢譚ｿ (Inspector)</strong></td>
-                        <td>隕也ｪ怜承蛛ｴ</td>
-                        <td>逡ｶ驕ｸ蜿匁汾蛟� Cue 譎ゑｼ梧ｭ､陌墓怎蛻怜�隧ｲ Cue 逧�園譛牙純謨ｸ�悟�轤ｺ縲悟渕譛ｬ縲阪√梧凾髢薙阪√碁浹險翫阪√碁｡ｯ遉ｺ縲崎�縲檎ｾ､邨�咲ｭ牙�鬆√�</td>
+                        <td><strong>屬性面板 (Inspector)</strong></td>
+                        <td>視窗右側</td>
+                        <td>當選取某個 Cue 時，此處會列出該 Cue 的所有參數，分為「基本」、「時間」、「音訊」、「顯示」與「群組」等分頁。</td>
                     </tr>
                     <tr>
-                        <td><strong>豕｢蠖｢隕冶ｦｺ蛹� (Waveform)</strong></td>
-                        <td>隕也ｪ怜ｷｦ荳区婿</td>
-                        <td>髻ｳ險願�蠖ｱ迚� Cue 逧�ｳ｢蠖｢鬘ｯ遉ｺ蜊�悟庄逶ｴ謗･鮟樊投諡匁峙謌紋ｻ･骰ｵ逶､譁ｹ蜷鷹嵯蠕ｮ隱ｿ蟐帝ｫ皮噪謦ｭ謾ｾ襍ｷ鮟櫁�邨るｻ樊凾髢薙�</td>
+                        <td><strong>波形視覺化 (Waveform)</strong></td>
+                        <td>視窗左下方</td>
+                        <td>音訊與影片 Cue 的波形顯示區，可直接點擊拖曳或以鍵盤方向鍵微調媒體的播放起點與終點時間。</td>
                     </tr>
                 </table>
 
                 <div class="info-box">
-                    <h4>�庁 蠢ｫ騾滄∈蝟ｮ闊�承骰ｵ謫堺ｽ�</h4>
-                    <p>蝨ｨ Cue 蛻苓｡ｨ荳頑潔貊鷹ｼ�蜿ｳ骰ｵ�悟庄髢句福荳贋ｸ区枚驕ｸ蝟ｮ�悟濤陦鯉ｼ夊､�｣ｽ縲∝岡荳九∬ｲｼ荳翫∝惠荳頑婿/荳区婿謠貞�譁ｰ Cue縲∬ｧ｣謨｣鄒､邨��閾ｪ蜍暮㍾譁ｰ邱ｨ陌溽ｭ臥ｵ先ｧ区ｧ蜍穂ｽ懊�</p>
+                    <h4>💡 快速選單與右鍵操作</h4>
+                    <p>在 Cue 列表上按滑鼠右鍵，可開啟上下文選單，執行：複製、剪下、貼上、在上方/下方插入新 Cue、解散群組或自動重新編號等結構性動作。</p>
                 </div>
             </section>
 
-            <!-- 4. Cue 鬘槫梛闊�音鮟� -->
+            <!-- 4. Cue 類型與特點 -->
             <section id="cue-types">
-                <h2>4. Cue 鬘槫梛闊�音鮟�</h2>
+                <h2>4. Cue 類型與特點</h2>
 
                 <div class="mockup-container">
-                    <img src="images/04_cue_types.png" alt="Cue 鬘槫梛陦ｨ譬ｼ">
+                    <img src="images/04_cue_types.png" alt="Cue 類型表格">
                 </div>
-                <div class="mockup-caption">蝨� 4�咾ue 蛻苓｡ｨ謾ｯ謖∫噪逧�推遞ｮ鬘槫梛闊�朽諷�</div>
+                <div class="mockup-caption">圖 4：Cue 列表支持的的各種類型與狀態</div>
 
-                <p>譛ｬ霆滄ｫ疲署萓� 7 遞ｮ荳榊酔鬘槫梛逧� Cue�御ｽｿ逕ｨ閠�庄莉･閾ｪ逕ｱ邨�粋螳�台ｾ�ｻｺ讒倶ｸ蛟狗ｲｾ邏ｰ逧�ｼ泌�豬∫ｨ具ｼ�</p>
+                <p>本軟體提供 7 種不同類型的 Cue，使用者可以自由組合它們來建構一個精細的演出流程：</p>
 
                 <table>
                     <tr>
-                        <th style="width: 15%;">鬘槫梛</th>
-                        <th style="width: 15%;">蝨也､ｺ</th>
-                        <th style="width: 20%;">驕ｩ逕ｨ蝣ｴ譎ｯ</th>
-                        <th>譬ｸ蠢�而蛻ｶ螻ｬ諤ｧ</th>
+                        <th style="width: 15%;">類型</th>
+                        <th style="width: 15%;">圖示</th>
+                        <th style="width: 20%;">適用場景</th>
+                        <th>核心控制屬性</th>
                     </tr>
                     <tr>
-                        <td><strong>髻ｳ險� Cue</strong></td>
-                        <td>�矧 Audio</td>
-                        <td>閭梧勹髻ｳ讓ゅ∵譜譫憺浹</td>
-                        <td>髻ｳ驥丞､ｧ蟆上∵眺謾ｾ騾溷ｺｦ縲∬ｵｷ鮟�/邨るｻ槭∵ｷ｡蜈･/豺｡蜃ｺ遘呈丙縲∫｡ｬ鬮碑ｼｸ蜃ｺ陬晉ｽｮ縲�</td>
+                        <td><strong>音訊 Cue</strong></td>
+                        <td>🔊 Audio</td>
+                        <td>背景音樂、效果音</td>
+                        <td>音量大小、播放速度、起點/終點、淡入/淡出秒數、硬體輸出裝置。</td>
                     </tr>
                     <tr>
-                        <td><strong>蠖ｱ迚� Cue</strong></td>
-                        <td>�汐 Video</td>
-                        <td>蜍墓�謚募ｽｱ縲∬レ譎ｯ蠖ｱ迚�</td>
-                        <td>髯､蛹�性髻ｳ險顔噪謇譛牙ｱｬ諤ｧ螟厄ｼ碁ｄ謾ｯ謠ｴ邵ｮ謾ｾ讓｡蠑上∬ｦ冶ｦｺ蝨門ｱ､縲∽ｸ埼乗�蠎ｦ縲々Y菴咲ｽｮ闊�､ｧ蟆上∵｢ｯ蠖｢譬｡豁｣闊��鄂ｩ縲�</td>
+                        <td><strong>影片 Cue</strong></td>
+                        <td>🎬 Video</td>
+                        <td>動態投影、背景影片</td>
+                        <td>除包含音訊的所有屬性外，還支援縮放模式、視覺圖層、不透明度、XY位置與大小、梯形校正與遮罩。</td>
                     </tr>
                     <tr>
-                        <td><strong>蝨也援 Cue</strong></td>
-                        <td>�名 Image</td>
-                        <td>髱懈�闊槫床閭梧攸</td>
-                        <td>邵ｮ謾ｾ讓｡蠑上∬ｦ冶ｦｺ蝨門ｱ､縲∽ｸ埼乗�蠎ｦ縲∽ｽ咲ｽｮ縲∝､ｧ蟆上∵｢ｯ蠖｢譬｡豁｣闊��鄂ｩ縲�</td>
+                        <td><strong>圖片 Cue</strong></td>
+                        <td>🖼 Image</td>
+                        <td>靜態舞台背板</td>
+                        <td>縮放模式、視覺圖層、不透明度、位置、大小、梯形校正與遮罩。</td>
                     </tr>
                     <tr>
-                        <td><strong>證怜�ｴ Cue</strong></td>
-                        <td>筮� Blackout</td>
-                        <td>蝣ｴ譎ｯ霓画鋤縲∝�鮟鷹℃貂｡</td>
-                        <td>豺｡蜃ｺ譎る俣縲りｧｸ逋ｼ譎よ怎蟆�園譛牙濤陦御ｸｭ逧�ｽｱ迚��蝨也援蛛壼ｹｳ貊第ｷ｡蜃ｺ�御ｽｿ謚募ｽｱ鬘ｯ遉ｺ諱｢蠕ｩ轤ｺ蜈ｨ鮟代�</td>
+                        <td><strong>暗場 Cue</strong></td>
+                        <td>⬛ Blackout</td>
+                        <td>場景轉換、全黑過渡</td>
+                        <td>淡出時間。觸發時會將所有執行中的影片與圖片做平滑淡出，使投影顯示恢復為全黑。</td>
                     </tr>
                     <tr>
-                        <td><strong>鄒､邨� Cue</strong></td>
-                        <td>�逃 Group</td>
-                        <td>螟壽ｪ疲｡亥酔譎りｧｸ逋ｼ縲∵眺豁梧ｸ�粍</td>
-                        <td>謌仙藤蛻苓｡ｨ邂｡逅�∵眺謾ｾ鬆�ｺ上ょ庄螳ｹ邏榊､壼句ｭ� Cue�悟ｯｦ迴ｾ螟壼句ｪ帝ｫ泌酔譎りｧｸ逋ｼ謦ｭ謾ｾ謌冶�蜍墓磁郤梧眺謾ｾ縲�</td>
+                        <td><strong>群組 Cue</strong></td>
+                        <td>📦 Group</td>
+                        <td>多檔案同時觸發、播歌清單</td>
+                        <td>成員列表管理、播放順序。可容納多個子 Cue，實現多個媒體同時觸發播放或自動接續播放。</td>
                     </tr>
                     <tr>
-                        <td><strong>驕ｮ鄂ｩ Cue</strong></td>
-                        <td>�鹿 Mask</td>
-                        <td>迚ｹ谿雁ｱ驛ｨ蜴ｻ隗偵∵兜蠖ｱ鄒ｽ蛹�</td>
-                        <td>閾ｪ險ょ､壼ｼｵ驕ｮ鄂ｩ蠖ｱ蜒城��岼縲ょ庄險ｭ螳夐�鄂ｩ遽�恪縲�乗�蠎ｦ縲∵雷霓会ｼ御ｸｦ閭ｽ陲ｫ蜈ｶ莉門ｽｱ迚�/蝨也援 Cue 髣懆�螂礼畑縲�</td>
+                        <td><strong>遮罩 Cue</strong></td>
+                        <td>🎭 Mask</td>
+                        <td>特殊局部去角、投影羽化</td>
+                        <td>自訂多張遮罩影像項目。可設定遮罩範圍、透明度、旋轉，並能被其他影片/圖片 Cue 關聯套用。</td>
                     </tr>
                     <tr>
-                        <td><strong>譎る俣遒ｼ Cue</strong></td>
-                        <td>竢ｱ�� Timecode</td>
-                        <td>險ｭ蛯呵�蜍墓而蛻ｶ縲∬ｷ醍｢ｼ蜷梧ｭ･</td>
-                        <td>譎る俣遒ｼ鬘槫梛 (LTC/MTC)縲∬ｵｷ蟋句￥遘ｻ驥� (Offset)縲∬ｼｸ蜃ｺ蟷邇� (FPS) 闊� MIDI 霈ｸ蜃ｺ險ｭ蛯吝泛縲�</td>
+                        <td><strong>時間碼 Cue</strong></td>
+                        <td>⏱️ Timecode</td>
+                        <td>設備聯動控制、跑碼同步</td>
+                        <td>時間碼類型 (LTC/MTC)、起始偏移量 (Offset)、輸出幀率 (FPS) 與 MIDI 輸出設備埠。</td>
                     </tr>
                 </table>
             </section>
 
-            <!-- 5. 髻ｳ險顔ｷｨ霈ｯ闊�ｳ｢蠖｢謗ｧ蛻ｶ -->
+            <!-- 5. 音訊編輯與波形控制 -->
             <section id="audio-edit">
-                <h2>5. 髻ｳ險顔ｷｨ霈ｯ闊�ｳ｢蠖｢謗ｧ蛻ｶ</h2>
+                <h2>5. 音訊編輯與波形控制</h2>
 
                 <div class="mockup-container">
-                    <img src="images/05_audio_waveform.png" alt="髻ｳ險頑ｳ｢蠖｢隕冶ｦｺ蛹�">
+                    <img src="images/05_audio_waveform.png" alt="音訊波形視覺化">
                 </div>
-                <div class="mockup-caption">蝨� 5�夐浹險頑ｳ｢蠖｢隕冶ｦｺ蛹夜�占ｦｽ闊�｣∝岡讓呵ｨ�</div>
+                <div class="mockup-caption">圖 5：音訊波形視覺化預覽與裁剪標記</div>
 
-                <p>逡ｶ謔ｨ驕ｸ蜿� <strong>髻ｳ險� Cue</strong> 謌� <strong>蠖ｱ迚� Cue</strong> 譎ゑｼ瑚ｻ滄ｫ比ｸ区婿逧�ｳ｢蠖｢隕冶ｦｺ蛹也ｷｨ霈ｯ蝎ｨ譛��蜍慕ｹｪ陬ｽ荳ｦ霈牙�隧ｲ蟐帝ｫ皮噪髻ｳ霆梧険蟷�ｳ｢蠖｢�梧婿萓ｿ謔ｨ騾ｲ陦悟庄隕門喧逧�｣∝岡縲�</p>
+                <p>當您選取 <strong>音訊 Cue</strong> 或 <strong>影片 Cue</strong> 時，軟體下方的波形視覺化編輯器會自動繪製並載入該媒體的音軌振幅波形，方便您進行可視化的裁剪。</p>
 
                 <div class="step-box">
-                    <h4>豕｢蠖｢陬∝岡謫堺ｽ懈ｭ･鬩�</h4>
+                    <h4>波形裁剪操作步驟</h4>
                     <ol>
-                        <li><strong>驕ｸ蜿冶ｵｷ鮟�/邨るｻ樒ｷ�</strong>�夐ｻ樣∈豕｢蠖｢蝨紋ｸｭ逧�<strong>邯�濶ｲ襍ｷ鮟樊ｨ呵ｨ�</strong>謌�<strong>讖倩牡邨るｻ樊ｨ呵ｨ�</strong>�碁∈蜿也噪謗ｧ蛻ｶ邱壽怎莉･蜉�邊嶺ｺｮ濶ｲ鬮倅ｺｮ鬘ｯ遉ｺ縲�</li>
-                        <li><strong>貊鷹ｼ�諡匁峙</strong>�夂峩謗･蟾ｦ蜿ｳ諡匁峙鬮倅ｺｮ謗ｧ蛻ｶ邱夲ｼ悟叉蜿ｯ蠢ｫ騾溷ｮ壻ｽ肴眺謾ｾ逧�ｵｷ蟋玖�邨先據遘呈丙縲�</li>
-                        <li><strong>骰ｵ逶､蠕ｮ隱ｿ</strong>�夐∈蜿匁而蛻ｶ邱壼ｾ鯉ｼ悟庄菴ｿ逕ｨ骰ｵ逶､ <code>竊�</code> 謌� <code>竊�</code> 譁ｹ蜷鷹嵯莉･ <code>0.1 遘�</code> 轤ｺ豁･髟ｷ騾ｲ陦悟燕遘ｻ/蠕檎ｧｻ蠕ｮ隱ｿ��
+                        <li><strong>選取起點/終點線</strong>：點選波形圖中的<strong>綠色起點標記</strong>或<strong>橘色終點標記</strong>，選取的控制線會以加粗亮色高亮顯示。</li>
+                        <li><strong>滑鼠拖曳</strong>：直接左右拖曳高亮控制線，即可快速定位播放的起始與結束秒數。</li>
+                        <li><strong>鍵盤微調</strong>：選取控制線後，可使用鍵盤 <code>←</code> 或 <code>→</code> 方向鍵以 <code>0.1 秒</code> 為步長進行前移/後移微調：
                             <ul>
-                                <li>謖我ｽ� <code>Shift</code> + 譁ｹ蜷鷹嵯�夐ｲ陦� <code>1.0 遘�</code> 逧�ｲ苓ｪｿ縲�</li>
-                                <li>謖我ｽ� <code>Ctrl</code> 謌� <code>Alt</code> + 譁ｹ蜷鷹嵯�夐ｲ陦� <code>0.01 遘�</code> 逧�ｶ�ｾｮ隱ｿ縲�</li>
+                                <li>按住 <code>Shift</code> + 方向鍵：進行 <code>1.0 秒</code> 的粗調。</li>
+                                <li>按住 <code>Ctrl</code> 或 <code>Alt</code> + 方向鍵：進行 <code>0.01 秒</code> 的超微調。</li>
                             </ul>
                         </li>
                     </ol>
                 </div>
 
-                <h3>髻ｳ險雁ｱｬ諤ｧ隱ｿ謨ｴ</h3>
-                <p>蝨ｨ螻ｬ諤ｧ髱｢譚ｿ逧�碁浹險翫榊�鬆∽ｸｭ�梧お蜿ｯ莉･謇句虚霈ｸ蜈･蜿�丙謌冶ｪｿ謨ｴ貊第｡ｿ��</p>
+                <h3>音訊屬性調整與多路路由</h3>
+                <p>在屬性面板的「音訊」分頁中，您可以進行高階的多裝置路由與細緻的聲道音量控制：</p>
                 <ul>
-                    <li><strong>髻ｳ驥� (Volume)</strong>�壽而蛻ｶ VLC 隗｣遒ｼ謦ｭ謾ｾ髻ｳ驥擾ｼ梧髪謠ｴ <code>0%</code> 蛻ｰ <code>200%</code> 逧�｢樒寢�御ｸｦ謠蝉ｾ帑ｸ骰ｵ蜿匁ｶ亥鏡驕ｸ莉･蝓ｷ陦悟ｿｫ騾滄撩髻ｳ縲�</li>
-                    <li><strong>騾溷ｺｦ (Speed)</strong>�壽髪謠ｴ隶企滓眺謾ｾ�檎ｯ�恪轤ｺ蜴滄溽噪 <code>0.25</code> 蛟榊芦 <code>4.0</code> 蛟阪�</li>
-                    <li><strong>霈ｸ蜃ｺ陬晉ｽｮ (Output Device)</strong>�夊凶髮ｻ閻ｦ騾｣謗･莠�､壼句､匁磁髻ｳ謨亥今謌夜浹險贋ｻ矩擇�梧ｭ､陌墓怎閾ｪ蜍墓椢闊臥｡ｬ鬮泌錐遞ｱ�梧お蜿ｯ莉･蝟ｮ迯ｨ轤ｺ隧ｲ Cue 險ｭ螳壼ｯｦ鬮秘浹險願ｷｯ逕ｱ霈ｸ蜃ｺ縲�</li>
-                </ul>
-            </section>
-
-            <!-- 6. 蠖ｱ蜒剰ｨｭ螳夊�謗堤ｨ区而蛻ｶ -->
-            <section id="video-display">
-                <h2>6. 蠖ｱ蜒剰ｨｭ螳夊�謗堤ｨ区而蛻ｶ</h2>
-
-                <div class="mockup-container">
-                    <img src="images/06_timing_inspector.png" alt="蠖ｱ蜒乗賜遞玖ｨｭ螳�">
-                </div>
-                <div class="mockup-caption">蝨� 6�唔nspector 逧� Timing 譎る俣謗堤ｨ玖�譴昜ｻｶ隗ｸ逋ｼ險ｭ螳�</div>
-
-                <p>蟆肴名 <strong>蠖ｱ迚� Cue</strong> 蜥� <strong>蝨也援 Cue</strong>�梧お蜿ｯ莉･蝨ｨ螻ｬ諤ｧ髱｢譚ｿ逧�碁｡ｯ遉ｺ縲榊�鬆∬ｪｿ謨ｴ逡ｫ髱｢菴亥ｱ闊�賜遞玖ｦ丞援��</p>
-
-                <h3>蠖ｱ蜒丞ｹｾ菴募ｱｬ諤ｧ</h3>
-                <ul>
-                    <li><strong>蝨門ｱ､螻､邏� (Layer)</strong>�夂ｯ�恪轤ｺ <code>1 ~ 10</code>�悟ｱ､邏壽ц鬮倡噪 Cue 逡ｫ髱｢譛�ｦ�搭蝨ｨ螻､邏壻ｽ守噪 Cue 荵倶ｸ翫�</li>
-                    <li><strong>荳埼乗�蠎ｦ (Opacity)</strong>�壼ｾ� <code>0.0</code> (螳悟�騾乗�) 蛻ｰ <code>1.0</code> (螳悟�荳埼乗�)�悟庄逕ｨ譁ｼ陬ｽ菴懃吻髱｢驥咲槙蜊企乗�陞榊粋縲�</li>
-                    <li><strong>邵ｮ謾ｾ讓｡蠑� (Scale Mode)</strong>��
-                        <ul>
-                            <li><code>Fit (驕ｩ蜷�)</code>�夂ｶｭ謖∝次蟋矩聞蟇ｬ豈皮ｸｮ謾ｾ閾ｳ驍頑｡�ｼ悟�蛛ｴ蜿ｯ閭ｽ逡咎ｻ鷹ｊ縲�</li>
-                            <li><code>Fill (蝪ｫ貊ｿ)</code>�夊｣∝岡荳ｦ蝪ｫ貊ｿ謨ｴ蛟玖ｼｸ蜃ｺ逡ｫ髱｢�御ｸ咲蕗鮟鷹ｊ縲�</li>
-                            <li><code>Stretch (諡我ｼｸ)</code>�壼ｼｷ陦梧級莨ｸ逡ｫ髱｢莉･驪ｪ貊ｿ謨ｴ蛟玖ｼｸ蜃ｺ豈比ｾ具ｼ悟庄閭ｽ逕｢逕溯ｮ雁ｽ｢縲�</li>
-                        </ul>
-                    </li>
-                    <li><strong>菴咲ｽｮ闊�､ｧ蟆� (Transform)</strong>�夐ｻ樣∈ <code>Transform</code> 謖蛾�蜿ｯ髢句福迯ｨ遶狗噪蜿ｯ隕門喧諡匁峙隕也ｪ暦ｼ碁城℃諡匁峙謌紋ｽｿ逕ｨ譁ｹ蜷鷹嵯隱ｿ謨ｴ逡ｫ髱｢蝨ｨ陞｢蟷穂ｸ顔噪 XY 蠎ｧ讓吩ｽ咲ｽｮ莉･蜿雁ｯｬ蠎ｦ縲�ｫ伜ｺｦ豈比ｾ九�</li>
+                    <li><strong>音量 (Volume)</strong>：控制 VLC 解碼播放總音量，支援 <code>0%</code> 到 <code>200%</code> 的增益，並提供一鍵取消勾選以執行快速靜音。</li>
+                    <li><strong>速度 (Speed)</strong>：支援變速播放，範圍為原速的 <code>0.25</code> 倍到 <code>4.0</code> 倍。</li>
+                    <li><strong>多音訊輸出裝置 (Output Devices)</strong>：我們將原本的單選選單升級為多選設備列表（QListWidget）。此處會自動枚舉電腦連接的所有外接音效卡或音訊介面。您可以使用右側的「新增 (Add)」與「刪除 (Delete)」按鈕隨意添加多個不同的輸出路由裝置，並可透過「上移 (Move Up)」與「下移 (Move Down)」調整其順序。播放時，系統會為每個被勾選的輸出設備建立獨立的 VLC MediaPlayer 實例進行微秒級同步播放。</li>
+                    <li><strong>聲道獨立音量包絡線 (Channel Volume Envelopes)</strong>：在波形圖下方，系統支援針對每個輸出裝置、各個獨立聲道進行自訂的線性音量包絡調整。您可以選取對應的聲道索引（Channel），並在波形圖的音量區點擊新增、拖曳包絡控制點，從而對各個聲道在不同時間點的音量進行高精度漸變與定位分配。</li>
                 </ul>
 
-                <h3>譎る俣闊�賜遞区而蛻ｶ (Timing)</h3>
-                <p>豈丞� Cue 蝮�髪謠ｴ髱域ｴｻ逧�凾髢捺而蛻ｶ�梧婿萓ｿ謇馴�辟｡莠ｺ蛟ｼ螳育噪閾ｪ蜍募喧閨ｯ蜍包ｼ�</p>
-                <ul>
-                    <li><strong>蜑咲ｭ牙ｾ� (Pre-Wait)</strong>�夂文謔ｨ謖� GO 隗ｸ逋ｼ蠕鯉ｼ靴ue 譛�ｻｶ驕ｲ謖�ｮ夂噪遘呈丙謇咲悄豁｣髢句ｧ区眺謾ｾ縲�</li>
-                    <li><strong>蠕檎ｭ牙ｾ� (Post-Wait)</strong>�壽ｭ､ Cue 隗ｸ逋ｼ蠕鯉ｼ悟ｿ��育ｶ馴℃謖�ｮ夂ｧ呈丙�檎ｳｻ邨ｱ謇榊�險ｱ荳倶ｸ谺｡謖� <code>Space (GO)</code>縲�</li>
-                    <li><strong>Follow 讓｡蠑� (閾ｪ蜍墓磁郤�)</strong>��
-                        <ul>
-                            <li><code>辟｡ (遲牙ｾ� GO)</code>�壼濤陦悟ｮ檎覆蠕悟ｾ�多�檎ｭ牙ｾ�ｽｿ逕ｨ閠�焔蜍墓潔 GO縲�</li>
-                            <li><code>謦ｭ螳悟ｾ瑚�蜍穂ｸ倶ｸ蛟� (Follow)</code>�壽悽 Cue 謦ｭ謾ｾ螳檎覆�亥桁諡ｬ豺｡蜃ｺ譎る俣�牙ｾ鯉ｼ檎ｫ句叉閾ｪ蜍� GO 荳倶ｸ蛟� Cue縲�</li>
-                            <li><code>髢句ｧ句ｾ檎ｫ句叉荳倶ｸ蛟� (Continue)</code>�壽悽 Cue 髢句ｧ区眺謾ｾ逧�酔譎ゑｼ檎ｫ句叉閾ｪ蜍戊ｧｸ逋ｼ荳倶ｸ蛟� Cue�碁←逕ｨ譁ｼ蠖ｱ髻ｳ蜷梧ｭ･騾｣蜍輔�</li>
-                        </ul>
-                    </li>
-                    <li><strong>驥崎､�ｬ｡謨ｸ (Loop)</strong>�夊ｨｭ螳壼ｪ帝ｫ秘㍾隍�眺謾ｾ谺｡謨ｸ�瑚ｨｭ轤ｺ <code>-1</code> 陦ｨ遉ｺ辟｡髯仙ｾｪ迺ｰ�碁←逕ｨ譁ｼ闊槫床蜍墓�閭梧勹 Loop縲�</li>
-                    <li><strong>霍ｳ霓臥岼讓� (Jump Target)</strong>�夂文豁､ Cue 謦ｭ謾ｾ螳檎覆蠕鯉ｼ梧眺謾ｾ謖�ｨ� (Playhead) 譛��蜍戊ｷｳ霓牙芦謖�ｮ夂噪 Cue 邱ｨ陌滂ｼ碁←逕ｨ譁ｼ髱樒ｷ壽ｧ逧�ｷｳ霓画ｵ∫ｨ九�</li>
-                </ul>
-            </section>
-
-            <!-- 7. 陞｢蟷戊�蟷ｾ菴墓�｡豁｣ (Keystone) -->
-            <section id="keystone">
-                <h2>7. 陞｢蟷戊�蟷ｾ菴墓�｡豁｣ (Keystone)</h2>
-                <p>逡ｶ闊槫床迴ｾ蝣ｴ謚募ｽｱ讖溽噪謚募ｽｱ髱｢闊�橿蟷募争蛯ｾ譁懷､ｾ隗呈凾�檎吻髱｢譛�箸逕溷呈｢ｯ蠖｢謌門ｹｳ陦悟屁驍雁ｽ｢蛛乗万縲りｻ滄ｫ疲署萓帑ｺ�ｰ亥ｱｬ逧�ｻ槫ｰ埼ｻ槫ｹｾ菴墓�｡豁｣蟾･蜈ｷ萓�ｧ｣豎ｺ豁､蝠城｡後�</p>
+                <h3>多音訊裝置路由與聲道音量包絡線配置</h3>
+                <p>軟體支援單個音訊 Cue 同時向多個不同的音訊輸出裝置輸出。音量包絡線不再僅限於單一裝置或全域聲道，而是針對各裝置的各個獨立聲道進行自訂的線性漸變與音量包絡調整，完美適用於多聲道現場演出或複雜的聲場路由。</p>
 
                 <div class="mockup-container">
-                    <img src="images/07_keystone_editor.png" alt="蟷ｾ菴墓｢ｯ蠖｢譬｡豁｣邱ｨ霈ｯ蝎ｨ">
+                    <img src="images/14_multi_device_audio.png" alt="多音訊裝置輸出與波形設定">
                 </div>
-                <div class="mockup-caption">蝨� 7�壼ｹｾ菴墓｢ｯ蠖｢譬｡豁｣謗ｧ蛻ｶ鮟樒ｷｨ霈ｯ蝎ｨ</div>
+                <div class="mockup-caption">圖 5-1：多音訊裝置輸出清單與波形音量包絡線</div>
 
-                <h3>蟷ｾ菴墓�｡豁｣讓｡蠑�</h3>
-                <ol style="margin-left: 20px;">
-                    <li><strong>蜈ｨ蝓滓｢ｯ蠖｢譬｡豁｣ (Global Keystone)</strong>�夐ｻ樊投驕ｸ蝟ｮ縲瑚ｨｭ螳壹坂� 蝨ｨ縲碁｡ｯ遉ｺ險ｭ螳壹榊項謖峨瑚椶蟷慕浣豁｣縲搾ｼ碁幕蝠滓ｭ､蜉溯�縲ょ惠豁､邱ｨ霈ｯ逧            <!-- 10. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode) -->
-            <section id="timecode">
-                <h2>10. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode)</h2>
- 
-                <div class="mockup-container">
-                    <img src="images/12_timecode_cue.png" alt="譎る俣遒ｼ謗ｧ蛻ｶ髱｢譚ｿ闊�ｷ醍｢ｼ">
-                </div>
-                <div class="mockup-caption">蝨� 10�壽凾髢鍋｢ｼ (Timecode) 謗ｧ蛻ｶ髱｢譚ｿ闊�昏遶玖ｷ醍｢ｼ諛ｸ豬ｮ隕也ｪ�</div>
- 
-                <p>譛ｬ霆滄ｫ疲紛蜷井ｺ� SMPTE 讓呎ｺ匁凾髢鍋｢ｼ逕｢逕溷勣�梧署萓� <strong>LTC (髻ｳ險頑凾髢鍋｢ｼ)</strong> 闊� <strong>MTC (MIDI 譎る俣遒ｼ)</strong> 髮呎ｨ｡蠑剰ｼｸ蜃ｺ縲る←逕ｨ譁ｼ辯亥�髻ｳ髻ｿ縲�峭蟆�∫音謨郁ｨｭ蛯咏噪螟ｧ蝙玖�蜍墓而蛻ｶ縲�</p>
- 
-                <h3>荳ｻ隕∝粥閭ｽ闊�橿陦鍋音濶ｲ</h3>
-                <ul>
-                    <li><strong>LTC/MTC 髮呎ｨ｡蠑剰ｼｸ蜃ｺ</strong>�哭TC 謾ｯ謠ｴ髻ｳ險願ｷｯ逕ｱ霈ｸ蜃ｺ荳ｦ邯馴℃ Bessel 莠碁嚴菴朱壽ｿｾ豕｢陌慕炊�娥TC 謾ｯ謠ｴ蝨ｨ蛛丞･ｽ險ｭ螳壻ｸｭ驕ｸ謫��占ｨｭ逧� MIDI 蝓�謌門ｯｦ鬮�/陌帶闘 MIDI 陬晉ｽｮ縲�</li>
-                    <li><strong>陌帶闘霆滄ｫ疲凾髏� Fallback</strong>�夊凶髻ｳ謨亥今陲ｫ迯ｨ菴疲� MIDI 陬晉ｽｮ陦晉ｪ�幕蝠溷､ｱ謨暦ｼ梧怎閾ｪ蜍募�謠幄�陌帶闘鬮倡ｲｾ蠎ｦ譎る据�御ｾ晄答 <code>HH:MM:SS:FF</code> 蟷邇�ｼ域髪謠ｴ 24/25/30 FPS�画戟郤悟燕騾ｲ�御ｸ堺ｽｿ貍泌�荳ｭ譁ｷ縲�</li>
-                    <li><strong>證ｫ蛛懃朽諷句悉驥埼事 (Pause Deduplication)</strong>�夐亟遽� Group 鄒､邨�圻蛛懈凾逕ｱ譁ｼ螟夐㍾ Toggle 蝗槫他騾�謌先圻蛛懃朽諷区慣豸郁檎ｹｼ郤梧眺謾ｾ縲�</li>
-                    <li><strong>譎る俣遒ｼ闊�ｪ帝ｫ秘ｲ蠎ｦ Seek 蜷梧ｭ･螳壻ｽ�</strong>�壼惠蜷御ｸ Group 荳具ｼ瑚凶蟆埼浹霆梧�蠖ｱ迚�ｲ陦� Seek (謦ｭ謾ｾ騾ｲ蠎ｦ隱ｿ謨ｴ)�檎ｳｻ邨ｱ譛��蜍戊ｨ育ｮ礼嶌蟆肴凾髢捺圧荳ｦ蜷梧ｭ･蟆榊酔邨�凾髢鍋｢ｼ Cue 騾ｲ陦� <code>seek_seconds</code> 邨募ｰ榊ｰ埼ｽ翫�</li>
-                    <li><strong>譬ｼ蠑丞喧驕ｮ鄂ｩ霈ｸ蜈･</strong>�壽凾髢鍋｢ｼ蛛冗ｧｻ驥丞惠 Inspector 荳ｭ謠蝉ｾ� <code>HH:MM:SS:FF</code> 驕ｮ鄂ｩ霈ｸ蜈･蛹｡�梧�ｼ蠑丞喧霈ｸ蜈･荳ｦ髦ｲ蜻��</li>
-                </ul>
-            </section>
- 
-            <!-- 11. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview) -->
-            <section id="video-preview">
-                <h2>11. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview)</h2>
- 
-                <div class="mockup-container">
-                    <img src="images/13_video_preview.png" alt="隕冶ｨ企�占ｦｽ隕也ｪ苓�謗ｧ蛻ｶ">
-                </div>
-                <div class="mockup-caption">蝨� 11�夊ｦ冶ｨ企�占ｦｽ隕也ｪ苓�譛荳雁ｱ､鬘ｯ遉ｺ謗ｧ蛻ｶ驕ｸ鬆�</div>
- 
-                <p>轤ｺ莠�ｧ｣豎ｺ蝨ｨ蝟ｮ陞｢蟷�/遲�ｨ伜梛髮ｻ閻ｦ髢狗匸縲∵賜邱ｴ謌也樟蝣ｴ豐呈怏騾｣謗･螟匁磁謚募ｽｱ讖滓凾逧�ｸｬ隧ｦ髴豎ゑｼ瑚ｻ滄ｫ疲署萓帑ｺ�<strong>縲瑚ｦ冶ｨ企�占ｦｽ讓｡蠑上�</strong>縲よｭ､讓｡蠑丞庄蟆�次譛ｬ蝨ｨ蜑ｯ陞｢蟷�/謚募ｽｱ讖溷�陞｢蟷戊ｼｸ蜃ｺ逧�ｦ也ｪ暦ｼ悟�謠帷ぜ蜈ｷ蛯呵ｦ也ｪ玲ｨ咎｡悟�闊�ｸｮ謾ｾ謖蛾�逧�勸騾夊ｦ也ｪ暦ｼ梧婿萓ｿ蝨ｨ荳ｻ逡ｫ髱｢荳ｭ蜷梧凾騾ｲ陦檎ｷｨ霈ｯ闊�ｽｱ蜒城�占ｦｽ縲�</p>
- 
-                <h3>蜉溯�迚ｹ濶ｲ闊�桃菴懆ｪｪ譏�</h3>
-                <ul>
-                    <li><strong>髮呎ｨ｡蠢ｫ騾溷�謠�</strong>�壼惠鬆るΚ驕ｸ蝟ｮ縲瑚ｦ也ｪ� (Window)縲坂�縲瑚ｦ冶ｨ企�占ｦｽ讓｡蠑� (Video Preview Mode)縲堺ｸｭ�悟鏡驕ｸ蜊ｳ蜿ｯ蟆�兜蠖ｱ隕也ｪ玲隼轤ｺ譛画｡�噪隕也ｪ怜喧鬆占ｦｽ�帛叙豸亥鏡驕ｸ蜑��蜍墓△蠕ｩ轤ｺ蜈ｨ陞｢蟷墓兜蠖ｱ讓｡蠑上よｭ､險ｭ螳壽怎閾ｪ蜍募┫蟄倩�蛛丞･ｽ險ｭ螳壻ｸｭ�御ｸ区ｬ｡蝠溷虚譎よ怎險倅ｽ丈ｸ頑ｬ｡逧�∈謫��</li>
-                    <li><strong>譛荳雁ｱ､鬘ｯ遉ｺ (Stay on Top)</strong>�夂文蝠溽畑鬆占ｦｽ讓｡蠑乗凾�悟庄騾ｲ荳豁･蜍ｾ驕ｸ驕ｸ蝟ｮ荳ｭ逧�碁�占ｦｽ譛荳雁ｱ､鬘ｯ遉ｺ (Preview Stay on Top)縲搾ｼ梧ｭ､譎る�占ｦｽ隕也ｪ玲怎蠑ｷ蛻ｶ鬘ｯ遉ｺ蝨ｨ謇譛牙�莉冶ｦ也ｪ礼噪荳頑婿�梧婿萓ｿ蝨ｨ隱ｿ謨ｴ Inspector 螻ｬ諤ｧ謌也ｷｨ霈ｯ Cue 蛻苓｡ｨ譎ゑｼ悟叉譎りｧ逵狗吻髱｢隶雁喧閠御ｸ肴怎陲ｫ荳ｻ遞句ｼ剰ｦ也ｪ鈴�謫九�</li>
-                    <li><strong>貊鷹ｼ�諡匁峙闊��逕ｱ邵ｮ謾ｾ</strong>�壼惠鬆占ｦｽ讓｡蠑丈ｸ具ｼ梧お蜿ｯ莉･菴ｿ逕ｨ貊鷹ｼ�莉ｻ諢乗許譖ｳ縲∬ｪｿ謨ｴ鬆占ｦｽ隕也ｪ礼噪螟ｧ蟆擾ｼ檎爆閾ｳ諡牙芦莉ｻ諢剰椶蟷穂ｽ咲ｽｮ騾ｲ陦梧賜邱ｴ讓｡謫ｬ縲�</li>
-                </ul>
-            </section>
- 
-            <!-- 12. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕� -->
-            <section id="project">
-                <h2>12. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕�</h2>
- 
-                <div class="mockup-container">
-                    <img src="images/10_project_menu.png" alt="蟆域｡育ｮ｡逅��謇灘桁">
-                </div>
-                <div class="mockup-caption">蝨� 12�壼ｰ域｡磯∈蝟ｮ蜿頑遠蛹�さ驕樣∈鬆�</div>
- 
-                <p>Cue Lab 蟆域｡井ｻ･蠕檎ｶｴ蜷咲ぜ <code>.cuelab.json</code> 逧�ｰ域｡域ｪ秘ｲ陦悟┫蟄倥りｩｲ讙疲｡井ｿ晏ｭ倅ｺ� Cue 逧���ｺ上∵園譛画凾髢馴聞蠎ｦ縲∵ｷ｡蜈･豺｡蜃ｺ遘呈丙縲�浹驥上∝ｹｾ菴� Keystone 遲我ｸｭ郢ｼ雉�侭縲�</p>
- 
-                <div class="warning-box">
-                    <h4>笞��� 蟐帝ｫ碑ｷｯ蠕醍ｮ｡逅�剞蛻ｶ</h4>
-                    <p>鬆占ｨｭ諠�ｳ∽ｸ具ｼ檎文謔ｨ譁ｰ蠅槫ｪ帝ｫ疲ｪ疲｡郁�蛻苓｡ｨ譎ゑｼ悟ｰ域｡域ｪ泌�菫晏ｭ倡噪譏ｯ謔ｨ譛ｬ讖溽噪<strong>邨募ｰ崎ｷｯ蠕�</strong>�亥ｦ� <code>D:\ShowMedia\audio.wav</code>�峨り凶謔ｨ髴隕∝ｰ�ｭ､蟆域｡域狭雋晏芦蜿ｦ荳蜿ｰ貍泌�髮ｻ閻ｦ�悟庄閭ｽ譛�屏轤ｺ遑ｬ遒溽｣∫｢溽ｬｦ縲∽ｽｿ逕ｨ閠�錐遞ｱ荳榊酔閠悟ｰ手�蟐帝ｫ秘⊆螟ｱ (File Not Found)縲�</p>
-                </div>
- 
-                <h3>謇灘桁謇譛画ｪ疲｡� (Package Project)</h3>
-                <p>轤ｺ莠�ｯｦ迴ｾ螳檎ｾ守噪蟆域｡域莫蟶ｶ�瑚ｻ滄ｫ泌�蟒ｺ莠�ｸ骰ｵ謇灘桁蜉溯���</p>
                 <div class="step-box">
-                    <h4>謇灘桁闊�ｧｻ蜍墓ｵ∫ｨ�</h4>
+                    <h4>多音訊裝置路由操作流程</h4>
                     <ol>
-                        <li>鮟樊投驕ｸ蝟ｮ縲梧ｪ疲｡医坂�縲梧遠蛹�園譛画ｪ疲｡�...縲阪�</li>
-                        <li>驕ｸ謫�ｸ蛟狗ｩｺ逧�┫蟄倩ｳ�侭螟ｾ�檎ｳｻ邨ｱ譛��蜍募惠隧ｲ雉�侭螟ｾ蜈ｧ蟒ｺ遶� <code>audio/</code>縲�<code>video/</code> 闊� <code>masks/</code> 蟄占ｳ�侭螟ｾ縲�</li>
-                        <li>閾ｪ蜍募ｰ�お蟆域｡井ｸｭ菴ｿ逕ｨ蛻ｰ逧�園譛蛾浹險翫∝ｽｱ迚�∝恂迚��驕ｮ鄂ｩ蝨也援隍�｣ｽ諡ｷ雋晁�隧ｲ雉�侭螟ｾ荳ｭ縲�</li>
-                        <li>閾ｪ蜍募ｰ�ｰ域｡� JSON 讙疲｡亥�逧�園譛臥ｵ募ｰ崎ｷｯ蠕第隼蟇ｫ轤ｺ莉･隧ｲ雉�侭螟ｾ轤ｺ襍ｷ鮟樒噪<strong>逶ｸ蟆崎ｷｯ蠕�</strong>�御ｸｦ驥肴眠蜻ｽ蜷榊┫蟄倥�</li>
+                        <li><strong>新增輸出裝置</strong>：在 Inspector 屬性面板的「音訊」分頁中，點擊<strong>「新增 (Add)」</strong>按鈕，從下拉選單中選擇要輸出的實體音效卡或音訊介面。</li>
+                        <li><strong>管理裝置列表</strong>：選取列表中的裝置後，可以使用<strong>「刪除 (Delete)」</strong>按鈕將其移除；或使用<strong>「上移 (Move Up)」</strong>與<strong>「下移 (Move Down)」</strong>調整其路由優先順序與播放序列。</li>
+                        <li><strong>多路同步播放</strong>：播放時，系統會自動為列表中每個勾選的輸出設備建立獨立的 VLC 播放器實例進行微秒級同步播放。</li>
                     </ol>
                 </div>
- 
-                <h3>閾ｪ蜍戊ｷｯ蠕題�逋呈ｩ溷宛</h3>
-                <p>逡ｶ謔ｨ蟆�遠蛹�･ｽ逧�ｰ域｡亥､ｾ隍�｣ｽ蛻ｰ蜈ｶ莉夜崕閻ｦ荳ｦ髮呎投 <code>.cuelab.json</code> 髢句福譎ゑｼ瑚ｻ滄ｫ疲怎閾ｪ蜍募濤陦瑚�逋抵ｼ�</p>
+
+                <div class="mockup-container">
+                    <img src="images/15_audio_envelope.png" alt="波形與聲道音量包絡線調整">
+                </div>
+                <div class="mockup-caption">圖 5-2：波形編輯器與聲道獨立音量包絡點（音量標點）</div>
+
+                <div class="step-box">
+                    <h4>改變音量標點與聲道包絡線操作流程</h4>
+                    <ol>
+                        <li><strong>選取目標裝置與通道</strong>：切換至屬性面板的「波形」分頁，在波形圖上方選擇要編輯的<strong>輸出裝置通道索引</strong>（例如：通道 1、通道 2）。</li>
+                        <li><strong>新增/編輯音量標點（Envelope Points）</strong>：
+                            <ul>
+                                <li><strong>新增標點</strong>：在波形下方的音量包絡線區域（藍色線條）點擊滑鼠左鍵，即可在指定時間位置新增一個黃色的音量標點。</li>
+                                <li><strong>調整音量值與時間</strong>：直接按住黃色標點進行上下拖曳（調整 0% 到 200% 的音量增益）或左右拖曳（調整時間軸位置）。</li>
+                                <li><strong>點對點線性漸變</strong>：系統會自動在這些標點之間進行線性插值計算，並在播放時動態改變音量，實現滑順的漸變效果。</li>
+                            </ul>
+                        </li>
+                        <li><strong>數據管理</strong>：在波形分頁下方的表格中，會詳細列出所有包絡點的精準時間（秒）與音量值，您也可以直接在表格中點擊進行數值編輯或刪除標點。</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 6. 影像設定與排程控制 -->
+            <section id="video-display">
+                <h2>6. 影像設定與排程控制</h2>
+
+                <div class="mockup-container">
+                    <img src="images/06_timing_inspector.png" alt="影像排程設定">
+                </div>
+                <div class="mockup-caption">圖 6：Inspector 的 Timing 時間排程與條件觸發設定</div>
+
+                <p>對於 <strong>影片 Cue</strong> 和 <strong>圖片 Cue</strong>，您可以在屬性面板的「顯示」分頁調整畫面佈局與排程規則：</p>
+
+                <h3>影像幾何屬性</h3>
                 <ul>
-                    <li>蜆ｪ蜈亥�貂ｬ蜴滓怏逧�ｵ募ｰ崎ｷｯ蠕第弍蜷ｦ蟄伜惠縲�</li>
-                    <li>闍･荳榊ｭ伜惠�梧怎閾ｪ蜍墓鞄蜿也文蜑埼幕蝠滉ｹ句ｰ域｡� JSON 謇蝨ｨ逧�ｳ�侭螟ｾ霍ｯ蠕托ｼ悟惠逡ｶ蜑咲噪逶ｸ蟆咲岼骭�ｼ井ｾ句ｦ� <code>audio/</code>縲�<code>video/</code>縲�<code>masks/</code> 遲会ｼ我ｸ玖�蜍暮�蟆榊ｰ区伽蜷悟錐逧�ｪ帝ｫ疲ｪ疲｡井ｸｦ菫ｮ蠕ｩ縲�</li>
-                    <li>騾吩ｿ晁ｭ我ｺ�狭雋晏ｾ檎噪蟆域｡郁�髢狗ｮｱ蜊ｳ逕ｨ�御ｸ肴怎逋ｼ逕滓ｪ疲｡磯⊆螟ｱ縲�</li>
+                    <li><strong>圖層層級 (Layer)</strong>：範圍為 <code>1 ~ 10</code>，層級愈高的 Cue 畫面會覆蓋在層級低的 Cue 之上。</li>
+                    <li><strong>不透明度 (Opacity)</strong>：從 <code>0.0</code> (完全透明) 到 <code>1.0</code> (完全不透明)，可用於製作畫面重疊半透明融合。</li>
+                    <li><strong>縮放模式 (Scale Mode)</strong>：
+                        <ul>
+                            <li><code>Fit (適合)</code>：維持原始長寬比縮放至邊框，兩側可能留黑邊。</li>
+                            <li><code>Fill (填滿)</code>：裁剪並填滿整個輸出畫面，不留黑邊。</li>
+                            <li><code>Stretch (拉伸)</code>：強行拉伸畫面以鋪滿整個輸出比例，可能產生變形。</li>
+                        </ul>
+                    </li>
+                    <li><strong>位置與大小 (Transform)</strong>：點選 <code>Transform</code> 按鈕可開啟獨立的可視化拖曳視窗，透過拖曳或使用方向鍵調整畫面在螢幕上的 XY 座標位置以及寬度、高度比例。</li>
+                </ul>
+
+                <h3>時間與排程控制 (Timing)</h3>
+                <p>每個 Cue 均支援靈活的時間控制，方便打造無人值守的自動化聯動：</p>
+                <ul>
+                    <li><strong>前等待 (Pre-Wait)</strong>：當您按 GO 觸發後，Cue 會延遲指定的秒數才真正開始播放。</li>
+                    <li><strong>後等待 (Post-Wait)</strong>：此 Cue 觸發後，必須經過指定秒數，系統才允許下一次按 <code>Space (GO)</code>。</li>
+                    <li><strong>Follow 模式 (自動接續)</strong>：
+                        <ul>
+                            <li><code>無 (等待 GO)</code>：執行完畢後待命，等待使用者手動按 GO。</li>
+                            <li><code>播完後自動下一個 (Follow)</code>：本 Cue 播放完畢（包括淡出時間）後，立即自動 GO 下一個 Cue。</li>
+                            <li><code>開始後立即下一個 (Continue)</code>：本 Cue 開始播放的同時，立即自動觸發下一個 Cue，適用於影音同步連動。</li>
+                        </ul>
+                    </li>
+                    <li><strong>重複次數 (Loop)</strong>：設定媒體重複播放次數，設為 <code>-1</code> 表示無限循環，適用於舞台動態背景 Loop。</li>
+                    <li><strong>跳轉目標 (Jump Target)</strong>：當此 Cue 播放完畢後，播放指標 (Playhead) 會自動跳轉到指定的 Cue 編號，適用於非線性的跳轉流程。</li>
                 </ul>
             </section>
- 
-            <!-- 13. 謨�囿謗帝勁 -->
-            <section id="troubleshoot">
-                <h2>13. 謨�囿謗帝勁</h2>
- 
+
+            <!-- 7. 螢幕與幾何校正 (Keystone) -->
+            <section id="keystone">
+                <h2>7. 螢幕與幾何校正 (Keystone)</h2>
+                <p>當舞台現場投影機的投影面與銀幕呈傾斜夾角時，畫面會產生倒梯形或平行四邊形偏斜。軟體提供了專屬的點對點幾何校正工具來解決此問題。</p>
+
                 <div class="mockup-container">
-                    <img src="images/11_settings_dialog.png" alt="蛛丞･ｽ險ｭ螳壼ｰ崎ｩｱ譯�">
+                    <img src="images/07_keystone_editor.png" alt="幾何梯形校正編輯器">
                 </div>
-                <div class="mockup-caption">蝨� 13�壼￥螂ｽ險ｭ螳壻ｸｭ逧�｡ｯ遉ｺ霈ｸ蜃ｺ險ｭ螳夐��擇</div>
- 
+                <div class="mockup-caption">圖 7：幾何梯形校正控制點編輯器</div>
+
+                <h3>幾何校正模式</h3>
+                <ol style="margin-left: 20px;">
+
+                    <li><strong>全域螢幕校正 (Global Screen Calibration)</strong>：點擊功能表「設定」→ 點擊「螢幕校正」。在此定義的幾何設定會直接修改<strong>整個輸出螢幕</strong>，對應所有播放的媒體畫面。</li>
+                    <li><strong>單一 Cue 幾何校正 (Cue-level Calibration)</strong>：在屬性面板「顯示」分頁下，選擇「Keystone」。這只會修改<strong>該特定影片或圖片 Cue</strong>，適合用於對齊特定的投影區域。</li>
+                </ol>
+
                 <div class="step-box">
-                    <h4>Q1: 蜑ｯ陞｢蟷�/謚募ｽｱ讖溽┌豕戊ｼｸ蜃ｺ逡ｫ髱｢��</h4>
-                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>隲句�蝨ｨ Windows 鬘ｯ遉ｺ蝎ｨ險ｭ螳壻ｸｭ�悟ｰ�､匁磁陞｢蟷戊ｨｭ螳夂ぜ縲悟ｻｶ莨ｸ縲肴ｨ｡蠑擾ｼ瑚碁撼縲悟酔豁･/隍�｣ｽ縲肴ｨ｡蠑上�</li>
-                        <li>髢句福霆滄ｫ斐瑚ｨｭ螳壹榊ｰ崎ｩｱ譯�ｼ悟惠縲碁｡ｯ遉ｺ險ｭ螳壹堺ｸ狗噪縲梧兜蠖ｱ霈ｸ蜃ｺ陞｢蟷輔堺ｸ区級驕ｸ蝟ｮ荳ｭ驕ｸ謫�ｰ肴㊨逧�､匁磁鬘ｯ遉ｺ蝎ｨ index�磯壼ｸｸ轤ｺ 1 謌� 2�会ｼ悟�鮟樣∈遒ｺ螳壽�螂礼畑縲�</li>
+                    <h4>Keystone 鍵盤快速鍵</h4>
+                    <p>為了方便技術人員在現場單人校正螢幕，編輯畫布支援以下鍵盤操作：</p>
+                    <ul>
+                        <li>用滑鼠點擊任意角落錨點以選取它（選取後會變為<strong>綠色</strong>）。</li>
+                        <li>按鍵盤的 <code>↑</code>、<code>↓</code>、<code>←</code> 或 <code>→</code> 方向鍵，以 <code>0.002</code> 標準化座標（約 2 像素）為單位移動錨點。</li>
+                        <li>按住 <code>Shift</code> + 方向鍵：進行 <code>0.01</code> 的粗調。</li>
+                        <li>按住 <code>Ctrl</code> 或 <code>Alt</code> + 方向鍵：進行 <code>0.0005</code> 的微調。</li>
                     </ul>
                 </div>
- 
-                <div class="step-box">
-                    <h4>Q2: 蠖ｱ蜒城ｊ逡瑚｢ｫ蛻�脂�梧�譴ｯ蠖｢譬｡豁｣蠕梧級莨ｸ隶雁ｽ｢��</h4>
-                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>隲句惠險ｭ螳壻ｸｭ蟆�ｧ｣譫仙ｺｦ蠕槭悟次逕溯ｧ｣譫仙ｺｦ (Native)縲榊�謠帷ぜ蝗ｺ螳夂噪豈比ｾ具ｼ井ｾ句ｦ� 1920x1080�峨�</li>
-                        <li>驕ｸ蜿冶ｩｲ蠖ｱ蜒� Cue�悟惠 Inspector 逧�碁｡ｯ遉ｺ縲榊�鬆∽ｸｭ蝌苓ｩｦ蟆�檎ｸｮ謾ｾ讓｡蠑上榊�謠帷ぜ <code>Fit</code> 謌� <code>Fill</code>�御ｻ･蛻ｩ蜷磯←蝨ｰ閾ｪ驕ｩ諛峨�</li>
-                    </ul>
+            </section>
+
+            <!-- 8. 局部遮罩與全域遮罩開關 -->
+            <section id="masking">
+                <h2>8. 局部遮罩與全域遮罩開關</h2>
+
+                <div class="mockup-container">
+                    <img src="images/08_mask_editor.png" alt="遮罩編輯器分頁">
                 </div>
- 
-                <div class="step-box">
-                    <h4>Q3: 謦ｭ謾ｾ蠖ｱ迚��髻ｳ讓よ凾逋ｼ逕滓ｲ呈怏閨ｲ髻ｳ逧�ュ豕�ｼ�</h4>
-                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>隲句惠螻ｬ諤ｧ髱｢譚ｿ縲碁浹險翫榊�鬆∽ｸｭ�梧ｪ｢譟･縲瑚ｼｸ蜃ｺ陬晉ｽｮ縲堺ｸ区級驕ｸ蝟ｮ縲ら｢ｺ隱肴弍蜷ｦ陲ｫ蛻��蛻ｰ莠�険隱､逧��蜊｡謌門ｷｲ諡秘勁逧�｣晉ｽｮ縲ょｻｺ隴ｰ謾ｹ驕ｸ轤ｺ縲檎ｳｻ邨ｱ鬆占ｨｭ (default)縲肴�驥肴眠驕ｸ謫�文蜑堺ｽ懃畑荳ｭ逧�ｯｦ鬮碑�蜊｡縲�</li>
-                        <li>遒ｺ隱榊ｱｬ諤ｧ髱｢譚ｿ荳ｭ逧�瑚ｼｸ蜃ｺ髻ｳ險翫肴�ｸ蜿匁婿蝪頑怏蜍ｾ驕ｸ�郁凶辟｡蜍ｾ驕ｸ譛�ｼｷ蛻ｶ髱憺浹�峨�</li>
-                    </ul>
+                <div class="mockup-caption">圖 8：全域螢幕遮罩設定與模式</div>
+
+                <p>本軟體內建 OpenGL 螢幕空間遮罩引擎。您可以載入自訂的 PNG 形狀圖片，來對投影區域進行去邊、羽化、裁剪或遮蔽。</p>
+
+                <h3>遮罩混合模式</h3>
+                <ul>
+                    <li><strong>標準 (Normal)</strong>：直接將遮罩圖片覆蓋在媒體畫面的最上方。</li>
+                    <li><strong>裁剪保留 (Crop)</strong>：僅保留遮罩圖片不透明/白色區域內的媒體畫面，其餘區域顯示為黑色。適用於圓形或三角形的投影外框。</li>
+                    <li><strong>遮蔽隱藏 (Block)</strong>：將遮罩圖片不透明區域後方的媒體畫面遮蔽，顯示為黑色形狀。非常適合用來遮擋舞台柱子、硬體設備或喇叭架的反光。</li>
+                </ul>
+
+                <h3>遮罩層級</h3>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Cue 遮罩</strong>：使用者建立一個 <code>CueType.MASK</code> 類型的 Cue，其中包含數個遮罩項目。其他圖片或影片 Cue 可以透過在其屬性面板的 <code>parent_mask_id</code> 中選擇該遮罩 ID 來套用。</li>
+                    <li><strong>全域螢幕遮罩</strong>：開啟「螢幕矯正」設定對話框，切換至「螢幕遮罩」分頁。在此設定的遮罩項目會套用至整個投影螢幕輸出。</li>
+                </ol>
+
+                <div class="warning-box">
+                    <h4>💡 全域遮罩啟用開關</h4>
+                    <p>在「螢幕遮罩」設定頁面的最上方，設有一個<strong>「啟用全域遮罩」核取方塊</strong>。若您設定了複雜的全域遮罩圖層，但需要暫時投影全螢幕測試畫面進行對齊，只需取消勾選此方塊即可立即停用全域遮罩，而不會遺失已設定的遮罩項目。</p>
                 </div>
- 
-                <div class="step-box">
-                    <h4>Q4: 謖我ｸ矩嵯逶､ Ctrl+Z 豐呈怏蜿肴㊨��</h4>
-                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>隲狗｢ｺ菫晉岼蜑堺ｸｻ隕也ｪ礼噪辟ｦ鮟樔ｽ肴名 Cue 蛻苓｡ｨ荳奇ｼ亥庄蝨ｨ蛻苓｡ｨ遨ｺ逋ｽ陌暮ｻ樊投貊鷹ｼ�蟾ｦ骰ｵ�峨り凶辟ｦ鮟樊ｭ｣蛛懃蕗蝨ｨ譟蝉ｺ帛ｱｬ諤ｧ霈ｸ蜈･譯���悟ｿｫ騾滄嵯譛�━蜈域署萓帶枚蟄礼ｷｨ霈ｯ謦､驫ｷ縲�</li>
-                    </ul>
+            </section>
+
+            <!-- 9. 播放控制與鍵盤快速鍵 -->
+            <section id="playback">
+                <h2>9. 播放控制與鍵盤快速鍵</h2>
+
+                <div class="mockup-container">
+                    <img src="images/09_transport_bar.png" alt="控制工具列">
                 </div>
-            </section>陬｡蛻ｪ髯､逡ｶ蜑埼∈蜿也噪 Cue 蛻鈴��岼縲�</td>
+                <div class="mockup-caption">圖 9：底部控制工具列的 GO 與 Panic 觸發按鈕</div>
+
+                <p>為確保現場演出的安全與執行效率，Cue Lab 設計了結構化的快速鍵與播放觸發機制。</p>
+
+                <h3>核心播放快速鍵</h3>
+                <table>
+                    <tr>
+                        <th style="width: 20%;">快速鍵</th>
+                        <th style="width: 25%;">控制按鈕</th>
+                        <th>執行行為</th>
+                    </tr>
+                    <tr>
+                        <td><code>Space</code></td>
+                        <td>工具列 <strong>GO</strong></td>
+                        <td>觸發當前選取的 Cue。播放後會自動將播放指標 (Playhead) 移動至下一列。</td>
+                    </tr>
+                    <tr>
+                        <td><code>Escape</code> (ESC)</td>
+                        <td>工具列 <strong>Panic</strong></td>
+                        <td>立即淡出並停止所有正在播放的音訊與影片。</td>
+                    </tr>
+                    <tr>
+                        <td><code>P</code></td>
+                        <td>工具列 <strong>暫停</strong></td>
+                        <td>對所有執行中的 Cue 進行暫停/繼續播放切換。</td>
+                    </tr>
+                    <tr>
+                        <td><code>↑</code> / <code>↓</code></td>
+                        <td>工具列 <strong>上一個 / 下一個</strong></td>
+                        <td>上下移動播放指標 (Playhead) 的選擇列。</td>
+                    </tr>
+                    <tr>
+                        <td><code>Delete</code></td>
+                        <td>工具列 <strong>刪除 Cue</strong></td>
+                        <td>自列表中刪除當前選取的 Cue 列項目。</td>
                     </tr>
                     <tr>
                         <td><code>Ctrl + C</code></td>
                         <td>-</td>
-                        <td>隍�｣ｽ驕ｸ蜿也噪 Cue 蛻怜所蜈ｶ蜈ｧ驛ｨ謇譛牙純謨ｸ閾ｳ蜑ｪ雋ｼ邁ｿ�郁凶蝨ｨ譁�ｭ苓ｼｸ蜈･譯��蜑�ぜ隍�｣ｽ譁�ｭ暦ｼ峨�</td>
+                        <td>複製選取的 Cue 列及其內部所有參數至剪貼簿（若在文字輸入框內則為複製文字）。</td>
                     </tr>
                     <tr>
                         <td><code>Ctrl + V</code></td>
                         <td>-</td>
-                        <td>蟆�岡雋ｼ邁ｿ荳ｭ逧� Cue 隍�｣ｽ荳ｦ謠貞�蝨ｨ逡ｶ蜑埼∈蜿門�逧�ｸ区婿�御ｸｦ閾ｪ蜍暮㍾譁ｰ蛻��蜚ｯ荳隴伜挨遒ｼ闊�◇蠅樒ｷｨ陌溘�</td>
+                        <td>將剪貼簿中的 Cue 複製並插入在當前選取列的下方，並自動重新分配唯一識別碼與遞增編號。</td>
                     </tr>
                     <tr>
                         <td><code>Ctrl + Z</code></td>
                         <td>-</td>
-                        <td><strong>蠕ｩ蜴� (Undo)</strong>縲よ彫蝗樔ｸ贋ｸ豁･逧�純謨ｸ菫ｮ謾ｹ縲∫ｧｻ蜉ｨ縲∬､�｣ｽ謌門穐髯､縲�</td>
+                        <td><strong>復原 (Undo)</strong>。撤回上一步的參數修改、移動、複製或刪除。</td>
                     </tr>
                     <tr>
                         <td><code>Ctrl + Y</code></td>
                         <td>-</td>
-                        <td><strong>驥榊★ (Redo)</strong>縲る㍾蛛夊｢ｫ蠕ｩ蜴溽噪蜍穂ｽ懊�</td>
+                        <td><strong>重做 (Redo)</strong>。重做被復原的動作。</td>
                     </tr>
                 </table>
             </section>
 
-            <!-- 10. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕� -->
-            <section id="project">
-                <h2>10. 蟆域｡育ｮ｡逅��謇灘桁蛯ｳ驕�</h2>
-
+            <!-- 10. 時間碼系統 (Timecode) -->
+            <section id="timecode">
+                <h2>10. 時間碼系統 (Timecode)</h2>
+ 
                 <div class="mockup-container">
-                    <img src="images/10_project_menu.png" alt="蟆域｡育ｮ｡逅��謇灘桁">
+                    <img src="images/12_timecode_cue.png" alt="時間碼控制面板與跑碼">
                 </div>
-                <div class="mockup-caption">蝨� 10�壼ｰ域｡磯∈蝟ｮ蜿頑遠蛹�さ驕樣∈鬆�</div>
+                <div class="mockup-caption">圖 10：時間碼 (Timecode) 控制面板與獨立跑碼懸浮視窗</div>
+ 
+                <p>本軟體整合了 SMPTE 標準時間碼產生器，提供 <strong>LTC (音訊時間碼)</strong> 與 <strong>MTC (MIDI 時間碼)</strong> 雙模式輸出。適用於燈光音響、雷射、特效設備的大型聯動控制。</p>
+ 
+                <h3>主要功能與技術特色</h3>
+                <ul>
+                    <li><strong>LTC/MTC 雙模式輸出</strong>：LTC 支援音訊路由輸出並經過 Bessel 二階低通濾波處理；MTC 支援在偏好設定中選擇預設的 MIDI 埠或實體/虛擬 MIDI 裝置。</li>
+                    <li><strong>虛擬軟體時鐘 Fallback</strong>：若音效卡被獨佔或 MIDI 裝置衝突開啟失敗，會自動切換至虛擬高精度時鐘，依據 <code>HH:MM:SS:FF</code> 幀率（支援 24/25/30 FPS）持續前進，不使演出中斷。</li>
+                    <li><strong>暫停狀態去重鎖 (Pause Deduplication)</strong>：防範 Group 群組暫停時由於多重 Toggle 回呼造成暫停狀態抵消而繼續播放。</li>
+                    <li><strong>時間碼與媒體進度 Seek 同步定位</strong>：在同一 Group 下，若對音軌或影片進行 Seek (播放進度調整)，系統會自動計算相對時間戳並同步對同組時間碼 Cue 進行 <code>seek_seconds</code> 絕對對齊。</li>
+                    <li><strong>格式化遮罩輸入</strong>：時間碼偏移量在 Inspector 中提供 <code>HH:MM:SS:FF</code> 遮罩輸入匡，格式化輸入並防呆。</li>
+                </ul>
+            </section>
 
-                <p>Cue Lab 蟆域｡井ｻ･蠕檎ｶｴ蜷咲ぜ <code>.cuelab.json</code> 逧�ｰ域｡域ｪ秘ｲ陦悟┫蟄倥りｩｲ讙疲｡井ｿ晏ｭ倅ｺ� Cue 逧���ｺ上∵園譛画凾髢馴聞蠎ｦ縲∵ｷ｡蜈･豺｡蜃ｺ遘呈丙縲�浹驥上∝ｹｾ菴� Keystone 遲我ｸｭ郢ｼ雉�侭縲�</p>
+            <!-- 11. 視訊預覽視窗 (Video Preview) -->
+            <section id="video-preview">
+                <h2>11. 視訊預覽視窗 (Video Preview)</h2>
+ 
+                <div class="mockup-container">
+                    <img src="images/13_video_preview.png" alt="視訊預覽視窗與控制">
+                </div>
+                <div class="mockup-caption">圖 11：視訊預覽視窗與最上層顯示控制選項</div>
+ 
+                <p>為了解決在單螢幕/筆記型電腦開發、排練或現場沒有連接外接投影機時的測試需求，軟體提供了<strong>「視訊預覽模式」</strong>。此模式可將原本在副螢幕/投影機全螢幕輸出的視窗，切換為具備視窗標題列與縮放按鈕的普通視窗，方便在主畫面中同時進行編輯與影像預覽。</p>
+ 
+                <h3>功能特色與操作說明</h3>
+                <ul>
+                    <li><strong>雙模快速切換</strong>：在頂部選單「視窗 (Window)」→「視訊預覽模式 (Video Preview Mode)」中，勾選即可將投影視窗改為有框的視窗化預覽；取消勾選則自動恢復為全螢幕投影模式。此設定會自動儲存至偏好設定中，下次啟動時會記住上次的選擇。</li>
+                    <li><strong>最上層顯示 (Stay on Top)</strong>：當啟用預覽模式時，可進一步勾選選單中的「預覽最上層顯示 (Preview Stay on Top)」，此時預覽視窗會強制顯示在所有其他視窗的上方，方便在調整 Inspector 屬性或編輯 Cue 列表時，即時觀看畫面變化而不會被主程式視窗遮擋。</li>
+                    <li><strong>滑鼠拖曳與自由縮放</strong>：在預覽模式下，您可以使用滑鼠任意拖曳、調整預覽視窗的大小，甚至拉到任意螢幕位置進行排練模擬。</li>
+                </ul>
+            </section>
 
+            <!-- 12. 專案管理與打包傳遞 -->
+            <section id="project">
+                <h2>12. 專案管理與打包傳遞</h2>
+ 
+                <div class="mockup-container">
+                    <img src="images/10_project_menu.png" alt="專案管理與打包">
+                </div>
+                <div class="mockup-caption">圖 12：專案選單及打包傳遞選項</div>
+ 
+                <p>Cue Lab 專案以後綴名為 <code>.cuelab.json</code> 的專案檔進行儲存。該檔案保存了 Cue 的順序、所有時間長度、淡入淡出秒數、音量、幾何 Keystone 等中繼資料。</p>
+ 
                 <div class="warning-box">
-                    <h4>笞��� 蟐帝ｫ碑ｷｯ蠕醍ｮ｡逅�剞蛻ｶ</h4>
-                    <p>鬆占ｨｭ諠�ｳ∽ｸ具ｼ檎文謔ｨ譁ｰ蠅槫ｪ帝ｫ疲ｪ疲｡郁�蛻苓｡ｨ譎ゑｼ悟ｰ域｡域ｪ泌�菫晏ｭ倡噪譏ｯ謔ｨ譛ｬ讖溽噪<strong>邨募ｰ崎ｷｯ蠕�</strong>�亥ｦ� <code>D:\ShowMedia\audio.wav</code>�峨り凶謔ｨ髴隕∝ｰ�ｭ､蟆域｡域狭雋晏芦蜿ｦ荳蜿ｰ貍泌�髮ｻ閻ｦ�悟庄閭ｽ譛�屏轤ｺ遑ｬ遒溽｣∫｢溽ｬｦ縲∽ｽｿ逕ｨ閠�錐遞ｱ荳榊酔閠悟ｰ手�蟐帝ｫ秘⊆螟ｱ (File Not Found)縲�</p>
+                    <h4>⚠️ 媒體路徑管理限制</h4>
+                    <p>預設情況下，當您新增媒體檔案至列表時，專案檔內保存的是您本機的<strong>絕對路徑</strong>（如 <code>D:\ShowMedia\audio.wav</code>）。若您需要將此專案拷貝到另一台演出電腦，可能會因為硬碟磁碟符、使用者名稱不同而導致媒體遺失 (File Not Found)。</p>
                 </div>
-
-                <h3>謇灘桁謇譛画ｪ疲｡� (Package Project)</h3>
-                <p>轤ｺ莠�ｯｦ迴ｾ螳檎ｾ守噪蟆域｡域莫蟶ｶ�瑚ｻ滄ｫ泌�蟒ｺ莠�ｸ骰ｵ謇灘桁蜉溯���</p>
+ 
+                <h3>打包所有檔案 (Package Project)</h3>
+                <p>為了實現完美的專案攜帶，軟體內建了一鍵打包功能：</p>
                 <div class="step-box">
-                    <h4>謇灘桁闊�ｧｻ蜍墓ｵ∫ｨ�</h4>
+                    <h4>打包與移動流程</h4>
                     <ol>
-                        <li>鮟樊投驕ｸ蝟ｮ縲梧ｪ疲｡医坂�縲梧遠蛹�園譛画ｪ疲｡�...縲阪�</li>
-                        <li>驕ｸ謫�ｸ蛟狗ｩｺ逧�┫蟄倩ｳ�侭螟ｾ�檎ｳｻ邨ｱ譛��蜍募惠隧ｲ雉�侭螟ｾ蜈ｧ蟒ｺ遶� <code>audio/</code>縲�<code>video/</code> 闊� <code>masks/</code> 蟄占ｳ�侭螟ｾ縲�</li>
-                        <li>閾ｪ蜍募ｰ�お蟆域｡井ｸｭ菴ｿ逕ｨ蛻ｰ逧�園譛蛾浹險翫∝ｽｱ迚�∝恂迚��驕ｮ鄂ｩ蝨也援隍�｣ｽ諡ｷ雋晁�隧ｲ雉�侭螟ｾ荳ｭ縲�</li>
-                        <li>閾ｪ蜍募ｰ�ｰ域｡� JSON 讙疲｡亥�逧�園譛臥ｵ募ｰ崎ｷｯ蠕第隼蟇ｫ轤ｺ莉･隧ｲ雉�侭螟ｾ轤ｺ襍ｷ鮟樒噪<strong>逶ｸ蟆崎ｷｯ蠕�</strong>�御ｸｦ驥肴眠蜻ｽ蜷榊┫蟄倥�</li>
+                        <li>點擊選單「檔案」→「打包所有檔案...」。</li>
+                        <li>選擇一個空的儲存資料夾，系統會自動在該資料夾內建立 <code>audio/</code>、<code>video/</code> 與 <code>masks/</code> 子資料夾。</li>
+                        <li>自動將您專案中使用到的所有音訊、影片、圖片與遮罩圖片複製拷貝至該資料夾中。</li>
+                        <li>自動將專案 JSON 檔案內的所有絕對路徑改寫為以該資料夾為起點的<strong>相對路徑</strong>，並重新命名儲存。</li>
                     </ol>
                 </div>
-
-                <h3>閾ｪ蜍戊ｷｯ蠕題�逋呈ｩ溷宛</h3>
-                <p>逡ｶ謔ｨ蟆�遠蛹�･ｽ逧�ｰ域｡亥､ｾ隍�｣ｽ蛻ｰ蜈ｶ莉夜崕閻ｦ荳ｦ髮呎投 <code>.cuelab.json</code> 髢句福譎ゑｼ瑚ｻ滄ｫ疲怎閾ｪ蜍募濤陦瑚�逋抵ｼ�</p>
+ 
+                <h3>自動路徑自癒機制</h3>
+                <p>當您將打包好的專案夾複製到其他電腦並雙擊 <code>.cuelab.json</code> 開啟時，軟體會自動執行自癒：</p>
                 <ul>
-                    <li>蜆ｪ蜈亥�貂ｬ蜴滓怏逧�ｵ募ｰ崎ｷｯ蠕第弍蜷ｦ蟄伜惠縲�</li>
-                    <li>闍･荳榊ｭ伜惠�梧怎閾ｪ蜍墓鞄蜿也文蜑埼幕蝠滉ｹ句ｰ域｡� JSON 謇蝨ｨ逧�ｳ�侭螟ｾ霍ｯ蠕托ｼ悟惠逡ｶ蜑咲噪逶ｸ蟆咲岼骭�ｼ井ｾ句ｦ� <code>audio/</code>縲�<code>video/</code>縲�<code>masks/</code> 遲会ｼ我ｸ玖�蜍暮�蟆榊ｰ区伽蜷悟錐逧�ｪ帝ｫ疲ｪ疲｡井ｸｦ菫ｮ蠕ｩ縲�</li>
-                    <li>騾吩ｿ晁ｭ我ｺ�狭雋晏ｾ檎噪蟆域｡郁�髢狗ｮｱ蜊ｳ逕ｨ�御ｸ肴怎逋ｼ逕滓ｪ疲｡磯⊆螟ｱ縲�</li>
+                    <li>優先偵測原有的絕對路徑是否存在。</li>
+                    <li>若不存在，會自動抓取當前開啟之專案 JSON 所在的資料夾路徑，在當前的相對目錄（例如 <code>audio/</code>、<code>video/</code>、<code>masks/</code> 等）下自動配對尋找同名的媒體檔案並修復。</li>
+                    <li>這保證了拷貝後的專案能開箱即用，不會發生檔案遺失。</li>
                 </ul>
             </section>
 
-            <!-- 11. 謨�囿謗帝勁 -->
+            <!-- 13. 故障排除 -->
             <section id="troubleshoot">
-                <h2>11. 謨�囿謗帝勁</h2>
-
+                <h2>13. 故障排除</h2>
+ 
                 <div class="mockup-container">
-                    <img src="images/11_settings_dialog.png" alt="蛛丞･ｽ險ｭ螳壼ｰ崎ｩｱ譯�">
+                    <img src="images/11_settings_dialog.png" alt="偏好設定對話框">
                 </div>
-                <div class="mockup-caption">蝨� 11�壼￥螂ｽ險ｭ螳壻ｸｭ逧�｡ｯ遉ｺ霈ｸ蜃ｺ險ｭ螳夐��擇</div>
-
+                <div class="mockup-caption">圖 13：偏好設定中的顯示輸出設定頁面</div>
+ 
                 <div class="step-box">
-                    <h4>Q1: 蜑ｯ陞｢蟷�/謚募ｽｱ讖溽┌豕戊ｼｸ蜃ｺ逡ｫ髱｢��</h4>
-                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <h4>Q1: 副螢幕/投影機無法輸出畫面？</h4>
+                    <p><strong>解決方案：</strong></p>
                     <ul style="margin-left: 20px;">
-                        <li>隲句�蝨ｨ Windows 鬘ｯ遉ｺ蝎ｨ險ｭ螳壻ｸｭ�悟ｰ�､匁磁陞｢蟷戊ｨｭ螳夂ぜ縲悟ｻｶ莨ｸ縲肴ｨ｡蠑擾ｼ瑚碁撼縲悟酔豁･/隍�｣ｽ縲肴ｨ｡蠑上�</li>
-                        <li>髢句福霆滄ｫ斐瑚ｨｭ螳壹榊ｰ崎ｩｱ譯�ｼ悟惠縲碁｡ｯ遉ｺ險ｭ螳壹堺ｸ狗噪縲梧兜蠖ｱ霈ｸ蜃ｺ陞｢蟷輔堺ｸ区級驕ｸ蝟ｮ荳ｭ驕ｸ謫�ｰ肴㊨逧�､匁磁鬘ｯ遉ｺ蝎ｨ index�磯壼ｸｸ轤ｺ 1 謌� 2�会ｼ悟�鮟樣∈遒ｺ螳壽�螂礼畑縲�</li>
+                        <li>請先在 Windows 顯示器設定中，將外接螢幕設定為「延伸」模式，而非「同步/複製」模式。</li>
+                        <li>開啟軟體「設定」對話框，在「顯示設定」下的「投影輸出螢幕」下拉選單中選擇對應的外接顯示器 index（通常為 1 或 2），再點選確定或套用。</li>
                     </ul>
                 </div>
-
+ 
                 <div class="step-box">
-                    <h4>Q2: 蠖ｱ蜒城ｊ逡瑚｢ｫ蛻�脂�梧�譴ｯ蠖｢譬｡豁｣蠕梧級莨ｸ隶雁ｽ｢��</h4>
-                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <h4>Q2: 影像邊界被切掉，或梯形校正後拉伸變形？</h4>
+                    <p><strong>解決方案：</strong></p>
                     <ul style="margin-left: 20px;">
-                        <li>隲句惠險ｭ螳壻ｸｭ蟆�ｧ｣譫仙ｺｦ蠕槭悟次逕溯ｧ｣譫仙ｺｦ (Native)縲榊�謠帷ぜ蝗ｺ螳夂噪豈比ｾ具ｼ井ｾ句ｦ� 1920x1080�峨�</li>
-                        <li>驕ｸ蜿冶ｩｲ蠖ｱ蜒� Cue�悟惠 Inspector 逧�碁｡ｯ遉ｺ縲榊�鬆∽ｸｭ蝌苓ｩｦ蟆�檎ｸｮ謾ｾ讓｡蠑上榊�謠帷ぜ <code>Fit</code> 謌� <code>Fill</code>�御ｻ･蛻ｩ蜷磯←蝨ｰ閾ｪ驕ｩ諛峨�</li>
+                        <li>請在設定中將解析度從「原生解析度 (Native)」切換為固定的比例（例如 1920x1080）。</li>
+                        <li>選取該影像 Cue，在 Inspector 的「顯示」分頁中嘗試將「縮放模式」切換為 <code>Fit</code> 或 <code>Fill</code>，以利合適地自適應。</li>
                     </ul>
                 </div>
-
+ 
                 <div class="step-box">
-                    <h4>Q3: 謦ｭ謾ｾ蠖ｱ迚��髻ｳ讓よ凾逋ｼ逕滓ｲ呈怏閨ｲ髻ｳ逧�ュ豕�ｼ�</h4>
-                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <h4>Q3: 播放影片或音樂時發生沒有聲音的情況？</h4>
+                    <p><strong>解決方案：</strong></p>
                     <ul style="margin-left: 20px;">
-                        <li>隲句惠螻ｬ諤ｧ髱｢譚ｿ縲碁浹險翫榊�鬆∽ｸｭ�梧ｪ｢譟･縲瑚ｼｸ蜃ｺ陬晉ｽｮ縲堺ｸ区級驕ｸ蝟ｮ縲ら｢ｺ隱肴弍蜷ｦ陲ｫ蛻��蛻ｰ莠�険隱､逧��蜊｡謌門ｷｲ諡秘勁逧�｣晉ｽｮ縲ょｻｺ隴ｰ謾ｹ驕ｸ轤ｺ縲檎ｳｻ邨ｱ鬆占ｨｭ (default)縲肴�驥肴眠驕ｸ謫�文蜑堺ｽ懃畑荳ｭ逧�ｯｦ鬮碑�蜊｡縲�</li>
-                        <li>遒ｺ隱榊ｱｬ諤ｧ髱｢譚ｿ荳ｭ逧�瑚ｼｸ蜃ｺ髻ｳ險翫肴�ｸ蜿匁婿蝪頑怏蜍ｾ驕ｸ�郁凶辟｡蜍ｾ驕ｸ譛�ｼｷ蛻ｶ髱憺浹�峨�</li>
+                        <li>請在屬性面板「音訊」分頁中，檢查「輸出裝置」下拉選單。確認是否被分配到了錯誤的聲卡或已拔除的裝置。建議改選為「系統預設 (default)」或重新選擇當前作用中的實體聲卡。</li>
+                        <li>確認屬性面板中的「輸出音訊」核取方塊有勾選（若無勾選會強制靜音）。</li>
                     </ul>
                 </div>
-
+ 
                 <div class="step-box">
-                    <h4>Q4: 謖我ｸ矩嵯逶､ Ctrl+Z 豐呈怏蜿肴㊨��</h4>
-                    <p><strong>隗｣豎ｺ譁ｹ譯茨ｼ�</strong></p>
+                    <h4>Q4: 按下鍵盤 Ctrl+Z 沒有反應？</h4>
+                    <p><strong>解決方案：</strong></p>
                     <ul style="margin-left: 20px;">
-                        <li>隲狗｢ｺ菫晉岼蜑堺ｸｻ隕也ｪ礼噪辟ｦ鮟樔ｽ肴名 Cue 蛻苓｡ｨ荳奇ｼ亥庄蝨ｨ蛻苓｡ｨ遨ｺ逋ｽ陌暮ｻ樊投貊鷹ｼ�蟾ｦ骰ｵ�峨り凶辟ｦ鮟樊ｭ｣蛛懃蕗蝨ｨ譟蝉ｺ帛ｱｬ諤ｧ霈ｸ蜈･譯���悟ｿｫ騾滄嵯譛�━蜈域署萓帶枚蟄礼ｷｨ霈ｯ謦､驫ｷ縲�</li>
+                        <li>請確保目前主視窗的焦點位於 Cue 列表上（可在列表空白處點擊滑鼠左鍵）。若焦點正停留在某些屬性輸入框內，快速鍵會優先提供文字編輯撤銷。</li>
                     </ul>
                 </div>
             </section>
 
-            <!-- 12. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode) -->
-            <section id="timecode">
-                <h2>12. 譎る俣遒ｼ邉ｻ邨ｱ (Timecode)</h2>
-
-                <div class="mockup-container">
-                    <img src="images/12_timecode_cue.png" alt="譎る俣遒ｼ謗ｧ蛻ｶ髱｢譚ｿ闊�ｷ醍｢ｼ">
-                </div>
-                <div class="mockup-caption">蝨� 12�壽凾髢鍋｢ｼ (Timecode) 謗ｧ蛻ｶ髱｢譚ｿ闊�昏遶玖ｷ醍｢ｼ諛ｸ豬ｮ隕也ｪ�</div>
-
-                <p>譛ｬ霆滄ｫ疲紛蜷井ｺ� SMPTE 讓呎ｺ匁凾髢鍋｢ｼ逕｢逕溷勣�梧署萓� <strong>LTC (髻ｳ險頑凾髢鍋｢ｼ)</strong> 闊� <strong>MTC (MIDI 譎る俣遒ｼ)</strong> 髮呎ｨ｡蠑剰ｼｸ蜃ｺ縲る←逕ｨ譁ｼ辯亥�髻ｳ髻ｿ縲�峭蟆�∫音謨郁ｨｭ蛯咏噪螟ｧ蝙玖�蜍墓而蛻ｶ縲�</p>
-
-                <h3>荳ｻ隕∝粥閭ｽ闊�橿陦鍋音濶ｲ</h3>
-                <ul>
-                    <li><strong>LTC/MTC 髮呎ｨ｡蠑剰ｼｸ蜃ｺ</strong>�哭TC 謾ｯ謠ｴ髻ｳ險願ｷｯ逕ｱ霈ｸ蜃ｺ荳ｦ邯馴℃ Bessel 莠碁嚴菴朱壽ｿｾ豕｢陌慕炊�娥TC 謾ｯ謠ｴ蝨ｨ蛛丞･ｽ險ｭ螳壻ｸｭ驕ｸ謫��占ｨｭ逧� MIDI 蝓�謌門ｯｦ鬮�/陌帶闘 MIDI 陬晉ｽｮ縲�</li>
-                    <li><strong>陌帶闘霆滄ｫ疲凾髏� Fallback</strong>�夊凶髻ｳ謨亥今陲ｫ迯ｨ菴疲� MIDI 陬晉ｽｮ陦晉ｪ�幕蝠溷､ｱ謨暦ｼ梧怎閾ｪ蜍募�謠幄�陌帶闘鬮倡ｲｾ蠎ｦ譎る据�御ｾ晄答 <code>HH:MM:SS:FF</code> 蟷邇�ｼ域髪謠ｴ 24/25/30 FPS�画戟郤悟燕騾ｲ�御ｸ堺ｽｿ貍泌�荳ｭ譁ｷ縲�</li>
-                    <li><strong>證ｫ蛛懃朽諷句悉驥埼事 (Pause Deduplication)</strong>�夐亟遽� Group 鄒､邨�圻蛛懈凾逕ｱ譁ｼ螟夐㍾ Toggle 蝗槫他騾�謌先圻蛛懃朽諷区慣豸郁檎ｹｼ郤梧眺謾ｾ縲�</li>
-                    <li><strong>譎る俣遒ｼ闊�ｪ帝ｫ秘ｲ蠎ｦ Seek 蜷梧ｭ･螳壻ｽ�</strong>�壼惠蜷御ｸ Group 荳具ｼ瑚凶蟆埼浹霆梧�蠖ｱ迚�ｲ陦� Seek (謦ｭ謾ｾ騾ｲ蠎ｦ隱ｿ謨ｴ)�檎ｳｻ邨ｱ譛��蜍戊ｨ育ｮ礼嶌蟆肴凾髢捺圧荳ｦ蜷梧ｭ･蟆榊酔邨�凾髢鍋｢ｼ Cue 騾ｲ陦� <code>seek_seconds</code> 邨募ｰ榊ｰ埼ｽ翫�</li>
-                    <li><strong>譬ｼ蠑丞喧驕ｮ鄂ｩ霈ｸ蜈･</strong>�壽凾髢鍋｢ｼ蛛冗ｧｻ驥丞惠 Inspector 荳ｭ謠蝉ｾ� <code>HH:MM:SS:FF</code> 驕ｮ鄂ｩ霈ｸ蜈･蛹｡�梧�ｼ蠑丞喧霈ｸ蜈･荳ｦ髦ｲ蜻��</li>
-                </ul>
-            </section>
-
-            <!-- 13. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview) -->
-            <section id="video-preview">
-                <h2>13. 隕冶ｨ企�占ｦｽ隕也ｪ� (Video Preview)</h2>
-
-                <div class="mockup-container">
-                    <img src="images/13_video_preview.png" alt="隕冶ｨ企�占ｦｽ隕也ｪ苓�謗ｧ蛻ｶ">
-                </div>
-                <div class="mockup-caption">蝨� 13�夊ｦ冶ｨ企�占ｦｽ隕也ｪ苓�譛荳雁ｱ､鬘ｯ遉ｺ謗ｧ蛻ｶ驕ｸ鬆�</div>
-
-                <p>轤ｺ莠�ｧ｣豎ｺ蝨ｨ蝟ｮ陞｢蟷�/遲�ｨ伜梛髮ｻ閻ｦ髢狗匸縲∵賜邱ｴ謌也樟蝣ｴ豐呈怏騾｣謗･螟匁磁謚募ｽｱ讖滓凾逧�ｸｬ隧ｦ髴豎ゑｼ瑚ｻ滄ｫ疲署萓帑ｺ�<strong>縲瑚ｦ冶ｨ企�占ｦｽ讓｡蠑上�</strong>縲よｭ､讓｡蠑丞庄蟆�次譛ｬ蝨ｨ蜑ｯ陞｢蟷�/謚募ｽｱ讖溷�陞｢蟷戊ｼｸ蜃ｺ逧�ｦ也ｪ暦ｼ悟�謠帷ぜ蜈ｷ蛯呵ｦ也ｪ玲ｨ咎｡悟�闊�ｸｮ謾ｾ謖蛾�逧�勸騾夊ｦ也ｪ暦ｼ梧婿萓ｿ蝨ｨ荳ｻ逡ｫ髱｢荳ｭ蜷梧凾騾ｲ陦檎ｷｨ霈ｯ闊�ｽｱ蜒城�占ｦｽ縲�</p>
-
-                <h3>蜉溯�迚ｹ濶ｲ闊�桃菴懆ｪｪ譏�</h3>
-                <ul>
-                    <li><strong>髮呎ｨ｡蠢ｫ騾溷�謠�</strong>�壼惠鬆るΚ驕ｸ蝟ｮ縲瑚ｦ也ｪ� (Window)縲坂�縲瑚ｦ冶ｨ企�占ｦｽ讓｡蠑� (Video Preview Mode)縲堺ｸｭ�悟鏡驕ｸ蜊ｳ蜿ｯ蟆�兜蠖ｱ隕也ｪ玲隼轤ｺ譛画｡�噪隕也ｪ怜喧鬆占ｦｽ�帛叙豸亥鏡驕ｸ蜑��蜍墓△蠕ｩ轤ｺ蜈ｨ陞｢蟷墓兜蠖ｱ讓｡蠑上よｭ､險ｭ螳壽怎閾ｪ蜍募┫蟄倩�蛛丞･ｽ險ｭ螳壻ｸｭ�御ｸ区ｬ｡蝠溷虚譎よ怎險倅ｽ丈ｸ頑ｬ｡逧�∈謫��</li>
-                    <li><strong>譛荳雁ｱ､鬘ｯ遉ｺ (Stay on Top)</strong>�夂文蝠溽畑鬆占ｦｽ讓｡蠑乗凾�悟庄騾ｲ荳豁･蜍ｾ驕ｸ驕ｸ蝟ｮ荳ｭ逧�碁�占ｦｽ譛荳雁ｱ､鬘ｯ遉ｺ (Preview Stay on Top)縲搾ｼ梧ｭ､譎る�占ｦｽ隕也ｪ玲怎蠑ｷ蛻ｶ鬘ｯ遉ｺ蝨ｨ謇譛牙�莉冶ｦ也ｪ礼噪荳頑婿�梧婿萓ｿ蝨ｨ隱ｿ謨ｴ Inspector 螻ｬ諤ｧ謌也ｷｨ霈ｯ Cue 蛻苓｡ｨ譎ゑｼ悟叉譎りｧ逵狗吻髱｢隶雁喧閠御ｸ肴怎陲ｫ荳ｻ遞句ｼ剰ｦ也ｪ鈴�謫九�</li>
-                    <li><strong>貊鷹ｼ�諡匁峙闊��逕ｱ邵ｮ謾ｾ</strong>�壼惠鬆占ｦｽ讓｡蠑丈ｸ具ｼ梧お蜿ｯ莉･菴ｿ逕ｨ貊鷹ｼ�莉ｻ諢乗許譖ｳ縲∬ｪｿ謨ｴ鬆占ｦｽ隕也ｪ礼噪螟ｧ蟆擾ｼ檎爆閾ｳ諡牙芦莉ｻ諢剰椶蟷穂ｽ咲ｽｮ騾ｲ陦梧賜邱ｴ讓｡謫ｬ縲�</li>
-                </ul>
-            </section>
         </div>
 
         <footer class="footer">
-            <p><strong>Cue Lab 闊槫床謗ｧ蛻ｶ謦ｭ謾ｾ霆滄ｫ� v1.1.0</strong></p>
-            <p>髢狗匸閠�ｼ嗤nedoller | 閨ｯ邨｡謾ｯ謠ｴ��5664762@gmail.com</p>
-            <p style="margin-top: 15px; opacity: 0.6; font-size: 0.85em;">ﾂｩ 2026 CueLab. All rights reserved.</p>
+            <p><strong>Cue Lab 舞台控制播放軟體 v1.1.0</strong></p>
+            <p>開發者：onedoller | 聯絡支援：5664762@gmail.com</p>
+            <p style="margin-top: 15px; opacity: 0.6; font-size: 0.85em;">© 2026 CueLab. All rights reserved.</p>
         </footer>
     </div>
 </body>
