@@ -747,7 +747,11 @@
 
                 <h3>Mask Hierarchy</h3>
                 <ol style="margin-left: 20px;">
-                    <li><strong>Cue Mask</strong>: Users create a <code>CueType.MASK</code> Cue containing several mask items. Other Image or Video Cues apply it by choosing its ID under their <code>parent_mask_id</code> properties.</li>
+                    <li><strong>Cue Mask</strong>: Users create a <code>CueType.MASK</code> Cue containing several mask items. Other Image or Video Cues apply it by choosing its ID under their <code>parent_mask_id</code> properties.
+                        <ul>
+                            <li>💡 <strong>Member Selection Limit</strong>: When clicking "Add" in the Mask Cue's member list in the Inspector, the system only displays <strong>Video</strong> and <strong>Image</strong> cues as candidate items, as non-visual cues like Audio or Timecode cannot be masked.</li>
+                        </ul>
+                    </li>
                     <li><strong>Global Screen Mask</strong>: Open the "Screen Calibration" settings dialog and navigate to the "Screen Mask" tab. Mask items configured here apply globally to the entire projection.</li>
                 </ol>
 

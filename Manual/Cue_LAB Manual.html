@@ -742,7 +742,11 @@
 
                 <h3>遮罩層級</h3>
                 <ol style="margin-left: 20px;">
-                    <li><strong>Cue 遮罩</strong>：使用者建立一個 <code>CueType.MASK</code> 類型的 Cue，其中包含數個遮罩項目。其他圖片或影片 Cue 可以透過在其屬性面板的 <code>parent_mask_id</code> 中選擇該遮罩 ID 來套用。</li>
+                    <li><strong>Cue 遮罩</strong>：使用者建立一個 <code>CueType.MASK</code> 類型的 Cue，其中包含數個遮罩項目。其他圖片或影片 Cue 可以透過在其屬性面板的 <code>parent_mask_id</code> 中選擇該遮罩 ID 來套用。
+                        <ul>
+                            <li>💡 <strong>成員新增限制</strong>：在遮罩 Cue 的屬性面板「群組/成員」清單中點擊「新增」時，系統僅會列出<strong>視訊 (Video)</strong> 與<strong>圖片 (Image)</strong> 類型的 Cue，因為音訊、時間碼等非視覺 Cue 無法套用遮罩。</li>
+                        </ul>
+                    </li>
                     <li><strong>全域螢幕遮罩</strong>：開啟「螢幕矯正」設定對話框，切換至「螢幕遮罩」分頁。在此設定的遮罩項目會套用至整個投影螢幕輸出。</li>
                 </ol>
 
