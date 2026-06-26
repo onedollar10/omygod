@@ -114,7 +114,13 @@ const translations = {
         "cue_lab_f5_hl": "特色功能： 聲道級別的動態音量分配，配合 WMI 啟動防卡死保護，帶來極致的可靠度與放音體驗。",
         "cue_lab_f6_title": "局部與全域遮罩",
         "cue_lab_f6_desc": "支援自訂多個遮罩項目，具備 Crop（保留）、Block（遮蔽）等混合模式與全域啟用開關，解決現場投影遮擋與去邊問題。",
-        "cue_lab_f6_hl": "特色功能： 支援自訂圖片遮罩，可一鍵開啟或停用全域遮罩，為複雜舞台結構提供完美的面幅調校與遮擋。"
+        "cue_lab_f6_hl": "特色功能： 支援自訂圖片遮罩，可一鍵開啟或停用全域遮罩，為複雜舞台結構提供完美的面幅調校與遮擋。",
+        "cue_lab_f7_title": "FADE 漸變與連續鏈控制",
+        "cue_lab_f7_desc": "支援音量、不透明度、畫面尺寸、Keystone 幾何多軌漸變，並支持遞迴目標追溯與設計/實時分離抓取值。",
+        "cue_lab_f7_hl": "特色功能： FADE 連續鏈控制能精確對齊漸變軌跡，並提供實時同步調試，徹底改善複雜燈光與多媒體漸變邏輯。",
+        "cue_lab_f8_title": "離屏 RTSP 虛擬螢幕推流",
+        "cue_lab_f8_desc": "將特定螢幕（索引>=90）設定為虛擬螢幕進行背景推流，內置 MediaMTX，支持 FFmpeg 編碼自動降級與黑場不中斷廣播。",
+        "cue_lab_f8_hl": "特色功能： 與 OBS、vMix 或拉流硬體無縫銜接，提供低延遲、高穩定的劇場與直播混合傳輸通道。"
     },
     "en": {
         "nav_home": "Home",
@@ -231,7 +237,13 @@ const translations = {
         "cue_lab_f5_hl": "Key Feature: Precise spatial audio distribution and sync playback paired with robust WMI hang startup protection.",
         "cue_lab_f6_title": "LOCAL & GLOBAL MASKS",
         "cue_lab_f6_desc": "Supports custom mask items with blending modes like Crop and Block, and a global toggle switch to resolve projection blocking and masking issues.",
-        "cue_lab_f6_hl": "Key Feature: Custom image masking and a one-click global mask toggle to adapt to complex stage structures."
+        "cue_lab_f6_hl": "Key Feature: Custom image masking and a one-click global mask toggle to adapt to complex stage structures.",
+        "cue_lab_f7_title": "FADE CUE & CHAIN CONTROL",
+        "cue_lab_f7_desc": "Supports gradual volume, opacity, transform, or keystone changes with recursive target tracking and design/live value grabbing.",
+        "cue_lab_f7_hl": "Key Feature: FADE chain control guarantees precise transition trajectories and real-time WYSIWYG preview debugging.",
+        "cue_lab_f8_title": "RTSP VIRTUAL SCREEN STREAMING",
+        "cue_lab_f8_desc": "Configure virtual screens (index>=90) for background streaming. Features auto GPU/CPU fallback and continuous blackout broadcasts.",
+        "cue_lab_f8_hl": "Key Feature: Integrates seamlessly with OBS, vMix, or decoders, establishing a low-latency transmission for hybrid shows."
     }
 };
 

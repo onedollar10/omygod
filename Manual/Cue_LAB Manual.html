@@ -373,7 +373,9 @@
                     <li><a href="#timecode">10. 時間碼系統 (Timecode)</a></li>
                     <li><a href="#video-preview">11. 視訊預覽視窗 (Video Preview)</a></li>
                     <li><a href="#project">12. 專案管理與打包傳遞</a></li>
-                    <li><a href="#troubleshoot">13. 故障排除</a></li>
+                    <li><a href="#fade-cue">13. FADE 漸變與連續鏈控制</a></li>
+                    <li><a href="#multi-rtsp">14. 多螢幕投影與 RTSP 串流輸出</a></li>
+                    <li><a href="#troubleshoot">15. 故障排除</a></li>
                 </ul>
             </div>
 
@@ -576,6 +578,12 @@
                         <td>設備聯動控制、跑碼同步</td>
                         <td>時間碼類型 (LTC/MTC)、起始偏移量 (Offset)、輸出幀率 (FPS) 與 MIDI 輸出設備埠。</td>
                     </tr>
+                    <tr>
+                        <td><strong>漸變 Cue</strong></td>
+                        <td>📉 Fade</td>
+                        <td>音量/不透明度/尺寸大小/幾何漸變</td>
+                        <td>漸變時間、受控目標 Cue、音量/不透明度/位置/大小/梯形校正控制開關及目標 Limit 值、數值抓取（Grab）與實時預覽。</td>
+                    </tr>
                 </table>
             </section>
 
@@ -720,6 +728,10 @@
                         <li>按住 <code>Ctrl</code> 或 <code>Alt</code> + 方向鍵：進行 <code>0.0005</code> 的微調。</li>
                     </ul>
                 </div>
+                <div class="info-box">
+                    <h4>💡 Keystone 預設圖層 (Keystone Layers)</h4>
+                    <p>除了為單個 Cue 設定獨立的幾何校正外，軟體更在偏好設定中提供了<strong>「全域 Keystone 預設圖層」</strong>管理功能。設計師可以為舞台上的每台投影機設定基準校正（如修正投影機吊掛的基準偏差），並將其儲存為圖層預設。當具體的影片或圖片 Cue 播放時，可直接套用該基準圖層，並在此之上疊加 Cue 獨立的梯形校正。系統在底層透過 OpenCV 的單應性矩陣（Homography Matrix）乘法將兩次變換複合為單一矩陣，GPU 僅需進行一次座標變換與渲染，完美兼顧了配置靈活性與繪圖效能。</p>
+                </div>
             </section>
 
             <!-- 8. 局部遮罩與全域遮罩開關 -->
@@ -820,6 +832,10 @@
                         <td><strong>重做 (Redo)</strong>。重做被復原的動作。</td>
                     </tr>
                 </table>
+                <div class="info-box">
+                    <h4>💡 雙模式停止與 Group 重複停止過濾機制</h4>
+                    <p>為了解決現場演出複雜的調度需求，系統支援<strong>雙模式停止控制</strong>：除了全域 Panic (ESC) 會平滑淡出所有媒體外，使用者亦可在列表中選擇特定 Cue 並按 Stop 獨立停止該項目的播放線程。此外，當群組（Group Cue）設定了「停止前一個 (stop_previous)」互斥規則時，引擎會自動啟用<strong>重複停止去重過濾器</strong>。在向子項目分派停止指令時，會自動過濾掉那些「所屬 Group 本身也即將被停止」的子 Cue，防止子 Cue 因重複收到停止訊號而導致漸變計時器重設、淡出動畫失效或 VLC 底層爆音，確保演出切換流暢無瑕。</p>
+                </div>
             </section>
 
             <!-- 10. 時間碼系統 (Timecode) -->
@@ -900,13 +916,66 @@
             </section>
 
             <!-- 13. 故障排除 -->
+            
+
+            <!-- 14. FADE 漸變與連續鏈控制 -->
+            <section id="fade-cue">
+                <h2>13. FADE 漸變與連續鏈控制 (FADE Cue & Chain Control)</h2>
+                <p><strong>FADE 漸變 Cue</strong> 是一個強大的非破壞性控制軌。它本身不包含任何媒體內容，而是專門用於在指定時間（Fade Time）內，對另一個目標 Cue 的音量、不透明度、畫面幾何尺寸（Transform）或 Keystone 幾何校正點進行平滑的漸變控制。</p>
+
+                <div class="mockup-container">
+                    <img src="images/16_fade_cue_inspector.png" alt="FADE Cue 屬性與抓取設定">
+                </div>
+                <div class="mockup-caption">圖 13：FADE Cue 屬性設定面板與即時值抓取</div>
+
+                <h3>核心技術特點與工作機制</h3>
+                <ul>
+                    <li><strong>漸變目標遞迴追溯</strong>：在複雜的演出設計中，常會使用多個 FADE Cue 對同一個媒體進行連續鏈式控制（例如：Cue 1 媒體 -> FADE Cue 2 -> FADE Cue 3）。若 FADE Cue 3 的受控目標指向了前一個 FADE Cue 2，播放引擎會自動向上遞迴追溯，直到鎖定最底層的實體媒體（如 Audio 或 Video 實例），確保控制鏈完美傳導。</li>
+                    <li><strong>「設計與實時分離」值抓取 (Grab)</strong>：
+                        <ul>
+                            <li><strong>設計抓取（Grab）</strong>：當您選中 FADE Cue 並點選「抓取目前值」按鈕時，系統採用<strong>前置 FADE 設定值 ──▶ 實時播放器 Live 值 ──▶ 媒體原始值</strong>的三級降級抓取邏輯。若前方有其他 FADE 控制同一個目標，它會優先抓取前置 FADE 的限制設定值（設計值），確保靜態設計的連續性，而不會受當前實時播放進度的隨機干擾。</li>
+                            <li><strong>實時播放（Live）</strong>：在現場演出 Go 觸發時，漸變會基於受控目標當時的 Live 實時播放數值作為起點進行漸變，確保無論是按順序執行還是跳躍執行，都能呈現滑順且正確的漸變軌跡。</li>
+                            <li><strong>即時預覽同步</strong>：當 FADE Cue 處於播放狀態時，您在屬性面板中執行的「抓取」或參數微調會繞過 UI 訊號防護，即時發送至渲染與播放引擎，實現所見即所得的即時調試效果。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 15. 多螢幕投影與 RTSP 串流輸出 -->
+            <section id="multi-rtsp">
+                <h2>14. 多螢幕投影與 RTSP 串流輸出 (Multi-screen & RTSP Streaming)</h2>
+                <p>Cue Lab 具備先進的<strong>多螢幕獨立投影定位</strong>與<strong>虛擬多螢幕 RTSP 串流推流</strong>功能，滿足現場實體投影與線上導播/直播混合同步的需求。</p>
+
+                <div class="mockup-container">
+                    <img src="images/17_rtsp_streaming_settings.png" alt="多螢幕與 RTSP 推流設定">
+                </div>
+                <div class="mockup-caption">圖 14：偏好設定中的 RTSP 推流與多螢幕配置頁面</div>
+
+                <h3>多螢幕獨立輸出與定位</h3>
+                <p>在屬性面板的「顯示」分頁中，您可以為每個影像 Cue 獨立指定 <code>output_screen</code>（螢幕索引）。播放時，<code>VideoEngine</code> 會自動管理各實體顯示器的投影視窗，精確定位至對應的螢幕並以無邊框全螢幕覆蓋渲染，避免滑鼠指針或系統介面干擾舞台視覺。</p>
+
+                <h3>RTSP 網路虛擬串流輸出</h3>
+                <p>當您將影像 Cue 的 <code>output_screen</code> 設為大於等於 <code>90</code> 的索引時（如 90, 91...），該視窗將被定義為<strong>「虛擬螢幕」</strong>，並自動轉為背景 RTSP 推流模式，將渲染畫面即時廣播到局域網路上：</p>
+                <ul>
+                    <li><strong>串流位址格式</strong>：系統內置輕量化 MediaMTX 串流伺服器，自動產生如 <code>rtsp://&lt;本機IP&gt;:&lt;Port&gt;/live/screen_1</code> 的標準 RTSP 連結，外部設備（如 OBS、vMix 或實體解碼器）可直接拉流。</li>
+                    <li><strong>高可靠性編碼與自動降級</strong>：FFmpeg 推流器會優先啟用 NVIDIA GPU 硬體加速編碼（<code>h264_nvenc</code>），若因驅動、硬體限制或工作階段上限啟動失敗，會在 0.2 秒內<strong>自動無縫降級至 CPU 軟體編碼（<code>libx264</code>）</strong>，確保推流絕不中斷。</li>
+                    <li><strong>黑場不中斷推流與管線安全</strong>：
+                        <div class="warning-box">
+                            <h4>⚠️ 串流防中斷與遞迴重入保護</h4>
+                            <p><strong>1. 黑場不中斷</strong>：串流生命週期與主程式綁定，不受媒體播放結束或 Blackout 暗場影響。在黑屏狀態下，系統會持續由 16ms 定時器主動抓取離屏 Framebuffer 輸出純黑幀，確保接收端（OBS）在演出空檔絕不因無訊號而斷線。<br>
+                            <strong>2. 遞迴重入防護</strong>：畫面抓取與推流信號完全由獨立定時器安全驅動，嚴禁在 OpenGL 的 <code>paintGL()</code> 內部調用 <code>grabFramebuffer()</code>，避免引發致命的遞迴渲染重入與 pipe 阻塞崩潰，確保極致的穩定性。</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
             <section id="troubleshoot">
-                <h2>13. 故障排除</h2>
+                <h2>15. 故障排除</h2>
  
                 <div class="mockup-container">
                     <img src="images/11_settings_dialog.png" alt="偏好設定對話框">
                 </div>
-                <div class="mockup-caption">圖 13：偏好設定中的顯示輸出設定頁面</div>
+                <div class="mockup-caption">圖 15：偏好設定中的顯示輸出設定頁面</div>
  
                 <div class="step-box">
                     <h4>Q1: 副螢幕/投影機無法輸出畫面？</h4>

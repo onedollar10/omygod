@@ -269,6 +269,11 @@ const freeTools = [
 
 const latestUpdates = [
     {
+        date: "2026-06-26",
+        content: "Cue Lab 迎來重大升級：新增 FADE 漸變 Cue 與連續鏈控制、全域 Keystone 預設圖層、多螢幕實體/虛擬定位、以及離屏 RTSP 虛擬螢幕串流推流功能。歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a>",
+        content_en: "Cue Lab Major Upgrade: Added FADE Cue & chain control, global Keystone Preset Layers, multi-screen physical/virtual routing, and off-screen RTSP virtual screen streaming. <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">Learn More</a>"
+    },
+    {
         date: "2026-06-16",
         content: "Cue Lab 重磅更新：新增多音軌裝置路由輸出、獨立聲道音量包絡線編輯，以及 WMI 啟動防卡死保護機制。歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a>",
         content_en: "Cue Lab Major Update: Added multi-device audio routing, channel volume envelope editing, and WMI startup hang protection. <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">Learn More</a>"

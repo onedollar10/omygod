@@ -383,6 +383,8 @@
                     <li><a href="#video-preview">11. Video Preview Window</a></li>
                     <li><a href="#project">12. Project Management & Packaging</a></li>
                     <li><a href="#troubleshoot">13. Troubleshooting</a></li>
+                    <li><a href="#fade-cue">14. FADE Cue & Chain Control</a></li>
+                    <li><a href="#multi-rtsp">15. Multi-screen & RTSP Streaming</a></li>
                 </ul>
             </div>
 
@@ -585,6 +587,12 @@
                         <td>External show sync, timeline track</td>
                         <td>Timecode output modes (LTC/MTC), start offset timing, output frames rate (FPS), and target MIDI port.</td>
                     </tr>
+                    <tr>
+                        <td><strong>Fade Cue</strong></td>
+                        <td>📉 Fade</td>
+                        <td>Volume/Opacity/Transform/Keystone gradual changes</td>
+                        <td>Fade transition duration, target Cue ID, control switches (Volume, Opacity, Transform, Keystone) with target limit values, value grabbing (Grab), and live previewing.</td>
+                    </tr>
                 </table>
             </section>
 
@@ -725,6 +733,10 @@
                         <li>Hold <code>Ctrl</code> or <code>Alt</code> + Arrow keys: Micro-adjust in increments of <code>0.0005</code> (super fine edit).</li>
                     </ul>
                 </div>
+                <div class="info-box">
+                    <h4>💡 Keystone Presets (Keystone Layers)</h4>
+                    <p>In addition to individual geometric calibrations per Cue, the software features <strong>"Global Keystone Preset Layers"</strong> in preferences. Designers can define baseline calibrations for each projector (e.g., correcting mounting biases) and save them as presets. Individual Video or Image Cues can apply a preset layer as a baseline and superimpose their own Cue-level keystone calibration. The engine multiplies both transformation matrices on the fly using OpenCV Homography, allowing the GPU to perform a single drawing call and vertex transformation, optimizing rendering performance.</p>
+                </div>
             </section>
 
             <!-- 8. Masking -->
@@ -820,6 +832,10 @@
                         <td><strong>Redo</strong> the undone action history.</td>
                     </tr>
                 </table>
+                <div class="info-box">
+                    <h4>💡 Dual-mode Stopping & Group Double-stop Prevention</h4>
+                    <p>To satisfy complex show control requirements, the system supports <strong>dual-mode stopping</strong>: while global Panic (ESC) smoothly fades out all active media, you can select specific Cues and hit Stop to independently terminate their playback thread. Furthermore, when a Group Cue has the "stop previous" rule enabled, the engine employs a <strong>double-stop prevention filter</strong>. When cascading stop commands, it filters out child Cues whose parent Group is already on the stop list, avoiding duplicate signal interrupts that reset fade timers or trigger libVLC audio pops.</p>
+                </div>
             </section>
 
             <!-- 10. Project Management -->
@@ -898,7 +914,7 @@
             </section>
 
             <section id="troubleshoot">
-                <h2>13. Troubleshooting</h2>
+                <h2>15. Troubleshooting</h2>
 
                 <div class="mockup-container">
                     <img src="images/en/11_settings_dialog.png" alt="Preferences dialog">
@@ -940,6 +956,7 @@
                     </ul>
                 </div>
             </section>
+
         </div>
 
         <footer class="footer">
