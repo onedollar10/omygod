@@ -122,7 +122,7 @@ header {
   color: var(--text);
   white-space: nowrap;
   display: inline-block;
-  animation: ticker 40s linear infinite;
+  animation: ticker 60s linear infinite;
 }
 
 .news-content:hover {
