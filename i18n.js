@@ -96,16 +96,16 @@ const translations = {
         "cue_f7_hl": "即時同步： 確保記錄文檔與控台 show file 內容完全一致，減少手動輸入備註的時間。",
         "comments_title": "COMMENTS / 留言區",
         // Product Page - Cue Lab
-        "cue_lab_hero_subtitle": "類似 macOS QLab 的演出控制軟體，支援多軌音影播放與四角獨立梯形校正",
+        "cue_lab_hero_subtitle": "類似 macOS QLab 的演出控制軟體，支援多軌音影播放、四角/多點網格幾何校正、RTSP/NDI 串流與網路控制",
         "cue_lab_f1_title": "多軌音影播放",
         "cue_lab_f1_desc": "支援音軌、影片、圖片依序播放，具備淡入/淡出、自動連動與群組播放功能。",
         "cue_lab_f1_hl": "特色功能： 提供極致流暢的音視頻混合播放體驗，滿足舞台演出現場的多變節奏需求。",
         "cue_lab_f2_title": "多螢幕投影輸出",
         "cue_lab_f2_desc": "支援將影片與圖片全螢幕投影輸出至外部顯示器或投影機，為舞台視覺效果提供靈活的配置方案。",
         "cue_lab_f2_hl": "特色功能： 可獨立控制各個投影端點的顯示內容，輕鬆達成多視角的同步演出。",
-        "cue_lab_f3_title": "獨立四角梯形校正",
-        "cue_lab_f3_desc": "內建獨立四角梯形校正（Keystone Correction）功能，讓您在複雜的實體現場能快速對齊投影畫面。",
-        "cue_lab_f3_hl": "特色功能： 精準調校四個頂角，即使投影角度偏移也能維持正圓或矩形顯示。",
+        "cue_lab_f3_title": "四角與多點網格幾何校正",
+        "cue_lab_f3_desc": "內建傳統四角梯形校正 (Keystone) 與 3x3 多點網格幾何校正 (Mesh Keystone)，支援全域螢幕與單一 Cue 雙層級校正，完美對位曲面幕或異形幕。",
+        "cue_lab_f3_hl": "特色功能： 支援鍵盤方向鍵單像素級高精度微調，底層透過 homography 矩陣進行 GPU 一次性渲染變換，確保 60 FPS 執行流暢度。",
         "cue_lab_f4_title": "專案打包與管理",
         "cue_lab_f4_desc": "一鍵打包專案（Package Project），將音訊、影片、圖片等所有演出資源與設定整合，無縫轉移至其他電腦。",
         "cue_lab_f4_hl": "特色功能： 自動修正資源相對路徑，徹底避免演出現場因找不到檔案而發生的意外。",
@@ -120,7 +120,13 @@ const translations = {
         "cue_lab_f7_hl": "特色功能： FADE 連續鏈控制能精確對齊漸變軌跡，並提供實時同步調試，徹底改善複雜燈光與多媒體漸變邏輯。",
         "cue_lab_f8_title": "離屏 RTSP 虛擬螢幕推流",
         "cue_lab_f8_desc": "將特定螢幕（索引>=90）設定為虛擬螢幕進行背景推流，內置 MediaMTX，支持 FFmpeg 編碼自動降級與黑場不中斷廣播。",
-        "cue_lab_f8_hl": "特色功能： 與 OBS、vMix 或拉流硬體無縫銜接，提供低延遲、高穩定的劇場與直播混合傳輸通道。"
+        "cue_lab_f8_hl": "特色功能： 與 OBS、vMix 或拉流硬體無縫銜接，提供低延遲、高穩定的劇場與直播混合傳輸通道。",
+        "cue_lab_f9_title": "NDI 視訊串流輸出",
+        "cue_lab_f9_desc": "支援將主視訊渲染畫面即時轉為 NDI 訊號發送至局域網路，可設定 Full NDI (低延遲無損) 與 NDI HX (低頻寬壓縮) 雙模式，最多支援 5 個獨立通道同步廣播。",
+        "cue_lab_f9_hl": "特色功能： 可在 OBS、vMix、MadMapper 等外部軟體中直接以 NDI 訊號源讀取 Cue Lab 的投影畫面，實現無實體連接線的多軟體協同工作。",
+        "cue_lab_f10_title": "網路控制 Cue (Network Cue)",
+        "cue_lab_f10_desc": "內建標準 OSC (Open Sound Control) 與 PJLink 投影機控制協定，可透過網路連動燈光控台、音訊軟體，並一鍵控制多台投影機的電源與 Shutter 快門開關。",
+        "cue_lab_f10_hl": "特色功能： 具備格式化防呆輸入，支援多裝置同步廣播或單播，是多媒體劇場與展演中不可或缺的中央控制中樞。"
     },
     "en": {
         "nav_home": "Home",
@@ -219,16 +225,16 @@ const translations = {
         "cue_f7_hl": "Real-time Sync: Ensures documentation matches the console show file perfectly, saving time on manual entry.",
         "comments_title": "COMMENTS / FEEDBACK",
         // Product Page - Cue Lab
-        "cue_lab_hero_subtitle": "macOS QLab-like show control software supporting multi-track playback & 4-corner keystone correction",
+        "cue_lab_hero_subtitle": "A macOS QLab-like show control software supporting multi-track playback, 4-corner/Mesh keystone calibration, RTSP/NDI streaming, and Network Cues.",
         "cue_lab_f1_title": "MULTI-TRACK PLAYBACK",
         "cue_lab_f1_desc": "Supports sequential audio, video, and image playback, with fade in/out, auto-follow, and group cues.",
         "cue_lab_f1_hl": "Key Feature: Provides smooth audio-visual mixed playback to adapt to dynamic live show requirements.",
         "cue_lab_f2_title": "MULTI-SCREEN PROJECTION",
         "cue_lab_f2_desc": "Supports full-screen projection of video and images to external displays or projectors for flexible setups.",
         "cue_lab_f2_hl": "Key Feature: Independently controls output content for each projection display, easily achieving multi-angle sync shows.",
-        "cue_lab_f3_title": "4-CORNER KEYSTONE",
-        "cue_lab_f3_desc": "Built-in independent 4-corner keystone correction to quickly align projection screens on complex physical surfaces.",
-        "cue_lab_f3_hl": "Key Feature: Precise control over 4 points to keep circle/rect shapes even with off-angle projections.",
+        "cue_lab_f3_title": "4-CORNER & MESH KEYSTONE",
+        "cue_lab_f3_desc": "Built-in traditional 4-corner keystone correction and 3x3 multi-point Mesh Keystone calibration. Supports global screen and single Cue double-layered warp overrides to perfectly align curved or irregular screens.",
+        "cue_lab_f3_hl": "Key Feature: Supports keyboard arrow key micro-adjustments at a single-pixel level. Combines dual transforms in OpenCV to render in a single GPU draw call for 60 FPS performance.",
         "cue_lab_f4_title": "PACKAGE PROJECT",
         "cue_lab_f4_desc": "One-click Package Project to consolidate all audio, video, images, and config for seamless machine transfers.",
         "cue_lab_f4_hl": "Key Feature: Auto-fixes relative resource paths to prevent missing files during live shows.",
@@ -243,7 +249,13 @@ const translations = {
         "cue_lab_f7_hl": "Key Feature: FADE chain control guarantees precise transition trajectories and real-time WYSIWYG preview debugging.",
         "cue_lab_f8_title": "RTSP VIRTUAL SCREEN STREAMING",
         "cue_lab_f8_desc": "Configure virtual screens (index>=90) for background streaming. Features auto GPU/CPU fallback and continuous blackout broadcasts.",
-        "cue_lab_f8_hl": "Key Feature: Integrates seamlessly with OBS, vMix, or decoders, establishing a low-latency transmission for hybrid shows."
+        "cue_lab_f8_hl": "Key Feature: Integrates seamlessly with OBS, vMix, or decoders, establishing a low-latency transmission for hybrid shows.",
+        "cue_lab_f9_title": "NDI VIDEO STREAMING",
+        "cue_lab_f9_desc": "Broadcasts real-time video outputs as NDI signals over LAN. Supports Full NDI (high bandwidth lossless) and NDI HX (compressed) modes for up to 5 channels.",
+        "cue_lab_f9_hl": "Key Feature: Directly captured by OBS, vMix, MadMapper, etc., enabling clean, hardware-free multi-software integration.",
+        "cue_lab_f10_title": "NETWORK CUE (OSC & PJLINK)",
+        "cue_lab_f10_desc": "Features standard OSC & PJLink protocol integration. Remotely sends commands to lighting consoles (ETC/MA2), sound cards, and coordinates power/shutter states of multiple projectors over LAN.",
+        "cue_lab_f10_hl": "Key Feature: Includes safe input masks with multi-device broadcast/unicast configuration, acting as a robust show control system hub."
     }
 };
 

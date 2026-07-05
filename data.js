@@ -212,28 +212,34 @@ const software = [
         id: "cue_lab",
         name: "Cue Lab",
         name_en: "Cue Lab",
-        tagline: "演出控制與播放軟體",
-        tagline_en: "Show Control & Playback Software",
-        description: "類似 macOS QLab 的演出控制軟體，支援音軌、影片、圖片依序播放，並具備多螢幕投影與四角獨立梯形校正功能。",
-        description_en: "A macOS QLab-like show control software supporting sequential audio, video, and image playback, with multi-screen projection and 4-corner keystone correction.",
+        tagline: "專業多媒體演出控制與播放系統",
+        tagline_en: "Professional Multimedia Show Control & Playback System",
+        description: "類似 macOS QLab 的演出控制軟體，支援多軌音影播放、多裝置音效路由、四角/多點網格幾何校正與遮罩融合，並整合 FADE 漸變鏈、RTSP/NDI 網路視訊串流及網路控制 Cue (OSC/PJLink) 等高階舞台 Show Control 功能。",
+        description_en: "A macOS QLab-like show control software supporting multi-track playback, multi-device audio routing, 4-corner/Mesh keystone calibration, local/global masks, FADE chain transitions, RTSP/NDI video streaming, and Network Cues (OSC/PJLink).",
         url: "products/cue-lab.html",
         manual: "Manual/Cue_LAB Manual.html",
         manual_en: "Manual/Cue_LAB Manual_en.html",
         features: [
-            "多軌音影播放 (支援淡入/淡出、自動連動與群組播放)",
-            "多路獨立音效卡路由與聲道音量包絡線控制",
-            "多螢幕投影輸出 (支援影片與圖片的全螢幕投影)",
-            "獨立四角梯形校正 (配合現場投影進行畫面調整)",
-            "局部與全域遮罩 (支援自訂多遮罩與全域啟用開關，解決投影遮擋問題)",
-            "WMI 啟動防卡死與註冊表高可靠備用機制"
+            "多軌音影播放與 FADE 漸變連續鏈控制",
+            "多路獨立音效卡路由與聲道獨立音量包絡線",
+            "多螢幕投影與背景 RTSP 虛擬螢幕推流輸出",
+            "NDI 網路視訊高畫質低延遲串流 (Full NDI & NDI HX)",
+            "四角 Keystone 與 3x3 多點網格 (Mesh) 幾何校正",
+            "局部與全域遮罩 (支援自訂遮罩與全域啟用開關)",
+            "網路控制 Cue (支援標準 OSC 封包與 PJLink 投影機協定)",
+            "專案一鍵打包 (Package Project) 與路徑自癒機制",
+            "WMI 啟動防卡死保護與註冊表高可靠備用機制"
         ],
         features_en: [
-            "Multi-track audio/video playback (supports fade in/out, follow, and group cues)",
-            "Multi-device audio routing and independent channel volume envelopes",
-            "Multi-screen projection output (full screen video/image projection)",
-            "4-corner keystone correction (adjust projection to match physical surfaces)",
-            "Local & Global Masks (Support custom masks & global toggle switch to resolve projection blocking)",
-            "WMI startup hang protection and registry hardware GUID fallback"
+            "Multi-track playback & FADE Cue chain transition control",
+            "Multi-device audio routing & independent channel volume envelopes",
+            "Multi-screen projection & background RTSP virtual screen streaming",
+            "NDI network video streaming output (Full NDI & NDI HX support)",
+            "4-corner & 3x3 multi-point Mesh Keystone calibration",
+            "Local & Global Masks (custom masking & global toggle switches)",
+            "Network Cues (integrated with standard OSC & PJLink protocols)",
+            "One-click Project Packaging & relative path auto-healing",
+            "WMI startup hang protection & high-reliability registry fallback"
         ]
     }
 ];
@@ -269,9 +275,9 @@ const freeTools = [
 
 const latestUpdates = [
     {
-        date: "2026-06-26",
-        content: "Cue Lab 迎來重大升級：新增 FADE 漸變 Cue 與連續鏈控制、全域 Keystone 預設圖層、多螢幕實體/虛擬定位、以及離屏 RTSP 虛擬螢幕串流推流功能。歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a>",
-        content_en: "Cue Lab Major Upgrade: Added FADE Cue & chain control, global Keystone Preset Layers, multi-screen physical/virtual routing, and off-screen RTSP virtual screen streaming. <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">Learn More</a>"
+        date: "2026-07-05",
+        content: "Cue Lab 重磅升級：新增 NDI 網路視訊串流、網路控制 Cue (OSC/PJLink)、多點網格幾何校正 (Mesh Keystone)，並整合 FADE 漸變鏈與 RTSP 離屏推流！歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a>",
+        content_en: "Cue Lab Major Upgrade: Added NDI video streaming, Network Cues (OSC/PJLink), multi-point Mesh Keystone, and integrated FADE transitions & RTSP background streaming! <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">Learn More</a>"
     },
     {
         date: "2026-06-16",

@@ -112,7 +112,7 @@
                     <div class="feature-book" id="feature-book">
                         <article class="feature-page" id="feature-page-single"></article>
                     </div>
-                    <div class="feature-page-indicator" id="feature-page-indicator">FEATURE 1 / 6</div>
+                    <div class="feature-page-indicator" id="feature-page-indicator">FEATURE 1 / 10</div>
                 </div>
                 <button class="feature-nav" id="feature-next" aria-label="Next Features">&#10095;</button>
             </div>
@@ -184,14 +184,14 @@
             },
             {
                 id: "F03",
-                image: "../pic/cue lab/07_keystone_editor.png",
-                alt: "4-Corner Keystone Correction",
+                image: "../pic/cue lab/19_mesh_keystone.png",
+                alt: "4-Corner & Mesh Keystone Calibration",
                 titleKey: "cue_lab_f3_title",
                 descKey: "cue_lab_f3_desc",
                 hlKey: "cue_lab_f3_hl",
-                fallbackTitle: "獨立四角梯形校正",
-                fallbackDesc: "內建獨立四角梯形校正（Keystone Correction）功能，讓您在複雜的實體現場能快速對齊投影畫面。",
-                fallbackHl: "特色功能： 精準調校四個頂角，即使投影角度偏移也能維持正圓或矩形顯示。"
+                fallbackTitle: "四角與多點網格幾何校正",
+                fallbackDesc: "內建傳統四角梯形校正 (Keystone) 與 3x3 多點網格幾何校正 (Mesh Keystone)，支援全域螢幕與單一 Cue 雙層級校正，完美對位曲面幕或異形幕。",
+                fallbackHl: "特色功能： 支援鍵盤方向鍵單像素級高精度微調，底層透過 homography 矩陣進行 GPU 一次性渲染變換，確保 60 FPS 執行流暢度。"
             },
             {
                 id: "F04",
@@ -247,6 +247,28 @@
                 fallbackTitle: "離屏 RTSP 虛擬螢幕推流",
                 fallbackDesc: "將特定螢幕（索引>=90）設定為虛擬螢幕進行背景推流，內置 MediaMTX，支持 FFmpeg 編碼自動降級與黑場不中斷廣播。",
                 fallbackHl: "特色功能： 與 OBS、vMix 或拉流硬體無縫銜接，提供低延遲、高穩定的劇場與直播混合傳輸通道。"
+            },
+            {
+                id: "F09",
+                image: "../pic/cue lab/20_ndi_video.png",
+                alt: "NDI Video Streaming",
+                titleKey: "cue_lab_f9_title",
+                descKey: "cue_lab_f9_desc",
+                hlKey: "cue_lab_f9_hl",
+                fallbackTitle: "NDI 視訊串流輸出",
+                fallbackDesc: "支援將主視訊渲染畫面即時轉為 NDI 訊號發送至局域網路，可設定 Full NDI 與 NDI HX 雙模式，最多支援 5 個獨立通道同步廣播。",
+                fallbackHl: "特色功能： 可在 OBS、vMix、MadMapper 等外部軟體中直接以 NDI 訊號源讀取 Cue Lab 的投影畫面，實現無實體連接線的多軟體協同工作。"
+            },
+            {
+                id: "F10",
+                image: "../pic/cue lab/18_network_cue.png",
+                alt: "Network Cue (OSC & PJLink)",
+                titleKey: "cue_lab_f10_title",
+                descKey: "cue_lab_f10_desc",
+                hlKey: "cue_lab_f10_hl",
+                fallbackTitle: "網路控制 Cue (Network Cue)",
+                fallbackDesc: "內建標準 OSC 與 PJLink 投影機控制協定，可透過網路連動燈光控台、音訊軟體，並一鍵控制多台投影機的電源與 Shutter 快門開關。",
+                fallbackHl: "特色功能： 具備格式化防呆輸入，支援多裝置同步廣播或單播，是多媒體劇場與展演中不可或缺的中央控制中樞。"
             }
         ];
 

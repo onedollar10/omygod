@@ -376,15 +376,16 @@
                     <li><a href="#cue-types">4. Cue Types & Features</a></li>
                     <li><a href="#audio-edit">5. Audio Editing & Waveform Control</a></li>
                     <li><a href="#video-display">6. Video & Image Settings & Timing</a></li>
-                    <li><a href="#keystone">7. Display & Geometry Calibration (Keystone)</a></li>
+                    <li><a href="#keystone">7. Display & Geometry Calibration (Keystone & Mesh)</a></li>
                     <li><a href="#masking">8. Custom Masking & Global Mask Toggle</a></li>
                     <li><a href="#playback">9. Playback Controls & Keyboard Shortcuts</a></li>
                     <li><a href="#timecode">10. Timecode System</a></li>
                     <li><a href="#video-preview">11. Video Preview Window</a></li>
                     <li><a href="#project">12. Project Management & Packaging</a></li>
-                    <li><a href="#troubleshoot">13. Troubleshooting</a></li>
-                    <li><a href="#fade-cue">14. FADE Cue & Chain Control</a></li>
-                    <li><a href="#multi-rtsp">15. Multi-screen & RTSP Streaming</a></li>
+                    <li><a href="#fade-cue">13. FADE Cue & Chain Control</a></li>
+                    <li><a href="#multi-rtsp">14. Multi-screen & Video Streaming (RTSP & NDI)</a></li>
+                    <li><a href="#network-cue">15. Network Cue (Network Cue)</a></li>
+                    <li><a href="#troubleshoot">16. Troubleshooting</a></li>
                 </ul>
             </div>
 
@@ -536,7 +537,7 @@
                 </div>
                 <div class="mockup-caption">Fig 4: Cue list containing various cue types and standby states</div>
 
-                <p>Cue Lab provides 7 specialized Cue types to construct your show playback structure:</p>
+                <p>Cue Lab provides 9 specialized Cue types to construct your show playback structure:</p>
 
                 <table>
                     <tr>
@@ -592,6 +593,12 @@
                         <td>📉 Fade</td>
                         <td>Volume/Opacity/Transform/Keystone gradual changes</td>
                         <td>Fade transition duration, target Cue ID, control switches (Volume, Opacity, Transform, Keystone) with target limit values, value grabbing (Grab), and live previewing.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Network Cue</strong></td>
+                        <td>🌐 Network</td>
+                        <td>Projector, lighting board or QLab control</td>
+                        <td>Network protocol (OSC/PJLink), target device IP and Port settings, command path/payload strings.</td>
                     </tr>
                 </table>
             </section>
@@ -707,35 +714,47 @@
                 </ul>
             </section>
 
-            <!-- 7. Display & Keystone Correction -->
+                        <!-- 7. Display & Geometry Calibration (Keystone / Mesh Keystone) -->
             <section id="keystone">
-                <h2>7. Display & Geometry Calibration (Keystone)</h2>
-                <p>When the projector angle is not perfectly perpendicular to the projection surface, the output will skew. Cue Lab has built-in keystone calibration tools to correct grid projection maps.</p>
+                <h2>7. Display & Geometry Calibration (Keystone / Mesh Keystone)</h2>
+                <p>When the projection angle is tilted relative to the screen, or the surface is curved or irregular, geometric distortions occur. Cue Lab provides both **traditional 4-corner Keystone calibration** and **multi-point Mesh Keystone calibration** to align the output image perfectly.</p>
 
                 <div class="mockup-container">
                     <img src="images/en/07_keystone_editor.png" alt="Geometry Keystone Editor">
                 </div>
-                <div class="mockup-caption">Fig 7: Display calibration and keystone grid editor</div>
+                <div class="mockup-caption">Fig 7-1: 4-Corner Keystone Editor</div>
 
-                <h3>Calibration Modes</h3>
+                <div class="mockup-container">
+                    <img src="images/en/19_mesh_keystone.png" alt="Mesh Keystone Editor">
+                </div>
+                <div class="mockup-caption">Fig 7-2: Multi-point Mesh Keystone Editor (3x3 Grid)</div>
+
+                <h3>Calibration Modes & Level</h3>
                 <ol style="margin-left: 20px;">
-                    <li><strong>Global Screen Calibration</strong>: Select "Settings" menu -> Click "Screen Calibration". Geometry settings defined here directly modify the **entire output screen**, mapping all active visuals.</li>
-                    <li><strong>Cue-level Calibration</strong>: Under the "Display" tab in Inspector, select "Keystone". This modifies **only that specific Video or Image Cue**, useful for aligning mapping spots.</li>
+                    <li><strong>Global Screen Calibration</strong>: Menu → Settings → Screen Calibration. This adjusts the geometry of the **entire screen output**, affecting all active video layers globally.</li>
+                    <li><strong>Cue-level Calibration</strong>: Select a Cue → Inspector → Display tab → Keystone. This targets **only the selected video or image Cue**, allowing you to adjust geometry independently.</li>
                 </ol>
 
+                <h3>Traditional 4-Corner vs. Multi-point Mesh Keystone</h3>
+                <ul>
+                    <li><strong>4-Corner Keystone</strong>: Adjust the four corners of the projection individually. Suitable for flat rectangular screens.</li>
+                    <li><strong>Mesh Keystone (3x3 Grid)</strong>: When enabled, it generates a 3x3 grid (9 control points) across the surface. Drag any point to deform the image non-linearly, ideal for curved walls or cylindrical projection screens.</li>
+                </ul>
+
                 <div class="step-box">
-                    <h4>Keystone Keyboard Shortcuts</h4>
-                    <p>To let technicians calibrate the screen single-handedly at the venue, the editor canvas supports keyboard keys:</p>
+                    <h4>Keystone & Mesh Keyboard Shortcuts</h4>
+                    <p>For convenience during field calibration, the editor supports keyboard adjustments:</p>
                     <ul>
-                        <li>Click any corner anchor point with the mouse to select it (turns **green**).</li>
-                        <li>Press keyboard <code>↑</code>, <code>↓</code>, <code>←</code>, or <code>→</code> arrow keys to move the anchor by <code>0.002</code> normalized coordinates (about 2 pixels).</li>
-                        <li>Hold <code>Shift</code> + Arrow keys: Move quickly in increments of <code>0.01</code> (coarse edit).</li>
-                        <li>Hold <code>Ctrl</code> or <code>Alt</code> + Arrow keys: Micro-adjust in increments of <code>0.0005</code> (super fine edit).</li>
+                        <li>Click any corner handle or grid control point with your mouse to select it (turns **green** when active).</li>
+                        <li>Press Arrow keys (<code>↑ / ↓ / ← / →</code>) to move the selected point by `0.002` normalized coordinates (~2 pixels).</li>
+                        <li>Hold <code>Shift</code> + Arrow keys: Coarse adjustment by `0.01` increments.</li>
+                        <li>Hold <code>Ctrl</code> or <code>Alt</code> + Arrow keys: Micro-adjustments by `0.0005` increments for pixel-perfect alignment.</li>
                     </ul>
                 </div>
+
                 <div class="info-box">
-                    <h4>💡 Keystone Presets (Keystone Layers)</h4>
-                    <p>In addition to individual geometric calibrations per Cue, the software features <strong>"Global Keystone Preset Layers"</strong> in preferences. Designers can define baseline calibrations for each projector (e.g., correcting mounting biases) and save them as presets. Individual Video or Image Cues can apply a preset layer as a baseline and superimpose their own Cue-level keystone calibration. The engine multiplies both transformation matrices on the fly using OpenCV Homography, allowing the GPU to perform a single drawing call and vertex transformation, optimizing rendering performance.</p>
+                    <h4>💡 Keystone Layers</h4>
+                    <p>In addition to per-cue calibration, Cue Lab supports **Global Keystone Presets** in application settings. Designers can set reference offsets for physical projectors (e.g. correcting mounting offsets) and save them as layers. When Cues are played, they inherit the base layer calibration and superimpose their own keystone adjustments. The system utilizes homography matrix multiplication in OpenCV, combining both into a single GPU rendering transform to maintain maximum rendering performance.</p>
                 </div>
             </section>
 
@@ -913,13 +932,103 @@
                 </ul>
             </section>
 
+            <!-- 13. FADE Cue & Chain Control -->
+            <section id="fade-cue">
+                <h2>13. FADE Cue & Chain Control</h2>
+                <p>The <strong>FADE Cue</strong> is a powerful non-destructive control track. It does not contain any media content itself, but is designed to smoothly interpolate parameters (like volume, opacity, position/size, or keystone settings) of a target Cue over a specified duration (Fade Time).</p>
+
+                <div class="mockup-container">
+                    <img src="images/en/16_fade_cue_inspector.png" alt="FADE Cue property grab settings">
+                </div>
+                <div class="mockup-caption">Fig 14: FADE Cue properties and value grab settings</div>
+
+                <h3>Core Mechanisms & Features</h3>
+                <ul>
+                    <li><strong>Recursive Target Resolution</strong>: In complex show designs, multiple FADE Cues might be linked to control the same media Cue (e.g. Media Cue -> FADE Cue 2 -> FADE Cue 3). If FADE 3 targets FADE 2, the playback engine automatically resolves recursively until it locks onto the underlying media instance (e.g., Audio/Video instance), ensuring perfect control transmission.</li>
+                    <li><strong>Grab (Design vs. Live Value Capture)</strong>:
+                        <ul>
+                            <li><strong>Design Grab</strong>: When you select a FADE Cue and click "Grab Current Value", the system uses a 3-level fallback capture logic: <strong>Preceding FADE settings ──▶ Live Player values ──▶ Media original values</strong>. If preceding FADE Cues target the same media, it prioritizes grabbing their targeted values (design values) to maintain consistency in static show design, unaffected by random live playback progress.</li>
+                            <li><strong>Live Playback</strong>: When triggered at showtime, the interpolation starts from the target Cue's actual live value, guaranteeing smooth and correct transitions regardless of whether Cues are executed in sequence or skipped.</li>
+                            <li><strong>Real-time Preview Sync</strong>: When a FADE Cue is playing, any "Grab" or parameter adjustment in the Inspector bypasses UI signal guards, sending updates directly to the engine for instant WYSIWYG previewing.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+                                    <!-- 14. Multi-screen & Video Streaming (RTSP & NDI) -->
+            <section id="multi-rtsp">
+                <h2>14. Multi-screen & Video Streaming (RTSP & NDI)</h2>
+                <p>Cue Lab features advanced **multi-screen projection positioning** and **virtual screen video streaming (RTSP & NDI)**, satisfying both physical projection and virtual network routing requirements.</p>
+
+                <div class="mockup-container">
+                    <img src="images/en/17_rtsp_streaming_settings.png" alt="Multi-screen and RTSP settings in Preferences">
+                </div>
+                <div class="mockup-caption">Fig 14-1: Multi-screen and RTSP settings in Preferences</div>
+
+                <div class="mockup-container">
+                    <img src="images/en/20_ndi_video.png" alt="NDI virtual screen settings in Preferences">
+                </div>
+                <div class="mockup-caption">Fig 14-2: NDI virtual screen settings in Preferences</div>
+
+                <h3>Multi-screen Output & Positioning</h3>
+                <p>Under the "Display" tab of a video/image Cue, you can specify an <code>output_screen</code> index. The <code>VideoEngine</code> automatically routes and matches frameless fullscreen projection windows to the physical monitors, preventing mouse cursor or system UI overlay from interfering with the stage view.</p>
+
+                <h3>RTSP Virtual Stream Output</h3>
+                <p>When <code>output_screen</code> is set to an index greater than or equal to 90 (e.g. 90, 91...), the window is defined as a <strong>Virtual Screen</strong> and automatically transcoded to a background RTSP stream:</p>
+                <ul>
+                    <li><strong>Streaming Address</strong>: Standard RTSP links like <code>rtsp://&lt;Host_IP&gt;:&lt;Port&gt;/live/screen_1</code> are broadcasted via the built-in MediaMTX streaming server for receivers like OBS or vMix.</li>
+                    <li><strong>NVIDIA GPU Acceleration & CPU Fallback</strong>: The streaming pipeline prioritizes NVIDIA GPU hardware encoding (<code>h264_nvenc</code>). If it fails due to driver limits, it <strong>seamlessly downgrades to CPU encoding (<code>libx264</code>) within 0.2s</strong>, ensuring uninterrupted broadcasts.</li>
+                    <li><strong>Black Screen Continuous Broadcast</strong>: The stream lifetime is tied to the main application. Even during blackouts or show endings, a 16ms timer continues feeding black frames to prevent OBS or other receivers from losing signal and disconnecting.</li>
+                </ul>
+
+                <h3>NDI Video Streaming</h3>
+                <p><strong>NDI (Network Device Interface)</strong> is a high-bandwidth, low-latency LAN video streaming protocol developed by NewTek. Cue Lab seamlessly routes video outputs to NDI streams, allowing the main video render frame to be broadcasted across the local network in real-time.</p>
+                <ul>
+                    <li><strong>Virtual NDI Screens</strong>: Broadcast fullscreen outputs to LAN as NDI feeds (supports up to 5 NDI channels).</li>
+                    <li><strong>NDI Modes</strong>:
+                        <ul>
+                            <li><strong>NDI Full (Lossless & Low Latency)</strong>: High-fidelity, lossless, ultra-low latency streaming, perfect for high-speed local networks.</li>
+                            <li><strong>NDI HX (High Efficiency)</strong>: High-efficiency compressed stream, ideal for limited bandwidth or cross-network setups.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Seamless Integration</strong>: Access Cue Lab screens in third-party software like OBS, vMix, MadMapper, or on physical NDI decoders, reducing hardware cable complexity.</li>
+                </ul>
+            </section>
+
+            <!-- 15. Network Cue (Network Cue) -->
+            <section id="network-cue">
+                <h2>15. Network Cue (Network Cue)</h2>
+                <p>The <strong>Network Cue</strong> enables sending standard network triggers to external equipment. In a theatrical environment, it is useful for controlling projector power, shutters, or triggering external lighting consoles or sound software. It supports standard <strong>PJLink (Projector Control)</strong> and <strong>OSC (Open Sound Control)</strong> protocols.</p>
+
+                <div class="mockup-container">
+                    <img src="images/en/18_network_cue.png" alt="Network Cue properties with PJLink and OSC options">
+                </div>
+                <div class="mockup-caption">Fig 16: Network Cue inspector with PJLink and OSC options</div>
+
+                <h3>Protocols & Use Cases</h3>
+                <ul>
+                    <li><strong>PJLink Projector Control Protocol</strong>:
+                        <ul>
+                            <li><strong>Commands</strong>: Supports standard commands like "⚡ Power On", "⏻ Power Off", "🔲 Shutter Close (mute/black out screen)", and "🔳 Shutter Open (restore screen)".</li>
+                            <li><strong>Target Management</strong>: Multi-select target projectors in the inspector. Configure projector IP addresses, ports, and authentication passwords under "Settings -> Network".</li>
+                        </ul>
+                    </li>
+                    <li><strong>OSC (Open Sound Control) Protocol</strong>:
+                        <ul>
+                            <li><strong>Broadcast/Unicast</strong>: Send standard OSC messages to custom target hosts (e.g., primary/backup lighting consoles like ETC EOS, QLab sound servers, or media servers).</li>
+                            <li><strong>Message Path</strong>: Enter strings like <code>/eos/cmd/Group/3000/FAN_CENTER/X_Focus/+1/enter</code>. Configure target computers under "Settings -> Network".</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
             <section id="troubleshoot">
-                <h2>15. Troubleshooting</h2>
+                <h2>16. Troubleshooting</h2>
 
                 <div class="mockup-container">
                     <img src="images/en/11_settings_dialog.png" alt="Preferences dialog">
                 </div>
-                <div class="mockup-caption">Fig 13: Display options inside Application Settings</div>
+                <div class="mockup-caption">Fig 16: Display options inside Application Settings</div>
 
                 <div class="step-box">
                     <h4>Q1: Projector is not displaying any video output.</h4>
