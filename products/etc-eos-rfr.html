@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETC EOS OSC RFR Controller | ONEDOLLER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./product-page.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag("js", new Date());
+        gtag("config", "G-95B5G5KQ8B");
+    </script>
+</head>
+
+<body>
+    <header class="top-nav">
+        <div class="brand">
+            <img src="../assets/logo-neo.svg" alt="ONEDOLLER NEO">
+            <strong>ETC EOS OSC RFR</strong>
+        </div>
+        <div class="top-nav-links">
+            <a href="../index.html" data-i18n="nav_home">HOME</a>
+            <a href="../index.html#apps" data-i18n="nav_apps">APP ZONE</a>
+            <button id="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_toggle">English</button>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="hero">
+            <article class="hero-copy">
+                <span class="hero-kicker">LIGHTING RFR / ETC EOS CONTROLLER</span>
+                <h1 class="hero-title">ETC EOS OSC RFR</h1>
+                <p class="hero-sub" data-i18n="rfr_hero_subtitle">針對 ETC Eos 控台打造的高效能無線遙控器 (支援 Gemini AI 智慧語音)</p>
+                <div class="hero-points">
+                    <span>OSC UDP 8000/8001</span>
+                    <span>72-Key Console Keypad</span>
+                    <span>8 Rotary Encoders</span>
+                    <span>CIE 1931 Color Studio</span>
+                    <span>Gemini 3.1 Live AI</span>
+                </div>
+                <div class="cta-group">
+                    <a href="mailto:5664762@gmail.com" class="cta primary">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span data-i18n="osc_buy_email">聯絡 5664762@gmail.com 購買</span>
+                    </a>
+                    <a href="https://line.me/ti/p/~5664762" target="_blank" class="cta secondary">
+                        <i class="fa-brands fa-line"></i>
+                        <span data-i18n="osc_buy_line">LINE 聯繫 ID: 5664762</span>
+                    </a>
+                    <a id="manual-link" href="../Manual/ETC_EOS_RFR_Manual.html" target="_blank" class="cta secondary">
+                        <i class="fa-solid fa-book"></i>
+                        <span data-i18n="manual_btn">使用說明書 / Manual</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="hero-ui">
+                <img src="../assets/products/etc-eos-rfr/01_remote_main.png" alt="ETC EOS OSC RFR Remote Interface">
+                <div class="quick-spec">
+                    <article>
+                        <strong>Console</strong>
+                        <span>ETC Eos Family</span>
+                    </article>
+                    <article>
+                        <strong>Protocol</strong>
+                        <span>OSC 1.0 UDP</span>
+                    </article>
+                    <article>
+                        <strong>AI Voice</strong>
+                        <span>Gemini 3.1 Live</span>
+                    </article>
+                    <article>
+                        <strong>Platform</strong>
+                        <span>Win / Android / iOS</span>
+                    </article>
+                </div>
+            </article>
+        </section>
+
+        <section class="section">
+            <h2 data-i18n="osc_demo">PRODUCT OVERVIEW / 介面展示</h2>
+            <p class="section-sub" id="demo-sub">提供完整 72 鍵 EOS 語法鍵盤、8 組高精度旋鈕、CIE 1931 色彩選取器與 Gemini AI 語音調光。</p>
+            <div class="demo-wrap">
+                <div class="demo-video">
+                    <img src="../assets/products/etc-eos-rfr/04_openfade_tab.png" alt="OpenFade Simultaneous Workspace" style="width:100%; border-radius:12px; border:1px solid rgba(255,255,255,0.1);">
+                </div>
+                <aside class="demo-notes">
+                    <h3 id="demo-focus-title">核心特色</h3>
+                    <ul>
+                        <li id="demo-note-1">1:1 官方標準 72 鍵調光鍵盤與即時 Master Cue 盒</li>
+                        <li id="demo-note-2">8 組高精度自訂旋鈕，支援 11 大類參數與粗細調切換</li>
+                        <li id="demo-note-3">CIE 1931 色度圖選色與 P1/P2 雙點色彩漸變混色</li>
+                        <li id="demo-note-4">Gemini 3.1 Live + 1ms 本地正則雙軌智慧語音調光大腦</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 id="features-heading">核心功能</h2>
+            <p class="section-sub" id="features-sub">左右翻頁查看功能重點，每次聚焦一個項目。</p>
+            <div class="feature-book-shell">
+                <button class="feature-nav" id="feature-prev" aria-label="Previous Features">&#10094;</button>
+                <div class="feature-book-wrap">
+                    <div class="feature-book" id="feature-book">
+                        <article class="feature-page" id="feature-page-single"></article>
+                    </div>
+                    <div class="feature-page-indicator" id="feature-page-indicator">FEATURE 1 / 5</div>
+                </div>
+                <button class="feature-nav" id="feature-next" aria-label="Next Features">&#10095;</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 id="integration-heading">EOS 控台深度串接工作流</h2>
+            <p class="section-sub" id="integration-sub">透過雙向 OSC UDP 8000/8001 封包傳輸，實現與控台完全一致的即時聯動。</p>
+            <div class="workflow">
+                <article>
+                    <strong>01 CONNECT</strong>
+                    <span id="workflow-step-1">輸入控台 IP，一鍵建立 UDP 8000/8001 雙向通訊鏈路。</span>
+                </article>
+                <article>
+                    <strong>02 FOCUS &amp; KEYPAD</strong>
+                    <span id="workflow-step-2">使用 72 鍵數字語法或 Focus 對焦分頁即時選燈與調光。</span>
+                </article>
+                <article>
+                    <strong>03 ENCODERS &amp; CIE</strong>
+                    <span id="workflow-step-3">8 顆旋鈕微調光學/割刀，搭配 CIE 1931 色域圖直覺混色。</span>
+                </article>
+                <article>
+                    <strong>04 AI VOICE COMMAND</strong>
+                    <span id="workflow-step-4">長按語音鍵說出「1號燈 全亮」或自然語言，0.1秒極速執行。</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="specs-title" data-i18n="grid_tech_specs">TECHNICAL SPECS</h2>
+            <div class="specs-row">
+                <ul class="specs-list">
+                    <li><strong data-i18n="spec_os">OS</strong>: Windows (PC Web Server) / Android (Native APK) / iOS (PWA)</li>
+                    <li><strong data-i18n="spec_console">Console</strong>: ETC Eos Family (Apex, Gio, Ion Xe, Element 2, ETCnomad)</li>
+                    <li><strong>Protocol</strong>: OSC 1.0 Specification (UDP Send 8000 / Listen 8001)</li>
+                    <li><strong>AI Engine</strong>: Google Gemini 3.1 Live WebSocket + Local 1ms Regex Engine</li>
+                    <li><strong>Color Space</strong>: CIE 1931 xyY Chromaticity with P1/P2 Dual-Point Interpolation</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="comments-section">
+            <h2 data-i18n="comments_title">COMMENTS / 留言區</h2>
+            <div class="giscus"></div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 onedoller. Tech &amp; Art Studio.</p>
+        </footer>
+
+        <script src="https://giscus.app/client.js"
+                data-repo="onedollar10/omygod"
+                data-repo-id="R_kgDOQ1Fg5g"
+                data-category="General"
+                data-category-id="DIC_kwDOQ1Fg5s4C7zG2"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="dark_dimmed"
+                data-lang="zh-TW"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </main>
+
+    <script src="../i18n.js"></script>
+    <script>
+        const featureItems = [
+            {
+                id: "F01",
+                image: "../assets/products/etc-eos-rfr/01_remote_main.png",
+                alt: "72-Key Professional Lighting Keypad",
+                titleKey: "rfr_f1_title",
+                descKey: "rfr_f1_desc",
+                hlKey: "rfr_f1_hl",
+                fallbackTitle: "72 鍵專業調光鍵盤",
+                fallbackDesc: "完整 1:1 官方鍵位佈局，內建 Live、Blind、Sneak、Rem Dim、Palettes 與 Master Playback 即時播放盒。",
+                fallbackHl: "即時連動：雙向 UDP 8000/8001 OSC 通訊，即時回傳 Live 命令行、Chan、Level 與 Cue 狀態。"
+            },
+            {
+                id: "F02",
+                image: "../assets/products/etc-eos-rfr/03_encoders_tab.png",
+                alt: "8 Precision Rotary Encoders",
+                titleKey: "rfr_f2_title",
+                descKey: "rfr_f2_desc",
+                hlKey: "rfr_f2_hl",
+                fallbackTitle: "8 組高精度自訂旋鈕",
+                fallbackDesc: "支援 Position、CMY、RGB、Optics、Shutter 等 11 大類超過 60 種參數，可自由切換粗調/細調與微調步進。",
+                fallbackHl: "十組 Layout 預設：一鍵快速切換位置、RGB混色、圖案片、割刀、光學與 3D 空間控制。"
+            },
+            {
+                id: "F03",
+                image: "../assets/products/etc-eos-rfr/05_cie_color_tab.png",
+                alt: "CIE 1931 Color Studio",
+                titleKey: "rfr_f3_title",
+                descKey: "rfr_f3_desc",
+                hlKey: "rfr_f3_hl",
+                fallbackTitle: "CIE 1931 色彩工作室",
+                fallbackDesc: "全幅舌形色度圖選色，支援 P1/P2 雙點色彩漸變混色與 3200K/5600K/RGB/Amber 常用色溫色卡快捷。",
+                fallbackHl: "色彩漸變：拖曳雙點建立漸變色扇形分佈，一鍵發送 /eos/color/xy 坐標至控台。"
+            },
+            {
+                id: "F04",
+                image: "../assets/products/etc-eos-rfr/04_openfade_tab.png",
+                alt: "OpenFade 3-Column Desk",
+                titleKey: "rfr_f4_title",
+                descKey: "rfr_f4_desc",
+                hlKey: "rfr_f4_hl",
+                fallbackTitle: "OpenFade 同屏多工工作台",
+                fallbackDesc: "創新三欄同屏佈局：左欄推桿群組搭配 FAN 扇形模式，中欄 CIE 1931 選色，右欄 5 通道獨立 Effect 矩陣。",
+                fallbackHl: "同屏掌控：所有演出常用維度一次展開，無需頻繁跳頁，極大提升現場控燈效率。"
+            },
+            {
+                id: "F05",
+                image: "../assets/products/etc-eos-rfr/13_voice_overlay.png",
+                alt: "Gemini AI Voice Control",
+                titleKey: "rfr_f5_title",
+                descKey: "rfr_f5_desc",
+                hlKey: "rfr_f5_hl",
+                fallbackTitle: "Gemini AI 雙軌智慧語音",
+                fallbackDesc: "結合本地 1ms 離線正則解析引擎與 Gemini 3.1 Live WebSocket 雲端大腦，支援口語化中文與英文調光。",
+                fallbackHl: "自然語言調光：按住說話即可執行「1號燈 全亮」、「把面光調成暖黃色」，0.1 秒極速響應。"
+            }
+        ];
+
+        let featureIndex = 0;
+        let featureIsFlipping = false;
+
+        function getFeatureText(item, keyName, fallbackName) {
+            if (typeof currentLang !== "undefined" &&
+                typeof translations !== "undefined" &&
+                translations[currentLang] &&
+                item[keyName] &&
+                translations[currentLang][item[keyName]]) {
+                return translations[currentLang][item[keyName]];
+            }
+            return item[fallbackName];
+        }
+
+        function getPageTexts() {
+            const lang = (typeof currentLang !== "undefined") ? currentLang : (localStorage.getItem("lang") || "zh");
+            if (lang === "en") {
+                return {
+                    demoSub: "Comprehensive wireless control with 72-key keypad, 8 precision encoders, CIE 1931 picker, and Gemini AI voice control.",
+                    demoTitle: "KEY HIGHLIGHTS",
+                    demoNotes: [
+                        "1:1 official 72-key keypad & live Master Cue playback box",
+                        "8 precision rotary encoders with 11 categories & Coarse/Fine mode",
+                        "CIE 1931 chromaticity diagram with P1/P2 dual-point fan gradients",
+                        "Gemini 3.1 Live + 1ms local regex dual-engine smart voice control"
+                    ],
+                    workflow: [
+                        "Enter console IP to establish bidirectional UDP 8000/8001 OSC link.",
+                        "Directly select channels and control levels using 72-key keypad or Focus tab.",
+                        "Fine-tune optics/shutters with 8 encoders and mix colors via CIE 1931.",
+                        "Hold voice button and speak naturally ('Channel 1 Full') for instant execution in 0.1s."
+                    ]
+                };
+            }
+            return {
+                demoSub: "提供完整 72 鍵 EOS 語法鍵盤、8 組高精度旋鈕、CIE 1931 色彩選取器與 Gemini AI 語音調光。",
+                demoTitle: "核心特色",
+                demoNotes: [
+                    "1:1 官方標準 72 鍵調光鍵盤與即時 Master Cue 盒",
+                    "8 組高精度自訂旋鈕，支援 11 大類參數與粗細調切換",
+                    "CIE 1931 色度圖選色與 P1/P2 雙點色彩漸變混色",
+                    "Gemini 3.1 Live + 1ms 本地正則雙軌智慧語音調光大腦"
+                ],
+                workflow: [
+                    "輸入控台 IP，一鍵建立 UDP 8000/8001 雙向通訊鏈路。",
+                    "使用 72 鍵數字語法或 Focus 對焦分頁即時選燈與調光。",
+                    "8 顆旋鈕微調光學/割刀，搭配 CIE 1931 色域圖直覺混色。",
+                    "長按語音鍵說出「1號燈 全亮」或自然語言，0.1秒極速執行。"
+                ]
+            };
+        }
+
+        function applyPageTexts() {
+            const t = getPageTexts();
+            const demoSub = document.getElementById("demo-sub");
+            const demoFocusTitle = document.getElementById("demo-focus-title");
+            if (demoSub) demoSub.textContent = t.demoSub;
+            if (demoFocusTitle) demoFocusTitle.textContent = t.demoTitle;
+            t.demoNotes.forEach((text, i) => {
+                const el = document.getElementById(`demo-note-${i + 1}`);
+                if (el) el.textContent = text;
+            });
+            t.workflow.forEach((text, i) => {
+                const el = document.getElementById(`workflow-step-${i + 1}`);
+                if (el) el.textContent = text;
+            });
+        }
+
+        function getFeatureTotal() {
+            return featureItems.length;
+        }
+
+        function renderFeatureMedia(item) {
+            return `<img src="${item.image}" alt="${item.alt}">`;
+        }
+
+        function renderFeaturePage(item) {
+            if (!item) return "";
+            const title = getFeatureText(item, "titleKey", "fallbackTitle");
+            const desc = getFeatureText(item, "descKey", "fallbackDesc");
+            const hl = getFeatureText(item, "hlKey", "fallbackHl");
+
+            return `
+                <div class="feature-media">
+                    ${renderFeatureMedia(item)}
+                </div>
+                <div class="feature-body">
+                    <span class="feature-id">${item.id}</span>
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                    <div class="feature-highlight">${hl}</div>
+                </div>
+            `;
+        }
+
+        function getLocalHeadingLabels() {
+            const lang = (typeof currentLang !== "undefined") ? currentLang : (localStorage.getItem("lang") || "zh");
+            if (lang === "en") {
+                return {
+                    featuresHeading: "CORE FEATURES",
+                    featuresSub: "Flip left/right to inspect one feature at a time in large format.",
+                    integrationHeading: "EOS CONSOLE INTEGRATION WORKFLOW",
+                    integrationSub: "Achieve complete bi-directional synchronization via OSC UDP 8000/8001 packets.",
+                    indicatorPrefix: "FEATURE"
+                };
+            }
+            return {
+                featuresHeading: "核心功能",
+                featuresSub: "左右翻頁查看功能重點，每次聚焦一個項目。",
+                integrationHeading: "EOS 控台深度串接工作流",
+                integrationSub: "透過雙向 OSC UDP 8000/8001 封包傳輸，實現與控台完全一致的即時聯動。",
+                indicatorPrefix: "功能"
+            };
+        }
+
+        function applyLocalHeadings() {
+            const labels = getLocalHeadingLabels();
+            const featuresHeading = document.getElementById("features-heading");
+            const featuresSub = document.getElementById("features-sub");
+            const integrationHeading = document.getElementById("integration-heading");
+            const integrationSub = document.getElementById("integration-sub");
+            if (featuresHeading) featuresHeading.textContent = labels.featuresHeading;
+            if (featuresSub) featuresSub.textContent = labels.featuresSub;
+            if (integrationHeading) integrationHeading.textContent = labels.integrationHeading;
+            if (integrationSub) integrationSub.textContent = labels.integrationSub;
+        }
+
+        function renderFeatureSpread() {
+            const single = document.getElementById("feature-page-single");
+            const indicator = document.getElementById("feature-page-indicator");
+            const prevBtn = document.getElementById("feature-prev");
+            const nextBtn = document.getElementById("feature-next");
+            if (!single || !indicator || !prevBtn || !nextBtn) return;
+
+            const total = getFeatureTotal();
+            const current = featureItems[featureIndex];
+            const labels = getLocalHeadingLabels();
+
+            single.innerHTML = renderFeaturePage(current);
+            indicator.textContent = `${labels.indicatorPrefix} ${featureIndex + 1} / ${total}`;
+
+            if (total <= 1) {
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+            }
+        }
+
+        function flipFeature(direction) {
+            const book = document.getElementById("feature-book");
+            if (!book || featureIsFlipping) return;
+
+            const total = getFeatureTotal();
+            if (total <= 1) return;
+
+            featureIsFlipping = true;
+            const cls = direction === "next" ? "is-next" : "is-prev";
+            book.classList.add(cls);
+
+            setTimeout(() => {
+                if (direction === "next") {
+                    featureIndex = (featureIndex + 1) % total;
+                } else {
+                    featureIndex = (featureIndex - 1 + total) % total;
+                }
+                renderFeatureSpread();
+            }, 280);
+
+            setTimeout(() => {
+                book.classList.remove(cls);
+                featureIsFlipping = false;
+            }, 620);
+        }
+
+        function setupFeatureBook() {
+            applyLocalHeadings();
+            applyPageTexts();
+            renderFeatureSpread();
+            const prevBtn = document.getElementById("feature-prev");
+            const nextBtn = document.getElementById("feature-next");
+            prevBtn?.addEventListener("click", () => flipFeature("prev"));
+            nextBtn?.addEventListener("click", () => flipFeature("next"));
+        }
+
+        function syncManualLinks() {
+            const lang = localStorage.getItem("lang") || "zh";
+            const href = lang === "en" ? "../Manual/ETC_EOS_RFR_Manual_en.html" : "../Manual/ETC_EOS_RFR_Manual.html";
+            const top = document.getElementById("manual-link");
+            if (top) top.href = href;
+        }
+
+        function bootstrapProductPage() {
+            if (typeof applyTranslations === "function") {
+                applyTranslations();
+            }
+            syncManualLinks();
+            setupFeatureBook();
+        }
+
+        document.addEventListener("DOMContentLoaded", bootstrapProductPage);
+
+        const originalToggleLanguage = window.toggleLanguage;
+        if (typeof originalToggleLanguage === "function") {
+            window.toggleLanguage = function () {
+                originalToggleLanguage();
+                syncManualLinks();
+                applyLocalHeadings();
+                applyPageTexts();
+                renderFeatureSpread();
+            };
+        }
+    </script>
+</body>
+
+</html>

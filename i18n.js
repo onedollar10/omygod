@@ -1,6 +1,25 @@
 const translations = {
     "zh": {
         "nav_home": "首頁",
+        "nav_apps": "APP 專區",
+        "section_apps": "APP 專區",
+        "rfr_hero_subtitle": "針對 ETC Eos 控台打造的高效能無線遙控器 (支援 Gemini AI 智慧語音)",
+        "rfr_f1_title": "72 鍵專業調光鍵盤",
+        "rfr_f1_desc": "完整 1:1 官方鍵位佈局，內建 Live、Blind、Sneak、Rem Dim、Palettes 與 Master Playback 即時播放盒。",
+        "rfr_f1_hl": "即時連動：雙向 UDP 8000/8001 OSC 通訊，即時回傳 Live 命令行、Chan、Level 與 Cue 狀態。",
+        "rfr_f2_title": "8 組高精度自訂旋鈕",
+        "rfr_f2_desc": "支援 Position、CMY、RGB、Optics、Shutter 等 11 大類超過 60 種參數，可自由切換粗調/細調與微調步進。",
+        "rfr_f2_hl": "十組 Layout 預設：一鍵快速切換位置、RGB混色、圖案片、割刀、光學與 3D 空間控制。",
+        "rfr_f3_title": "CIE 1931 色彩工作室",
+        "rfr_f3_desc": "全幅舌形色度圖選色，支援 P1/P2 雙點色彩漸變混色與 3200K/5600K/RGB/Amber 常用色溫色卡快捷。",
+        "rfr_f3_hl": "色彩漸變：拖曳雙點建立漸變色扇形分佈，一鍵發送 /eos/color/xy 坐標至控台。",
+        "rfr_f4_title": "OpenFade 同屏多工工作台",
+        "rfr_f4_desc": "創新三欄同屏佈局：左欄推桿群組搭配 FAN 扇形模式，中欄 CIE 1931 選色，右欄 5 通道獨立 Effect 矩陣。",
+        "rfr_f4_hl": "同屏掌控：所有演出常用維度一次展開，無需頻繁跳頁，極大提升現場控燈效率。",
+        "rfr_f5_title": "Gemini AI 雙軌智慧語音",
+        "rfr_f5_desc": "結合本地 1ms 離線正則解析引擎與 Gemini 3.1 Live WebSocket 雲端大腦，支援口語化中文與英文調光。",
+        "rfr_f5_hl": "自然語言調光：按住說話即可執行「1號燈 全亮」、「把面光調成暖黃色」，0.1 秒極速響應。",
+
         "nav_software": "軟體販售",
         "nav_tutorials": "教學區",
         "hero_title": "我做的不是藝術是技術",
@@ -130,6 +149,25 @@ const translations = {
     },
     "en": {
         "nav_home": "Home",
+        "nav_apps": "App Zone",
+        "section_apps": "App Applications",
+        "rfr_hero_subtitle": "High-Performance Wireless RFR Controller for ETC Eos Family (with Gemini AI Live Voice)",
+        "rfr_f1_title": "72-Key Professional Lighting Keypad",
+        "rfr_f1_desc": "Exact 1:1 hardware replication with Live, Blind, Sneak, Rem Dim, Palettes, and Master Cue Playback Box.",
+        "rfr_f1_hl": "Live Bi-Directional Sync: UDP 8000/8001 OSC bridge returning Live command line, Chan, Level, and Cue states.",
+        "rfr_f2_title": "8 Precision Rotary Encoders",
+        "rfr_f2_desc": "Supports 11 parameter categories & 60+ attributes (Position, CMY, RGB, Optics, Shutters) with Coarse/Fine mode.",
+        "rfr_f2_hl": "10 Layout Presets: Instant switching across Position, RGB mixing, Gobo, Framing blades, Optics, and 3D space.",
+        "rfr_f3_title": "CIE 1931 Color Studio",
+        "rfr_f3_desc": "Full-scale chromaticity diagram with P1/P2 dual-point fan gradients and 3200K / 5600K / RGB / Amber presets.",
+        "rfr_f3_hl": "Color Gradient: Drag dual points to build smooth fan colors, sending /eos/color/xy coordinates with one click.",
+        "rfr_f4_title": "OpenFade 3-Column Desk",
+        "rfr_f4_desc": "Simultaneous 3-column desk: Left faders with FAN modes, Center CIE 1931 picker, and Right 5-channel Effect matrix.",
+        "rfr_f4_hl": "Simultaneous Control: All performance controls on one screen without tab switching.",
+        "rfr_f5_title": "Dual-Engine Gemini AI Voice Control",
+        "rfr_f5_desc": "Combines a 1ms offline regex parser with Gemini 3.1 Live WebSocket AI for natural language conversational lighting.",
+        "rfr_f5_hl": "Conversational Control: Hold to speak 'Channel 1 Full' or 'Warm amber wash', executing in under 0.1s.",
+
         "nav_software": "Software",
         "nav_tutorials": "Tutorials",
         "hero_title": "I Don't Build Art, I Build Tech",
@@ -269,6 +307,7 @@ function toggleLanguage() {
     // If on main page, re-render dynamic content
     if (typeof renderSoftware === 'function') {
         renderSoftware();
+    if (typeof renderApps === "function") renderApps();
         renderFreeTools();
         renderFilters();
         renderTutorials();

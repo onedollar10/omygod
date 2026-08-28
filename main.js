@@ -6,6 +6,7 @@ let isTutorialFlipping = false;
 
 document.addEventListener("DOMContentLoaded", () => {
     renderSoftware();
+    renderApps();
     renderFreeTools();
     renderFilters();
     renderTutorials();
@@ -236,4 +237,33 @@ function renderNewsTicker() {
         const content = currentLang === "en" ? item.content_en : item.content;
         return `<span class="news-date">${item.date}</span> ${content}`;
     }).join(" • ");
+}
+
+
+function renderApps() {
+    const container = document.getElementById("apps-container");
+    if (!container || typeof apps === "undefined") return;
+
+    container.innerHTML = apps.map(item => {
+        const name = currentLang === "en" ? item.name_en : item.name;
+        const tagline = currentLang === "en" ? item.tagline_en : item.tagline;
+        const description = currentLang === "en" ? item.description_en : item.description;
+        const features = currentLang === "en" ? item.features_en : item.features;
+        const btnText = currentLang === "en" ? translations.en.btn_details : translations.zh.btn_details;
+        const manualBtnText = currentLang === "en" ? translations.en.manual_btn : translations.zh.manual_btn;
+        const manualUrl = currentLang === "en" ? (item.manual_en || item.manual) : item.manual;
+
+        return `
+            <div class="card" id="${item.id}">
+                <h3>${name}</h3>
+                <p class="tagline">${tagline}</p>
+                <p>${description}</p>
+                <ul>
+                    ${features.map(f => `<li>${f}</li>`).join("")}
+                </ul>
+                ${item.url ? `<a href="${item.url}" class="btn" style="margin-right:8px" onclick="trackClick('${item.id}_Details', 'Navigation')">${btnText}</a>` : ""}
+                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-top:10px; background:linear-gradient(45deg, #7bdcff, #568fff); color:#051427;" target="_blank" onclick="trackClick('${item.id}_Manual', 'ManualView')">${manualBtnText}</a>` : ""}
+            </div>
+        `;
+    }).join("");
 }

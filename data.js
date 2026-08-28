@@ -244,6 +244,40 @@ const software = [
     }
 ];
 
+
+const apps = [
+    {
+        id: "etc_eos_rfr",
+        name: "ETC EOS OSC RFR Controller",
+        name_en: "ETC EOS OSC RFR Controller",
+        tagline: "專業全功能 ETC Eos 燈光遙控控制器 (支援 Gemini AI 智慧語音)",
+        tagline_en: "Professional Full-Featured ETC Eos Lighting RFR Controller (with Gemini AI Voice Control)",
+        description: "專為 ETC Eos 系列燈光控台（Apex / Gio / Ion Xe / Element 2 / ETCnomad）打造的專業無線遙控軟體。具備 72 鍵 EOS 調光鍵盤、8 組高精度旋鈕滾輪、CIE 1931 色彩選取器、10 軌推桿矩陣、OpenFade 同屏全覽工作台，並內建 Gemini 3.1 Live 智慧語音調光大腦。",
+        description_en: "Engineered for ETC Eos Family consoles (Apex, Gio, Ion Xe, Element 2, ETCnomad). Features 72-key lighting keypad, 8 precision rotary encoders, CIE 1931 color picker, 10 motorized-style faders, OpenFade simultaneous desk, and Gemini 3.1 Live AI voice control.",
+        url: "products/etc-eos-rfr.html",
+        manual: "Manual/ETC_EOS_RFR_Manual.html",
+        manual_en: "Manual/ETC_EOS_RFR_Manual_en.html",
+        features: [
+            "72 鍵專業數字語法鍵盤與 Master Playback 即時播放器",
+            "8 組高精度自訂旋鈕滾輪 (支援 11 大類、60+ 燈具參數與微調步進)",
+            "CIE 1931 色彩工作室 (P1/P2 雙點漸變與常用色溫色卡快捷)",
+            "OpenFade 三欄同屏工作台 (推桿群組 + FAN 扇形模式 + 特效矩陣)",
+            "10 軌虛擬推桿與 Size/Rate/Trail/Grouping 特效絕對值推桿",
+            "Gemini 3.1 Live + 1ms 本地正則雙軌智慧語音調光系統",
+            "跨平台支援：Windows PC、Android 原生 APK 與 iOS PWA 全螢幕"
+        ],
+        features_en: [
+            "72-Key Professional Lighting Keypad & Master Cue Playback Box",
+            "8 Precision Rotary Encoders (11 Categories, 60+ Parameters & Step Sizes)",
+            "CIE 1931 Color Studio (P1/P2 Fan Gradients & Color Temperature Chips)",
+            "OpenFade 3-Column Simultaneous Desk (Faders + FAN Modes + FX Matrix)",
+            "10-Track Faders & Size/Rate/Trail/Grouping Absolute FX Faders",
+            "Dual-Engine Gemini 3.1 Live + 1ms Local Regex Voice Control System",
+            "Cross-Platform: Windows PC, Android Native APK, and iOS Full-Screen PWA"
+        ]
+    }
+];
+
 const freeTools = [
     {
         id: "pdf_calculator",
@@ -274,6 +308,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-08-28",
+        content: "全新發布：ETC EOS OSC RFR 專業燈光遙控控制器已上架！支援 72 鍵調光鍵盤、8 組高精度旋鈕、CIE 1931 色彩選取器與 Gemini 3.1 Live 智慧語音調光。歡迎 <a href='products/etc-eos-rfr.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_eos_rfr_TickerDetails', 'TickerDetails')\">點此了解詳情</a> (或 <a href='Manual/ETC_EOS_RFR_Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_eos_rfr_TickerManual', 'TickerManual')\">查看說明書</a>)",
+        content_en: "New Release: ETC EOS OSC RFR Controller is out now! Features 72-key keypad, 8 precision encoders, CIE 1931 color picker, and Gemini 3.1 Live AI voice control. <a href='products/etc-eos-rfr.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_eos_rfr_TickerDetails', 'TickerDetails')\">Learn More</a> (or <a href='Manual/ETC_EOS_RFR_Manual_en.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_eos_rfr_TickerManual', 'TickerManual')\">View Manual</a>)"
+    },
     {
         date: "2026-07-05",
         content: "Cue Lab 重磅升級：新增 NDI 網路視訊串流、網路控制 Cue (OSC/PJLink)、多點網格幾何校正 (Mesh Keystone)，並整合 FADE 漸變鏈與 RTSP 離屏推流！歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a>",
