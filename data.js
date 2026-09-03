@@ -220,30 +220,24 @@ const software = [
         manual: "Manual/Cue_LAB Manual.html",
         manual_en: "Manual/Cue_LAB Manual_en.html",
         features: [
-            "多軌音影播放與 FADE 漸變連續鏈控制",
             "多路獨立音效卡路由與聲道獨立音量包絡線",
             "多螢幕投影與背景 RTSP 虛擬螢幕推流輸出",
-            "NDI 網路視訊高畫質低延遲串流 (Full NDI & NDI HX)",
             "四角 Keystone 與 3x3 多點網格 (Mesh) 幾何校正",
             "局部與全域遮罩 (支援自訂遮罩與全域啟用開關)",
             "網路控制 Cue (支援標準 OSC 封包與 PJLink 投影機協定)",
-            "sACN (E1.31) 燈光網路遙控 (支援 GO/Pause/Stop 等 6 大動作與抗噪鎖定)",
+            "sACN (E1.31) 燈光網路遙控",
             "雙機熱備份與連線同步 (Master/Standby 心跳跟隨與全專案素材一鍵同步)",
-            "專案一鍵打包 (Package Project) 與路徑自癒機制",
-            "WMI 啟動防卡死保護與註冊表高可靠備用機制"
+            "專案一鍵打包 (Package Project) 與路徑自癒機制"
         ],
         features_en: [
-            "Multi-track playback & FADE Cue chain transition control",
             "Multi-device audio routing & independent channel volume envelopes",
             "Multi-screen projection & background RTSP virtual screen streaming",
-            "NDI network video streaming output (Full NDI & NDI HX support)",
             "4-corner & 3x3 multi-point Mesh Keystone calibration",
             "Local & Global Masks (custom masking & global toggle switches)",
             "Network Cues (integrated with standard OSC & PJLink protocols)",
-            "sACN (E1.31) Lighting Network Remote Control (6 Core Actions & Anti-Crosstalk)",
+            "sACN (E1.31) Lighting Network Remote Control",
             "Dual-Machine Hot-Standby Redundancy & One-Click Full Project Sync",
-            "One-click Project Packaging & relative path auto-healing",
-            "WMI startup hang protection & high-reliability registry fallback"
+            "One-click Project Packaging & relative path auto-healing"
         ]
     }
 ];
