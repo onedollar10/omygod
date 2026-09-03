@@ -385,7 +385,9 @@
                     <li><a href="#fade-cue">13. FADE Cue & Chain Control</a></li>
                     <li><a href="#multi-rtsp">14. Multi-screen & Video Streaming (RTSP & NDI)</a></li>
                     <li><a href="#network-cue">15. Network Cue (Network Cue)</a></li>
-                    <li><a href="#troubleshoot">16. Troubleshooting</a></li>
+                    <li><a href="#sacn-remote">16. sACN (E1.31) Lighting Network Remote Control</a></li>
+                    <li><a href="#redundancy-sync">17. Dual-Machine Hot-Standby Redundancy</a></li>
+                    <li><a href="#troubleshoot">18. Troubleshooting</a></li>
                 </ul>
             </div>
 
@@ -1022,13 +1024,102 @@
                 </ul>
             </section>
 
+            <!-- 16. sACN (E1.31) Lighting Network Remote Control -->
+            <section id="sacn-remote">
+                <h2>16. sACN (E1.31) Lighting Network Remote Control</h2>
+                <p><strong>sACN (Streaming ACN, ANSI E1.31)</strong> is an industrial-standard Ethernet DMX protocol widely used in theatre, concerts, and live entertainment. Cue Lab incorporates an ultra-responsive sACN receiver engine that allows external professional lighting consoles (such as GrandMA2/3, ETC Eos/Ion, Avolites, Chamsys, etc.) to trigger playback and show control commands remotely over LAN, achieving seamless synchronization between stage lighting and multimedia cues.</p>
+
+                <div class="mockup-container">
+                    <img src="images/en/21_sacn_dialog.png" alt="sACN (E1.31) Remote Control Settings">
+                </div>
+                <div class="mockup-caption">Fig 16: sACN (E1.31) remote control settings and live channel monitor</div>
+
+                <h3>Supported 6 Core Actions</h3>
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Control Action</th>
+                        <th style="width: 25%;">Default DMX Channel</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><strong>GO / Play</strong></td>
+                        <td><code>Ch 1</code></td>
+                        <td>Trigger current selected Cue playback and advance playhead to next Cue (equivalent to Spacebar).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pause / Resume</strong></td>
+                        <td><code>Ch 2</code></td>
+                        <td>Pause or resume actively playing Cues (equivalent to Pause key).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stop Selected</strong></td>
+                        <td><code>Ch 3</code></td>
+                        <td>Stop only the currently selected Cue without affecting other running audio/video tracks.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stop All / Panic</strong></td>
+                        <td><code>Ch 4</code></td>
+                        <td>Emergency stop all running Cues, fades, and timers immediately (equivalent to Escape key).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Previous Cue (Prev)</strong></td>
+                        <td><code>Ch 5</code></td>
+                        <td>Move playhead up by one Cue (equivalent to ↑ Up arrow key).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Next Cue (Next)</strong></td>
+                        <td><code>Ch 6</code></td>
+                        <td>Move playhead down by one Cue (equivalent to ↓ Down arrow key).</td>
+                    </tr>
+                </table>
+
+                <h3>Configuration Parameters</h3>
+                <ul>
+                    <li><strong>Universe</strong>: The sACN Universe to listen on (Default: <code>1</code>, range 1 ~ 63999). Lighting console must transmit on the same Universe.</li>
+                    <li><strong>Network Interface (Bind IP)</strong>: Select <code>0.0.0.0 (All Interfaces)</code> or bind specifically to the physical IP of your lighting network adapter for isolated LAN security.</li>
+                    <li><strong>Trigger Threshold</strong>: DMX value range 0 ~ 255 (Default: <code>200</code>). An action is triggered immediately when fader value rises to or exceeds 200.</li>
+                    <li><strong>Channel Mapping</strong>: Fully customizable channel assignments from 1 to 512 with duplicate channel collision protection.</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>💡 Industrial State Latching & Priority Packet Filtering</h4>
+                    <p><strong>1. Single-Shot State Latch</strong>: When the console fader crosses the threshold, the action triggers exactly once and latches. Holding or moving the fader above the threshold will never multi-fire; it must drop below threshold to re-arm.<br>
+                    <strong>2. E1.31 Priority Filtering</strong>: Automatically identifies and ignores E1.31 Per-Channel Priority packets (StartCode 0xDD), processing exclusively true DMX level data to prevent network crosstalk.</p>
+                </div>
+            </section>
+
+            <!-- 17. Dual-Machine Hot-Standby Redundancy -->
+            <section id="redundancy-sync">
+                <h2>17. Dual-Machine Hot-Standby Redundancy</h2>
+                <p>For high-profile theatrical shows and live broadcasts, a single point of failure is unacceptable. Cue Lab features built-in <strong>Dual-Machine Redundancy</strong>, allowing two computers (Master & Standby) to maintain high-precision state tracking and complete media mirroring over LAN for seamless instant takeover.</p>
+
+                <div class="mockup-container">
+                    <img src="images/en/22_redundancy_dialog.png" alt="Dual Redundancy Settings">
+                </div>
+                <div class="mockup-caption">Fig 17: Dual redundancy connection & sync configuration dialog</div>
+
+                <h3>Key Features & Synchronization</h3>
+                <ul>
+                    <li><strong>LAN Auto-Discovery</strong>: Automatically detects peer Cue Lab instances on the local subnet via UDP broadcasts, enabling one-click instant connection without manual IP lookup.</li>
+                    <li><strong>Manual IP Direct Connect</strong>: Allows manual entry of peer host IP and communication port (Default: <code>7788</code>), suitable for cross-subnet and static IP setups.</li>
+                    <li><strong>Real-time Transport Sync</strong>:
+                        <ul>
+                            <li>When Master presses <code>GO</code>, <code>Pause</code>, <code>Stop</code>, or moves the playhead, the Standby machine mirrors the state with microsecond network latency.</li>
+                            <li>Bi-directional Heartbeat monitoring with live status indicators on the toolbar (🟢 Connected / 🟡 Connecting / 🔴 Disconnected).</li>
+                        </ul>
+                    </li>
+                    <li><strong>One-Click Full Project & Media Sync (Full Sync)</strong>: Click "Full Sync to Peer" to automatically package and transmit the entire show file with all audio, video, and image assets, ensuring 100% identical show environments across both machines.</li>
+                </ul>
+            </section>
+
+            <!-- 18. Troubleshooting -->
             <section id="troubleshoot">
-                <h2>16. Troubleshooting</h2>
+                <h2>18. Troubleshooting</h2>
 
                 <div class="mockup-container">
                     <img src="images/en/11_settings_dialog.png" alt="Preferences dialog">
                 </div>
-                <div class="mockup-caption">Fig 16: Display options inside Application Settings</div>
+                <div class="mockup-caption">Fig 18: Display options inside Application Settings</div>
 
                 <div class="step-box">
                     <h4>Q1: Projector is not displaying any video output.</h4>
@@ -1062,6 +1153,25 @@
                     <p><strong>Solution:</strong></p>
                     <ul style="margin-left: 20px;">
                         <li>Ensure the Cue List Table is focused (click anywhere on the table). If focus is trapped inside a text input line, shortcuts will edit text rather than the Cue list history.</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q5: Lighting console sACN commands are not triggering Cues.</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure the <code>📡 sACN</code> button on the top toolbar is active (shows Universe number, e.g., U1, rather than "Disabled").</li>
+                        <li>Open "Settings -> sACN Remote Settings" and verify that the <strong>Universe Number</strong> and <strong>DMX Channel Mapping</strong> match the lighting console patch exactly.</li>
+                        <li>Ensure Windows Firewall permits inbound UDP port 5568 packets for Cue Lab, and that the computer and lighting desk share the same IP subnet (e.g. 192.168.1.x).</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q6: Dual redundancy cannot discover peer machine or fails to connect.</h4>
+                    <p><strong>Solution:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Verify that "Enable Dual Redundancy" is checked on both computers and that the communication port (Default: 7788) matches.</li>
+                        <li>If auto-discovery does not list the peer, use "Method B: Manual Direct Connect" and enter the peer machine's IP address directly, then click "Connect".</li>
                     </ul>
                 </div>
             </section>

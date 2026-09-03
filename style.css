@@ -117,12 +117,17 @@ header {
   position: relative;
 }
 
+/* ==========================================================================
+   跑馬燈設定 (News Ticker) - 嚴禁隨意修改或加快速度！
+   保持慢速平滑滾動 (160s)，讓使用者能舒適閱讀最新消息。
+   ========================================================================== */
 .news-content {
   font-size: 0.9rem;
   color: var(--text);
   white-space: nowrap;
   display: inline-block;
-  animation: ticker 60s linear infinite;
+  /* 跑馬燈速度：請勿任意加快，保持慢速平滑滾動（嚴禁隨意調快！） */
+  animation: ticker 160s linear infinite;
 }
 
 .news-content:hover {

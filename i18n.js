@@ -145,7 +145,13 @@ const translations = {
         "cue_lab_f9_hl": "特色功能： 可在 OBS、vMix、MadMapper 等外部軟體中直接以 NDI 訊號源讀取 Cue Lab 的投影畫面，實現無實體連接線的多軟體協同工作。",
         "cue_lab_f10_title": "網路控制 Cue (Network Cue)",
         "cue_lab_f10_desc": "內建標準 OSC (Open Sound Control) 與 PJLink 投影機控制協定，可透過網路連動燈光控台、音訊軟體，並一鍵控制多台投影機的電源與 Shutter 快門開關。",
-        "cue_lab_f10_hl": "特色功能： 具備格式化防呆輸入，支援多裝置同步廣播或單播，是多媒體劇場與展演中不可或缺的中央控制中樞。"
+        "cue_lab_f10_hl": "特色功能： 具備格式化防呆輸入，支援多裝置同步廣播或單播，是多媒體劇場與展演中不可或缺的中央控制中樞。",
+        "cue_lab_f11_title": "sACN (E1.31) 燈光網路遙控",
+        "cue_lab_f11_desc": "支援外部專業燈光控台（GrandMA2/3、ETC Eos、Avolites、Chamsys 等）透過 sACN 網路協定遠端控制 GO、Pause、Stop、Panic、Prev、Next 等 6 大動作。",
+        "cue_lab_f11_hl": "特色功能： 內建單次狀態鎖定 (State Latch) 與 0xDD 優先級封包過濾，徹底杜絕重複誤觸與網路串擾。",
+        "cue_lab_f12_title": "雙機熱備份與連線同步",
+        "cue_lab_f12_desc": "專為國家級劇場與大型演出打造的 Master/Standby 雙機熱備架構，支援 UDP 自動探索、微秒級播放跟隨與專案素材一鍵完整覆蓋同步。",
+        "cue_lab_f12_hl": "特色功能： 具備雙向心跳監控與即時狀態燈號，支援全專案與媒體檔案打包傳輸，確保主備機素材 100% 一致無縫切換。"
     },
     "en": {
         "nav_home": "Home",
@@ -293,7 +299,13 @@ const translations = {
         "cue_lab_f9_hl": "Key Feature: Directly captured by OBS, vMix, MadMapper, etc., enabling clean, hardware-free multi-software integration.",
         "cue_lab_f10_title": "NETWORK CUE (OSC & PJLINK)",
         "cue_lab_f10_desc": "Features standard OSC & PJLink protocol integration. Remotely sends commands to lighting consoles (ETC/MA2), sound cards, and coordinates power/shutter states of multiple projectors over LAN.",
-        "cue_lab_f10_hl": "Key Feature: Includes safe input masks with multi-device broadcast/unicast configuration, acting as a robust show control system hub."
+        "cue_lab_f10_hl": "Key Feature: Includes safe input masks with multi-device broadcast/unicast configuration, acting as a robust show control system hub.",
+        "cue_lab_f11_title": "sACN (E1.31) LIGHTING REMOTE CONTROL",
+        "cue_lab_f11_desc": "Allows professional lighting consoles (GrandMA2/3, ETC Eos, Avolites, Chamsys, etc.) to trigger GO, Pause, Stop, Panic, Prev, and Next over sACN network protocol.",
+        "cue_lab_f11_hl": "Key Feature: Built-in Single-Shot State Latching and 0xDD priority packet filtering to eliminate duplicate triggers and network crosstalk.",
+        "cue_lab_f12_title": "DUAL-MACHINE HOT-STANDBY REDUNDANCY",
+        "cue_lab_f12_desc": "Engineered for mission-critical shows with Master/Standby hot backup architecture. Supports UDP auto-discovery, microsecond transport sync, and one-click full project mirroring.",
+        "cue_lab_f12_hl": "Key Feature: Bi-directional heartbeat monitoring with live toolbar indicators and full show media packaging for zero-risk seamless takeover."
     }
 };
 

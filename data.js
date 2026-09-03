@@ -227,6 +227,8 @@ const software = [
             "四角 Keystone 與 3x3 多點網格 (Mesh) 幾何校正",
             "局部與全域遮罩 (支援自訂遮罩與全域啟用開關)",
             "網路控制 Cue (支援標準 OSC 封包與 PJLink 投影機協定)",
+            "sACN (E1.31) 燈光網路遙控 (支援 GO/Pause/Stop 等 6 大動作與抗噪鎖定)",
+            "雙機熱備份與連線同步 (Master/Standby 心跳跟隨與全專案素材一鍵同步)",
             "專案一鍵打包 (Package Project) 與路徑自癒機制",
             "WMI 啟動防卡死保護與註冊表高可靠備用機制"
         ],
@@ -238,6 +240,8 @@ const software = [
             "4-corner & 3x3 multi-point Mesh Keystone calibration",
             "Local & Global Masks (custom masking & global toggle switches)",
             "Network Cues (integrated with standard OSC & PJLink protocols)",
+            "sACN (E1.31) Lighting Network Remote Control (6 Core Actions & Anti-Crosstalk)",
+            "Dual-Machine Hot-Standby Redundancy & One-Click Full Project Sync",
             "One-click Project Packaging & relative path auto-healing",
             "WMI startup hang protection & high-reliability registry fallback"
         ]
@@ -308,6 +312,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-09-04",
+        content: "Cue Lab 重磅更新：新增 sACN (E1.31) 燈光網路遙控與雙機熱備份 (Dual-Machine Redundancy) 連線同步，並支援全專案素材一鍵覆蓋同步！歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a> (或 <a href='Manual/Cue_LAB%20Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerManual', 'TickerManual')\">查看說明書</a>)",
+        content_en: "Cue Lab Major Upgrade: Added sACN (E1.31) Lighting Network Remote Control & Dual-Machine Hot-Standby Redundancy with one-click full project sync! <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">Learn More</a> (or <a href='Manual/Cue_LAB%20Manual_en.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerManual', 'TickerManual')\">View Manual</a>)"
+    },
     {
         date: "2026-08-28",
         content: "全新發布：ETC EOS OSC RFR 專業燈光遙控控制器已上架！支援 72 鍵調光鍵盤、8 組高精度旋鈕、CIE 1931 色彩選取器與 Gemini 3.1 Live 智慧語音調光。歡迎 <a href='products/etc-eos-rfr.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_eos_rfr_TickerDetails', 'TickerDetails')\">點此了解詳情</a> (或 <a href='Manual/ETC_EOS_RFR_Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_eos_rfr_TickerManual', 'TickerManual')\">查看說明書</a>)",

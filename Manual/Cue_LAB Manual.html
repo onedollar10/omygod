@@ -376,7 +376,9 @@
                     <li><a href="#fade-cue">13. FADE 漸變與連續鏈控制</a></li>
                     <li><a href="#multi-rtsp">14. 多螢幕投影與網路視訊串流 (RTSP & NDI)</a></li>
                     <li><a href="#network-cue">15. 網路控制 Cue (Network Cue)</a></li>
-                    <li><a href="#troubleshoot">16. 故障排除</a></li>
+                    <li><a href="#sacn-remote">16. sACN (E1.31) 燈光網路遙控</a></li>
+                    <li><a href="#redundancy-sync">17. 雙機熱備份與連線同步 (Dual-Machine Redundancy)</a></li>
+                    <li><a href="#troubleshoot">18. 故障排除</a></li>
                 </ul>
             </div>
 
@@ -1032,13 +1034,102 @@
                 </ul>
             </section>
 
+            <!-- 16. sACN (E1.31) 燈光網路遙控 -->
+            <section id="sacn-remote">
+                <h2>16. sACN (E1.31) 燈光網路遙控</h2>
+                <p><strong>sACN (Streaming ACN, ANSI E1.31)</strong> 是現代劇場與大型展演中廣泛採用的乙太網路 DMX 控制協定。Cue Lab 內建工業級高靈敏度 sACN 網路接收引擎，允許外部專業燈光控台（如 GrandMA2/3、ETC Eos/Ion、Avolites、Chamsys 等）透過區域網路直接遠端觸發 Cue 播放與控制，實現燈光與多媒體音視效的精準同步。</p>
+
+                <div class="mockup-container">
+                    <img src="images/21_sacn_dialog.png" alt="sACN (E1.31) 燈光網路遙控設定">
+                </div>
+                <div class="mockup-caption">圖 16：sACN (E1.31) 遙控設定對話框與即時訊號監控</div>
+
+                <h3>支援的 6 大控制動作</h3>
+                <table>
+                    <tr>
+                        <th style="width: 25%;">控制動作</th>
+                        <th style="width: 25%;">預設 DMX 通道</th>
+                        <th>功能說明</th>
+                    </tr>
+                    <tr>
+                        <td><strong>GO / 播放</strong></td>
+                        <td><code>Ch 1</code></td>
+                        <td>觸發當前選取的 Cue 播放，並自動前進游標至下一個 Cue（等同於鍵盤 Space）。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>暫停 / 繼續</strong></td>
+                        <td><code>Ch 2</code></td>
+                        <td>暫停或繼續進行中的 Cue（等同於鍵盤 Pause）。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>停止當前 Cue</strong></td>
+                        <td><code>Ch 3</code></td>
+                        <td>僅停止目前選取的單一 Cue，不影響其他正在運行的音訊或視訊軌。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>停止全部 / Panic</strong></td>
+                        <td><code>Ch 4</code></td>
+                        <td>緊急停止所有正在運行的 Cue 與計時器（等同於鍵盤 Escape）。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>上一個 Cue (Prev)</strong></td>
+                        <td><code>Ch 5</code></td>
+                        <td>將待播游標向上移動一格（等同於鍵盤 ↑ 上箭頭）。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>下一個 Cue (Next)</strong></td>
+                        <td><code>Ch 6</code></td>
+                        <td>將待播游標向下移動一格（等同於鍵盤 ↓ 下箭頭）。</td>
+                    </tr>
+                </table>
+
+                <h3>核心設定參數</h3>
+                <ul>
+                    <li><strong>Universe (域編號)</strong>：設定監聽的 sACN Universe（預設為 <code>1</code>，範圍 1 ~ 63999）。控台必須向同一個 Universe 發送封包。</li>
+                    <li><strong>監聽網路介面 (Bind IP)</strong>：可選擇 <code>0.0.0.0 (所有介面)</code> 或綁定現場燈光專用網卡之實體 IP，確保封閉網段安全。</li>
+                    <li><strong>觸發閾值 (Trigger Threshold)</strong>：DMX 數值範圍為 0 ~ 255（預設為 <code>200</code>）。當控台推桿推過 200 時立即觸發動作。</li>
+                    <li><strong>DMX 通道自訂映射</strong>：可自由為 6 個動作配置 1 ~ 512 任意獨立通道，並內建通道重複衝突檢驗保護。</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>💡 工業級抗噪與狀態鎖定 (State Latch)</h4>
+                    <p><strong>1. 單次狀態鎖定</strong>：當燈光控台推桿超過閾值（如 200）時，系統立即觸發一次動作並鎖定；推桿維持高位或持續推拉時絕不重複連發，必須降回閾值以下重新就緒，確保現場走 Cue 絕對精準。<br>
+                    <strong>2. 優先級封包過濾</strong>：自動識別並過濾 E1.31 Per-Channel Priority 優先級封包（StartCode 0xDD），只處理真正 DMX 數值，杜絕網路連鎖誤觸。</p>
+                </div>
+            </section>
+
+            <!-- 17. 雙機熱備份與連線同步 (Dual-Machine Redundancy) -->
+            <section id="redundancy-sync">
+                <h2>17. 雙機熱備份與連線同步 (Dual-Machine Redundancy)</h2>
+                <p>在國家級劇院或大型商演中，單機當機可能造成重大演出事故。Cue Lab 內建<strong>雙機主備熱備份 (Dual-Machine Hot-Standby)</strong> 架構，支援兩台電腦（主控機 Master 與備用機 Standby）在局域網內進行高精度狀態跟隨與素材鏡像同步，確保隨時可無縫接管演出。</p>
+
+                <div class="mockup-container">
+                    <img src="images/22_redundancy_dialog.png" alt="雙機連線備份設定">
+                </div>
+                <div class="mockup-caption">圖 17：雙機連線備份獨立設定視窗</div>
+
+                <h3>核心功能與同步機制</h3>
+                <ul>
+                    <li><strong>局域網自動探索 (Auto-Discovery)</strong>：透過 UDP 廣播自動搜尋同網段中運行 Cue Lab 的主備設備，免去繁瑣的 IP 查詢，點擊即可一鍵連線。</li>
+                    <li><strong>手動對向 IP 直連</strong>：支援手動輸入對向電腦之 IP 與通訊連接埠（預設 <code>7788</code>），適用於跨子網或固定 IP 網路環境。</li>
+                    <li><strong>即時播放傳輸同步 (Transport Sync)</strong>：
+                        <ul>
+                            <li>主控機按下 <code>GO</code>、<code>Pause</code>、<code>Stop</code> 或移動 Playhead 待播游標時，備用機以微秒級網路延遲即時跟隨。</li>
+                            <li>支援雙向心跳檢測 (Heartbeat)，工具列即時顯示連線狀態燈號（🟢 已連線 / 🟡 連線中 / 🔴 未連線）。</li>
+                        </ul>
+                    </li>
+                    <li><strong>全專案與素材覆蓋同步 (Full Sync)</strong>：點擊「立即將本機專案完整覆蓋至對向主機」按鈕，系統會自動將當前專案與所有關聯之音訊、視訊、圖片素材封裝傳輸，一鍵確保兩台電腦素材庫百分之百一致。</li>
+                </ul>
+            </section>
+
+            <!-- 18. 故障排除 -->
             <section id="troubleshoot">
-                <h2>16. 故障排除</h2>
+                <h2>18. 故障排除</h2>
  
                 <div class="mockup-container">
                     <img src="images/11_settings_dialog.png" alt="偏好設定對話框">
                 </div>
-                <div class="mockup-caption">圖 16：偏好設定中的顯示輸出設定頁面</div>
+                <div class="mockup-caption">圖 18：偏好設定中的顯示輸出設定頁面</div>
  
                 <div class="step-box">
                     <h4>Q1: 副螢幕/投影機無法輸出畫面？</h4>
@@ -1072,6 +1163,25 @@
                     <p><strong>解決方案：</strong></p>
                     <ul style="margin-left: 20px;">
                         <li>請確保目前主視窗的焦點位於 Cue 列表上（可在列表空白處點擊滑鼠左鍵）。若焦點正停留在某些屬性輸入框內，快速鍵會優先提供文字編輯撤銷。</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q5: 燈光控台發送 sACN 無法觸發走 Cue？</h4>
+                    <p><strong>解決方案：</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>確認頂部工具列上的 <code>📡 sACN</code> 按鈕為啟動狀態（顯示 Universe 編號而非「關閉」）。</li>
+                        <li>打開「設定 ──▶ sACN 遙控設定」，確認 <strong>Universe 編號</strong> 與 <strong>DMX 通道對應</strong> 與燈光控台完全一致。</li>
+                        <li>確認主機 Windows 防火牆已允許 Cue Lab 接收 UDP 5568 廣播封包，且控制電腦與燈光台處於同一個 IP 網段（例如 192.168.1.x）。</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q6: 雙機熱備份無法搜尋到對向電腦或連線失敗？</h4>
+                    <p><strong>解決方案：</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>請確認兩台電腦皆勾選了「啟用雙機備份功能」，且「通訊連接埠」（預設 7788）保持一致。</li>
+                        <li>若自動搜尋未能列出設備，請改用「方式 B：手動輸入對向 IP 直連」，直接填寫對向主機的區域網路 IP 地址後點擊「連線」。</li>
                     </ul>
                 </div>
             </section>
