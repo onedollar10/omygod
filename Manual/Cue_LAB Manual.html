@@ -468,11 +468,6 @@
                     <h4>啟動步驟</h4>
                     <p>解壓縮安裝包後，點擊 <code>CueLab.exe</code> 即可直接啟動程式。本軟體無須繁複的線上安裝或連網啟用碼即可直接執行，適合現場封閉網路的控制電腦環境。</p>
                 </div>
-
-                <div class="info-box">
-                    <h4>💡 授權啟動防卡死保護機制 (WMI Hang Protection)</h4>
-                    <p>系統啟動時會自動查詢硬體指紋進行授權識別。為了防範部分 Windows 電腦因 WMI 服務損毀或系統異常導致查詢硬體指令（如 <code>wmic</code> 或 <code>vol</code>）無限期掛起（Hang）而使程式卡死在啟動黑畫面的問題，系統內建了 2.0 秒的命令超時機制。一旦超時，將自動降級並回退至高精度的 Windows 註冊表 <code>MachineGuid</code> 讀取特徵，確保程式不論在何種損毀系統環境下皆能在 2 秒內順利啟動並跳出主畫面或啟動對話框。</p>
-                </div>
             </section>
 
             <!-- 3. 介面總覽與布局 -->
@@ -696,8 +691,6 @@
                 <h3>時間與排程控制 (Timing)</h3>
                 <p>每個 Cue 均支援靈活的時間控制，方便打造無人值守的自動化聯動：</p>
                 <ul>
-                    <li><strong>前等待 (Pre-Wait)</strong>：當您按 GO 觸發後，Cue 會延遲指定的秒數才真正開始播放。</li>
-                    <li><strong>後等待 (Post-Wait)</strong>：此 Cue 觸發後，必須經過指定秒數，系統才允許下一次按 <code>Space (GO)</code>。</li>
                     <li><strong>Follow 模式 (自動接續)</strong>：
                         <ul>
                             <li><code>無 (等待 GO)</code>：執行完畢後待命，等待使用者手動按 GO。</li>
