@@ -1084,25 +1084,139 @@
             <!-- 17. Dual-Machine Hot-Standby Redundancy -->
             <section id="redundancy-sync">
                 <h2>17. Dual-Machine Hot-Standby Redundancy</h2>
-                <p>For high-profile theatrical shows and live broadcasts, a single point of failure is unacceptable. Cue Lab features built-in <strong>Dual-Machine Redundancy</strong>, allowing two computers (Master & Standby) to maintain high-precision state tracking and complete media mirroring over LAN for seamless instant takeover.</p>
+                <p>In high-profile theater productions, live broadcasts, and large-scale commercial events, a single computer failure (system crash, hardware lockup, or power glitch) can lead to catastrophic show disruption. Cue Lab features an industrial-grade <strong>Dual-Machine Hot-Standby Redundancy</strong> architecture. A Primary (Master) console and a Standby (Backup) console mirror each other in real-time over a local network. Even if the primary console suffers a sudden failure mid-show, the standby console takes over seamlessly with zero audience disruption.</p>
 
                 <div class="mockup-container">
-                    <img src="images/en/22_redundancy_dialog.png" alt="Dual Redundancy Settings">
+                    <img src="images/en/22_redundancy_dialog.png" alt="Dual Redundancy Settings Dialog">
                 </div>
                 <div class="mockup-caption">Fig 17: Dual redundancy connection & sync configuration dialog</div>
 
-                <h3>Key Features & Synchronization</h3>
+                <h3>17.1 Core Architecture & Key Capabilities</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>⚡ Sub-5ms Transport Mirroring</h4>
+                        <p>When the Primary triggers GO, Panic, Pause, or moves the playhead, the Standby responds within 5ms for frame-accurate audio and visual synchronization.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔒 Local Hardware Output Isolation</h4>
+                        <p>While the Cue structure is 100% mirrored, the Standby retains its local physical screen mappings and soundcard channels without interference.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📁 Dual Media Synchronization</h4>
+                        <p>Supports background asynchronous network transfer as well as theater-standard pre-copy workflows for massive 4K media files without network delay.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔄 State Drift Self-Healing</h4>
+                        <p>Upon network reconnection, the Standby automatically queries the Primary's live playhead position and reconciles show state seamlessly.</p>
+                    </div>
+                </div>
+
+                <h3>17.2 Connection Setup & Authorization Workflow</h3>
+                <div class="step-box">
+                    <h4>Standard Connection Procedure:</h4>
+                    <ol>
+                        <li><strong>Enable Redundancy on Both Machines</strong>: Go to "Settings -> Preferences -> Dual Redundancy" on both computers, check "Enable Dual Redundancy", and verify communication port (Default: <code>7788</code>).</li>
+                        <li><strong>Establish Network Connection</strong>:
+                            <ul>
+                                <li><strong>Method A (Auto-Discovery)</strong>: Click the Dual Redundancy icon on the Primary toolbar. Cue Lab discovers peers on the local subnet via UDP port 7789. Select the Standby machine and click "Connect".</li>
+                                <li><strong>Method B (Manual Direct Connect)</strong>: Enter the Standby machine's LAN IP address (e.g., <code>192.168.10.102</code>) and port <code>7788</code>, then click "Connect to Target".</li>
+                            </ul>
+                        </li>
+                        <li><strong>Standby Authorization Prompt (Security Mechanism)</strong>: A confirmation modal appears on the Standby screen asking to accept or reject the connection. The operator must click "Yes". This prevents accidental or unauthorized remote connections.</li>
+                        <li><strong>Toolbar Status Indicators</strong>:
+                            <br>🟢 <strong>Green (Connected)</strong>: Linked with active heartbeat. Tooltip displays live Round-Trip Time (RTT in ms).
+                            <br>🟡 <strong>Yellow (Connecting)</strong>: Negotiating handshake or retrying auto-reconnect.
+                            <br>🔴 <strong>Red (Disconnected)</strong>: Disconnected or offline.
+                        </li>
+                    </ol>
+                </div>
+
+                <h3>17.3 Transport Control & Live Property Synchronization</h3>
                 <ul>
-                    <li><strong>LAN Auto-Discovery</strong>: Automatically detects peer Cue Lab instances on the local subnet via UDP broadcasts, enabling one-click instant connection without manual IP lookup.</li>
-                    <li><strong>Manual IP Direct Connect</strong>: Allows manual entry of peer host IP and communication port (Default: <code>7788</code>), suitable for cross-subnet and static IP setups.</li>
-                    <li><strong>Real-time Transport Sync</strong>:
+                    <li><strong>Transport Command Mirroring</strong>:
                         <ul>
-                            <li>When Master presses <code>GO</code>, <code>Pause</code>, <code>Stop</code>, or moves the playhead, the Standby machine mirrors the state with microsecond network latency.</li>
-                            <li>Bi-directional Heartbeat monitoring with live status indicators on the toolbar (🟢 Connected / 🟡 Connecting / 🔴 Disconnected).</li>
+                            <li><strong>GO (Spacebar)</strong>: Primary triggers playback; Standby triggers simultaneously and advances the playhead cursor.</li>
+                            <li><strong>Panic (Escape)</strong>: Primary initiates emergency stop; Standby fades out and halts all audio, video, and timers.</li>
+                            <li><strong>Playhead & Seek Navigation</strong>: Primary uses <code>↑</code> / <code>↓</code> arrow keys or drags waveform time (Seek); Standby matches position in real time.</li>
                         </ul>
                     </li>
-                    <li><strong>One-Click Full Project & Media Sync (Full Sync)</strong>: Click "Full Sync to Peer" to automatically package and transmit the entire show file with all audio, video, and image assets, ensuring 100% identical show environments across both machines.</li>
+                    <li><strong>Live Property Sync</strong>:
+                        <ul>
+                            <li>Adjustments made in Primary Inspector (Volume, Playback Rate, Opacity, Position X/Y, or Keystone) sync instantly to Standby.</li>
+                            <li><strong>Dynamic Hot-Update</strong>: If the target Cue is actively playing, visual transformations or volume changes update live without re-triggering.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Group Cue Hierarchy Sync</strong>: Grouping multiple Cues, ungrouping, or reordering members updates the tree model automatically with crash-proof reset guards.</li>
                 </ul>
+
+                <h3>17.4 Media Storage Paths & Two Synchronization Workflows (Crucial Guide)</h3>
+                <p>To satisfy different production environments, Cue Lab provides two distinct media distribution workflows:</p>
+
+                <div class="step-box">
+                    <h4>Workflow 1: Automated Background Network Transfer (For Rehearsals & Routine Updates)</h4>
+                    <p>When machines are connected, adding or swapping media assets on the Primary automatically pushes physical files to the Standby in the background without manual copying.</p>
+                    <ul>
+                        <li><strong>Standby Storage Directory</strong>:<br>
+                            <code>C:\Users\&lt;Username&gt;\AppData\Roaming\CueLab\SyncedMedia\</code><br>
+                            <em>(Shortcut: Type <code>%APPDATA%\CueLab\SyncedMedia</code> into Windows File Explorer address bar and press Enter)</em>
+                        </li>
+                        <li><strong>Optimized Chunking</strong>: Files transfer in 256 KB chunks with dynamic micro-yielding, achieving 100+ MB/s over Gigabit LAN. The toolbar displays an active transfer animation and progress percentage.</li>
+                        <li><strong>Collision Isolation</strong>: Different Cues referencing identical filenames (e.g. <code>bg.png</code> from different folders) are stored as <code>{cue_id}_{filename}</code> to prevent overwrite collisions.</li>
+                        <li><strong>Auto-Waveform & Mask Binding</strong>: Standby automatically calculates audio duration and renders waveform peaks once transfer completes; mask files auto-bind to their respective layers.</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Workflow 2: Manual Pre-Copy Workflow (Recommended for Theater & Heavy 4K Shows)</h4>
+                    <p><strong>Q: If I copy the media files to the Standby machine beforehand, can I trigger synchronized Cues immediately upon connecting?</strong><br>
+                    <strong>A: Absolutely YES!</strong> Transport commands (GO/Panic) transfer in packets of only tens of bytes. If your show includes tens of gigabytes of 4K video or multi-track audio, <strong>pre-copying files to the Standby is the industry standard best practice</strong> to avoid long network transfer delays.</p>
+
+                    <p style="margin-top: 10px;"><strong>Recommended Option A: [Most Intuitive] Open the Identical Copied Project Folder on Both Machines</strong></p>
+                    <ol style="margin-left: 20px; margin-top: 5px;">
+                        <li><strong>Package on Primary</strong>: In Cue Lab, select "Project -> Package Project", or copy the entire show folder containing <code>.cuelab.json</code> and its <code>audio/</code> and <code>video/</code> subfolders to a portable drive.</li>
+                        <li><strong>Transfer to Standby</strong>: Copy the project folder to the Standby machine (e.g., to Desktop).</li>
+                        <li><strong>Open on Standby</strong>: Open the <code>.cuelab.json</code> project file in Cue Lab on the Standby.<br>
+                            <em>* Cue Lab features automatic "Path Self-Healing". If Primary absolute paths do not exist on Standby, it auto-searches the project directory and fixes references instantly!</em></li>
+                        <li><strong>Connect Both Machines</strong>: Click Connect on both machines (Green Connected indicator).</li>
+                        <li><strong>Trigger Immediately</strong>: Press Spacebar (GO) on Primary. Standby plays synchronously with zero network media transfer required!</li>
+                    </ol>
+
+                    <p style="margin-top: 15px;"><strong>Alternative Option B: Pre-stage Media Assets into the Standby Cache Directory</strong></p>
+                    <ol style="margin-left: 20px; margin-top: 5px;">
+                        <li>On Standby, navigate to <code>%APPDATA%\CueLab\SyncedMedia\</code>.</li>
+                        <li>Paste all audio, video, and image files directly into this directory.</li>
+                        <li>Connect both machines, then on Primary click "Push Snapshot to Peer".</li>
+                        <li><strong>Local Cache Match</strong>: Standby detects existing media in <code>SyncedMedia</code> and binds them directly, completely bypassing duplicate network transfers!</li>
+                    </ol>
+                </div>
+
+                <h3>17.5 Local Hardware Output Isolation</h3>
+                <p>Primary and Standby consoles frequently feature different physical peripherals (e.g., Primary drives 3 projectors and a 16-channel DANTE card, whereas Standby connects to 2 backup monitors and a USB audio interface):</p>
+                <ul>
+                    <li>Pushing project snapshots syncs show logic, screen patches, layers, masks, sACN, and network devices.</li>
+                    <li><strong>Hardware Isolation (Preserve Hardware Outputs)</strong>: Deserialization strictly <strong>preserves the Standby's local Screen Index mapping and Audio Device routing</strong>, preventing silent audio or blackout video caused by hardware mismatches.</li>
+                </ul>
+
+                <h3>17.6 Heartbeat & State Drift Self-Healing (State Reconciliation)</h3>
+                <ul>
+                    <li><strong>Heartbeat & Timeout Alert</strong>: Sends <code>HEARTBEAT_PING</code> every 2 seconds. If no packet arrives for <strong>7 seconds</strong>, the engine flags a disconnection and alerts the operator.</li>
+                    <li><strong>Background Auto-Reconnect</strong>: If enabled, attempts reconnection every 5 seconds (up to 30 attempts) without blocking UI controls.</li>
+                    <li><strong>Playhead Alignment (State Sync)</strong>: As soon as reconnection succeeds, Standby sends <code>STATE_QUERY</code>. Primary replies with current Playhead row and active Cue ID. Standby auto-scrolls and highlights the target row to maintain strict sync.</li>
+                </ul>
+
+                <h3>17.7 Emergency Failover Standard Operating Procedure (Failover SOP)</h3>
+                <div class="step-box">
+                    <h4>Live Emergency Takeover Steps:</h4>
+                    <ol>
+                        <li><strong>Hardware Routing Switch</strong>: Switch the video matrix (HDMI/SDI) or audio switcher to the Standby lines (typically automated in under 0.2s via auto-detect switchers).</li>
+                        <li><strong>Seamless Software Takeover</strong>:
+                            <ul>
+                                <li>Because Standby continuously mirrors the Primary's exact Playhead position;</li>
+                                <li>The Standby operator simply presses <strong>Spacebar (GO)</strong> on the Standby keyboard to proceed with the next Cue seamlessly!</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
             </section>
 
             <!-- 18. Troubleshooting -->

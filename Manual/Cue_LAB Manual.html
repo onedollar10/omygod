@@ -1094,25 +1094,139 @@
             <!-- 17. 雙機熱備份與連線同步 (Dual-Machine Redundancy) -->
             <section id="redundancy-sync">
                 <h2>17. 雙機熱備份與連線同步 (Dual-Machine Redundancy)</h2>
-                <p>在國家級劇院或大型商演中，單機當機可能造成重大演出事故。Cue Lab 內建<strong>雙機主備熱備份 (Dual-Machine Hot-Standby)</strong> 架構，支援兩台電腦（主控機 Master 與備用機 Standby）在局域網內進行高精度狀態跟隨與素材鏡像同步，確保隨時可無縫接管演出。</p>
+                <p>在國家級劇院演出、實況轉播或重要商演活動中，任何單一電腦故障（如系統崩潰、硬體當機或突發斷電）都可能導致嚴重的演出中斷事故。Cue Lab 內建工業級<strong>雙機主備熱備份 (Dual-Machine Hot-Standby)</strong> 架構，支援主控機 (Master/Primary) 與備用機 (Standby/Backup) 透過區域網路進行毫秒級即時鏡像跟隨。即使演出中途主機瞬間斷電，備用機亦能無縫接管，確保整場演出零失誤、零中斷。</p>
 
                 <div class="mockup-container">
-                    <img src="images/22_redundancy_dialog.png" alt="雙機連線備份設定">
+                    <img src="images/22_redundancy_dialog.png" alt="雙機連線備份設定視窗">
                 </div>
                 <div class="mockup-caption">圖 17：雙機連線備份獨立設定視窗</div>
 
-                <h3>核心功能與同步機制</h3>
+                <h3>17.1 核心架構與設計特點</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>⚡ 毫秒級走 Cue 鏡像</h4>
+                        <p>主機觸發 GO、Panic、Pause 或移動待播游標時，備機以低於 5ms 的極低網路延遲即時響應，音畫精確同步。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔒 本地硬體輸出隔離</h4>
+                        <p>專案清單完全鏡像，但備機強制保留本地的實體螢幕映射與獨立音效卡通道，主機覆蓋時絕不干擾備機硬體連線。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📁 雙重素材同步策略</h4>
+                        <p>支援後台非同步網路自動傳輸，亦支援劇院工程標準的「先行拷貝模式」，大型 4K 影片可免經網路直接本機加載。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔄 斷線自癒與狀態對齊</h4>
+                        <p>若遭遇網路抖動或網線鬆脫，重連後備機會主動請求主機最新進度，自動校正 Playhead 指針，確保演出進度完全一致。</p>
+                    </div>
+                </div>
+
+                <h3>17.2 雙機連線建立與授權步驟</h3>
+                <div class="step-box">
+                    <h4>連線作業標準步驟：</h4>
+                    <ol>
+                        <li><strong>雙機啟用備份功能</strong>：在兩台電腦上分別點擊頂部選單「設定 ──▶ 偏好設定 ──▶ 雙機熱備援」，勾選「啟用雙機備份功能」，確認通訊通訊埠（預設皆為 <code>7788</code>）。</li>
+                        <li><strong>建立網路連線</strong>：
+                            <ul>
+                                <li><strong>方式 A（自動搜尋）</strong>：主機點擊工具列上的「雙機備份」圖示，系統透過 UDP 7789 自動列出同網段其他 Cue Lab 主機，選取備機後點擊「連線」。</li>
+                                <li><strong>方式 B（手動直連）</strong>：直接在視窗右側輸入備機的區域網路 IP 位址（如 <code>192.168.10.102</code>）與連接埠 <code>7788</code>，點擊「連線至目標」。</li>
+                            </ul>
+                        </li>
+                        <li><strong>被動端授權確認（安全防護機制）</strong>：備機螢幕會彈出「雙機熱備連線請求」對話框，備機操作人員點選「是」之後連線方正式生效。此機制可杜絕未經授權的外部電腦惡意或誤連操作。</li>
+                        <li><strong>狀態燈號確認</strong>：頂部工具列即時顯示連線指示燈：<br>
+                            🟢 <strong>綠燈 (Connected)</strong>：已連線，雙向心跳正常，Tooltip 顯示即時往返延遲 (RTT 毫秒)。<br>
+                            🟡 <strong>黃燈 (Connecting)</strong>：正在發起握手或斷線自動重試中。<br>
+                            🔴 <strong>紅燈 (Disconnected)</strong>：未連線或連線已中斷。
+                        </li>
+                    </ol>
+                </div>
+
+                <h3>17.3 走 Cue 控制與屬性即時同步</h3>
                 <ul>
-                    <li><strong>局域網自動探索 (Auto-Discovery)</strong>：透過 UDP 廣播自動搜尋同網段中運行 Cue Lab 的主備設備，免去繁瑣的 IP 查詢，點擊即可一鍵連線。</li>
-                    <li><strong>手動對向 IP 直連</strong>：支援手動輸入對向電腦之 IP 與通訊連接埠（預設 <code>7788</code>），適用於跨子網或固定 IP 網路環境。</li>
-                    <li><strong>即時播放傳輸同步 (Transport Sync)</strong>：
+                    <li><strong>走 Cue 控制鏡像 (Transport Mirroring)</strong>：
                         <ul>
-                            <li>主控機按下 <code>GO</code>、<code>Pause</code>、<code>Stop</code> 或移動 Playhead 待播游標時，備用機以微秒級網路延遲即時跟隨。</li>
-                            <li>支援雙向心跳檢測 (Heartbeat)，工具列即時顯示連線狀態燈號（🟢 已連線 / 🟡 連線中 / 🔴 未連線）。</li>
+                            <li><strong>GO (空白鍵)</strong>：主機按下 GO，備機立即在相同 Cue 上觸發播放，並自動將待播游標前進至下一個 Cue。</li>
+                            <li><strong>Panic (Escape 鍵)</strong>：主機停止全部播放時，備機所有音訊、視訊及計時器同步淡出停止。</li>
+                            <li><strong>Playhead 移動與 Seek 跳轉</strong>：主機按下方向鍵 <code>↑</code> / <code>↓</code> 移動待播行，或在波形上拖曳時間軸 (Seek)，備機以毫秒級精度即時跟隨跳轉。</li>
                         </ul>
                     </li>
-                    <li><strong>全專案與素材覆蓋同步 (Full Sync)</strong>：點擊「立即將本機專案完整覆蓋至對向主機」按鈕，系統會自動將當前專案與所有關聯之音訊、視訊、圖片素材封裝傳輸，一鍵確保兩台電腦素材庫百分之百一致。</li>
+                    <li><strong>屬性即時熱修改 (Live Property Sync)</strong>：
+                        <ul>
+                            <li>在主機 Inspector 修改音量 (Volume)、播放速率 (Rate)、不透明度 (Opacity)、畫面位置 (Position X/Y) 或梯形校正 (Keystone) 時，備機會即時套用修改。</li>
+                            <li><strong>動態熱生效</strong>：若該 Cue 當前正在播放中，備機的畫面變形或音量調整會立即動態更新，無需停止重新觸發。</li>
+                        </ul>
+                    </li>
+                    <li><strong>群組結構同步 (Group Cues)</strong>：主機框選多個 Cue 製作為 Group，或解散、加入/移出群組成員時，備機自動更新樹狀層級與順序，並具備防崩潰重置保護。</li>
                 </ul>
+
+                <h3>17.4 素材資源放置路徑與兩種同步模式 (重點指引)</h3>
+                <p>針對不同演出場景的需求，Cue Lab 提供兩種截然不同的素材同步路徑與工作流：</p>
+
+                <div class="step-box">
+                    <h4>模式一：【自動背景網路推播模式】（適用日常排練、小型檔案新增與修改）</h4>
+                    <p>當雙機已連線時，您在主機上新增圖片、音樂或更換視訊檔案，系統會在後台<strong>自動將實體檔案推播至備機</strong>，完全無需手動搬移。</p>
+                    <ul>
+                        <li><strong>備機端檔案自動儲存路徑</strong>：<br>
+                            <code>C:\Users\&lt;使用者名稱&gt;\AppData\Roaming\CueLab\SyncedMedia\</code><br>
+                            <em>(亦可直接在 Windows 檔案總管網址列輸入 <code>%APPDATA%\CueLab\SyncedMedia</code> 按 Enter 開啟)</em>
+                        </li>
+                        <li><strong>分塊傳輸與頻寬調優</strong>：檔案以 256 KB 區塊分塊傳輸，傳輸速率可充分跑滿千兆區網（實測達 100+ MB/s）。傳輸期間工具列會顯示「媒體傳輸中」動畫與進度百分比，傳輸完成自動隱藏。</li>
+                        <li><strong>同名檔案隔離防護</strong>：若專案中不同 Cue 引用了同檔名的素材（如不同資料夾的 <code>bg.png</code>），系統在備機儲存時會自動加上 <code>{cue_id}_{filename}</code> 前綴進行隔離，徹底杜絕檔案互相覆蓋的錯誤。</li>
+                        <li><strong>波形與遮罩自動就緒</strong>：音訊傳輸至備機完成後，系統會自動在後台計算精確時長並加載波形預覽；遮罩檔案亦會自動精準綁定至指定的遮罩層。</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>模式二：【手動先行複製模式】（強烈推薦：劇院大型演出、4K 大視訊專業作法）</h4>
+                    <p><strong>問：如果我把檔案先行複製到備機，是否只要連線就可以直接同步走 Cue？</strong><br>
+                    <strong>答：是的，完全可以！</strong> 走 Cue 控制（GO/Panic）每次僅傳輸數十位元組的控制封包。如果您有幾十 GB 的大型 4K 影片或高取樣音訊，<strong>先行手動拷貝到備機正是專業劇院的標準規範作法</strong>，能省去漫長的網路傳輸等待。</p>
+                    
+                    <p style="margin-top: 10px;"><strong>推薦實施方案 A：【最推薦、最直覺】雙機開啟同一個拷貝的專案資料夾</strong></p>
+                    <ol style="margin-left: 20px; margin-top: 5px;">
+                        <li><strong>主機打包</strong>：在主機點選功能表「專案 ──▶ 打包專案 (Package Project)」，或將包含 <code>.cuelab.json</code> 與 <code>audio/</code>、<code>video/</code> 資料夾的整個專案資料夾複製至隨身硬碟。</li>
+                        <li><strong>拷貝至備機</strong>：將專案資料夾直接複製到備機（例如放在備機桌面）。</li>
+                        <li><strong>備機開啟專案</strong>：在備機用 Cue Lab 開啟該 <code>.cuelab.json</code> 專案檔。<br>
+                            <em>※ Cue Lab 內建「路徑自癒機制」，即使主機的絕對路徑在備機上不存在，系統載入時會自動在專案目錄下搜尋同名檔案並修復路徑，所有波形與視訊<strong>瞬間就緒</strong>。</em></li>
+                        <li><strong>雙機連線</strong>：主機與備機點擊連線（綠燈 Connected）。</li>
+                        <li><strong>直接走 Cue</strong>：主機按下空白鍵，備機立刻精確跟隨播放！完全不需透過網路傳輸龐大素材。</li>
+                    </ol>
+
+                    <p style="margin-top: 15px;"><strong>備選實施方案 B：【備機為空白專案】先行將素材放入備機專屬快取目錄</strong></p>
+                    <ol style="margin-left: 20px; margin-top: 5px;">
+                        <li>在備機手動開啟快取資料夾：<code>%APPDATA%\CueLab\SyncedMedia\</code>。</li>
+                        <li>將主機所使用的所有音訊、影片、圖片直接複製粘貼到該資料夾內。</li>
+                        <li>雙機連線成功後，在主機「雙機連線」視窗點擊「覆蓋對向專案結構」。</li>
+                        <li><strong>本地快取自動命中</strong>：備機收到清單時，會自動檢測 <code>SyncedMedia</code> 目錄。<strong>只要同名檔案已存在，備機自動直接導向本地該檔案，絕不再重複透過網路重傳！</strong></li>
+                    </ol>
+                </div>
+
+                <h3>17.5 本地硬體輸出獨立隔離保護機制</h3>
+                <p>主備雙機往往具備不同的實體週邊環境（例如主機接 3 台投影機與 16 聲道 DANTE 聲卡，而備機可能接 2 台外接螢幕與 USB 備用聲卡）：</p>
+                <ul>
+                    <li>當在主機點擊「覆蓋對向專案結構」或修改設定時，專案層級的邏輯 Patch、圖層遮罩、sACN Universe、網路設備清單會完整同步至備機。</li>
+                    <li><strong>硬體隔離防護 (Preserve Hardware Outputs)</strong>：系統反序列化時會強制<strong>保留備機本地原本所設定的實體螢幕索引 (Screen Index) 與實體音效卡通道配置 (Audio Devices)</strong>，絕不以主機的硬體設備名稱強行覆蓋備機，有效防止備機因硬體型號不符而陷入靜音或黑屏。</li>
+                </ul>
+
+                <h3>17.6 斷線自癒與狀態即時對齊 (State Reconciliation)</h3>
+                <ul>
+                    <li><strong>心跳與逾時警報</strong>：雙向每 2 秒發送一次 <code>HEARTBEAT_PING</code>。若連續 <strong>7 秒</strong> 未收到任何對向封包，引擎立即判定連線中斷並將燈號轉為紅燈。</li>
+                    <li><strong>後台自動重連</strong>：若開啟「自動重連」，後台線程會每隔 5 秒自動發起連線重試（最多 30 次），期間不阻礙前端操作。</li>
+                    <li><strong>狀態即時對齊 (State Sync)</strong>：網線重新插回或連線恢復的瞬間，備機會自動向主機發出 <code>STATE_QUERY</code>。主機立即回傳目前的待播游標 (Playhead) 與狀態，備機自動將選取行與黃色游標對齊到主機當前位置，消除因斷線造成的步調脫節。</li>
+                </ul>
+
+                <h3>17.7 現場主機突發故障緊急接管流程 (Failover SOP)</h3>
+                <div class="step-box">
+                    <h4>劇院現場緊急應變接管步驟：</h4>
+                    <ol>
+                        <li><strong>硬體影音切換</strong>：現場視訊矩陣切換器（HDMI/SDI Matrix）或音訊切換器切換至備機線路（若使用具備自動故障偵測之切換器，通常 0.2 秒內全自動切換）。</li>
+                        <li><strong>軟體無縫接管</strong>：
+                            <ul>
+                                <li>由於備機平時始終精確跟隨主機的 Playhead 游標位置；</li>
+                                <li>備機操作人員只需直接在備機鍵盤按下 <strong>空白鍵 (GO)</strong>，即可順暢觸發下一個 Cue 繼續演出，全場觀眾完全無感！</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
             </section>
 
             <!-- 18. 故障排除 -->
