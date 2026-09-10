@@ -35,6 +35,8 @@ function renderSoftware() {
         const btnText = currentLang === "en" ? translations.en.btn_details : translations.zh.btn_details;
         const manualBtnText = currentLang === "en" ? translations.en.manual_btn : translations.zh.manual_btn;
         const manualUrl = currentLang === "en" ? (item.manual_en || item.manual) : item.manual;
+        const videoBtnText = currentLang === "en" ? (translations.en.video_tutorial_btn || "Video Tutorials") : (translations.zh.video_tutorial_btn || "教學影片");
+        const videoUrl = item.video;
 
         return `
             <div class="card" id="${item.id}">
@@ -45,7 +47,8 @@ function renderSoftware() {
                     ${features.map(f => `<li>${f}</li>`).join("")}
                 </ul>
                 ${item.url ? `<a href="${item.url}" class="btn" style="margin-right:8px" onclick="trackClick('${item.id}_Details', 'Navigation')">${btnText}</a>` : ""}
-                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-top:10px; background:linear-gradient(45deg, #7bdcff, #568fff); color:#051427;" target="_blank" onclick="trackClick('${item.id}_Manual', 'ManualView')">${manualBtnText}</a>` : ""}
+                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-top:10px; margin-right:8px; background:linear-gradient(45deg, #7bdcff, #568fff); color:#051427;" target="_blank" onclick="trackClick('${item.id}_Manual', 'ManualView')">${manualBtnText}</a>` : ""}
+                ${videoUrl ? `<a href="${videoUrl}" class="btn" style="margin-top:10px; background:linear-gradient(45deg, #ff0033, #cc0000); color:#fff; border-color:rgba(255,80,80,0.6);" target="_blank" onclick="trackClick('${item.id}_Video', 'VideoView')"><span style="margin-right:4px;">▶</span>${videoBtnText}</a>` : ""}
             </div>
         `;
     }).join("");

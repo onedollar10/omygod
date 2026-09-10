@@ -84,6 +84,30 @@
             transform: scale(1.05);
         }
 
+        .video-toggle {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: rgba(220, 38, 38, 0.85);
+            padding: 6px 18px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-toggle:hover {
+            background: #dc2626;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        }
+
         .content {
             padding: 40px;
             background: #ffffff;
@@ -338,6 +362,13 @@
                 font-size: 2em;
             }
 
+            .lang-toggle,
+            .video-toggle {
+                position: static;
+                display: inline-block;
+                margin: 6px 4px;
+            }
+
             .content {
                 padding: 20px;
             }
@@ -360,6 +391,7 @@
 <body>
     <div class="container">
         <header class="header">
+            <a href="https://www.youtube.com/playlist?list=PLdw8lI3-AanI" target="_blank" rel="noopener noreferrer" class="video-toggle">🎬 Video Tutorials</a>
             <a href="Cue_LAB Manual.html" class="lang-toggle">中文版本</a>
             <h1>Cue Lab Show Control Playback Software</h1>
             <p class="version">Version 2.0.0 User Manual</p>

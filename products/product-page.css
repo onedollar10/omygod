@@ -231,6 +231,29 @@ body::after {
     background: rgba(9, 25, 49, 0.68);
 }
 
+.cta.cta-video {
+    color: #ffb4b4;
+    border-color: rgba(255, 68, 68, 0.45);
+    background: rgba(45, 12, 18, 0.72);
+}
+
+.cta.cta-video:hover {
+    color: #ffffff;
+    border-color: rgba(255, 95, 95, 0.85);
+    background: rgba(220, 38, 38, 0.35);
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.35);
+}
+
+.cta.cta-video i {
+    color: #ff3333;
+    transition: transform 0.2s ease;
+}
+
+.cta.cta-video:hover i {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
 .hero-ui {
     padding: 0.95rem;
     display: flex;

@@ -219,6 +219,7 @@ const software = [
         url: "products/cue-lab.html",
         manual: "Manual/Cue_LAB Manual.html",
         manual_en: "Manual/Cue_LAB Manual_en.html",
+        video: "https://www.youtube.com/playlist?list=PLdw8lI3-AanI",
         features: [
             "多路獨立音效卡路由與聲道獨立音量包絡線",
             "多螢幕投影與背景 RTSP 虛擬螢幕推流輸出",
@@ -308,8 +309,8 @@ const freeTools = [
 const latestUpdates = [
     {
         date: "2026-09-04",
-        content: "Cue Lab 重磅更新：新增 sACN (E1.31) 燈光網路遙控與雙機熱備份 (Dual-Machine Redundancy) 連線同步，並支援全專案素材一鍵覆蓋同步！歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a> (或 <a href='Manual/Cue_LAB%20Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerManual', 'TickerManual')\">查看說明書</a>)",
-        content_en: "Cue Lab Major Upgrade: Added sACN (E1.31) Lighting Network Remote Control & Dual-Machine Hot-Standby Redundancy with one-click full project sync! <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">Learn More</a> (or <a href='Manual/Cue_LAB%20Manual_en.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerManual', 'TickerManual')\">View Manual</a>)"
+        content: "Cue Lab 重磅更新：新增 sACN (E1.31) 燈光網路遙控與雙機熱備份 (Dual-Machine Redundancy) 連線同步，並支援全專案素材一鍵覆蓋同步！歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a> (或 <a href='Manual/Cue_LAB%20Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerManual', 'TickerManual')\">查看說明書</a> / <a href='https://www.youtube.com/playlist?list=PLdw8lI3-AanI' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerVideo', 'TickerVideo')\">教學影片</a>)",
+        content_en: "Cue Lab Major Upgrade: Added sACN (E1.31) Lighting Network Remote Control & Dual-Machine Hot-Standby Redundancy with one-click full project sync! <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">Learn More</a> (or <a href='Manual/Cue_LAB%20Manual_en.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerManual', 'TickerManual')\">View Manual</a> / <a href='https://www.youtube.com/playlist?list=PLdw8lI3-AanI' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerVideo', 'TickerVideo')\">Video Tutorials</a>)"
     },
     {
         date: "2026-08-28",
