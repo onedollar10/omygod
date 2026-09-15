@@ -252,6 +252,29 @@
             background: rgba(9, 25, 49, 0.68);
         }
 
+        .cta.cta-video {
+            color: #ffb4b4;
+            border-color: rgba(255, 68, 68, 0.45);
+            background: rgba(45, 12, 18, 0.72);
+        }
+
+        .cta.cta-video:hover {
+            color: #ffffff;
+            border-color: rgba(255, 95, 95, 0.85);
+            background: rgba(220, 38, 38, 0.35);
+            box-shadow: 0 0 16px rgba(239, 68, 68, 0.35);
+        }
+
+        .cta.cta-video i {
+            color: #ff3333;
+            transition: transform 0.2s ease;
+        }
+
+        .cta.cta-video:hover i {
+            color: #ffffff;
+            transform: scale(1.15);
+        }
+
         .hero-ui {
             padding: 0.95rem;
             display: flex;
@@ -746,6 +769,10 @@
                     <a id="manual-link" href="../Manual/osc time codeManual.html" target="_blank" class="cta secondary">
                         <i class="fa-solid fa-book"></i>
                         <span data-i18n="manual_btn">使用說明書 / Manual</span>
+                    </a>
+                    <a id="video-link" href="https://www.youtube.com/playlist?list=PLPMNpDVjAk9o" target="_blank" rel="noopener noreferrer" class="cta secondary cta-video">
+                        <i class="fa-brands fa-youtube"></i>
+                        <span data-i18n="video_tutorial_btn">教學影片</span>
                     </a>
                 </div>
             </article>

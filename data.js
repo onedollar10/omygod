@@ -131,6 +131,7 @@ const software = [
         url: "products/osc-tool.html",
         manual: "Manual/osc time codeManual.html",
         manual_en: "Manual/osc_time_code_Manual_en.html",
+        video: "https://www.youtube.com/playlist?list=PLPMNpDVjAk9o",
         features: [
             "統一設定視窗，管理 OSC、sACN 與時間碼輸出",
             "即時音訊波形視覺化與 Cue 點標記",
