@@ -72,6 +72,35 @@
             transition: all 0.3s;
         }
 
+        
+        .header {
+            position: relative;
+        }
+
+        .video-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(220, 38, 38, 0.85);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-toggle:hover {
+            background: #dc2626;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        }
+
         .lang-toggle:hover {
             background: rgba(255, 255, 255, 0.3);
         }
@@ -306,6 +335,7 @@
 <body>
     <div class="container">
         <header class="header">
+            <a href="https://www.youtube.com/playlist?list=PLMwlChksQtYo" target="_blank" rel="noopener noreferrer" class="video-toggle">🎬 Video Tutorials</a>
             <a href="Grid_Tool_Manual.html" class="lang-toggle">中文版本</a>
             <h1>Grid Tool for ETC Eos</h1>
             <p class="version">Lighting Channel Management Tool - User Manual</p>

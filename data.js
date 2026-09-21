@@ -160,6 +160,7 @@ const software = [
         url: "products/etc-grid-tool.html",
         manual: "Manual/Grid_Tool_Manual.html",
         manual_en: "Manual/Grid_Tool_Manual_en.html",
+        video: "https://www.youtube.com/playlist?list=PLMwlChksQtYo",
         features: [
             "視覺化網格佈局與智慧拖放排位",
             "MA3 風格快速色彩分組，無需手動計算",
@@ -308,6 +309,11 @@ const freeTools = [
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-09-22",
+        content: "ETC Eos Grid Tool 官方教學影片已上架！歡迎 <a href='https://www.youtube.com/playlist?list=PLMwlChksQtYo' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerVideo', 'TickerVideo')\">點此觀看教學影片</a> (或 <a href='products/etc-grid-tool.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerDetails', 'TickerDetails')\">了解詳情</a> / <a href='Manual/Grid_Tool_Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerManual', 'TickerManual')\">查看說明書</a>)",
+        content_en: "ETC Eos Grid Tool official video tutorials are out now! <a href='https://www.youtube.com/playlist?list=PLMwlChksQtYo' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerVideo', 'TickerVideo')\">Watch Video Tutorials</a> (or <a href='products/etc-grid-tool.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerDetails', 'TickerDetails')\">Learn More</a> / <a href='Manual/Grid_Tool_Manual_en.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerManual', 'TickerManual')\">View Manual</a>)"
+    },
     {
         date: "2026-09-04",
         content: "Cue Lab 重磅更新：新增 sACN (E1.31) 燈光網路遙控與雙機熱備份 (Dual-Machine Redundancy) 連線同步，並支援全專案素材一鍵覆蓋同步！歡迎 <a href='products/cue-lab.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerDetails', 'TickerDetails')\">點此了解詳情</a> (或 <a href='Manual/Cue_LAB%20Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerManual', 'TickerManual')\">查看說明書</a> / <a href='https://www.youtube.com/playlist?list=PLdw8lI3-AanI' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('cue_lab_TickerVideo', 'TickerVideo')\">教學影片</a>)",
