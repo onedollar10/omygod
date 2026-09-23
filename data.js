@@ -99,148 +99,121 @@ const tutorials = [
 
 const software = [
     {
-        id: "ma2_osc_tool",
-        name: "OSC to MA2 Tool",
-        name_en: "OSC to MA2 Tool",
-        tagline: "創新思維，輕鬆實現跨平台 OSC 整合",
-        tagline_en: "Innovative cross-platform OSC integration",
-        description: "OSC（Open Sound Control）協定是現今業界廣泛使用的標準，舉凡 QLab、Resolume、TouchDesigner 等各大軟體皆具備強大支援。本工具運用創新技術，讓 MA2 也能完美無縫地接收 OSC，大幅提升跨設備連動的靈活性與創意空間。",
-        description_en: "OSC is the industry standard widely supported by QLab, Resolume, TouchDesigner, etc. This innovative tool empowers MA2 to flawlessly receive OSC, vastly improving flexibility and cross-device sync capabilities.",
-        url: "products/ma2-osc-tool.html",
-        manual: "Manual/OSC to MA2 Manual.html",
-        manual_en: "Manual/OSC to MA2 Manual.html",
+        id: "etc_cue_photo",
+        name: "ETC Cue Photo Tool",
+        name_en: "ETC Cue Photo Tool",
+        tagline: "排練自動隨 Cue 拍照存檔 · 切割燈光斑即時還原",
+        tagline_en: "Automated Cue-by-Cue Photo Logging · Real-Time Shutter Framing Visualizer",
+        description: "解決舞台排練時「手動拍照做 Cue 記錄手忙腳亂」、「切割燈現場盲調看不見光斑歪斜」的痛點。控台每下一記 Cue 自動拍照錄影、免按確認直接回寫 Cue 備註，並將切割燈切刀姿態精準還原為現場實際投射光斑！",
+        description_en: "Solves the rush of manual Cue logging and the difficulty of blind shutter adjustments on stage. Automatically captures photos and video as Cues fire, updates Cue notes live, and renders real moving light shutter framing.",
+        url: "products/etc-cue-photo.html",
+        manual: "Manual/ETC_Cue_Manual.html",
+        manual_en: "Manual/ETC_Cue_Manual_en.html",
+        video: "https://www.youtube.com/playlist?list=PLaSodMfnFBsA",
         features: [
-            "無縫銜接各類支援 OSC 協定的現代軟體與設備",
-            "即時高效轉換，並精準轉發 OSC 訊號至 MA2",
-            "打破設備孤島，激發無限的演出創意與整體連動性"
+            "🎯 自動隨 Cue 拍照錄影：控台執行 Cue 自動精準截圖與錄影，一鍵匯出 Excel/PDF 報告",
+            "✂️ 切割燈光斑所見即所得：自適應刀盤動態校正，現場切刀角度與形狀即時在畫布還原",
+            "⭐ 燈具切刀基準跟隨：設定一顆基準燈，同桿位跟隨燈具自動同步，告別重複設定",
+            "📋 控台資料直覺透視：Cue 標籤備註直接修改免按 Enter、調色盤雙擊立即套用"
         ],
         features_en: [
-            "Seamlessly connect any modern software or device supporting OSC",
-            "Real-time and highly efficient signal translation to MA2",
-            "Break hardware silos to inspire boundless show creativity"
-        ]
-    },
-    {
-        id: "osc_timecode",
-        name: "OSC Timecode Tool",
-        name_en: "OSC Timecode Tool",
-        tagline: "專業音訊播放與時間碼同步工具",
-        tagline_en: "Professional Audio Playback & Timecode Sync Tool",
-        description: "專為燈光設計師與舞台技術人員打造，支援 MP3/WAV/OGG 播放與 LTC WAV 匯出，並透過 OSC 協定與 ETC/EOS 燈控台深度同步。",
-        description_en: "Built for lighting designers and stage technicians, supporting MP3/WAV/OGG playback and LTC WAV export, with deep sync for ETC/EOS via OSC protocol.",
-        url: "products/osc-tool.html",
-        manual: "Manual/osc time codeManual.html",
-        manual_en: "Manual/osc_time_code_Manual_en.html",
-        video: "https://www.youtube.com/playlist?list=PLPMNpDVjAk9o",
-        features: [
-            "統一設定視窗，管理 OSC、sACN 與時間碼輸出",
-            "即時音訊波形視覺化與 Cue 點標記",
-            "sACN (E1.31) DMX 遠端遙控播放功能",
-            "支援 ETC 控台版本選擇 (3.3.5+ / 3.3.4-)",
-            "LTC (左聲道) + 原始音訊 (右聲道) WAV 輸出",
-            "MTC (MIDI Timecode) 與 LTC (實體音訊) 雙模式輸出"
-        ],
-        features_en: [
-            "Unified Settings window for OSC, sACN, and Timecode management",
-            "Real-time audio waveform visualization and Cue marking",
-            "sACN (E1.31) DMX remote playback control",
-            "Support for ETC console version selection (3.3.5+ / 3.3.4-)",
-            "LTC (Left) + Original Audio (Right) WAV output",
-            "Dual mode output: MTC (MIDI Timecode) and LTC (Audio)"
+            "🎯 Auto Cue Capture & Recording: Fires with Cues, logs video timestamps, exports to Excel/PDF reports",
+            "✂️ WYSIWYG Shutter Framing: Live adaptive canvas visualizes real beam shape and blade angles",
+            "⭐ Blade Baseline Follower: Calibrate one master fixture, followers auto-sync across positions",
+            "📋 Intuitive Console Telemetry: Two-way Cue List editing without Enter confirmation, quick Palette fire"
         ]
     },
     {
         id: "etc_grid",
         name: "ETC Eos Grid Tool",
         name_en: "ETC Eos Grid Tool",
-        tagline: "視覺化燈具矩陣控制系統",
-        tagline_en: "Visualized Fixture Matrix Control System",
-        description: "專為 ETC Eos 燈控台設計的視覺化輔助工具，提供直觀的網格介面進行燈具排列與控制。",
-        description_en: "A visualization aid for ETC Eos consoles, providing an intuitive grid interface for fixture layout and control.",
+        tagline: "矩陣燈具快速排列 · 一鍵完成跑燈色彩漸變分組",
+        tagline_en: "Fast Fixture Matrix Layout · One-Click Color Chase & Grouping",
+        description: "解決在 ETC 控台上「矩陣燈具排位慢、手動計算跑燈色彩漸變繁瑣」的痛點。提供直觀拖曳畫布與一鍵色彩分組，數秒內完成複雜矩陣排列與流動效果！",
+        description_en: "Solves slow fixture layout and tedious manual color gradient math on ETC consoles. Offers an intuitive drag-and-drop grid and one-click color grouping for instant chase effects.",
         url: "products/etc-grid-tool.html",
         manual: "Manual/Grid_Tool_Manual.html",
         manual_en: "Manual/Grid_Tool_Manual_en.html",
         video: "https://www.youtube.com/playlist?list=PLMwlChksQtYo",
         features: [
-            "視覺化網格佈局與智慧拖放排位",
-            "MA3 風格快速色彩分組，無需手動計算",
-            "自動獲取 Augment3d 位置進行快速排列",
-            "支援控台輸入 CH 自動獲取並傳回分組",
-            "整合標準 CIE 1931 色度圖與佈局管理",
-            "ETC Magic Sheet 遠端連動與按鈕整合",
-            "RTSP 桌面/視窗多框串流與文字浮水印"
+            "💡 拖曳式矩陣排位：直觀排列舞台燈具矩陣，自動套用 Augment3d 實際座標",
+            "🎨 MA3 風格一鍵漸變：免手動計算色碼，一秒生成流暢的色彩跑燈分組",
+            "⚡ 控台深度雙向連動：輸入 CH 自動獲取並傳回分組，支援 Magic Sheet 遠端連動"
         ],
         features_en: [
-            "Visualized grid layout with smart drag-and-drop",
-            "MA3-style quick color grouping, no manual calc",
-            "Auto-fetch Augment3d positions for quick layout",
-            "Support console CH input for auto-grouping",
-            "Integrated CIE 1931 chromaticity diagram",
-            "ETC Magic Sheet remote control & button integration",
-            "RTSP multi-region streaming with text overlay"
-        ]
-    },
-    {
-        id: "etc_cue_photo",
-        name: "ETC Cue Photo Tool",
-        name_en: "ETC Cue Photo Tool",
-        tagline: "自動接收 OSC 訊號並在 Cue 完成時截圖",
-        tagline_en: "Auto-record screenshot when Cue is fired via OSC",
-        description: "專為 ETC 燈光控台設計，自動偵測 Cue 與 Channel 指令，即時截取視訊畫面並匯出 PDF/Excel 記錄。",
-        description_en: "Designed for ETC consoles. Auto-detects Cue/Channel commands, captures video frame instantly, and exports PDF/Excel records.",
-        url: "products/etc-cue-photo.html",
-        manual: "Manual/ETC_Cue_Manual.html",
-        manual_en: "Manual/ETC_Cue_Manual_en.html",
-        features: [
-            "多元視訊輸入 (USB/RTSP)",
-            "Cue 模式自動截圖與去重",
-            "CH 模式支援 Auto-Delay 拍照",
-            "支援 Excel 與 PDF 專業匯出",
-            "視訊錄影與精確時間戳功能",
-            "sACN 網路協定輸觸發截圖",
-            "內容與備註同步 ETC Label & Node"
-        ],
-        features_en: [
-            "Multi-Video Input (USB/RTSP)",
-            "Cue Mode Auto-Screenshot & Dedup",
-            "CH Mode with Auto-Delay Snap",
-            "Professional Excel & PDF Export",
-            "Video Recording & Precise Timestamps",
-            "sACN Network Input & Auto-Triggering",
-            "Content & Notes Sync (ETC Label & Node)"
+            "💡 Drag-and-Drop Matrix Layout: Intuitive visual canvas with automatic Augment3d coordinate sync",
+            "🎨 One-Click MA3-Style Gradients: Generate smooth color chase groups without manual math",
+            "⚡ Deep Console Integration: Bidirectional channel sync with Magic Sheet remote triggers"
         ]
     },
     {
         id: "cue_lab",
         name: "Cue Lab",
         name_en: "Cue Lab",
-        tagline: "專業多媒體演出控制與播放系統",
-        tagline_en: "Professional Multimedia Show Control & Playback System",
-        description: "類似 macOS QLab 的演出控制軟體，支援多軌音影播放、多裝置音效路由、四角/多點網格幾何校正與遮罩融合，並整合 FADE 漸變鏈、RTSP/NDI 網路視訊串流及網路控制 Cue (OSC/PJLink) 等高階舞台 Show Control 功能。",
-        description_en: "A macOS QLab-like show control software supporting multi-track playback, multi-device audio routing, 4-corner/Mesh keystone calibration, local/global masks, FADE chain transitions, RTSP/NDI video streaming, and Network Cues (OSC/PJLink).",
+        tagline: "Windows 專屬劇場演出播放系統 · 音效視訊投影一體化控制",
+        tagline_en: "Professional Stage Show Control for Windows · All-in-One Audio/Video/Projection",
+        description: "解決 Windows 系統「缺乏好用、平價且專業的劇場多媒體播放軟體（QLab 替代方案）」的痛點。一套搞定多軌音效路由、多螢幕投影、網格梯形校正（Keystone）與燈光網路連動！",
+        description_en: "Solves the lack of a dedicated stage show control tool (QLab alternative) on Windows. Integrates multi-track audio routing, multi-screen video projection, Mesh Keystone warping, and lighting network triggers.",
         url: "products/cue-lab.html",
         manual: "Manual/Cue_LAB Manual.html",
         manual_en: "Manual/Cue_LAB Manual_en.html",
         video: "https://www.youtube.com/playlist?list=PLdw8lI3-AanI",
         features: [
-            "多路獨立音效卡路由與聲道獨立音量包絡線",
-            "多螢幕投影與背景 RTSP 虛擬螢幕推流輸出",
-            "四角 Keystone 與 3x3 多點網格 (Mesh) 幾何校正",
-            "局部與全域遮罩 (支援自訂遮罩與全域啟用開關)",
-            "網路控制 Cue (支援標準 OSC 封包與 PJLink 投影機協定)",
-            "sACN (E1.31) 燈光網路遙控",
-            "雙機熱備份與連線同步 (Master/Standby 心跳跟隨與全專案素材一鍵同步)",
-            "專案一鍵打包 (Package Project) 與路徑自癒機制"
+            "🎬 多媒體一鍵循序播放：支援音效、視訊、圖片與 FADE 漸變，排練演出穩定不跳痛",
+            "📐 投影幾何梯形校正：內建四角與 3x3 網格校正，曲面或不規則投影現場秒調",
+            "📡 燈光與網路投影機連動：支援 sACN 燈控台遙控與 OSC / PJLink 遠端指令控制",
+            "🛡️ 雙機熱備份與專案打包：主副控電腦即時心跳同步，素材與設定一鍵打包防遺漏"
         ],
         features_en: [
-            "Multi-device audio routing & independent channel volume envelopes",
-            "Multi-screen projection & background RTSP virtual screen streaming",
-            "4-corner & 3x3 multi-point Mesh Keystone calibration",
-            "Local & Global Masks (custom masking & global toggle switches)",
-            "Network Cues (integrated with standard OSC & PJLink protocols)",
-            "sACN (E1.31) Lighting Network Remote Control",
-            "Dual-Machine Hot-Standby Redundancy & One-Click Full Project Sync",
-            "One-click Project Packaging & relative path auto-healing"
+            "🎬 Multi-Media Cue Playback: Seamlessly triggers audio, video, images, and FADE transition chains",
+            "📐 Integrated Mesh Keystone: 4-corner & 3x3 grid geometry warping for irregular projection surfaces",
+            "📡 Lighting & Projector Sync: Controlled via sACN lighting desks and OSC / PJLink projector commands",
+            "🛡️ Hot-Standby Redundancy: Real-time dual-machine failover and one-click full project packaging"
+        ]
+    },
+    {
+        id: "osc_timecode",
+        name: "OSC Timecode Tool",
+        name_en: "OSC Timecode Tool",
+        tagline: "放音樂即同步發送時間碼 · 劇場排練隨點隨放精準對位",
+        tagline_en: "Audio Playback with Auto Timecode Sync · Rehearsal Precision",
+        description: "解決排練時「音樂與燈光時間碼難以同步」、「昂貴時間碼發射硬體門檻高」的痛點。點擊播放音樂即同步向 ETC 燈控台發送時間碼，還能用燈控台直接遙控播放音樂！",
+        description_en: "Solves rehearsal timecode desync and eliminates the need for expensive timecode hardware. Plays audio while transmitting OSC/LTC/MTC timecode to ETC consoles, with DMX remote control.",
+        url: "products/osc-tool.html",
+        manual: "Manual/osc time codeManual.html",
+        manual_en: "Manual/osc_time_code_Manual_en.html",
+        video: "https://www.youtube.com/playlist?list=PLPMNpDVjAk9o",
+        features: [
+            "⏱️ 音樂播放即同步時間碼：支援 LTC、MTC 與 OSC，燈光隨音軌精準走位",
+            "🎵 視覺化波形與 Cue 點標記：排練跳段、段落重來點擊波形立即同步控台",
+            "📡 燈控台遠端遙控播放：燈光師在控台直接下 DMX 指令遠端播放、暫停音樂"
+        ],
+        features_en: [
+            "⏱️ Auto Audio-to-Timecode Sync: Real-time LTC, MTC, and OSC output to lighting desk",
+            "🎵 Visual Waveform & Cue Markers: Click anywhere on the waveform to sync console instantly",
+            "📡 Remote Console Trigger: Control audio play/pause directly via sACN DMX cues"
+        ]
+    },
+    {
+        id: "ma2_osc_tool",
+        name: "OSC to MA2 Tool",
+        name_en: "OSC to MA2 Tool",
+        tagline: "讓 grandMA2 輕鬆接收 OSC 訊號 · 影音燈光無縫連動",
+        tagline_en: "Empower grandMA2 with OSC · Seamless Audio-Visual Lighting Sync",
+        description: "解決 grandMA2 控台無法靈活接收外部 OSC 指令的痛點。讓 QLab 音效、Resolume 視訊與 TouchDesigner 直接向 MA2 發送控制訊號，打破系統隔閡，實現跨設備全自動燈光觸發！",
+        description_en: "Solves grandMA2's limitation in handling incoming OSC signals. Seamlessly connects QLab audio, Resolume video, and TouchDesigner to trigger MA2 cues automatically.",
+        url: "products/ma2-osc-tool.html",
+        manual: "Manual/OSC to MA2 Manual.html",
+        manual_en: "Manual/OSC to MA2 Manual.html",
+        features: [
+            "🔗 跨設備自動連動：QLab 音效、Resolume 視訊即時連動觸發 MA2 燈光",
+            "⚡ 零延遲訊號轉換：精準將外部 OSC 指令即時轉換為 MA2 原生語法",
+            "🛠️ 隨插即用免寫腳本：直觀設定連接埠即可穩定運作，告別複雜網路程式碼"
+        ],
+        features_en: [
+            "🔗 Cross-Device Sync: Real-time trigger MA2 cues from QLab, Resolume, and TouchDesigner",
+            "⚡ Zero-Latency Translation: Converts external OSC into native MA2 syntax seamlessly",
+            "🛠️ Plug & Play: Intuitive port setup without writing complex network scripts"
         ]
     }
 ];
@@ -251,30 +224,24 @@ const apps = [
         id: "etc_eos_rfr",
         name: "ETC EOS OSC RFR Controller",
         name_en: "ETC EOS OSC RFR Controller",
-        tagline: "專業全功能 ETC Eos 燈光遙控控制器 (支援 Gemini AI 智慧語音)",
-        tagline_en: "Professional Full-Featured ETC Eos Lighting RFR Controller (with Gemini AI Voice Control)",
-        description: "專為 ETC Eos 系列燈光控台（Apex / Gio / Ion Xe / Element 2 / ETCnomad）打造的專業無線遙控軟體。具備 72 鍵 EOS 調光鍵盤、8 組高精度旋鈕滾輪、CIE 1931 色彩選取器、10 軌推桿矩陣、OpenFade 同屏全覽工作台，並內建 Gemini 3.1 Live 智慧語音調光大腦。",
-        description_en: "Engineered for ETC Eos Family consoles (Apex, Gio, Ion Xe, Element 2, ETCnomad). Features 72-key lighting keypad, 8 precision rotary encoders, CIE 1931 color picker, 10 motorized-style faders, OpenFade simultaneous desk, and Gemini 3.1 Live AI voice control.",
+        tagline: "舞台現場隨身調光神器 · 支援 AI 語音開口調光",
+        tagline_en: "Pocket Lighting Console on Stage · AI Voice & Wireless Control",
+        description: "解決燈光師「舞台走位對光必須在控台與現場來回跑」的痛點。手機或平板一開即是完整 ETC 控台，內建 72 鍵專業鍵盤、推桿與色盤，更能用 AI 語音直接說指令調光，一人獨立高效對光！",
+        description_en: "Solves the exhaustion of running back and forth between stage and console during focus. Turns your phone or tablet into a full-featured ETC console with 72-key desk, faders, color picker, and AI voice commands.",
         url: "products/etc-eos-rfr.html",
         manual: "Manual/ETC_EOS_RFR_Manual.html",
         manual_en: "Manual/ETC_EOS_RFR_Manual_en.html",
         features: [
-            "72 鍵專業數字語法鍵盤與 Master Playback 即時播放器",
-            "8 組高精度自訂旋鈕滾輪 (支援 11 大類、60+ 燈具參數與微調步進)",
-            "CIE 1931 色彩工作室 (P1/P2 雙點漸變與常用色溫色卡快捷)",
-            "OpenFade 三欄同屏工作台 (推桿群組 + FAN 扇形模式 + 特效矩陣)",
-            "10 軌虛擬推桿與 Size/Rate/Trail/Grouping 特效絕對值推桿",
-            "Gemini 3.1 Live + 1ms 本地正則雙軌智慧語音調光系統",
-            "跨平台支援：Windows PC、Android 原生 APK 與 iOS PWA 全螢幕"
+            "🗣️ AI 智慧語音調光：開口說「1號燈 全亮」立即執行，解放雙手現場對光超快",
+            "🎛️ 完整控台觸控面板：72 鍵專業數字鍵盤、10 軌虛擬推桿與高精度旋鈕輪盤",
+            "🎨 視覺化色彩選取器：CIE 1931 色彩空間直觀調色，常用色溫色卡快捷切換",
+            "📱 跨平台隨身攜帶：支援 Windows 電腦、Android 手機與 iOS 平板全螢幕操作"
         ],
         features_en: [
-            "72-Key Professional Lighting Keypad & Master Cue Playback Box",
-            "8 Precision Rotary Encoders (11 Categories, 60+ Parameters & Step Sizes)",
-            "CIE 1931 Color Studio (P1/P2 Fan Gradients & Color Temperature Chips)",
-            "OpenFade 3-Column Simultaneous Desk (Faders + FAN Modes + FX Matrix)",
-            "10-Track Faders & Size/Rate/Trail/Grouping Absolute FX Faders",
-            "Dual-Engine Gemini 3.1 Live + 1ms Local Regex Voice Control System",
-            "Cross-Platform: Windows PC, Android Native APK, and iOS Full-Screen PWA"
+            "🗣️ AI Voice Lighting Control: Speak commands like 'Chan 1 @ Full' for hands-free instant execution",
+            "🎛️ Complete Desk Layout: 72-key lighting keypad, 10 motorized-style faders, and rotary encoders",
+            "🎨 Visual Color Studio: CIE 1931 chromaticity color picker with quick color temperature presets",
+            "📱 Cross-Platform Mobility: Runs seamlessly on Windows, Android phones, and iOS full-screen PWA"
         ]
     }
 ];
@@ -284,31 +251,48 @@ const freeTools = [
         id: "pdf_calculator",
         name: "PDF 計算機",
         name_en: "PDF Calculator",
-        tagline: "免費線上工具",
-        tagline_en: "Free Online Tool",
-        description: "眶選圖案按下計算可快速顯示PDF上方一樣的燈具有幾顆",
-        description_en: "Select a pattern and click calculate to quickly find how many identical fixtures are on the PDF.",
+        tagline: "燈圖燈具自動計數器 · 告別人工肉眼數燈",
+        tagline_en: "Automatic Fixture Counter for Plot PDFs · No More Manual Counting",
+        description: "解決看燈圖「人工數燈具眼花算錯、費時耗力」的痛點。在 PDF 上框選目標燈具圖案，一秒自動統計全圖相同燈具數量！",
+        description_en: "Solves the tedium and human error of manually counting lighting fixtures on PDF plots. Select a pattern and calculate the total count in one second!",
         url: "https://script.google.com/macros/s/AKfycbzTPOOX5m_OR1t7JPbFA3iNDPhrezbOrwuOHrmHuwe62ksb0HG8HQ8mOctwMVHQD6OBHQ/exec",
-        features: ["線上直接使用，無需安裝", "快速選取區域進行圖案比對", "自動計算數量"],
-        features_en: ["Use directly online, no installation", "Quick area selection for pattern matching", "Automatic count calculation"]
+        features: [
+            "🖱️ 框選即算：線上直接使用無需安裝，框選圖案一秒統計",
+            "💯 精準防漏：避免人工清點疏漏，出圖清點設備事半功倍"
+        ],
+        features_en: [
+            "🖱️ Direct Online Tool: No installation needed, pattern match with one click",
+            "💯 Accurate & Fast: Prevents manual counting errors during prep and rental logistics"
+        ]
     },
     {
         id: "rtsp_tool",
         name: "螢幕 RTSP 串流工具",
         name_en: "Screen RTSP Streaming Tool",
-        tagline: "即時螢幕與視窗串流工具",
-        tagline_en: "Real-time Screen & Window Streaming Tool",
-        description: "可將「整個螢幕」或「指定視窗」即時推送成 RTSP 串流，供 ETC 等軟體接收",
-        description_en: "Streams your full screen or selected window as RTSP for ETC and other software.",
+        tagline: "電腦畫面即時推流 · 燈控台與預覽軟體無縫接收",
+        tagline_en: "Real-Time Screen & Window RTSP Streaming for Consoles",
+        description: "解決「電腦畫面或指定軟體視窗想即時傳進燈控台或預覽系統」的串流痛點。一鍵將桌面或視窗推送為低延遲 RTSP 串流，即開即用！",
+        description_en: "Solves the hassle of streaming desktop screens or specific application windows into lighting consoles and visualizers via low-latency RTSP.",
         url: "https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing",
         btn_key: "btn_download_app",
         manual: "Manual/RTSP TOOL Manual.html",
-        features: ["雙來源模式 (全螢幕/指定視窗)", "自動下載 FFmpeg 與 MediaMTX", "低延遲推流技術 (RTSP)", "即時狀態回饋 (FPS / Bitrate)"],
-        features_en: ["Dual Source (Full Screen/Window)", "Auto FFmpeg & MediaMTX download", "Low-latency RTSP streaming", "Real-time Metrics (FPS / Bitrate)"]
+        features: [
+            "🖥️ 雙來源模式：支援全螢幕或單一指定視窗推流",
+            "⚡ 低延遲自動推流：內建輕量推流引擎，無需複雜設定一鍵啟動"
+        ],
+        features_en: [
+            "🖥️ Dual Source: Flexible streaming of full screen or selected window",
+            "⚡ Low Latency: Built-in lightweight streaming engine with zero complicated configuration"
+        ]
     }
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-09-23",
+        content: "ETC Cue Photo Tool v2.0 重磅大更新：新增「Tab 2 控台資料瀏覽器」(Cue List 免確認回寫、Palette 7合1 快速工作台) 與「物理四刀自適應刀盤」(非零原點校正、基準追隨管理器)，並全系列官方教學影片已上架！歡迎 <a href='https://www.youtube.com/playlist?list=PLaSodMfnFBsA' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerVideo', 'TickerVideo')\">點此觀看教學影片</a> (或 <a href='products/etc-cue-photo.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerDetails', 'TickerDetails')\">了解詳情</a> / <a href='Manual/ETC_Cue_Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerManual', 'TickerManual')\">查看說明書</a>)",
+        content_en: "ETC Cue Photo Tool v2.0 Major Upgrade: Added 'Tab 2 Console Data Browser' (instant Cue List sync, 7-in-1 Palette) & 'Physical 4-Blade Adaptive Shutter' (origin calibration, baseline follower manager), along with official video tutorial series out now! <a href='https://www.youtube.com/playlist?list=PLaSodMfnFBsA' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerVideo', 'TickerVideo')\">Watch Video Tutorials</a> (or <a href='products/etc-cue-photo.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerDetails', 'TickerDetails')\">Learn More</a> / <a href='Manual/ETC_Cue_Manual_en.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerManual', 'TickerManual')\">View Manual</a>)"
+    },
     {
         date: "2026-09-22",
         content: "ETC Eos Grid Tool 官方教學影片已上架！歡迎 <a href='https://www.youtube.com/playlist?list=PLMwlChksQtYo' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerVideo', 'TickerVideo')\">點此觀看教學影片</a> (或 <a href='products/etc-grid-tool.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerDetails', 'TickerDetails')\">了解詳情</a> / <a href='Manual/Grid_Tool_Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_grid_TickerManual', 'TickerManual')\">查看說明書</a>)",

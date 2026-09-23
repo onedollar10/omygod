@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETC Cue 截圖記錄器 v4.0 使用說明書</title>
+    <title>ETC Cue 截圖記錄器 & 控台資料瀏覽器 v2.0 使用說明書</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
     <script>
@@ -318,28 +318,30 @@
     <div class="container">
         <header class="header">
             <a href="ETC_Cue_Manual_en.html" class="lang-toggle">English Version</a>
-            <h1>ETC Cue 截圖記錄器</h1>
-            <p class="version">版本 4.0 使用說明書</p>
+            <h1>ETC Cue 截圖記錄器 & 控台資料瀏覽器</h1>
+            <p class="version">版本 2.0 旗艦整合版使用說明書</p>
         </header>
 
         <div class="content">
-            <!-- 目錄 -->
+                                    <!-- 目錄 -->
             <div class="toc">
                 <h2>目錄</h2>
                 <ul>
                     <li><a href="#intro">軟體簡介</a></li>
                     <li><a href="#install">安裝與啟動</a></li>
-                    <li><a href="#interface">介面總覽</a></li>
+                    <li><a href="#interface">介面總覽 (Tab 1 & Tab 2)</a></li>
                     <li><a href="#video">視訊輸入設定</a></li>
                     <li><a href="#osc">OSC 連線設定</a></li>
                     <li><a href="#sacn">sACN DMX 觸發設定</a></li>
+                    <li><a href="#sync">內容與備註同步</a></li>
                     <li><a href="#cue-mode">Cue 模式操作</a></li>
                     <li><a href="#ch-mode">CH 模式操作</a></li>
                     <li><a href="#recording">視訊錄影功能</a></li>
                     <li><a href="#manual">手動截圖功能</a></li>
-                    <li><a href="#sync">內容與備註同步</a></li>
                     <li><a href="#project">專案管理</a></li>
                     <li><a href="#export">匯出功能</a></li>
+                    <li><a href="#console-browser">控台資料瀏覽器 (Tab 2)</a></li>
+                    <li><a href="#shutter-framing">自適應刀盤與基準追隨</a></li>
                     <li><a href="#troubleshoot">故障排除</a></li>
                 </ul>
             </div>
@@ -347,8 +349,7 @@
             <!-- 軟體簡介 -->
             <section id="intro">
                 <h2>軟體簡介</h2>
-                <p><strong>ETC Cue 截圖記錄器</strong>是一款專為舞台燈光設計師與技術人員打造的專業截圖記錄工具。它能透過 OSC 協定與 ETC/EOS 燈控台通訊，在 Cue 完成或
-                    Channel 設定時自動截取視訊畫面，並提供完整的專案管理與報告匯出功能。</p>
+                <p><strong>ETC Cue 截圖記錄器 & 控台資料瀏覽器 (ETC Cue PIC v2.0)</strong>是一款專為專業舞台燈光設計師、燈控工程師與技術團隊打造的全方位燈光工作站。它深度整合 ETC Eos / Nomad / Apex / Gio / Ion 系列燈控台，具備<strong>多來源視訊即時 Cue / CH 截圖記錄系統</strong>與<strong>全功能控台資料瀏覽與物理可視化工作台</strong>兩大核心體系，並導入 0.26ms Fast-Path 零延遲直通管線與物理四刀自適應切刀畫布。</p>
 
                 <div class="screenshot">
                     <img src="../pic/etc cue PIC 4.0 manual_images/01_main_window.png" alt="軟體主畫面">
@@ -367,15 +368,31 @@
                     </div>
                     <div class="feature-card">
                         <h4>📹 視訊輸入</h4>
-                        <p>支援 USB 攝影機、RTSP 串流多種來源</p>
+                        <p>支援 USB 攝影機、NDI 網路視訊串流、RTSP 串流多種來源</p>
                     </div>
                     <div class="feature-card">
                         <h4>🎬 視訊錄影</h4>
-                        <p>內建視訊錄影功能，同步記錄 Cue 時間戳</p>
+                        <p>內建視訊錄影功能，影格級同步記錄 Cue 時間戳</p>
                     </div>
                     <div class="feature-card">
-                        <h4>📊 完整記錄</h4>
-                        <p>自動記錄 Cue 編號、時間長度、截圖、備註等完整資訊</p>
+                        <h4>📋 控台資料瀏覽器</h4>
+                        <p>8 大核心模組、Dashboard 11 大數據卡片，切換頁面即同步</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎨 Palette 7合1</h4>
+                        <p>整併 Color/Beam/Int/Focus 調色盤與 Preset/Macro/Snapshot</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✂️ 自適應刀盤</h4>
+                        <p>Sutherland-Hodgman 物理四刀多邊形幾何裁剪與非零原點動態校正</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⭐ 基準追隨管理器</h4>
+                        <p>Ctrl/Shift 批次多選拖曳，基準燈與跟隨者自動同步繼承</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚡ 0.26ms Fast-Path</h4>
+                        <p>極速直通管線，1005 顆燈 O(1) 增量更新，60fps 極致絲滑</p>
                     </div>
                     <div class="feature-card">
                         <h4>📁 專案管理</h4>
@@ -384,10 +401,6 @@
                     <div class="feature-card">
                         <h4>📄 報告匯出</h4>
                         <p>一鍵匯出 Excel 與 PDF 報告，方便分享與歸檔</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4>🔄 覆蓋模式</h4>
-                        <p>支援選取記錄後覆蓋更新，方便修正截圖</p>
                     </div>
                     <div class="feature-card">
                         <h4>📡 sACN DMX 觸發</h4>
@@ -457,29 +470,39 @@
                 <h3>介面區域說明</h3>
                 <table>
                     <tr>
-                        <th>區域</th>
+                        <th>分頁 / 區域</th>
                         <th>位置</th>
-                        <th>功能</th>
+                        <th>功能說明</th>
                     </tr>
                     <tr>
-                        <td>視訊預覽區</td>
+                        <td><strong>Tab 1: 📸 截圖與錄影工作台</strong></td>
+                        <td>頂部主分頁 1</td>
+                        <td>舞台視訊即時預覽、Cue/CH 模式切換、即時錄影控制、自動截圖記錄列表與覆蓋更新。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tab 2: 📋 控台資料瀏覽器</strong></td>
+                        <td>頂部主分頁 2</td>
+                        <td>8 大核心模組導航、Dashboard 11 大數據卡片、Cue 清單即時回寫、Palette 7合1 工作台與燈具即時監控可視化畫布。</td>
+                    </tr>
+                    <tr>
+                        <td>視訊預覽區 (Tab 1)</td>
                         <td>左上方</td>
-                        <td>顯示即時視訊畫面</td>
+                        <td>顯示即時視訊畫面 (USB / NDI / RTSP)</td>
                     </tr>
                     <tr>
-                        <td>狀態顯示區</td>
+                        <td>狀態顯示區 (Tab 1)</td>
                         <td>左中部</td>
-                        <td>顯示當前 Cue/Chan 編號</td>
+                        <td>顯示當前 Cue/Chan 編號與進度</td>
                     </tr>
                     <tr>
-                        <td>控制按鈕區</td>
+                        <td>控制按鈕區 (Tab 1)</td>
                         <td>左下方</td>
                         <td>模式切換、錄影控制、記錄控制</td>
                     </tr>
                     <tr>
-                        <td>記錄表格區</td>
+                        <td>記錄表格區 (Tab 1)</td>
                         <td>右側</td>
-                        <td>顯示所有截圖記錄</td>
+                        <td>顯示所有截圖記錄、時間戳、備註與縮圖</td>
                     </tr>
                 </table>
 
@@ -1080,6 +1103,140 @@
                 </div>
             </section>
 
+                        <!-- 控台資料瀏覽器 (Tab 2) -->
+            <section id="console-browser">
+                <h2>控台資料瀏覽器 (Tab 2 Console Data Browser)</h2>
+
+                <p>v2.0 全新加入的「控台資料瀏覽器」深度整合 ETC Eos 系列燈控台（支援 Nomad、Apex、Gio、Ion 等），透過雙向非同步 OSC 通訊引擎，即時透視全場燈光 Show 檔資料。左側導航精簡為 8 大實用核心模組，並配備「⚡ 切換頁面即同步」技術，點擊分頁自動在背景非同步查詢，無需手動等待。</p>
+
+                <div class="screenshot">
+                    <img src="../assets/products/etc-cue-photo/feature_console_browser.png" alt="控台資料瀏覽器總覽介面">
+                    <div class="screenshot-caption">圖：控台資料瀏覽器總覽 Dashboard 與 8 大核心模組</div>
+                </div>
+
+                <h3>8 大核心模組說明</h3>
+                <table>
+                    <tr>
+                        <th>模組名稱</th>
+                        <th>圖示與代碼</th>
+                        <th>主要功能與特色</th>
+                    </tr>
+                    <tr>
+                        <td><strong>總覽 Dashboard</strong></td>
+                        <td>📊 <code>dashboard</code></td>
+                        <td>顯示連線狀態、目前 Show 檔名稱、最後同步時間，以及 <strong>11 大即時數據卡片</strong>（Patch、Cue List、Group、Effect、Color/Beam/Int/Focus Palette、Preset、Macro、Snapshot）。點選卡片可直接跳轉至對應功能。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cue List</strong></td>
+                        <td>🎭 <code>cue</code></td>
+                        <td>完整檢視控台 Cue 清單、秒數、進度與 Parts。支援<strong>雙向免確認即時回寫</strong>：在軟體表格修改 Label 或 Notes，立即發送 <code>/eos/user/0/cmd/cue/{list}/{num}/label/{val}/enter</code>，控台即刻更新！</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Patch & DMX</strong></td>
+                        <td>💡 <code>patch</code></td>
+                        <td>檢視全場通道迴路、DMX 位址與燈具型號，支援通道與型號快速搜尋，即時掌握燈具配置。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Group</strong></td>
+                        <td>👥 <code>group</code></td>
+                        <td>檢視燈光群組號碼、名稱與包含之通道清單，雙擊任一行即可向控台發送 <code>/eos/group/{number}/fire</code> 快速選取。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Palette 7合1</strong></td>
+                        <td>🎨 <code>palette</code></td>
+                        <td><strong>調色盤與預設 7 合 1 整合工作台</strong>。整併 Color、Beam、Intensity、Focus 4 大調色盤與 Preset、Macro、Snapshot，支援 By Type 通道金色高亮與全域雙擊 Fire 觸發。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Effect</strong></td>
+                        <td>🎬 <code>effect</code></td>
+                        <td>效果器清單檢視，提供專屬「🛑 Stop All Effects」一鍵安全全停按鈕，發送 <code>StopEffect Enter</code> 讓全場效果器瞬間歸零。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cue Sheet</strong></td>
+                        <td>📑 <code>cuesheet</code></td>
+                        <td>圖文並茂的 Cue 播放工作清單，可與視訊/NDI 即時預覽畫面深度聯動，提供燈光操作員與舞台監督直觀導航。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>燈具監控</strong></td>
+                        <td>🎛️ <code>chanmon</code></td>
+                        <td>即時燈具參數監控與硬體級可視化畫布（四象限雲台、雙圖案輪、CMY 色彩與物理四刀切刀）。</td>
+                    </tr>
+                </table>
+
+                <h3>Palette & Preset 7 合 1 整合工作台特色</h3>
+                <div class="info-box">
+                    <h4>整合 7 大子分頁與全域雙擊觸發</h4>
+                    <p>告別繁瑣的多視窗切換，Palette 工作台將控台關鍵預設整合為 7 個標籤頁：</p>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>🎨 Color / 🔦 Beam / 💡 Intensity / 🎯 Focus</strong>：清晰展示調色盤編號、名稱、Absolute、Locked 鎖定標記與 By Type 通道（金橙色高亮）。</li>
+                        <li><strong>📋 Preset</strong>：整合多屬性預設，雙擊立即套用至控台當前選取燈具。</li>
+                        <li><strong>⚙️ Macro & 📸 Snapshot</strong>：快速執行巨集或調用版面快照。</li>
+                        <li><strong>⚡ 全域雙擊 Fire</strong>：在任一子分頁中<strong>雙擊項目</strong>，軟體立即發射專屬 OSC Fire 指令，控台現場燈光秒速響應！</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 物理四刀自適應刀盤與基準追隨 -->
+            <section id="shutter-framing">
+                <h2>物理四刀自適應刀盤與基準追隨 (Adaptive Shutter & Baseline Follower)</h2>
+
+                <p>電腦切割燈（Framing Fixture）切刀姿態難以直觀掌控一直是現場燈光師的痛點。v2.0 帶來革命性的「物理四刀多邊形幾何裁剪畫布」與「自適應基準追隨管理器」，精確將控台數值在畫布上還原為舞台實際投射光斑！</p>
+
+                <div class="screenshot">
+                    <img src="../assets/products/etc-cue-photo/feature_adaptive_shutter.png" alt="自適應刀盤設定視窗">
+                    <div class="screenshot-caption">圖：自適應刀盤環狀四分盤校正與順逆時針方向配置</div>
+                </div>
+
+                <h3>物理四刀多邊形幾何向量裁剪演算法</h3>
+                <div class="step-box">
+                    <h4>Sutherland-Hodgman 多邊形裁剪核心原理</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>單位圓光斑</strong>：光源開口以單位圓多邊形精確模擬。</li>
+                        <li><strong>四刀獨立截割</strong>：刀片 A、B、C、D 各自推進深度 <code>Thrust (0~100%)</code> 與角度傾斜 <code>Angle (-45°~+45°)</code>，計算出空間截割直線方程式。</li>
+                        <li><strong>幾何求交裁剪</strong>：利用電腦圖形學經典 Sutherland-Hodgman 演算法連續經過四把刀片半平面截割，動態生成真實透光多邊形進行 QPainter 填充。</li>
+                        <li><strong>順逆時針方向 (CW/CCW) 配置</strong>：支援刀片自轉方向與切刀總成旋轉方向獨立設定，內建快取自動失效機制，修改設定立即生效。</li>
+                    </ul>
+                </div>
+
+                <h3>現場非零原點自適應補償 (Adaptive Zero-Reference)</h3>
+                <div class="warning-box">
+                    <h4>解決劇場橫掛側光架非零 Pan 偏差問題</h4>
+                    <p>傳統軟體預設旋轉原點固定為 0°，但在劇場現場，側光架橫掛或特定吊桿燈具的 Home 姿態常為非零角度（如 Pan = -94.0° 或 -134.0°）。固定 0° 會導致燈具處於預設姿態時自適應旋轉產生數十度歪斜。</p>
+                    <p><strong>v2.0 創新解法</strong>：以控台當前姿態為基準原點（<code>base_pan</code> / <code>base_tilt</code>），旋轉補償公式為：<br>
+                    <code>Δθ = (pan_current - base_pan) × pan_dir</code><br>
+                    在基準姿態下旋轉偏差恆為 0°，使畫布上方刀永遠完美對齊舞台實際正上方！</p>
+                </div>
+
+                <div class="screenshot">
+                    <img src="../assets/products/etc-cue-photo/feature_baseline_manager.png" alt="切刀基準追隨管理器">
+                    <div class="screenshot-caption">圖：切刀基準追隨管理器（樹狀分組、多選拖曳與基準燈跟隨）</div>
+                </div>
+
+                <h3>切刀基準追隨管理器 (BladeBaselineManager) 操作流程</h3>
+                <div class="step-box">
+                    <h4>高效正向流程與 Windows 標準多選操作</h4>
+                    <ol style="margin-left: 20px;">
+                        <li><strong>直入追隨管理器</strong>：在燈具監控點擊切刀按鈕，直接進入管理器，左側依 Patch 自動彙整全場燈具型號。</li>
+                        <li><strong>Ctrl / Shift 批次多選拖曳</strong>：支援 Windows 標準 <code>Ctrl</code> 單點多選與 <code>Shift</code> 連續範圍多選，一次選取數十顆燈具拖曳至右側樹狀圖。</li>
+                        <li><strong>建立基準燈與跟隨燈</strong>：將其中一顆設為<strong>基準燈（⭐）</strong>，其餘燈具設為<strong>跟隨者（↳）</strong>。同型號不同桿位可建立多組基準燈並存。</li>
+                        <li><strong>跟隨者自動同步</strong>：只要調整基準燈切刀，底下所有跟隨燈具自動繼承切刀參數與基準姿態映射，免除逐一設定之苦。</li>
+                        <li><strong>儲存時主動索取控台姿態</strong>：點擊「💾 儲存」按鈕時，系統主動發送 <code>/eos/newcmd/Chan/{ch}#</code> 與查詢封包，透過 350ms 非阻塞事件循環精準鎖定最新姿態寫入基準原點。</li>
+                        <li><strong>切刀專案檔儲存與匯出</strong>：頂部工具列提供「開啟新檔 / 讀取設定 / 儲存設定 / 另存新檔」，將全場型號與追隨關係打包為獨立 <code>.json</code> 專案檔，換場巡迴一鍵還原！</li>
+                    </ol>
+                </div>
+
+                <h3>0.26ms Fast-Path 直通零延遲管線</h3>
+                <div class="info-box">
+                    <h4>局部增量刷新與 60fps 極致絲滑</h4>
+                    <p>傳統軟體在控台輪盤轉動時觸發全場 1000 多顆燈全表重算，導致 1.9 秒嚴重卡頓。v2.0 導入全新管線：</p>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Fast-Path 當前燈具直通</strong>：直接驅動當前選中燈具的 QPainter 畫布，單次耗時僅 <strong>0.26 ms</strong>（提速逾 400 倍），達成 60fps 絲滑即時動態反饋。</li>
+                        <li><strong>O(1) 字典查表定向更新</strong>：全場燈具監控只刷新變動行之單元格，其餘上千行完全不耗費 CPU。</li>
+                        <li><strong>頁面二次切換 0.000 ms</strong>：保持生命週期快取，分頁切回瞬間顯示，資料絕不抹除。</li>
+                    </ul>
+                </div>
+            </section>
+
             <!-- 故障排除 -->
             <section id="troubleshoot">
                 <h2>故障排除</h2>
@@ -1134,6 +1291,24 @@
                     </ul>
                 </div>
 
+                <div class="step-box">
+                    <h4>Q6: 切刀畫布旋轉角度或方向與舞台現場不一致？</h4>
+                    <ul>
+                        <li>進入切刀設定對話框，檢查並切換「順時針 (CW)」或「逆時針 (CCW)」方向。</li>
+                        <li>確認燈具是否處於現場 Home 姿態，點擊「💾 儲存」按鈕重新鎖定控台當前姿態為自適應基準原點（base_pan / base_tilt）。</li>
+                        <li>確認旋轉軸向設定正確（頂光/面光選擇 Pan 驅動，側光/地排選擇 Tilt 驅動）。</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q7: 控台資料瀏覽器 (Tab 2) 資料未更新或顯示為 0？</h4>
+                    <ul>
+                        <li>確認勾選左下角「⚡ 切換頁面即同步」功能。</li>
+                        <li>點擊右下角「🔄 全部重新同步」按鈕強制發送非同步查詢。</li>
+                        <li>確認 OSC 連線通訊埠：軟體接收埠（8001）與控台接收埠（8000）設定正確，且控台 OSC Output 已啟用。</li>
+                    </ul>
+                </div>
+
                 <h3>聯絡支援</h3>
                 <div class="info-box">
                     <h4>技術支援</h4>
@@ -1148,11 +1323,11 @@
             </div>
         </div>
 
-        <footer class="footer">
-            <p><strong>ETC Cue 截圖記錄器 v4.0</strong></p>
+                <footer class="footer">
+            <p><strong>ETC Cue 截圖記錄器 & 控台資料瀏覽器 v2.0 旗艦整合版</strong></p>
             <p>開發者：onedoller</p>
-            <p>更新日期：2026-02-07</p>
-            <p style="margin-top: 20px; opacity: 0.8;">本文件適用於 ETC Cue 截圖記錄器 v4.0</p>
+            <p>更新日期：2026-09-23</p>
+            <p style="margin-top: 20px; opacity: 0.8;">本文件適用於 ETC Cue 截圖記錄器 & 控台資料瀏覽器 v2.0</p>
         </footer>
     </div>
 

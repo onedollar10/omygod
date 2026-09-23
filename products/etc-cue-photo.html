@@ -41,6 +41,8 @@
                 <h1 class="hero-title">ETC CUE PHOTO</h1>
                 <p class="hero-sub" data-i18n="cue_hero_subtitle">Auto Screenshot & Documentation for ETC Consoles</p>
                 <div class="hero-points">
+                    <span>Console Browser</span>
+                    <span>Adaptive Blades</span>
                     <span>Cue Capture</span>
                     <span>CH Mode</span>
                     <span>RTSP / USB</span>
@@ -58,6 +60,10 @@
                     <a id="manual-link" href="../Manual/ETC_Cue_Manual.html" target="_blank" class="cta secondary">
                         <i class="fa-solid fa-book"></i>
                         <span data-i18n="manual_btn">User Manual</span>
+                    </a>
+                    <a id="video-link" href="https://www.youtube.com/playlist?list=PLaSodMfnFBsA" target="_blank" rel="noopener noreferrer" class="cta secondary cta-video">
+                        <i class="fa-brands fa-youtube"></i>
+                        <span data-i18n="video_tutorial_btn">教學影片</span>
                     </a>
                 </div>
             </article>
@@ -95,10 +101,10 @@
                 <aside class="demo-notes">
                     <h3 id="demo-focus-title">展示重點</h3>
                     <ul>
-                        <li id="demo-note-1">自動偵測 Cue 變化並截取關鍵畫面</li>
-                        <li id="demo-note-2">同時支援 Cue mode 與 Channel mode</li>
-                        <li id="demo-note-3">提供時間戳與片段參照，加速回放檢查</li>
-                        <li id="demo-note-4">可直接交付製作團隊的匯出成果</li>
+                        <li id="demo-note-1">讀取 ETC 控台資料：Tab 2 控台資料瀏覽器、Cue List 免確認回寫、Palette 7合1 雙擊 Fire</li>
+                        <li id="demo-note-2">物理四刀自適應刀盤：Sutherland-Hodgman 幾何裁剪、現場非零原點動態校正</li>
+                        <li id="demo-note-3">切刀基準追隨管理器：Ctrl/Shift 批次多選拖曳建立基準燈與跟隨者，參數自動同步</li>
+                        <li id="demo-note-4">自動偵測 Cue 變化與 CH 模式，視訊錄影時間戳並匯出專業 Excel/PDF 報表</li>
                     </ul>
                 </aside>
             </div>
@@ -113,7 +119,7 @@
                     <div class="feature-book" id="feature-book">
                         <article class="feature-page" id="feature-page-single"></article>
                     </div>
-                    <div class="feature-page-indicator" id="feature-page-indicator">FEATURE 1 / 6</div>
+                    <div class="feature-page-indicator" id="feature-page-indicator">FEATURE 1 / 9</div>
                 </div>
                 <button class="feature-nav" id="feature-next" aria-label="Next Features">&#10095;</button>
             </div>
@@ -249,11 +255,33 @@
             },
             {
                 id: "F07",
-                image: "../assets/products/etc-cue-photo/ui_full.png",
-                alt: "Content & Notes Sync",
+                image: "../assets/products/etc-cue-photo/feature_console_browser.png",
+                alt: "ETC Console Data Browser",
                 titleKey: "cue_f7_title",
                 descKey: "cue_f7_desc",
                 hlKey: "cue_f7_hl",
+                fallbackTitle: "讀取 ETC 控台資料透視",
+                fallbackDesc: "全新 Tab 2 控台資料瀏覽器。深度透視 Dashboard 11 大核心數據卡片，支援 Cue List 即時免確認回寫，以及 Palette 7合1 整合工作台 (Color, Beam, Intensity, Focus, Preset, Macro, Snapshot) 雙擊直接向控台發送 Fire 指令。",
+                fallbackHl: "特色功能： 採用局部增量定向更新與 0.26ms Fast-Path 直通管線，1005 顆燈 O(1) 查表刷新，操作達 60fps 絲滑無感延遲。"
+            },
+            {
+                id: "F08",
+                image: "../assets/products/etc-cue-photo/feature_adaptive_shutter.png",
+                alt: "Adaptive Shutter & Baseline Follower",
+                titleKey: "cue_f8_title",
+                descKey: "cue_f8_desc",
+                hlKey: "cue_f8_hl",
+                fallbackTitle: "物理四刀自適應刀盤與基準追隨",
+                fallbackDesc: "專業級硬體可視化畫布。採用 Sutherland-Hodgman 多邊形幾何裁剪演算法，具備總成旋轉與 CW/CCW 順逆時針方向切換；獨創現場自適應旋轉原點動態校正 (消弭側光橫掛非零 Pan 原點偏差)，並由【切刀基準追隨管理器】支援 Ctrl/Shift 批次多選拖曳建立基準燈與跟隨者。",
+                fallbackHl: "特色功能： 基準燈切刀參數與補償角度秒級自動廣播同步給所有跟隨者，並支援 ETC OSC RFR 手機端即時畫布聯動。"
+            },
+            {
+                id: "F09",
+                image: "../assets/products/etc-cue-photo/ui_full.png",
+                alt: "Content & Notes Sync",
+                titleKey: "cue_f9_title",
+                descKey: "cue_f9_desc",
+                hlKey: "cue_f9_hl",
                 fallbackTitle: "內容與備註同步",
                 fallbackDesc: "自動同步 ETC Label 與 Node，確保記錄與控台 show file 內容一致。",
                 fallbackHl: "即時同步功能，大幅減少手動輸入備註的時間與錯誤。"
@@ -281,10 +309,10 @@
                     demoSub: "A practical rehearsal documentation flow that reduces manual screenshot and handoff effort.",
                     demoTitle: "DEMO FOCUS",
                     demoNotes: [
-                        "Auto-detect cue changes and capture key visual frames",
-                        "Support both Cue mode and Channel mode workflows",
-                        "Use timestamp references for faster playback review",
-                        "Generate deliverables ready for production team handoff"
+                        "Read ETC console data: Tab 2 Browser, instant Cue List sync, 7-in-1 Palette Fire",
+                        "Physical 4-blade adaptive shutter framing with dynamic origin calibration",
+                        "Blade Baseline Follower Manager with batch Ctrl/Shift master assignment",
+                        "Auto-detect cue changes & CH mode, export Excel/PDF with precision timestamps"
                     ],
                     workflow: [
                         "Connect USB Camera, RTSP stream, or sACN trigger source.",
@@ -298,10 +326,10 @@
                 demoSub: "提供實用的排練記錄流程，降低手動截圖與交付整理的人力成本。",
                 demoTitle: "展示重點",
                 demoNotes: [
-                    "自動偵測 Cue 變化並截取關鍵畫面",
-                    "同時支援 Cue mode 與 Channel mode",
-                    "提供時間戳與片段參照，加速回放檢查",
-                    "可直接交付製作團隊的匯出成果"
+                    "讀取 ETC 控台資料：Tab 2 控台資料瀏覽器、Cue List 免確認回寫、Palette 7合1 雙擊 Fire",
+                    "物理四刀自適應刀盤：Sutherland-Hodgman 幾何裁剪、現場非零原點動態校正",
+                    "切刀基準追隨管理器：Ctrl/Shift 批次多選拖曳建立基準燈與跟隨者，參數自動同步",
+                    "自動偵測 Cue 變化與 CH 模式，視訊錄影時間戳並匯出專業 Excel/PDF 報表"
                 ],
                 workflow: [
                     "連接 USB Camera、RTSP 串流或 sACN 觸發來源。",

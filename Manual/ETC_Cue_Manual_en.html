@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETC Cue Screenshot Logger v4.0 User Manual</title>
+    <title>ETC Cue Screenshot Logger & Console Data Browser v2.0 User Manual</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
     <script>
@@ -305,30 +305,32 @@
 
 <body>
     <div class="container">
-        <header class="header">
-            <a href="ETC_Cue_Manual.html" class="lang-toggle">中文版本</a>
-            <h1>ETC Cue Screenshot Logger</h1>
-            <p class="version">Version 4.0 User Manual</p>
+                <header class="header">
+            <a href="ETC_Cue_Manual.html" class="lang-toggle">中文版 (繁體)</a>
+            <h1>ETC Cue Screenshot Logger & Console Data Browser</h1>
+            <p class="version">v2.0 Flagship Edition User Manual</p>
         </header>
 
         <div class="content">
-            <!-- Table of Contents -->
+                                    <!-- Table of Contents -->
             <div class="toc">
                 <h2>Table of Contents</h2>
                 <ul>
                     <li><a href="#intro">Introduction</a></li>
                     <li><a href="#install">Installation & Startup</a></li>
-                    <li><a href="#interface">Interface Overview</a></li>
+                    <li><a href="#interface">Interface Overview (Tab 1 & Tab 2)</a></li>
                     <li><a href="#video">Video Input Settings</a></li>
                     <li><a href="#osc">OSC Connection Settings</a></li>
                     <li><a href="#sacn">sACN DMX Trigger Setup</a></li>
+                    <li><a href="#sync">Content & Notes Sync</a></li>
                     <li><a href="#cue-mode">Cue Mode Operation</a></li>
                     <li><a href="#ch-mode">CH Mode Operation</a></li>
                     <li><a href="#recording">Video Recording Feature</a></li>
                     <li><a href="#manual">Manual Screenshot Feature</a></li>
-                    <li><a href="#sync">Content & Notes Sync</a></li>
                     <li><a href="#project">Project Management</a></li>
                     <li><a href="#export">Export Features</a></li>
+                    <li><a href="#console-browser">Console Data Browser (Tab 2)</a></li>
+                    <li><a href="#shutter-framing">Adaptive Shutter & Baseline Follower</a></li>
                     <li><a href="#troubleshoot">Troubleshooting</a></li>
                 </ul>
             </div>
@@ -336,10 +338,7 @@
             <!-- Introduction -->
             <section id="intro">
                 <h2>Introduction</h2>
-                <p><strong>ETC Cue Screenshot Logger</strong> is a professional tool designed for lighting designers and
-                    stage technicians. It communicates with ETC/EOS consoles via OSC protocol to automatically capture
-                    stage screenshots when a Cue is completed or Channel is set, providing comprehensive project
-                    management and report export features.</p>
+                <p><strong>ETC Cue Screenshot Logger & Console Data Browser (ETC Cue PIC v2.0)</strong> is an all-in-one professional lighting workstation crafted for lighting designers, console operators, and theatre technicians. Seamlessly integrated with ETC Eos / Nomad / Apex / Gio / Ion consoles, it combines an automated <strong>Multi-Source Cue/CH Video Recording System</strong> with a comprehensive <strong>Console Data Inspection & Physical Visualizer Workbench</strong>, powered by a 0.26ms Fast-Path zero-latency pipeline and polygon adaptive shutter framing canvas.</p>
 
                 <div class="screenshot">
                     <img src="../pic/etc cue PIC 4.0 manual_images/01_main_window.png" alt="Main Interface">
@@ -358,32 +357,43 @@
                     </div>
                     <div class="feature-card">
                         <h4>📹 Video Input</h4>
-                        <p>Supports USB cameras and RTSP streams.</p>
+                        <p>Supports USB cameras, NDI network video streams, and RTSP stream sources.</p>
                     </div>
                     <div class="feature-card">
                         <h4>🎬 Video Recording</h4>
-                        <p>Built-in recording with automatic Cue time-stamping.</p>
+                        <p>Built-in video recording synchronized with frame-accurate Cue fire timestamps.</p>
                     </div>
                     <div class="feature-card">
-                        <h4>📊 Complete Logs</h4>
-                        <p>Logs Cue #, duration, screenshots, notes, and other complete information.</p>
+                        <h4>📋 Console Data Browser</h4>
+                        <p>8 Core modules, Dashboard 11 live data cards, Auto-Sync on Tab Switch.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎨 Palette 7-in-1</h4>
+                        <p>Unified workbench for Color, Beam, Int, Focus palettes + Preset, Macro, Snapshot.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✂️ Adaptive Shutter</h4>
+                        <p>Sutherland-Hodgman 4-blade geometric polygon clipping & live base origin compensation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⭐ Baseline Follower</h4>
+                        <p>Ctrl/Shift multi-select drag & drop; followers automatically inherit baseline calibration.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚡ 0.26ms Fast-Path</h4>
+                        <p>Zero-latency direct pipeline, 1005 fixtures O(1) incremental update, 60fps silky smooth.</p>
                     </div>
                     <div class="feature-card">
                         <h4>📁 Project Management</h4>
-                        <p>Supports saving/loading projects for managing multiple show projects.</p>
+                        <p>Save and load show files easily, preserving full metadata across multi-production workflows.</p>
                     </div>
                     <div class="feature-card">
                         <h4>📄 Report Export</h4>
-                        <p>One-click export to Excel and PDF reports for sharing and archiving.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4>🔄 Overwrite Mode</h4>
-                        <p>Supports updating records by overwriting, convenient for correcting screenshots.</p>
+                        <p>One-click export to professional Excel and PDF reports with inlined visuals.</p>
                     </div>
                     <div class="feature-card">
                         <h4>📡 sACN DMX Trigger</h4>
-                        <p>Supports receiving sACN DMX signals with configurable trigger channel and threshold for
-                            automatic capture.</p>
+                        <p>Listens for sACN DMX packets to trigger manual screenshots based on channel thresholds.</p>
                     </div>
                 </div>
             </section>
@@ -701,6 +711,38 @@
             </section>
 
 
+                        <!-- Content & Notes Sync -->
+            <section id="sync">
+                <h2>Content & Notes Sync</h2>
+                <p>The software supports automatic synchronization of Cue Labels (Names) and Notes (Node/Comments) from the ETC Eos console, ensuring your documentation perfectly matches the console show file.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🏷️ Label Sync</h4>
+                        <p>Automatically fetches Cue Labels from the console and displays them in the Name or Label field.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Notes/Node Sync</h4>
+                        <p>Automatically fetches Cue Notes (also known as Nodes) from the console and populates the Notes field.</p>
+                    </div>
+                </div>
+
+                <h3>How it Works</h3>
+                <div class="info-box">
+                    <h4>Real-time Sync Logic</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Trigger:</strong> When an OSC message for a Cue fire is detected, the software automatically sends a request to the console for detailed metadata.</li>
+                        <li><strong>Auto-Update:</strong> If you modify a Label or Note on the console, the software will automatically update the corresponding field in your record the next time that Cue is triggered.</li>
+                        <li><strong>Export Priority:</strong> Exported reports (Excel/PDF) prioritize these synchronized latest values for accurate documentation.</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Requirement</h4>
+                    <p>This feature requires the <strong>Console IP</strong> and <strong>Console Port</strong> in "OSC Connection Settings" to be correctly configured so the software can communicate back to the console.</p>
+                </div>
+            </section>
+
             <!-- Cue Mode Operation -->
             <section id="cue-mode">
                 <h2>Cue Mode Operation</h2>
@@ -789,37 +831,7 @@
                     </ul>
                 </div>
 
-            <!-- Content & Notes Sync -->
-            <section id="sync">
-                <h2>Content & Notes Sync</h2>
-                <p>The software supports automatic synchronization of Cue Labels (Names) and Notes (Node/Comments) from the ETC Eos console, ensuring your documentation perfectly matches the console show file.</p>
-
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h4>🏷️ Label Sync</h4>
-                        <p>Automatically fetches Cue Labels from the console and displays them in the Name or Label field.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4>📝 Notes/Node Sync</h4>
-                        <p>Automatically fetches Cue Notes (also known as Nodes) from the console and populates the Notes field.</p>
-                    </div>
-                </div>
-
-                <h3>How it Works</h3>
-                <div class="info-box">
-                    <h4>Real-time Sync Logic</h4>
-                    <ul style="margin-left: 20px;">
-                        <li><strong>Trigger:</strong> When an OSC message for a Cue fire is detected, the software automatically sends a request to the console for detailed metadata.</li>
-                        <li><strong>Auto-Update:</strong> If you modify a Label or Note on the console, the software will automatically update the corresponding field in your record the next time that Cue is triggered.</li>
-                        <li><strong>Export Priority:</strong> Exported reports (Excel/PDF) prioritize these synchronized latest values for accurate documentation.</li>
-                    </ul>
-                </div>
-
-                <div class="warning-box">
-                    <h4>⚠️ Requirement</h4>
-                    <p>This feature requires the <strong>Console IP</strong> and <strong>Console Port</strong> in "OSC Connection Settings" to be correctly configured so the software can communicate back to the console.</p>
-                </div>
-            </section>
+            
 
             <!-- CH Mode Operation -->
             <section id="ch-mode">
@@ -1065,6 +1077,140 @@
                 </div>
             </section>
 
+                        <!-- Console Data Browser (Tab 2) -->
+            <section id="console-browser">
+                <h2>Console Data Browser (Tab 2 Console Data Browser)</h2>
+
+                <p>New in v2.0, the <strong>Console Data Browser</strong> deeply integrates with ETC Eos family consoles (supporting Nomad, Apex, Gio, Ion, etc.) via a bidirectional asynchronous OSC telemetry engine. The left sidebar is streamlined into 8 core modules with built-in <strong>"⚡ Auto-Sync on Tab Switch"</strong>, automatically fetching the latest console data in the background without freezing the interface.</p>
+
+                <div class="screenshot">
+                    <img src="../assets/products/etc-cue-photo/feature_console_browser.png" alt="Console Data Browser Dashboard">
+                    <div class="screenshot-caption">Fig: Console Data Browser Dashboard and 8 Core Modules</div>
+                </div>
+
+                <h3>8 Core Modules Breakdown</h3>
+                <table>
+                    <tr>
+                        <th>Module Name</th>
+                        <th>Icon & ID</th>
+                        <th>Key Capabilities & Features</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Dashboard</strong></td>
+                        <td>📊 <code>dashboard</code></td>
+                        <td>Displays connection status, active Show file name, last sync time, and <strong>11 live telemetry cards</strong> (Patch, Cue List, Group, Effect, Color/Beam/Int/Focus Palettes, Preset, Macro, Snapshot). Click any card to jump directly to its view.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cue List</strong></td>
+                        <td>🎭 <code>cue</code></td>
+                        <td>Full inspection of console Cue lists, timings, progress, and Parts. Supports <strong>instant bidirectional writeback without Enter confirmation</strong>: edit Label or Notes in the table, and it immediately sends <code>/eos/user/0/cmd/cue/{list}/{num}/label/{val}/enter</code> to the console!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Patch & DMX</strong></td>
+                        <td>💡 <code>patch</code></td>
+                        <td>Inspect channel circuits, DMX addresses, fixture profiles, and parameters with instant keyword search and filtering.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Group</strong></td>
+                        <td>👥 <code>group</code></td>
+                        <td>List lighting groups with numbers, labels, and channel lists. Double-click any row to send <code>/eos/group/{number}/fire</code> to select it immediately on the console.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Palette 7-in-1</strong></td>
+                        <td>🎨 <code>palette</code></td>
+                        <td><strong>Unified 7-in-1 Palette & Preset Workbench</strong>. Consolidates Color, Beam, Intensity, Focus palettes with Presets, Macros, and Snapshots, featuring By-Type channel golden highlights and global double-click fire.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Effect</strong></td>
+                        <td>🎬 <code>effect</code></td>
+                        <td>Inspect running and stored effects with a dedicated <strong>"🛑 Stop All Effects"</strong> emergency button (sends <code>StopEffect Enter</code> to safely halt all effects instantly).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cue Sheet</strong></td>
+                        <td>📑 <code>cuesheet</code></td>
+                        <td>Visual graphic Cue execution sheet linked with live NDI/video preview, providing operators and stage managers with clear visual cues.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fixture Monitor</strong></td>
+                        <td>🎛️ <code>chanmon</code></td>
+                        <td>Real-time fixture parameter monitoring with hardware-grade visualizers (quadrant Pan/Tilt gyro, dual Gobo wheels, CMY/RGB color, and physical 4-blade framing).</td>
+                    </tr>
+                </table>
+
+                <h3>Palette 7-in-1 Integrated Workbench</h3>
+                <div class="info-box">
+                    <h4>7 Unified Sub-Tabs with Global Double-Click Fire</h4>
+                    <p>No more jumping across multiple windows. All key console presets are consolidated into 7 clean sub-tabs:</p>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>🎨 Color / 🔦 Beam / 💡 Intensity / 🎯 Focus</strong>: Clearly inspect Palette #, Label, Absolute status, Locked status 🔒, and By-Type channels (golden highlighted).</li>
+                        <li><strong>📋 Preset</strong>: Multi-parameter presets applicable to current selected channels with a single double-click.</li>
+                        <li><strong>⚙️ Macro & 📸 Snapshot</strong>: Fast execution of automated macros or instant workspace recall.</li>
+                        <li><strong>⚡ Global Double-Click Fire</strong>: Double-click any row in any sub-tab to instantly fire the corresponding OSC command, controlling stage lighting in real time!</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Adaptive Shutter & Baseline Follower -->
+            <section id="shutter-framing">
+                <h2>Adaptive Shutter & Baseline Follower</h2>
+
+                <p>Framing moving lights have always been difficult to monitor without direct sightlines. v2.0 introduces a revolutionary <strong>Physical 4-Blade Polygon Clipping Canvas</strong> and <strong>Adaptive Baseline Follower Manager</strong>, faithfully mapping console values to the actual illuminated stage beam!</p>
+
+                <div class="screenshot">
+                    <img src="../assets/products/etc-cue-photo/feature_adaptive_shutter.png" alt="Adaptive Shutter Dial Dialog">
+                    <div class="screenshot-caption">Fig: Adaptive Shutter 4-Blade Dial Calibration and CW/CCW Configuration</div>
+                </div>
+
+                <h3>Physical 4-Blade Sutherland-Hodgman Polygon Clipping</h3>
+                <div class="step-box">
+                    <h4>Polygon Geometric Clipping Core Principles</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Unit Circle Aperture</strong>: The beam opening is modeled as a high-precision polygon unit circle.</li>
+                        <li><strong>4-Blade Independent Thrust & Angle</strong>: Blades A, B, C, and D push forward with <code>Thrust (0~100%)</code> and tilt with <code>Angle (-45°~+45°)</code>, generating 4 clipping line equations in 2D space.</li>
+                        <li><strong>Convex Polygon Clipping</strong>: Successive half-plane clippings via the classic computer graphics Sutherland-Hodgman algorithm dynamically compute the exact illuminated aperture for high-fidelity QPainter rendering.</li>
+                        <li><strong>CW / CCW Direction Customization</strong>: Blade rotation and assembly rotation directions can be configured independently, equipped with <code>invalidate_config_cache()</code> for instant application.</li>
+                    </ul>
+                </div>
+
+                <h3>Live Non-Zero Origin Dynamic Compensation</h3>
+                <div class="warning-box">
+                    <h4>Eliminating Pan Deviation for Horizontally Mounted Fixtures</h4>
+                    <p>Traditional tools assume a fixed 0° reference origin. However, in theatre venues, box boom or truss fixtures often have a non-zero Home orientation (e.g., Pan = -94.0° or -134.0°). Fixed 0° origins cause severe rotational skew when the fixture is at Home.</p>
+                    <p><strong>v2.0 Adaptive Solution</strong>: Automatically uses the console's live physical orientation as the baseline origin (<code>base_pan</code> / <code>base_tilt</code>):<br>
+                    <code>Δθ = (pan_current - base_pan) × pan_dir</code><br>
+                    At Home posture, rotational deviation is strictly 0°, ensuring the top blade in the canvas always aligns with the true physical top of the stage!</p>
+                </div>
+
+                <div class="screenshot">
+                    <img src="../assets/products/etc-cue-photo/feature_baseline_manager.png" alt="Blade Baseline Manager">
+                    <div class="screenshot-caption">Fig: Blade Baseline Manager (Tree Hierarchy, Multi-Select Drag & Drop, Master/Follower Follow)</div>
+                </div>
+
+                <h3>Blade Baseline Manager (BladeBaselineManager) Workflow</h3>
+                <div class="step-box">
+                    <h4>Streamlined Direct Workflow & Windows Standard Multi-Selection</h4>
+                    <ol style="margin-left: 20px;">
+                        <li><strong>Direct Entry</strong>: Click the Shutter button in Fixture Monitor to directly open the Baseline Manager, where left-side fixtures are grouped automatically by Patch model.</li>
+                        <li><strong>Ctrl / Shift Batch Multi-Selection</strong>: Fully supports standard Windows <code>Ctrl</code> click and <code>Shift</code> continuous range selection to drag dozens of fixtures at once into the right tree.</li>
+                        <li><strong>Set Master & Followers</strong>: Designate one fixture as the <strong>Master (⭐)</strong>, and others as <strong>Followers (↳)</strong>. Multiple masters can coexist for different truss positions of the same fixture type.</li>
+                        <li><strong>Automatic Follower Sync</strong>: Adjusting the master's blades automatically propagates calibration parameters and posture mapping to all its followers.</li>
+                        <li><strong>Active OSC Query on Save</strong>: Clicking "💾 Save" automatically sends <code>/eos/newcmd/Chan/{ch}#</code> and full parameter queries, using a 350ms non-blocking event loop to lock in the true console posture as the baseline.</li>
+                        <li><strong>Project Export & Multi-Show Portability</strong>: Top toolbar provides "New Project / Open / Save / Save As" to bundle all fixture profiles and baseline hierarchies into a standalone <code>.json</code> file for seamless tour transfers.</li>
+                    </ol>
+                </div>
+
+                <h3>0.26ms Fast-Path Zero-Latency Pipeline</h3>
+                <div class="info-box">
+                    <h4>Targeted Incremental Updates & 60fps Smooth Response</h4>
+                    <p>Legacy tools recomputed all 1000+ fixtures upon every encoder tick, causing 1.9-second freezes. v2.0 redesigns the rendering pipeline:</p>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Fast-Path Direct Channel Pipe</strong>: Encoders directly drive the active fixture's QPainter canvas in just <strong>0.26 ms</strong> (>400x speedup), delivering 60fps silky smooth interaction.</li>
+                        <li><strong>O(1) Dictionary Targeted Repaint</strong>: Background monitoring only repaints the specific row of the active channel, consuming zero CPU on the other 1000+ rows.</li>
+                        <li><strong>0.000 ms Tab Switching</strong>: Persistent lifecycle caches ensure instantaneous tab switching without losing live states.</li>
+                    </ul>
+                </div>
+            </section>
+
             <!-- Troubleshooting -->
             <section id="troubleshoot">
                 <h2>Troubleshooting</h2>
@@ -1117,6 +1263,24 @@
                     </ul>
                 </div>
 
+                <div class="step-box">
+                    <h4>Q6: Shutter blade orientation or angle looks inverted on stage?</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Open Shutter Config Dialog and toggle between "Clockwise (CW)" and "Counter-Clockwise (CCW)".</li>
+                        <li>Ensure fixture is placed at Home posture, then click "💾 Save" to recalibrate the adaptive baseline origin (base_pan / base_tilt).</li>
+                        <li>Check rotation drive axis (select Pan drive for top/front light, Tilt drive for side light / footlights).</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <h4>Q7: Console Data Browser (Tab 2) shows 0 or data won't update?</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Ensure "⚡ Auto-Sync on Tab Switch" is checked in bottom-left corner.</li>
+                        <li>Click "🔄 Sync All" button in bottom-right corner to force an asynchronous query.</li>
+                        <li>Verify UDP ports: software listening port (8001) and console target port (8000) match console configuration, and OSC Output is enabled on console.</li>
+                    </ul>
+                </div>
+
                 <h3>Contact Support</h3>
                 <div class="info-box">
                     <h4>Technical Support</h4>
@@ -1132,11 +1296,11 @@
             </div>
         </div>
 
-        <footer class="footer">
-            <p><strong>ETC Cue Screenshot Logger v4.0</strong></p>
+                <footer class="footer">
+            <p><strong>ETC Cue Screenshot Logger & Console Data Browser v2.0 Flagship Edition</strong></p>
             <p>Developer: onedoller</p>
-            <p>Last Updated: 2026-02-08</p>
-            <p style="margin-top: 20px; opacity: 0.8;">This document applies to ETC Cue Screenshot Logger v4.0</p>
+            <p>Last Updated: 2026-09-23</p>
+            <p style="margin-top: 20px; opacity: 0.8;">This document applies to ETC Cue Screenshot Logger & Console Data Browser v2.0</p>
         </footer>
     </div>
 
