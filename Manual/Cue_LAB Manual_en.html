@@ -84,28 +84,40 @@
             transform: scale(1.05);
         }
 
-        .video-toggle {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            background: rgba(220, 38, 38, 0.85);
-            padding: 6px 18px;
-            border-radius: 20px;
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
+        .header-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .header-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            background: rgba(255, 255, 255, 0.18);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
         }
 
-        .video-toggle:hover {
-            background: #dc2626;
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        .header-btn:hover {
+            background: white;
+            color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-btn.yt-btn:hover {
+            background: #ff0000;
+            color: white;
+            border-color: #ff0000;
         }
 
         .content {
@@ -362,13 +374,6 @@
                 font-size: 2em;
             }
 
-            .lang-toggle,
-            .video-toggle {
-                position: static;
-                display: inline-block;
-                margin: 6px 4px;
-            }
-
             .content {
                 padding: 20px;
             }
@@ -391,10 +396,13 @@
 <body>
     <div class="container">
         <header class="header">
-            <a href="https://www.youtube.com/playlist?list=PLdw8lI3-AanI" target="_blank" rel="noopener noreferrer" class="video-toggle">🎬 Video Tutorials</a>
             <a href="Cue_LAB Manual.html" class="lang-toggle">中文版本</a>
             <h1>Cue Lab Show Control Playback Software</h1>
             <p class="version">Version 2.0.0 User Manual</p>
+            <div class="header-links">
+                <a href="https://www.youtube.com/playlist?list=PLdw8lI3-AanI" target="_blank" class="header-btn yt-btn">🎥 Official YouTube Video Tutorials</a>
+                <a href="https://onedollar10.github.io/omygod/index.html" target="_blank" class="header-btn">🌐 Developer Website (onedoller)</a>
+            </div>
         </header>
 
         <div class="content">
@@ -407,7 +415,7 @@
                     <li><a href="#interface">3. Interface Overview & Layout</a></li>
                     <li><a href="#cue-types">4. Cue Types & Features</a></li>
                     <li><a href="#audio-edit">5. Audio Editing & Waveform Control</a></li>
-                    <li><a href="#video-display">6. Video & Image Settings & Timing</a></li>
+                    <li><a href="#video-display">6. Video, Image & Text Settings (inc. Text Cue)</a></li>
                     <li><a href="#keystone">7. Display & Geometry Calibration (Keystone & Mesh)</a></li>
                     <li><a href="#masking">8. Custom Masking & Global Mask Toggle</a></li>
                     <li><a href="#playback">9. Playback Controls & Keyboard Shortcuts</a></li>
@@ -415,7 +423,7 @@
                     <li><a href="#video-preview">11. Video Preview Window</a></li>
                     <li><a href="#project">12. Project Management & Packaging</a></li>
                     <li><a href="#fade-cue">13. FADE Cue & Chain Control</a></li>
-                    <li><a href="#multi-rtsp">14. Multi-screen & Video Streaming (RTSP & NDI)</a></li>
+                    <li><a href="#multi-rtsp">14. Multi-screen, Video Streaming & Live Input (NDI & RTSP)</a></li>
                     <li><a href="#network-cue">15. Network Cue (Network Cue)</a></li>
                     <li><a href="#sacn-remote">16. sACN (E1.31) Lighting Network Remote Control</a></li>
                     <li><a href="#redundancy-sync">17. Dual-Machine Hot-Standby Redundancy</a></li>
@@ -566,7 +574,7 @@
                 </div>
                 <div class="mockup-caption">Fig 4: Cue list containing various cue types and standby states</div>
 
-                <p>Cue Lab provides 9 specialized Cue types to construct your show playback structure:</p>
+                <p>Cue Lab provides 11 specialized Cue types covering audio, video, live input streams, images, subtitles/text, and external lighting/hardware control:</p>
 
                 <table>
                     <tr>
@@ -588,10 +596,22 @@
                         <td>Shares all audio attributes, plus scale mode, visual layers, opacity, custom coordinates (XY position/size), keystone grids, and masks.</td>
                     </tr>
                     <tr>
+                        <td><strong>Live Input Cue</strong></td>
+                        <td>📹 Video Input</td>
+                        <td>Live cameras, PGM broadcast feeds, OBS/vMix virtual cams, IP cameras (IPC)</td>
+                        <td>Input protocol (NDI® / RTSP selectable), LAN NDI source auto-discovery, RTSP URL & transport (TCP/UDP), one-click connection diagnostics (live resolution detection), full scaling modes, visual layer, opacity, XY position/size, keystone grids, masks, and color grading.</td>
+                    </tr>
+                    <tr>
                         <td><strong>Image Cue</strong></td>
                         <td>🖼 Image</td>
                         <td>Static backdrop images</td>
                         <td>Scale mode, visual layers, opacity, XY positions, sizes, keystone, and masks.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Text Cue</strong></td>
+                        <td>📝 Text</td>
+                        <td>Stage subtitles, speech prompts, scene titles, cast curtain call credits, announcements</td>
+                        <td>Multi-line content, font families & size (8~500px), bold/italic styles, horizontal alignments (Left/Center/Right), text color, outline stroke width (0~50px) & outline color, background fill/transparency, 16:9 debounced live preview, plus full layers, opacity, transform, keystone grids, and masks.</td>
                     </tr>
                     <tr>
                         <td><strong>Blackout Cue</strong></td>
@@ -702,16 +722,16 @@
                 </div>
             </section>
 
-            <!-- 6. Video Display & Timing -->
+            <!-- 6. Video, Image & Text Settings (inc. Text Cue) -->
             <section id="video-display">
-                <h2>6. Video & Image Settings & Timing</h2>
+                <h2>6. Video, Image & Text Settings (inc. Text Cue)</h2>
 
                 <div class="mockup-container">
                     <img src="images/en/06_timing_inspector.png" alt="Display & Timing inspector">
                 </div>
                 <div class="mockup-caption">Fig 6: Inspector Panel displaying Timing & conditional triggers settings</div>
 
-                <p>For <strong>Video Cues</strong> and <strong>Image Cues</strong>, modify display layout and trigger timing rules under the "Display" and "Timing" tabs in the Inspector:</p>
+                <p>For <strong>Video Cues</strong>, <strong>Image Cues</strong>, <strong>Live Input Cues</strong>, and <strong>Text Cues</strong>, modify display layout and trigger timing rules under the "Display" and "Timing" tabs in the Inspector:</p>
 
                 <h3>Visual Properties</h3>
                 <ul>
@@ -739,6 +759,50 @@
                     <li><strong>Loop Count</strong>: Loop repetition times. Set to <code>-1</code> for infinite loop playback.</li>
                     <li><strong>Jump Target</strong>: Automatically jump the Playhead pointer to a specific Cue ID when this Cue finishes playing.</li>
                 </ul>
+
+                <h3>Text Cue: Vector Typography & Subtitle System</h3>
+                <p>In theater productions, live concerts, keynote presentations, and museum installations, media operators regularly need real-time subtitles, scene titles, proverbs, announcements, or curtain call credits. Historically, this required preparing dozens of static graphic files in external editing tools (such as Photoshop), making last-minute typo fixes or layout tweaks during rehearsals excruciating. Cue Lab features a native <strong>Text Cue</strong> system designed for rapid text layout, live styling, and seamless cue scheduling.</p>
+
+                <div class="step-box">
+                    <h4>Text Cue Creation and Editing Workflow</h4>
+                    <ol>
+                        <li><strong>Add a Text Cue</strong>: Click the <strong>"📝 Text"</strong> button on the main toolbar, or right-click in the Cue table and choose "Insert" → "📝 Text".</li>
+                        <li><strong>Open Dedicated Editor</strong>: Select the Cue, switch to the <strong>"Text" tab</strong> in the Inspector panel on the right, and click <strong>"Edit Text"</strong> to launch the dedicated modal (<code>TextCueDialog</code>).</li>
+                        <li><strong>Configure Content & Typography</strong>:
+                            <ul>
+                                <li><strong>Text Content</strong>: Multi-line plain text editor supporting instant line breaks, perfect for bilingual surtitles or multi-line poems.</li>
+                                <li><strong>Font Family</strong>: Modular cached font selector fetching system-installed fonts (defaults to "Microsoft JhengHei", with Arial, Calibri, Segoe UI, etc.).</li>
+                                <li><strong>Font Size</strong>: Continuous range from <code>8 to 500 px</code>, easily catering to small footnote labels or massive hero titles.</li>
+                                <li><strong>Typographic Styles</strong>: Independent checkmarks for <strong>Bold</strong> and <em>Italic</em> styling.</li>
+                                <li><strong>Horizontal Alignment</strong>: Left, Center, and Right alignment modes.</li>
+                            </ul>
+                        </li>
+                        <li><strong>High-Contrast Outlines & Color Styling</strong>:
+                            <ul>
+                                <li><strong>Text Color</strong>: Interactive color picker for foreground text color.</li>
+                                <li><strong>Outline Stroke (Width & Color)</strong>: Set outline width from <code>0 to 50 px</code> with custom outline color. Over complex, bright, or rapidly moving stage video feeds, a dark outline (e.g. white text with black border) provides exceptional legibility and contrast.</li>
+                                <li><strong>Background Fill & Transparency</strong>: Choose a custom solid or semi-transparent background plate, or click "Set to Transparent" for clean transparent text overlay.</li>
+                            </ul>
+                        </li>
+                        <li><strong>16:9 Debounced Live Preview</strong>: The right side displays a 16:9 aspect preview box with a <code>150ms</code> localized debounce timer for immediate WYSIWYG feedback.</li>
+                        <li><strong>Save & Keyboard Focus Safety</strong>: Clicking "OK" automatically renders the vector graphic and saves the disk cache. Upon closing, the dialog unconditionally returns keyboard focus to the main Cue table, ensuring the Spacebar (GO) remains instantaneously responsive.</li>
+                    </ol>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>⚡ Offline Vector Cache Pipeline</h4>
+                        <p>Calculates an SHA1 hash from the text content and styling parameters, rasterizing it to an alpha PNG via <code>TextRenderer</code>. During show playback, it runs 100% on the mature OpenGL GPU static texture pipeline with zero CPU scheduling overhead.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎨 Full OpenGL Visual Feature Set</h4>
+                        <p>Text Cues inherit identical visual attributes to video and image cues: Visual Layer ordering, Opacity, Transform coordinates, 2x2~10x10 Keystone Mesh Warping, and Projection Masks.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎚️ Dynamic FADE Cue Control</h4>
+                        <p>Target a Text Cue with FADE Cues to create smooth opacity dissolves, scaling motions, or positioning animations across scenes.</p>
+                    </div>
+                </div>
             </section>
 
                         <!-- 7. Display & Geometry Calibration (Keystone / Mesh Keystone) -->
@@ -982,10 +1046,10 @@
                 </ul>
             </section>
 
-                                    <!-- 14. Multi-screen & Video Streaming (RTSP & NDI) -->
+                                    <!-- 14. Multi-screen, Video Streaming & Live Input (NDI & RTSP) -->
             <section id="multi-rtsp">
-                <h2>14. Multi-screen & Video Streaming (RTSP & NDI)</h2>
-                <p>Cue Lab features advanced **multi-screen projection positioning** and **virtual screen video streaming (RTSP & NDI)**, satisfying both physical projection and virtual network routing requirements.</p>
+                <h2>14. Multi-screen, Video Streaming & Live Input (NDI & RTSP)</h2>
+                <p>Cue Lab features advanced **multi-screen projection positioning**, **virtual screen video streaming (RTSP & NDI)**, and **live external video input (NDI / RTSP)**, satisfying both physical projection routing, virtual network broadcasting, and live camera integration requirements.</p>
 
                 <div class="mockup-container">
                     <img src="images/en/17_rtsp_streaming_settings.png" alt="Multi-screen and RTSP settings in Preferences">
@@ -1020,6 +1084,50 @@
                     </li>
                     <li><strong>Seamless Integration</strong>: Access Cue Lab screens in third-party software like OBS, vMix, MadMapper, or on physical NDI decoders, reducing hardware cable complexity.</li>
                 </ul>
+
+                <h3>Live Input Cue (NDI / RTSP Video Input)</h3>
+                <p>Modern multimedia stage shows, live corporate events, and concerts frequently require feeding live camera signals (wireless backstage cameras, video switcher PGM feeds, presenter screen streams, or IP network cameras) directly into the stage projection. Cue Lab introduces the <strong>Live Input Cue (Video Input Cue)</strong>, transforming external network video streams into standard, manageable Cue objects within your show control list.</p>
+
+                <div class="step-box">
+                    <h4>Live Input Cue Setup Workflow</h4>
+                    <ol>
+                        <li><strong>Add Live Input Cue</strong>: Click the <strong>"📹 Live Input"</strong> button on the main toolbar, or right-click the Cue table and choose "Insert" → "📹 Live Input".</li>
+                        <li><strong>Select Streaming Protocol</strong>: With the Cue selected, open the <strong>"Live Input" tab</strong> in the Inspector and pick your source type (Select One):
+                            <ul>
+                                <li><strong>NDI® Network Video</strong>: Ultra-low latency, broadcast-quality NewTek NDI® protocol.</li>
+                                <li><strong>RTSP Stream Input</strong>: Compatible with IP surveillance cameras, OBS RTSP server plugins, or hardware video encoders.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Configure Stream Parameters</strong>:
+                            <ul>
+                                <li><strong>NDI Mode</strong>: Click <strong>"Scan Sources"</strong>. A background QThread will query the LAN within 3 seconds, discovering available NDI senders (such as OBS virtual output, vMix, PTZ cameras, etc.) and adding them to the combo box; manual source naming is also supported.</li>
+                                <li><strong>RTSP Mode</strong>: Input your stream URL (e.g. <code>rtsp://192.168.1.120:554/live/ch0</code>) and choose the transport protocol:
+                                    <ul>
+                                        <li><code>TCP</code> (Default & Recommended): Employs packet retransmission to guarantee clean, artifact-free playback without frame tearing.</li>
+                                        <li><code>UDP</code>: Delivers absolute minimum transmission latency across dedicated high-performance networks.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>One-Click Connection Diagnostics</strong>: Click <strong>"🔍 Test Connection"</strong>. The system performs a safe connection handshake in a background thread and immediately updates the status label with signal health and detected resolution (e.g., <code>NDI Streaming (1920x1080)</code> or <code>RTSP Connected, receiving frames...</code>).</li>
+                        <li><strong>Live Playback & GPU Rendering</strong>: Press Spacebar (GO) to trigger the Cue. The background worker ingests incoming frames without blocking the UI and routes them straight to the OpenGL texture pipeline.</li>
+                    </ol>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔄 Low Latency & Auto-Reconnect</h4>
+                        <p>Optimized with OpenCV + FFmpeg low-latency flags (<code>nobuffer</code> and <code>low_delay</code>). If a remote camera drops or the network jitters, the receiver automatically re-polls every 2 seconds, restoring video instantly once back online.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📐 Unified Keystone & Masking</h4>
+                        <p>Live input frames are rendered as first-class GPU visual layers, enjoying full multi-screen mapping, Visual Layer depth, 2x2~10x10 Multi-point Mesh Keystone Warping, and Projection Masking.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎚️ Dynamic FADE Cue Transitions</h4>
+                        <p>Target a Live Input Cue with a FADE Cue to smoothly fade in, fade out, or animate live camera feeds, enabling professional cross-fades between live stage cameras and pre-rendered visuals.</p>
+                    </div>
+                </div>
             </section>
 
             <!-- 15. Network Cue (Network Cue) -->
@@ -1312,6 +1420,13 @@
                         <li>Verify that "Enable Dual Redundancy" is checked on both computers and that the communication port (Default: 7788) matches.</li>
                         <li>If auto-discovery does not list the peer, use "Method B: Manual Direct Connect" and enter the peer machine's IP address directly, then click "Connect".</li>
                     </ul>
+                <div class="info-box" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 6px solid #2563eb; margin-top: 30px;">
+                    <h4 style="color: #1e40af;">Developer Info & Official Resources</h4>
+                    <p style="margin-bottom: 6px;"><strong>💻 Developer:</strong> onedoller</p>
+                    <p style="margin-bottom: 6px;"><strong>🌐 Official Website:</strong> <a href="https://onedollar10.github.io/omygod/index.html" target="_blank" style="color: #2563eb; font-weight: bold; text-decoration: underline;">Technology x Art | Portfolio (onedollar10.github.io/omygod)</a></p>
+                    <p style="margin-bottom: 6px;"><strong>🎥 YouTube Tutorials:</strong> <a href="https://www.youtube.com/playlist?list=PLdw8lI3-AanI" target="_blank" style="color: #dc2626; font-weight: bold; text-decoration: underline;">Cue Lab Full Video Tutorial Playlist</a></p>
+                    <p style="margin-bottom: 6px;"><strong>📧 Support Email:</strong> <a href="mailto:5664762@gmail.com" style="color: #2563eb;">5664762@gmail.com</a></p>
+                    <p><strong>💡 Philosophy:</strong> "What I create is not just art, it is technology."</p>
                 </div>
             </section>
 
@@ -1319,7 +1434,7 @@
 
         <footer class="footer">
             <p><strong>Cue Lab Show Control Playback Software v2.0.0</strong></p>
-            <p>Developer: onedoller | Support Email: 5664762@gmail.com</p>
+            <p>Developer: onedoller | Support Email: <a href="mailto:5664762@gmail.com" style="color: #93c5fd;">5664762@gmail.com</a></p>
             <p style="margin-top: 15px; opacity: 0.6; font-size: 0.85em;">© 2026 CueLab. All rights reserved.</p>
         </footer>
     </div>

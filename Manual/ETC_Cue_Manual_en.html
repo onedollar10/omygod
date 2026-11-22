@@ -65,6 +65,42 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
+        .header-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .header-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.18);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background: white;
+            color: #1e3c72;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-btn.yt-btn:hover {
+            background: #ff0000;
+            color: white;
+            border-color: #ff0000;
+        }
+
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
@@ -309,6 +345,10 @@
             <a href="ETC_Cue_Manual.html" class="lang-toggle">中文版 (繁體)</a>
             <h1>ETC Cue Screenshot Logger & Console Data Browser</h1>
             <p class="version">v2.0 Flagship Edition User Manual</p>
+            <div class="header-links">
+                <a href="https://www.youtube.com/playlist?list=PLaSodMfnFBsA" target="_blank" class="header-btn yt-btn">🎥 Official YouTube Video Tutorials</a>
+                <a href="https://onedollar10.github.io/omygod/index.html" target="_blank" class="header-btn">🌐 Developer Website (onedoller)</a>
+            </div>
         </header>
 
         <div class="content">
@@ -1281,11 +1321,14 @@
                     </ul>
                 </div>
 
-                <h3>Contact Support</h3>
-                <div class="info-box">
-                    <h4>Technical Support</h4>
-                    <p>Email: 566472@gmail.com</p>
-                    <p>Subject: ETC Cue Screenshot Logger Technical Support</p>
+                <h3>Developer & Technical Support</h3>
+                <div class="info-box" style="background: linear-gradient(135deg, #e8f4fd 0%, #f0f7ff 100%); border-left: 5px solid #2a5298;">
+                    <h4>About the Developer & Official Resources</h4>
+                    <p><strong>💻 Developer:</strong> onedoller</p>
+                    <p><strong>🌐 Official Website:</strong> <a href="https://onedollar10.github.io/omygod/index.html" target="_blank" style="color: #2a5298; font-weight: bold; text-decoration: underline;">Technology x Art | Portfolio (onedoller.github.io)</a></p>
+                    <p><strong>🎥 YouTube Tutorials:</strong> <a href="https://www.youtube.com/playlist?list=PLaSodMfnFBsA" target="_blank" style="color: #d9230f; font-weight: bold; text-decoration: underline;">ETC Cue Screenshot Logger Full Tutorial Playlist</a></p>
+                    <p><strong>📧 Email:</strong> <a href="mailto:5664762@gmail.com" style="color: #2a5298;">5664762@gmail.com</a> (Subject: ETC Cue Recorder Technical Inquiry)</p>
+                    <p><strong>💡 Core Philosophy:</strong> "What I create is not just art, it is technology."</p>
                 </div>
             </section>
 

@@ -46,9 +46,9 @@ function renderSoftware() {
                 <ul>
                     ${features.map(f => `<li>${f}</li>`).join("")}
                 </ul>
-                ${item.url ? `<a href="${item.url}" class="btn" style="margin-right:8px" onclick="trackClick('${item.id}_Details', 'Navigation')">${btnText}</a>` : ""}
-                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-top:10px; margin-right:8px; background:linear-gradient(45deg, #7bdcff, #568fff); color:#051427;" target="_blank" onclick="trackClick('${item.id}_Manual', 'ManualView')">${manualBtnText}</a>` : ""}
-                ${videoUrl ? `<a href="${videoUrl}" class="btn" style="margin-top:10px; background:linear-gradient(45deg, #ff0033, #cc0000); color:#fff; border-color:rgba(255,80,80,0.6);" target="_blank" onclick="trackClick('${item.id}_Video', 'VideoView')"><span style="margin-right:4px;">▶</span>${videoBtnText}</a>` : ""}
+                ${item.url ? `<a href="${item.url}" class="btn" style="margin-right:8px; margin-bottom:8px;" onclick="trackClick('${item.id}_Details', 'Navigation')">${btnText}</a>` : ""}
+                ${manualUrl ? `<a href="${manualUrl}" class="btn" style="margin-right:8px; margin-bottom:8px; background:linear-gradient(45deg, #7bdcff, #568fff); color:#051427;" target="_blank" onclick="trackClick('${item.id}_Manual', 'ManualView')">${manualBtnText}</a>` : ""}
+                ${videoUrl ? `<a href="${videoUrl}" class="btn" style="margin-bottom:8px; background:linear-gradient(45deg, #ff0033, #cc0000); color:#fff; border-color:rgba(255,80,80,0.6);" target="_blank" onclick="trackClick('${item.id}_Video', 'VideoView')"><span style="margin-right:4px;">▶</span>${videoBtnText}</a>` : ""}
             </div>
         `;
     }).join("");

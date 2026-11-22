@@ -1,0 +1,275 @@
+/* ==========================================================
+   試用版下載彈跳視窗 (Download Modal) - Glassmorphism UI
+   ========================================================== */
+
+.trial-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(3, 8, 20, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trial-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.trial-modal-card {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    background: linear-gradient(160deg, rgba(18, 30, 58, 0.94), rgba(8, 15, 32, 0.96));
+    border: 1px solid rgba(86, 175, 255, 0.38);
+    border-radius: 1.25rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 
+                0 0 40px rgba(70, 160, 255, 0.18);
+    padding: 2.2rem 2rem 1.8rem;
+    color: #e6f1ff;
+    transform: scale(0.92) translateY(12px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.trial-modal-overlay.active .trial-modal-card {
+    transform: scale(1) translateY(0);
+}
+
+.trial-modal-close {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #9cb3d5;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.trial-modal-close:hover {
+    background: rgba(255, 75, 75, 0.2);
+    border-color: rgba(255, 85, 85, 0.5);
+    color: #ff8585;
+    transform: rotate(90deg);
+}
+
+.trial-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.trial-modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.32rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(0, 210, 255, 0.12);
+    border: 1px solid rgba(0, 210, 255, 0.38);
+    color: #7ce8ff;
+    font-size: 0.84rem;
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.trial-modal-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 40%, #8ed5ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.trial-modal-desc {
+    font-size: 0.92rem;
+    color: #9cb5db;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.trial-form-group {
+    margin-bottom: 1.15rem;
+    text-align: left;
+}
+
+.trial-form-group label {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #cfe2ff;
+    margin-bottom: 0.45rem;
+}
+
+.trial-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.trial-input-wrap i {
+    position: absolute;
+    left: 1.05rem;
+    color: #6386b8;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    pointer-events: none;
+}
+
+.trial-input {
+    width: 100%;
+    background: rgba(10, 20, 42, 0.75);
+    border: 1px solid rgba(110, 175, 255, 0.28);
+    border-radius: 0.75rem;
+    padding: 0.78rem 1rem 0.78rem 2.75rem;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.trial-input::placeholder {
+    color: #5c7499;
+}
+
+.trial-input:focus {
+    background: rgba(13, 27, 56, 0.95);
+    border-color: #4fa8ff;
+    box-shadow: 0 0 0 3px rgba(79, 168, 255, 0.22);
+}
+
+.trial-input:focus + i,
+.trial-input-wrap:focus-within i {
+    color: #4fa8ff;
+}
+
+.trial-form-note {
+    font-size: 0.78rem;
+    color: #688ab8;
+    margin-top: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.trial-submit-btn {
+    width: 100%;
+    margin-top: 0.6rem;
+    padding: 0.88rem 1.4rem;
+    border-radius: 0.75rem;
+    border: none;
+    background: linear-gradient(135deg, #00d2ff 0%, #2979ff 60%, #536dfe 100%);
+    color: #ffffff;
+    font-size: 1.02rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    box-shadow: 0 8px 24px rgba(41, 121, 255, 0.36);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    box-sizing: border-box;
+}
+
+.trial-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(41, 121, 255, 0.52);
+}
+
+.trial-submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.trial-submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.trial-status-msg {
+    margin-top: 0.85rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 0.65rem;
+    font-size: 0.86rem;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    animation: trialFadeIn 0.25s ease;
+}
+
+.trial-status-msg.error {
+    display: flex;
+    background: rgba(255, 68, 68, 0.15);
+    border: 1px solid rgba(255, 68, 68, 0.4);
+    color: #ff9999;
+}
+
+.trial-status-msg.success {
+    display: flex;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #86efac;
+}
+
+.trial-footer-privacy {
+    margin-top: 1.1rem;
+    font-size: 0.78rem;
+    color: #6882a7;
+    text-align: center;
+}
+
+@keyframes trialFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Spinner */
+.trial-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: trialSpin 0.7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes trialSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* CTA Download Button Style (for product pages & cards) */
+.cta.cta-trial {
+    color: #031428 !important;
+    background: linear-gradient(130deg, #00f0ff 0%, #38bdf8 50%, #60a5fa 100%) !important;
+    border-color: rgba(125, 211, 252, 0.6) !important;
+    box-shadow: 0 4px 18px rgba(0, 240, 255, 0.32) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.2px;
+}
+
+.cta.cta-trial:hover {
+    box-shadow: 0 6px 24px rgba(0, 240, 255, 0.55) !important;
+    transform: translateY(-2px);
+}

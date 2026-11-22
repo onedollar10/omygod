@@ -75,28 +75,40 @@
             transform: scale(1.05);
         }
 
-        .video-toggle {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            background: rgba(220, 38, 38, 0.85);
-            padding: 6px 18px;
-            border-radius: 20px;
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
+        .header-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .header-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            background: rgba(255, 255, 255, 0.18);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
         }
 
-        .video-toggle:hover {
-            background: #dc2626;
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        .header-btn:hover {
+            background: white;
+            color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-btn.yt-btn:hover {
+            background: #ff0000;
+            color: white;
+            border-color: #ff0000;
         }
 
         .content {
@@ -353,13 +365,6 @@
                 font-size: 2em;
             }
 
-            .lang-toggle,
-            .video-toggle {
-                position: static;
-                display: inline-block;
-                margin: 6px 4px;
-            }
-
             .content {
                 padding: 20px;
             }
@@ -382,10 +387,13 @@
 <body>
     <div class="container">
         <header class="header">
-            <a href="https://www.youtube.com/playlist?list=PLdw8lI3-AanI" target="_blank" rel="noopener noreferrer" class="video-toggle">🎬 線上教學影片</a>
             <a href="Cue_LAB Manual_en.html" class="lang-toggle">English Version</a>
             <h1>Cue Lab 舞台控制播放軟體</h1>
             <p class="version">版本 2.0.0 使用說明書</p>
+            <div class="header-links">
+                <a href="https://www.youtube.com/playlist?list=PLdw8lI3-AanI" target="_blank" class="header-btn yt-btn">🎥 官方 YouTube 教學影片清單</a>
+                <a href="https://onedollar10.github.io/omygod/index.html" target="_blank" class="header-btn">🌐 開發者個人網站 (onedoller)</a>
+            </div>
         </header>
 
         <div class="content">
@@ -398,7 +406,7 @@
                     <li><a href="#interface">3. 介面總覽與布局</a></li>
                     <li><a href="#cue-types">4. Cue 類型與特點</a></li>
                     <li><a href="#audio-edit">5. 音訊編輯與波形控制</a></li>
-                    <li><a href="#video-display">6. 影像設定與排程控制</a></li>
+                    <li><a href="#video-display">6. 影像與文字設定 (含 Text 文字 Cue)</a></li>
                     <li><a href="#keystone">7. 螢幕與幾何校正 (Keystone & Mesh)</a></li>
                     <li><a href="#masking">8. 局部遮罩與全域遮罩開關</a></li>
                     <li><a href="#playback">9. 播放控制與鍵盤快速鍵</a></li>
@@ -406,7 +414,7 @@
                     <li><a href="#video-preview">11. 視訊預覽視窗 (Video Preview)</a></li>
                     <li><a href="#project">12. 專案管理與打包傳遞</a></li>
                     <li><a href="#fade-cue">13. FADE 漸變與連續鏈控制</a></li>
-                    <li><a href="#multi-rtsp">14. 多螢幕投影與網路視訊串流 (RTSP & NDI)</a></li>
+                    <li><a href="#multi-rtsp">14. 多螢幕投影、網路串流與即時視訊輸入 (NDI & RTSP)</a></li>
                     <li><a href="#network-cue">15. 網路控制 Cue (Network Cue)</a></li>
                     <li><a href="#sacn-remote">16. sACN (E1.31) 燈光網路遙控</a></li>
                     <li><a href="#redundancy-sync">17. 雙機熱備份與連線同步 (Dual-Machine Redundancy)</a></li>
@@ -557,7 +565,7 @@
                 </div>
                 <div class="mockup-caption">圖 4：Cue 列表支持的的各種類型與狀態</div>
 
-                <p>本軟體提供 9 種不同類型的 Cue，使用者可以自由組合它們來建構一個精細的演出流程：</p>
+                <p>本軟體提供 11 種不同類型的 Cue，涵蓋音訊、影片、即時視訊輸入串流、圖片、字幕文字與設備聯動，使用者可以自由組合它們來建構精細專業的演出流程：</p>
 
                 <table>
                     <tr>
@@ -579,10 +587,22 @@
                         <td>除包含音訊的所有屬性外，還支援縮放模式、視覺圖層、不透明度、XY位置與大小、梯形校正與遮罩。</td>
                     </tr>
                     <tr>
+                        <td><strong>視訊輸入 Cue</strong></td>
+                        <td>📹 Video Input</td>
+                        <td>現場即時攝影機、導播機 PGM 訊號、OBS/vMix 虛擬視訊、IP 網路攝影機 (IPC)</td>
+                        <td>輸入協定 (NDI® / RTSP 二選一)、局域網 NDI 來源自動掃描、RTSP URL 與傳輸協定 (TCP/UDP)、一鍵連線診斷測試 (即時解析度)、全套縮放模式、視覺圖層、不透明度、XY位置與大小、梯形校正、遮罩與色彩調整。</td>
+                    </tr>
+                    <tr>
                         <td><strong>圖片 Cue</strong></td>
                         <td>🖼 Image</td>
                         <td>靜態舞台背板</td>
                         <td>縮放模式、視覺圖層、不透明度、位置、大小、梯形校正與遮罩。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>文字 Cue</strong></td>
+                        <td>📝 Text</td>
+                        <td>舞台字幕、台詞題詞、幕次標題、演職人員謝幕名單、即時標語</td>
+                        <td>多行文字內容、字型家族與尺寸 (8~500px)、粗體/斜體、水平對齊 (左/中/右)、文字顏色、外框描邊寬度 (0~50px) 與描邊顏色、背景填色/透明、16:9 防抖即時預覽，以及圖層、不透明度、位置、縮放、梯形校正與遮罩。</td>
                     </tr>
                     <tr>
                         <td><strong>暗場 Cue</strong></td>
@@ -695,16 +715,16 @@
                 </div>
             </section>
 
-            <!-- 6. 影像設定與排程控制 -->
+            <!-- 6. 影像與文字設定 (含 Text 文字 Cue) -->
             <section id="video-display">
-                <h2>6. 影像設定與排程控制</h2>
+                <h2>6. 影像與文字設定 (含 Text 文字 Cue)</h2>
 
                 <div class="mockup-container">
                     <img src="images/06_timing_inspector.png" alt="影像排程設定">
                 </div>
                 <div class="mockup-caption">圖 6：Inspector 的 Timing 時間排程與條件觸發設定</div>
 
-                <p>對於 <strong>影片 Cue</strong> 和 <strong>圖片 Cue</strong>，您可以在屬性面板的「顯示」分頁調整畫面佈局與排程規則：</p>
+                <p>對於 <strong>影片 Cue</strong>、<strong>圖片 Cue</strong>、<strong>視訊輸入 Cue</strong> 以及 <strong>文字 Cue</strong>，您可以在屬性面板的「顯示」分頁調整畫面佈局與排程規則：</p>
 
                 <h3>影像幾何屬性</h3>
                 <ul>
@@ -733,6 +753,50 @@
                     <li><strong>重複次數 (Loop)</strong>：設定媒體重複播放次數，設為 <code>-1</code> 表示無限循環，適用於舞台動態背景 Loop。</li>
                     <li><strong>跳轉目標 (Jump Target)</strong>：當此 Cue 播放完畢後，播放指標 (Playhead) 會自動跳轉到指定的 Cue 編號，適用於非線性的跳轉流程。</li>
                 </ul>
+
+                <h3>文字 Cue (Text Cue) 向量字幕與排版系統</h3>
+                <p>在劇場公演、音樂會演講或沉浸式展演中，經常需要投放即時字幕、章節標題、引言台詞、警示標語或演職人員謝幕名單。傳統作法需要於外部繪圖軟體（如 Photoshop）逐張產出靜態圖檔，既繁瑣且不易臨時修改錯字或排版。Cue Lab 內建<strong>專業文字 Cue (Text Cue)</strong> 系統，讓您直接在軟體內快速建立、排版、美化與調度文字字幕。</p>
+
+                <div class="step-box">
+                    <h4>文字 Cue 建立與編輯操作流程</h4>
+                    <ol>
+                        <li><strong>新增文字 Cue</strong>：點擊頂部控制工具列上的「📝 文字」按鈕，或在左側 Cue 表格右鍵選單中選擇「新增」→「📝 文字」。</li>
+                        <li><strong>開啟編輯器</strong>：選取該文字 Cue 後，在右側屬性面板切換至<strong>「文字」分頁</strong>，點擊<strong>「編輯文字」</strong>按鈕開啟獨立對話框（<code>TextCueDialog</code>）。</li>
+                        <li><strong>輸入內容與字型樣式設定</strong>：
+                            <ul>
+                                <li><strong>文字內容</strong>：支援多行輸入（自動折行換行），方便輸入雙語對照字幕或長段詩詞。</li>
+                                <li><strong>字型家族 (Font Family)</strong>：採用模組化記憶體快取，自動抓取系統已安裝字型（預設為「微軟正黑體」，支援 Arial、Calibri、Segoe UI 等常見字型）。</li>
+                                <li><strong>字型尺寸 (Font Size)</strong>：提供 <code>8 ~ 500 px</code> 的超大範圍連續調節，兼顧微小註解與震撼大標題。</li>
+                                <li><strong>字體風格</strong>：可獨立勾選「粗體 (Bold)」與「斜體 (Italic)」加強視覺強調。</li>
+                                <li><strong>水平對齊 (Alignment)</strong>：支援「置中」、「靠左」、「靠右」三種排版佈局。</li>
+                            </ul>
+                        </li>
+                        <li><strong>高辨識度外框描邊與色彩搭配</strong>：
+                            <ul>
+                                <li><strong>文字顏色</strong>：點擊呼叫調色盤自訂文字本體色彩。</li>
+                                <li><strong>外框描邊 (Outline Width & Color)</strong>：支援 <code>0 ~ 50 px</code> 的描邊寬度與自訂描邊顏色。在色彩豐富或亮度變動劇烈的動態舞台影片上方，加入對比深色外框（如白字黑邊）能大幅增強文字的易讀性與辨識度。</li>
+                                <li><strong>背景填色 (Background Color)</strong>：可為文字設定半透明或純色背景框，亦可點擊「設為透明」保留純文字鏤空穿透。</li>
+                            </ul>
+                        </li>
+                        <li><strong>16:9 即時預覽</strong>：對話框右側內建標準 16:9 比例畫布，配備 <code>150ms</code> 局部防抖即時算繪，任何文字修改或字體縮放皆所見即所得。</li>
+                        <li><strong>儲存與劇場焦點防搶</strong>：點擊「確定」後自動完成向量渲染與快取；對話框關閉時系統會自動將操作焦點歸還給 Cue 表格，確保鍵盤空白鍵 (Space GO) 隨時處於最高優先級就緒狀態。</li>
+                    </ol>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>⚡ 離線向量快取管線</h4>
+                        <p>透過 <code>TextRenderer</code> 依文字與樣式參數產生 SHA1 雜湊快取為透明 PNG。走 Cue 階段 100% 複用成熟的 OpenGL 靜態紋理管線，零 CPU 即時排程負擔、零記憶體洩漏。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎨 完整 OpenGL 視覺繼承</h4>
+                        <p>文字 Cue 享有與一般影像 Cue 完全一致的視覺規格：獨立圖層 (Layer)、不透明度、Transform XY 座標縮放、多點網格幾何校正 (Keystone Mesh) 與投影遮罩 (Mask)。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎚️ 支援 FADE 動態漸變</h4>
+                        <p>可直接使用 FADE Cue 鎖定文字 Cue，對文字的不透明度、位置、大小或幾何變形執行平滑淡入、淡出或移動動畫，打造流暢的動態字卡效果。</p>
+                    </div>
+                </div>
             </section>
 
                         <!-- 7. 螢幕與幾何校正 (Keystone / Mesh Keystone) -->
@@ -986,10 +1050,10 @@
                 </ul>
             </section>
 
-                        <!-- 14. 多螢幕投影與網路視訊串流 (RTSP & NDI) -->
+                        <!-- 14. 多螢幕投影、網路串流與即時視訊輸入 (NDI & RTSP) -->
             <section id="multi-rtsp">
-                <h2>14. 多螢幕投影與網路視訊串流 (RTSP & NDI)</h2>
-                <p>Cue Lab 具備先進的<strong>多螢幕獨立投影定位</strong>與<strong>虛擬多螢幕網路視訊串流推流</strong>功能，滿足現場實體投影與網路拉流/串流同步的需求。</p>
+                <h2>14. 多螢幕投影、網路串流與即時視訊輸入 (NDI & RTSP)</h2>
+                <p>Cue Lab 具備先進的<strong>多螢幕獨立投影定位</strong>、<strong>虛擬多螢幕網路視訊串流推流</strong>以及<strong>外部即時視訊輸入 (Live Video Input)</strong> 功能，滿足現場實體投影、網路拉流廣播與現場實況攝影機即時導入的完整需求。</p>
 
                 <div class="mockup-container">
                     <img src="images/17_rtsp_streaming_settings.png" alt="多螢幕與 RTSP 推流設定">
@@ -1030,6 +1094,50 @@
                     </li>
                     <li><strong>無縫整合與路由切換</strong>：可在外部軟體（如 OBS、vMix、MadMapper）中直接以 NDI 訊號源讀取 Cue Lab 的投影畫面，實現無實體連接線的多軟體協同工作。</li>
                 </ul>
+
+                <h3>視訊輸入 Cue (Video Input Cue - NDI / RTSP 即時視訊輸入)</h3>
+                <p>在現代多媒體劇場、大型發表會或演唱會實況中，經常需要將舞台側台的無線攝影機、導播台 PGM 訊號、現場演講者投影片推流或 IP 網路攝影機 (IPC) 的畫面即時導入投影螢幕中。Cue Lab 2.0 內建專屬的<strong>「視訊輸入 Cue (Video Input Cue)」</strong>，直接將外部網路即時串流納入走 Cue 流程中，實現即時影像與預錄媒體的無縫切換與多圖層混音合成。</p>
+
+                <div class="step-box">
+                    <h4>視訊輸入 Cue 操作設定流程</h4>
+                    <ol>
+                        <li><strong>新增視訊輸入 Cue</strong>：點擊頂部工具列上的<strong>「📹 視訊輸入」</strong>按鈕，或在 Cue 清單表格右鍵選單點選「新增」→「📹 視訊輸入」。</li>
+                        <li><strong>選擇輸入訊號協定</strong>：選取該 Cue 後，切換至右側屬性 Inspector 面板的<strong>「視訊輸入」分頁</strong>，選擇輸入來源類型（二選一）：
+                            <ul>
+                                <li><strong>NDI® 網路視訊輸入</strong>：採用廣播級 NewTek NDI® 超低延遲傳輸標準。</li>
+                                <li><strong>RTSP 串流輸入</strong>：相容一般 IP 網路攝影機、OBS RTSP 伺服器或專用硬體視訊編碼器。</li>
+                            </ul>
+                        </li>
+                        <li><strong>配置串流參數</strong>：
+                            <ul>
+                                <li><strong>NDI 模式</strong>：點擊<strong>「掃描來源 (Scan)」</strong>按鈕，背景 QThread 執行緒會在 3 秒內自動掃描並探測局域網中的所有 NDI 廣播源（例如：OBS 虛擬相機、vMix 輸出、PTZ 雲台攝影機等），並自動列於下拉選單中供直接選取；亦支援手動輸入自訂來源名稱。</li>
+                                <li><strong>RTSP 模式</strong>：在「串流網址」輸入標準 RTSP 連結（例如 <code>rtsp://192.168.1.120:554/live/ch0</code>），並選擇傳輸協定：
+                                    <ul>
+                                        <li><code>TCP</code>（預設推薦）：具備封包重傳與防掉包校驗，能杜絕網路不穩時產生的花屏破圖。</li>
+                                        <li><code>UDP</code>：追求極致零延遲傳輸，適用於專屬超高速區域網路。</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>一鍵連線診斷測試</strong>：點擊<strong>「🔍 測試訊號來源」</strong>按鈕，系統會在背景執行緒安全進行連線握手測試，並於狀態欄即時反饋連線狀態與解析度（例如：<code>NDI 播放中 (1920x1080)</code> 或 <code>RTSP 連線成功，讀取畫面中...</code>），確保正式演出走 Cue 時訊號 100% 正常。</li>
+                        <li><strong>即時走 Cue 與 GPU 渲染</strong>：按空白鍵 (GO) 觸發該 Cue，影像接收器會在背景非同步讀取畫面幀，並直接注入主輸出視窗的 OpenGL 紋理管線。</li>
+                    </ol>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔄 斷線自癒與低延遲佇列</h4>
+                        <p>RTSP 引擎內建低延遲緩衝管線（<code>nobuffer</code> 與 <code>low_delay</code>），並配備自動斷線重連機制。若外部攝影機重啟或網路短暫中斷，系統每 2 秒自動重試，訊號復原瞬間立即重新渲染。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📐 共享全套 Keystone 與遮罩</h4>
+                        <p>即時串流畫面直接整合入 GPU 渲染管線，享有與本機影片完全相同的顯示設定：多螢幕定位、圖層排序、XY 位置縮放、2x2~10x10 多點網格幾何校正 (Keystone Mesh) 與投影遮罩 (Mask)。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎚️ 支援 FADE 動態交叉漸變</h4>
+                        <p>可使用 FADE Cue 鎖定視訊輸入 Cue，對實況畫面進行平滑的淡入、淡出或動態縮放移動，輕鬆實現現場即時攝影鏡頭與舞台預錄影片之間的交叉淡變 (Cross-fade)。</p>
+                    </div>
+                </div>
             </section>
 
             <!-- 15. 網路控制 Cue (Network Cue) -->
@@ -1322,6 +1430,13 @@
                         <li>請確認兩台電腦皆勾選了「啟用雙機備份功能」，且「通訊連接埠」（預設 7788）保持一致。</li>
                         <li>若自動搜尋未能列出設備，請改用「方式 B：手動輸入對向 IP 直連」，直接填寫對向主機的區域網路 IP 地址後點擊「連線」。</li>
                     </ul>
+                <div class="info-box" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 6px solid #2563eb; margin-top: 30px;">
+                    <h4 style="color: #1e40af;">作者資訊與官方資源</h4>
+                    <p style="margin-bottom: 6px;"><strong>💻 開發者：</strong>onedoller</p>
+                    <p style="margin-bottom: 6px;"><strong>🌐 官方網站：</strong><a href="https://onedollar10.github.io/omygod/index.html" target="_blank" style="color: #2563eb; font-weight: bold; text-decoration: underline;">技術 x 藝術 | 個人網頁 (onedollar10.github.io/omygod)</a></p>
+                    <p style="margin-bottom: 6px;"><strong>🎥 YouTube 教學：</strong><a href="https://www.youtube.com/playlist?list=PLdw8lI3-AanI" target="_blank" style="color: #dc2626; font-weight: bold; text-decoration: underline;">Cue Lab 完整影音教學清單</a></p>
+                    <p style="margin-bottom: 6px;"><strong>📧 聯絡信箱：</strong><a href="mailto:5664762@gmail.com" style="color: #2563eb;">5664762@gmail.com</a></p>
+                    <p><strong>💡 核心理念：</strong>「我做的不是藝術是技術」</p>
                 </div>
             </section>
 
@@ -1329,7 +1444,7 @@
 
         <footer class="footer">
             <p><strong>Cue Lab 舞台控制播放軟體 v2.0.0</strong></p>
-            <p>開發者：onedoller | 聯絡支援：5664762@gmail.com</p>
+            <p>開發者：onedoller | 聯絡信箱：<a href="mailto:5664762@gmail.com" style="color: #93c5fd;">5664762@gmail.com</a></p>
             <p style="margin-top: 15px; opacity: 0.6; font-size: 0.85em;">© 2026 CueLab. All rights reserved.</p>
         </footer>
     </div>

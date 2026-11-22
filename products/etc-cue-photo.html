@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="./product-page.css">
+    <link rel="stylesheet" href="../download-modal.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-95B5G5KQ8B"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -49,6 +50,12 @@
                     <span>PDF / Excel</span>
                 </div>
                 <div class="cta-group">
+                    <a href="javascript:void(0)" class="cta cta-trial trigger-download-modal"
+                       data-product="ETC Cue Photo Tool"
+                       data-url="https://drive.google.com/uc?export=download&id=1bJLoL6REgNtwrqHJ5j0HB3t1vsZ1S23v">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                        <span data-i18n="btn_download_trial">免費下載試用版</span>
+                    </a>
                     <a href="mailto:5664762@gmail.com" class="cta primary">
                         <i class="fa-solid fa-envelope"></i>
                         <span data-i18n="osc_buy_email">Contact 5664762@gmail.com to Purchase</span>
@@ -499,6 +506,7 @@
             };
         }
     </script>
+    <script src="../download-modal.js"></script>
 </body>
 
 </html>

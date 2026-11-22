@@ -267,27 +267,56 @@ const freeTools = [
     },
     {
         id: "rtsp_tool",
-        name: "螢幕 RTSP 串流工具",
-        name_en: "Screen RTSP Streaming Tool",
-        tagline: "電腦畫面即時推流 · 燈控台與預覽軟體無縫接收",
-        tagline_en: "Real-Time Screen & Window RTSP Streaming for Consoles",
-        description: "解決「電腦畫面或指定軟體視窗想即時傳進燈控台或預覽系統」的串流痛點。一鍵將桌面或視窗推送為低延遲 RTSP 串流，即開即用！",
-        description_en: "Solves the hassle of streaming desktop screens or specific application windows into lighting consoles and visualizers via low-latency RTSP.",
-        url: "https://drive.google.com/file/d/19Y9nigLXjWoHCcLITu-x2XzBTHMgS1B2/view?usp=sharing",
+        name: "螢幕 RTSP / NDI 串流工具",
+        name_en: "Screen RTSP / NDI Streaming Tool",
+        tagline: "桌面與視窗即時推流 · RTSP / NDI 雙模式無縫傳送",
+        tagline_en: "Real-Time Screen & Window Streaming · Dual RTSP & NDI Modes",
+        description: "解決「電腦畫面或指定軟體視窗想即時傳進燈控台、OBS、vMix 或預覽系統」的串流痛點。支援 RTSP（內建 MediaMTX 與顯卡硬體加速編碼）與 NewTek NDI 區網廣播雙模式，支援 DXGI / WGC 高效擷取與即時預覽，一鍵啟動即開即用！",
+        description_en: "Solves the hassle of streaming desktop screens or specific windows into lighting consoles, OBS, vMix, or visualizers. Features dual RTSP (built-in MediaMTX + hardware encoding) and NewTek NDI LAN broadcast modes with DXGI/WGC capture and live preview.",
+        url: "https://drive.google.com/file/d/1ogYynkXlvQdouko_J0Tt317vr9CHQzJQ/view?usp=sharing",
         btn_key: "btn_download_app",
-        manual: "Manual/RTSP TOOL Manual.html",
         features: [
-            "🖥️ 雙來源模式：支援全螢幕或單一指定視窗推流",
-            "⚡ 低延遲自動推流：內建輕量推流引擎，無需複雜設定一鍵啟動"
+            "📡 RTSP / NDI 雙模式推流：內建 MediaMTX 與 NVENC/QSV/AMF 硬體編碼，同時支援 NDI 區網自動發現與 RTMP 推流",
+            "🖥️ 多螢幕與單一視窗擷取：支援 DXGI 顯卡加速、WGC 與 GDI 擷取後端，畫面流暢低延遲",
+            "📊 即時預覽與一鍵複製：即時監控 FPS、位元率與串流時長，一鍵複製 RTSP / RTMP / NDI 位址"
         ],
         features_en: [
-            "🖥️ Dual Source: Flexible streaming of full screen or selected window",
-            "⚡ Low Latency: Built-in lightweight streaming engine with zero complicated configuration"
+            "📡 Dual RTSP & NDI Modes: Built-in MediaMTX with NVENC/QSV/AMF hardware encoding, plus LAN NDI broadcast & custom RTMP",
+            "🖥️ Multi-Display & Window Capture: Supports DXGI GPU acceleration, WGC, and GDI backends for smooth low-latency capture",
+            "📊 Live Preview & One-Click Copy: Real-time FPS, bitrate & duration monitor with one-click RTSP / RTMP / NDI address copy"
+        ]
+    },
+    {
+        id: "lightnet_tester",
+        name: "LightNet Tester 燈光網路測試器",
+        name_en: "LightNet Tester (Lighting Network Diagnostic Tool)",
+        tagline: "一鍵燈光網路線路健檢 · sACN / Art-Net 4 收發診斷與區網掃描",
+        tagline_en: "One-Click Lighting Network Health Check · sACN / Art-Net 4 & LAN Scanner",
+        description: "解決劇場與演出現場「網路線路不穩、sACN / Art-Net 掉包查不出原因、區網 IP 衝突難排查」的痛點。免打指令、免填 Port，內建 Speedtest 樣式一鍵健檢與白話診斷、區網設備掃描、小/中/大封包 Ping 測試與 sACN / Art-Net 同步收發監控，並可匯出驗收報告！",
+        description_en: "Solves unstable show networks, hidden sACN/Art-Net packet drops, and LAN IP conflicts on-site. Zero CLI or port configuration needed — combines Speedtest-style health checks with plain diagnosis, LAN/ArtPoll scanner, preset Ping tests, simultaneous sACN/Art-Net monitoring, and TXT/CSV acceptance reports.",
+        url: "https://drive.google.com/file/d/1bzzeeY8qM57DD8HNVC-wSdDICc8MNhWS/view?usp=sharing",
+        btn_key: "btn_download_app",
+        features: [
+            "⚡ Speedtest 樣式一鍵健檢：支援單機健檢與雙機對測（10/20/30 秒），自動產出白話中文線路品質診斷",
+            "💡 sACN & Art-Net 4 雙協定實測：可單獨或同步發送並監控刷新率 (Hz)、掉包、亂序與 DMX512 通道即時數值",
+            "🔍 區網掃描與 IP 衝突偵測：結合 ARP、ICMP 與 Art-Net ArtPoll 自動探索節點，紅字標註重複 IP 衝突",
+            "📄 專業 Ping 趨勢與驗收報告：小/中/大封包與 MTU 測試搭配即時折線圖，一鍵匯出 TXT / CSV 驗收報告"
+        ],
+        features_en: [
+            "⚡ Speedtest-Style Health Check: Single-node or dual-node loopback tests (10/20/30s) with clear diagnostic verdicts",
+            "💡 sACN (E1.31) & Art-Net 4 Testing: Transmit & monitor Hz refresh rate, packet loss, out-of-order frames, and live DMX512 bars",
+            "🔍 LAN Scanner & IP Conflict Detection: Auto-discovers nodes via ARP, ICMP & ArtPoll while flagging duplicate IP conflicts",
+            "📄 Advanced Ping & Exportable Reports: Small/Medium/Large packet & MTU tests with live latency charts and TXT/CSV export"
         ]
     }
 ];
 
 const latestUpdates = [
+    {
+        date: "2026-11-22",
+        content: "免費好用區重磅更新：全新上架「LightNet Tester 燈光網路測試器」（一鍵線路健檢、sACN/Art-Net 4 實測與區網掃描）<a href='https://drive.google.com/file/d/1bzzeeY8qM57DD8HNVC-wSdDICc8MNhWS/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('lightnet_tester_TickerDownload', 'TickerDownload')\">點此免費下載</a>，以及「螢幕 RTSP / NDI 串流工具」升級支援 NDI 區網廣播與硬體加速編碼 <a href='https://drive.google.com/file/d/1ogYynkXlvQdouko_J0Tt317vr9CHQzJQ/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerDownload', 'TickerDownload')\">點此下載新版</a>！",
+        content_en: "Free Tools Update: Brand new 'LightNet Tester' (one-click network health check, sACN/Art-Net 4 & LAN scanner) <a href='https://drive.google.com/file/d/1bzzeeY8qM57DD8HNVC-wSdDICc8MNhWS/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('lightnet_tester_TickerDownload', 'TickerDownload')\">Free Download</a>, plus upgraded 'Screen RTSP / NDI Streaming Tool' with NDI LAN broadcast & hardware encoding <a href='https://drive.google.com/file/d/1ogYynkXlvQdouko_J0Tt317vr9CHQzJQ/view?usp=sharing' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('rtsp_tool_TickerDownload', 'TickerDownload')\">Download Now</a>!"
+    },
     {
         date: "2026-09-23",
         content: "ETC Cue Photo Tool v2.0 重磅大更新：新增「Tab 2 控台資料瀏覽器」(Cue List 免確認回寫、Palette 7合1 快速工作台) 與「物理四刀自適應刀盤」(非零原點校正、基準追隨管理器)，並全系列官方教學影片已上架！歡迎 <a href='https://www.youtube.com/playlist?list=PLaSodMfnFBsA' style='color:#ff5555; font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerVideo', 'TickerVideo')\">點此觀看教學影片</a> (或 <a href='products/etc-cue-photo.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerDetails', 'TickerDetails')\">了解詳情</a> / <a href='Manual/ETC_Cue_Manual.html' style='color:var(--primary); font-weight:bold;' target='_blank' onclick=\"trackClick('etc_cue_photo_TickerManual', 'TickerManual')\">查看說明書</a>)",

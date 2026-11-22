@@ -34,6 +34,7 @@ const translations = {
         "btn_read": "閱讀內容",
         "btn_download": "下載原始文件",
         "btn_download_app": "下載",
+        "btn_download_trial": "免費下載試用版",
         "btn_use_now": "立即使用",
         "btn_details": "詳細介紹",
         "manual_btn": "使用說明書 / Manual",
@@ -195,6 +196,7 @@ const translations = {
         "btn_read": "Read More",
         "btn_download": "Download Source File",
         "btn_download_app": "Download",
+        "btn_download_trial": "Free Trial Download",
         "btn_use_now": "Use Now",
         "btn_details": "Details",
         "manual_btn": "User Manual",
@@ -332,6 +334,7 @@ function toggleLanguage() {
     currentLang = currentLang === 'zh' ? 'en' : 'zh';
     localStorage.setItem('lang', currentLang);
     applyTranslations();
+    window.dispatchEvent(new CustomEvent('languageChanged'));
 
     // If on main page, re-render dynamic content
     if (typeof renderSoftware === 'function') {
